@@ -1,0 +1,55 @@
+{
+  "name": "ps-utils",
+  "version": "0.0.1",
+  "description": "Library of re-usable components for Professional Services projects",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel source -d dist",
+    "test:lint": "standard",
+    "test:unit": "mocha source/**/**/__tests__/*.js",
+    "test": "npm run test:lint && npm run test:unit",
+    "styleguide-server": "styleguidist server",
+    "styleguide-build": "styleguidist build"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/everydayhero/ps-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/everydayhero/ps-utils/issues"
+  },
+  "author": "Dan Henderson <dan.henderson@everydayhero.com>",
+  "license": "MIT",
+  "standard": {
+    "ignore": [
+      "source/**/**/__tests__/*.js",
+      "test",
+      "*.js"
+    ]
+  },
+  "dependencies": {
+    "cxsync": "^1.0.9",
+    "minimal.css": "^1.0.0",
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.7.0",
+    "mocha": "^2.5.3",
+    "react-addons-test-utils": "^0.14.8",
+    "react-styleguidist": "^4.5.1",
+    "standard": "^8.0.0",
+    "webpack": "^1.14.0"
+  }
+}
