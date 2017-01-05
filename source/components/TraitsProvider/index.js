@@ -2,8 +2,7 @@ import { Component, PropTypes } from 'react'
 import * as defaultTraits from '../../lib/traits'
 
 /**
-* Takes the default traits, and merges in any custom traits for your project and
-* also allows us to set defaults for certain traits
+* Takes the default traits, and merges in any custom traits for your project
 */
 class TraitsProvider extends Component {
   getChildContext () {
@@ -26,8 +25,7 @@ class TraitsProvider extends Component {
     }, {})
 
     return {
-      traits: mergedTraits,
-      defaults: this.props.defaults
+      traits: mergedTraits
     }
   }
 
@@ -45,12 +43,11 @@ TraitsProvider.propTypes = {
   /**
   * The traits to be added - colors, fonts, treatments, radiuses, shadows etc.
   */
-  traits: PropTypes.object,
+  traits: PropTypes.object
+}
 
-  /**
-  * Set the defaults for given traits - background, foreground, radius etc.
-  */
-  defaults: PropTypes.object
+TraitsProvider.defaultProps = {
+  traits: {}
 }
 
 TraitsProvider.childContextTypes = {

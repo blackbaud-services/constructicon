@@ -13,7 +13,8 @@ export default (props = {}, traits = {}) => {
     root: {
       display: 'inline-block',
       cursor: 'pointer',
-      padding: `${rhythm(props.padding.x, 'em')} ${rhythm(props.padding.y, 'em')}`,
+      textDecoration: 'none',
+      padding: `${rhythm(props.padding.y, 'em')} ${rhythm(props.padding.x, 'em')}`,
       backgroundColor: colors[props.background],
       color: colors[props.foreground],
       border: `${props.borderWidth}px solid ${colors[props.borderColor]}`,

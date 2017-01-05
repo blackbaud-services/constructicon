@@ -2,9 +2,9 @@ Tag e.g. anchor, button, a React Router Link etc.
 
 ```
 <ButtonGroup>
-  <Button el='a' href='http://google.com'>Click Me</Button>
-  <Button el='button' onClick={() => console.log('clicked')}>Click Me</Button>
-  <Button el='span' onClick={() => console.log('clicked')}>Click Me</Button>
+  <Button tag='a' href='http://google.com'>Click Me</Button>
+  <Button tag='button' onClick={() => console.log('clicked')}>Click Me</Button>
+  <Button tag='span' onClick={() => console.log('clicked')}>Click Me</Button>
 </ButtonGroup>
 ```
 
@@ -43,8 +43,8 @@ Padding
 
 ```
 <ButtonGroup>
-  <Button padding={{ x: 0.25, y: 0.5 }}>Click Me</Button>
-  <Button padding={{ x: 1, y: 2 }}>Click Me</Button>
+  <Button padding={{ x: 0.5, y: 0.25 }}>Click Me</Button>
+  <Button padding={{ x: 2, y: 1 }}>Click Me</Button>
 </ButtonGroup>
 ```
 

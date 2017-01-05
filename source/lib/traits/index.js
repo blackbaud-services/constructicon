@@ -26,7 +26,8 @@ export const measures = {
 }
 
 export const shadows = {
-  none: 'none'
+  none: 'none',
+  light: '0 0 15px rgba(0, 0, 0, 0.125)'
 }
 
 export const radiuses = {

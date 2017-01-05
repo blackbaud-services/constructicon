@@ -8,13 +8,13 @@ import styles from './styles'
  */
 const Button = ({
   children,
-  el: El,
+  tag: Tag,
   classNames,
   ...props
 }) => (
-  <El className={classNames.root} {...props}>
+  <Tag className={classNames.root} {...props}>
     {children}
-  </El>
+  </Tag>
 )
 
 Button.propTypes = {
@@ -26,7 +26,7 @@ Button.propTypes = {
   /**
   * The tag or component to be used e.g. button, a, Link
   */
-  el: PropTypes.oneOfType([
+  tag: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
   ]),
@@ -88,14 +88,14 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  el: 'button',
+  tag: 'button',
   background: 'primary',
   foreground: 'light',
   borderColor: 'shade',
   borderWidth: 2,
   font: 'button',
   size: 0,
-  padding: {x: 0.5, y: 1},
+  padding: {x: 1, y: 0.5},
   radius: 'small',
   shadow: 'none',
   effect: 'tint',

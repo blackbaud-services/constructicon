@@ -22,15 +22,13 @@ export const withStyles = (styles) => (ComponentToWrap) => {
     render () {
       // get current traits and defaults from context
       const {
-        traits = defaultTraits,
-        defaults = {}
+        traits = defaultTraits
       } = this.context
 
       // build our combined props from the component itself's default props,
       // the specified default traits, and the actual provided props
       const combinedProps = {
         ...ComponentToWrap.defaultProps,
-        ...defaults,
         ...this.props
       }
 
@@ -54,8 +52,7 @@ export const withStyles = (styles) => (ComponentToWrap) => {
   }
 
   ConnectStyles.contextTypes = {
-    traits: PropTypes.object,
-    defaults: PropTypes.object
+    traits: PropTypes.object
   }
 
   return ConnectStyles

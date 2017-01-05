@@ -11,7 +11,7 @@ Button Group
 Adjust Padding
 
 ```
-<ButtonGroup padding={{ x: 0.25, y: 1 }}>
+<ButtonGroup padding={{ x: 1, y: 0.25 }}>
   <Button>Click Me</Button>
   <Button>Click Me</Button>
   <Button>Click Me</Button>
