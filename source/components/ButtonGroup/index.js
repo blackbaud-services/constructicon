@@ -18,7 +18,10 @@ ButtonGroup.propTypes = {
   /**
   * The text for the button
   */
-  children: PropTypes.array.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element
+  ]),
 
   /**
   * The padding to be applied between buttons (rhythm)

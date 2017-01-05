@@ -10,10 +10,7 @@ import {
 } from '../../../lib/traits'
 
 describe('Button', () => {
-  const getMountedElement = (el, selector = 'button') => {
-    const wrapper = mount(el)
-    return wrapper.find(selector)
-  }
+  const getMountedElement = (el) => utils.getMountedElement(el, 'button')
 
   it('should render a button', () => {
     const button = getMountedElement(<Button>Click Me</Button>)

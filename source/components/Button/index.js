@@ -8,11 +8,13 @@ import styles from './styles'
  */
 const Button = ({
   children,
-  classNames
+  el: El,
+  classNames,
+  ...props
 }) => (
-  <button className={classNames.root}>
+  <El className={classNames.root} {...props}>
     {children}
-  </button>
+  </El>
 )
 
 Button.propTypes = {
@@ -20,6 +22,14 @@ Button.propTypes = {
   * The text for the button
   */
   children: PropTypes.any.isRequired,
+
+  /**
+  * The tag or component to be used e.g. button, a, Link
+  */
+  el: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]),
 
   /**
   * The background color of the button -
@@ -78,6 +88,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
+  el: 'button',
   background: 'primary',
   foreground: 'light',
   borderColor: 'shade',

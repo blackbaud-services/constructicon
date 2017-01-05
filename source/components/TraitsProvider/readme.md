@@ -3,23 +3,21 @@ Traits Example
 ```
 // Need to fix formatting, would usually just pass through like {...traits} or individually as colors={} fonts={} etc.
 
-<TraitsProvider {
-  ...{
-    colors: {
-      primary: '#DD9955',
-      secondary: '#33AACC'
-    },
-    treatments: {
-      button: {
-        fontFamily: '"Quicksand"',
-        fontWeight: 400
-      }
+<TraitsProvider traits={{
+  colors: {
+    primary: '#DD9955',
+    secondary: '#33AACC'
+  },
+  treatments: {
+    button: {
+      fontFamily: '"Quicksand"',
+      fontWeight: 400
     }
   }
-}>
+}}>
   <ButtonGroup>
-    <Button>Example Button</Button>
-    <Button background='secondary'>Example Button</Button>
+    <Button>Click Me</Button>
+    <Button background='secondary'>Click Me</Button>
   </ButtonGroup>
 </TraitsProvider>
 ```
@@ -28,9 +26,11 @@ Set Defaults
 
 ```
 <TraitsProvider
-  colors={{
-    primary: '#DD9955',
-    secondary: '#33AACC'
+  traits={{
+    colors: {
+      primary: '#DD9955',
+      secondary: '#33AACC'
+    }
   }}
   defaults={{
     background: 'secondary',
@@ -38,7 +38,7 @@ Set Defaults
     effect: 'shrink'
   }}>
   <ButtonGroup>
-    <Button>Default Button</Button>
+    <Button>Click Me</Button>
   </ButtonGroup>
 </TraitsProvider>
 ```
