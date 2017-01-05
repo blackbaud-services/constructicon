@@ -2,20 +2,24 @@ import { Component, PropTypes } from 'react'
 import * as defaultTraits from '../../lib/traits'
 
 /**
-* Gives us the ability to set our own themes and traits
+* Takes the default traits, and merges in any custom traits for your project and
+* also allows us to set defaults for certain traits
 */
 class TraitsProvider extends Component {
   getChildContext () {
-    const finalTraits = Object.keys(defaultTraits).reduce((acc, key) => {
+    const mergedTraits = Object.keys(defaultTraits).reduce((acc, key) => {
       const defaultTrait = defaultTraits[key]
       const providedTrait = this.props[key]
 
-      const isTraitObject = typeof providedTrait === 'object'
-      const combinedTrait = isTraitObject ? {
+      // if trait is an object, merge it
+      // otherwise overwrite it if set
+      const isTraitAnObject = typeof providedTrait === 'object'
+      const combinedTrait = isTraitAnObject ? {
         ...defaultTrait,
         ...providedTrait
       } : providedTrait || defaultTrait
 
+      // add trait to our merged traits object
       return {
         ...acc,
         [key]: combinedTrait
@@ -23,7 +27,8 @@ class TraitsProvider extends Component {
     }, {})
 
     return {
-      traits: finalTraits
+      traits: mergedTraits,
+      defaults: this.props.defaults
     }
   }
 
@@ -71,11 +76,17 @@ TraitsProvider.propTypes = {
   /**
   * The font styles to be added - button, head, body or other custom
   */
-  treatments: PropTypes.object
+  treatments: PropTypes.object,
+
+  /**
+  * Set the defaults for given traits - background, foreground, radius etc.
+  */
+  defaults: PropTypes.object
 }
 
 TraitsProvider.childContextTypes = {
-  traits: PropTypes.object
+  traits: PropTypes.object,
+  defaults: PropTypes.object
 }
 
 export default TraitsProvider

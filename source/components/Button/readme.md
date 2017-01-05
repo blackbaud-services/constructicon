@@ -38,6 +38,17 @@ Padding
 </ButtonGroup>
 ```
 
+Border
+
+```
+<ButtonGroup>
+  <Button borderWidth={3}>Thick</Button>
+  <Button borderWidth={1}>Thin</Button>
+  <Button borderColor='shade'>Shade</Button>
+  <Button borderColor='tint'>Tint</Button>
+</ButtonGroup>
+```
+
 Border Radius
 
 ```

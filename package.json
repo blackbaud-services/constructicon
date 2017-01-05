@@ -4,12 +4,11 @@
   "description": "Library of re-usable components for Professional Services projects",
   "main": "index.js",
   "scripts": {
+    "start": "styleguidist server",
     "build": "babel source -d dist",
     "test:lint": "standard",
     "test:unit": "mocha source/**/**/__tests__/*.js",
-    "test": "npm run test:lint && npm run test:unit",
-    "styleguide-server": "styleguidist server",
-    "styleguide-build": "styleguidist build"
+    "test": "npm run test:lint && npm run test:unit"
   },
   "files": [
     "dist"
@@ -46,6 +45,7 @@
     "babel-register": "^6.9.0",
     "chai": "^3.5.0",
     "enzyme": "^2.7.0",
+    "jsdom": "^9.9.1",
     "mocha": "^2.5.3",
     "react-addons-test-utils": "^0.14.8",
     "react-styleguidist": "^4.5.1",

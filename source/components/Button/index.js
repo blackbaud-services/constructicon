@@ -10,16 +10,16 @@ const Button = ({
   children,
   classNames
 }) => (
-  <a href='http://google.com' className={classNames.root}>
+  <button className={classNames.root}>
     {children}
-  </a>
+  </button>
 )
 
 Button.propTypes = {
   /**
   * The text for the button
   */
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired,
 
   /**
   * The background color of the button -
@@ -72,11 +72,6 @@ Button.propTypes = {
   effect: PropTypes.oneOf(options.effects),
 
   /**
-  * The transition to be used on the button
-  */
-  transition: PropTypes.oneOf(options.transitions),
-
-  /**
   * Custom styles to be applied to the button
   */
   styles: PropTypes.object
@@ -92,8 +87,7 @@ Button.defaultProps = {
   padding: {x: 0.5, y: 1},
   radius: 'small',
   shadow: 'none',
-  effect: 'none',
-  transition: 'easeOut',
+  effect: 'tint',
   styles: {}
 }
 

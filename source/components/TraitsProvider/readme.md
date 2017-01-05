@@ -23,3 +23,22 @@ Traits Example
   </ButtonGroup>
 </TraitsProvider>
 ```
+
+Set Defaults
+
+```
+<TraitsProvider
+  colors={{
+    primary: '#DD9955',
+    secondary: '#33AACC'
+  }}
+  defaults={{
+    background: 'secondary',
+    radius: 'large',
+    effect: 'shrink'
+  }}>
+  <ButtonGroup>
+    <Button>Default Button</Button>
+  </ButtonGroup>
+</TraitsProvider>
+```

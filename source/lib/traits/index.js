@@ -13,7 +13,7 @@ export const colors = {
   secondary: '#339955',
   tertiary: '#3355cc',
   shade: 'rgba(0, 0, 0, 0.125)',
-  tint: 'rgba(255, 255, 255, 0.125)'
+  tint: 'rgba(255, 255, 255, 0.25)'
 }
 
 export const fonts = {
@@ -67,11 +67,11 @@ export const utils = {
 }
 
 export const effects = {
-  none: () => ({}),
-  shade: (transition) => ({
+  none: {},
+  shade: {
     position: 'relative',
     ':before': {
-      transition,
+      transition: transitions.easeOut,
       ...utils.fullSize,
       backgroundColor: colors.shade,
       opacity: 0
@@ -79,11 +79,11 @@ export const effects = {
     ':hover:before': {
       opacity: 1
     }
-  }),
-  tint: (transition) => ({
+  },
+  tint: {
     position: 'relative',
     ':before': {
-      transition,
+      transition: transitions.easeOut,
       ...utils.fullSize,
       backgroundColor: colors.tint,
       opacity: 0
@@ -91,19 +91,19 @@ export const effects = {
     ':hover:before': {
       opacity: 1
     }
-  }),
-  grow: (transition) => ({
-    transition,
+  },
+  grow: {
+    transition: transitions.easeOut,
     backfaceVisibility: 'hidden',
     ':hover': {
       transform: 'scale(1.1)'
     }
-  }),
-  shrink: (transition) => ({
-    transition,
+  },
+  shrink: {
+    transition: transitions.easeOut,
     backfaceVisibility: 'hidden',
     ':hover': {
       transform: 'scale(0.925)'
     }
-  })
+  }
 }

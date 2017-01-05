@@ -6,12 +6,8 @@ export default (props = {}, traits = {}) => {
     rhythm,
     scale,
     shadows,
-    transitions,
     treatments
   } = traits
-
-  const transition = transitions[props.transition]
-  const effect = effects[props.effect]
 
   return {
     root: {
@@ -24,7 +20,7 @@ export default (props = {}, traits = {}) => {
       boxShadow: shadows[props.shadow],
       fontSize: scale(props.size),
       ...treatments[props.font],
-      ...effect(transition),
+      ...effects[props.effect],
       ...props.styles
     }
   }

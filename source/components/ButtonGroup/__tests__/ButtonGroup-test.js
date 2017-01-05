@@ -1,8 +1,31 @@
 import ButtonGroup from '..'
 import Button from '../../Button'
+import { css } from '../../../lib/css'
 
 describe('Button Group', () => {
-  it('should render a button group', () => {
+  const getMountedElement = (el, selector = 'div') => {
+    const wrapper = mount(el)
+    return wrapper.find(selector)
+  }
 
+  it('should render a button group', () => {
+    const wrapper = mount(
+      <ButtonGroup>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+      </ButtonGroup>
+    )
+    expect(wrapper.find('button')).to.have.length(2)
+  })
+
+  it('should allow us to pass in custom styles', () => {
+    const buttonGroup = getMountedElement(
+      <ButtonGroup styles={{ opacity: 0.5 }}>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+      </ButtonGroup>
+    )
+    const rule = utils.findRule(css.rules, buttonGroup.props().className)
+    expect(rule.css).to.contain(`opacity:0.5`)
   })
 })

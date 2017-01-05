@@ -14,3 +14,7 @@ global.beforeEach = mocha.beforeEach
 global.enzyme = require('enzyme')
 global.shallow = enzyme.shallow
 global.mount = enzyme.mount
+
+global.utils = require('./utils')
+
+require('./testdom')('<html><body></body></html>')
