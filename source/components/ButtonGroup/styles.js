@@ -3,13 +3,18 @@ export default (props = {}, traits = {}) => {
     rhythm
   } = traits
 
+  const {
+    padding,
+    styles
+  } = props
+
   return {
     root: {
-      margin: `${rhythm(props.padding.y * -1, 'em')} ${rhythm(props.padding.x * -1, 'em')}`,
-      ...props.styles,
+      margin: `${rhythm(padding.y * -1, 'em')} ${rhythm(padding.x * -1, 'em')}`,
+      ...styles,
 
       '> *': {
-        margin: `${rhythm(props.padding.y, 'em')} ${rhythm(props.padding.x, 'em')}`
+        margin: `${rhythm(padding.y, 'em')} ${rhythm(padding.x, 'em')}`
       }
     }
   }

@@ -70,9 +70,7 @@ Section.defaultProps = {
   tag: 'section',
   background: 'light',
   foreground: 'dark',
-  borderWidth: 0,
   borderColor: 'shade',
-  radius: 'none',
   padding: {x: 1, y: 1},
   styles: {}
 }

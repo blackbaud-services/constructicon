@@ -9,21 +9,35 @@ export default (props = {}, traits = {}) => {
     treatments
   } = traits
 
+  const {
+    background,
+    borderColor,
+    borderWidth,
+    effect,
+    font,
+    foreground,
+    padding,
+    radius,
+    shadow,
+    size,
+    styles
+  } = props
+
   return {
     root: {
       display: 'inline-block',
       cursor: 'pointer',
       textDecoration: 'none',
-      padding: `${rhythm(props.padding.y, 'em')} ${rhythm(props.padding.x, 'em')}`,
-      backgroundColor: colors[props.background],
-      color: colors[props.foreground],
-      border: `${props.borderWidth}px solid ${colors[props.borderColor]}`,
-      borderRadius: rhythm(radiuses[props.radius]),
-      boxShadow: shadows[props.shadow],
-      fontSize: scale(props.size),
-      ...treatments[props.font],
-      ...effects[props.effect],
-      ...props.styles
+      padding: `${rhythm(padding.y, 'em')} ${rhythm(padding.x, 'em')}`,
+      backgroundColor: colors[background],
+      color: colors[foreground],
+      border: `${borderWidth}px solid ${colors[borderColor]}`,
+      borderRadius: rhythm(radiuses[radius]),
+      boxShadow: shadow && shadows[shadow],
+      fontSize: size && scale(size),
+      ...treatments[font],
+      ...effects[effect],
+      ...styles
     }
   }
 }

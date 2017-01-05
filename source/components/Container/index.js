@@ -57,7 +57,6 @@ Container.propTypes = {
 Container.defaultProps = {
   tag: 'article',
   width: 40,
-  shadow: 'none',
   outerColor: 'shade',
   styles: {}
 }

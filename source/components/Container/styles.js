@@ -6,19 +6,26 @@ export default (props, traits) => {
     treatments
   } = traits
 
+  const {
+    shadow,
+    outerColor,
+    styles,
+    width
+  } = props
+
   return {
     root: {
-      maxWidth: rhythm(props.width, 'em'),
+      maxWidth: rhythm(width, 'em'),
       margin: '0 auto',
       backgroundColor: colors.light,
       color: colors.dark,
       ...treatments.body,
-      boxShadow: shadows[props.shadow],
-      ...props.styles
+      boxShadow: shadow && shadows[shadow],
+      ...styles
     },
 
     outer: {
-      backgroundColor: colors[props.outerColor]
+      backgroundColor: colors[outerColor]
     }
   }
 }
