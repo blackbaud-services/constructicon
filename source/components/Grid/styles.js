@@ -15,11 +15,11 @@ export default (props, traits) => {
       alignItems: props.align,
       justifyContent: props.justify,
       direction: props.direction,
-      margin: `${rhythm(padding.y * -1)} ${rhythm(padding.x * -1)}`,
+      margin: `${rhythm(padding.y * -0.5)} ${rhythm(padding.x * -0.5)}`,
       ...styles,
 
       '> *': {
-        padding: `${rhythm(padding.y)} ${rhythm(padding.x)}`
+        padding: `${rhythm(padding.y * 0.5)} ${rhythm(padding.x * 0.5)}`
       }
     }
   }

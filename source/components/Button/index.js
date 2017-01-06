@@ -94,6 +94,7 @@ Button.defaultProps = {
   borderColor: 'shade',
   borderWidth: 2,
   font: 'button',
+  size: 0,
   padding: {x: 1, y: 0.5},
   radius: 'small',
   effect: 'tint',

@@ -33,7 +33,7 @@ describe('Grid', () => {
     )
     const container = wrapper.find('Grid')
     const rule = utils.findRule(css.rules, container.prop('classNames').root)
-    expect(rule.css).to.contain(`margin:${rhythm(-4)} ${rhythm(-2)}`)
+    expect(rule.css).to.contain(`margin:${rhythm(-4 * 0.5)} ${rhythm(-2 * 0.5)}`)
   })
 
   it('should allow us to set breakpoints on a column', () => {

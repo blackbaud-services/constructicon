@@ -34,7 +34,7 @@ export default (props = {}, traits = {}) => {
       border: `${borderWidth}px solid ${colors[borderColor]}`,
       borderRadius: rhythm(radiuses[radius]),
       boxShadow: shadow && shadows[shadow],
-      fontSize: size && scale(size),
+      fontSize: scale(size),
       ...treatments[font],
       ...effects[effect],
       ...styles

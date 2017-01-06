@@ -2,10 +2,11 @@
 
 - `yarn` to install dependencies
 - `yarn start` to generate and serve style guide
-- `yarn run build` to build for production
 - `yarn test` to run tests (linting and unit tests)
 - `yarn run test:lint` to run linting
 - `yarn run test:unit` to run unit tests
+- `yarn run build` to build for production
+- `yarn run build:styleguide` to build the styleguide
 
 ### Overview
 

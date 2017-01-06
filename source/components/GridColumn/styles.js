@@ -1,8 +1,6 @@
 export default (props, traits) => {
   const {
-    colors,
-    mediaQuery,
-    radiuses
+    mediaQuery
   } = traits
 
   const {
@@ -10,11 +8,6 @@ export default (props, traits) => {
     sm,
     md,
     lg,
-    background,
-    borderColor,
-    borderWidth,
-    foreground,
-    radius,
     styles
   } = props
 
@@ -27,10 +20,6 @@ export default (props, traits) => {
 
   return {
     root: {
-      backgroundColor: background && colors[background],
-      color: foreground && colors[foreground],
-      border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
-      borderRadius: radius && rhythm(radiuses[radius]),
       ...calculateSize(xs),
       [mediaQuery('sm')]: calculateSize(sm),
       [mediaQuery('md')]: calculateSize(md),

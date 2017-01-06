@@ -34,31 +34,6 @@ GridColumn.propTypes = {
   lg: PropTypes.number,
 
   /**
-  * The background color of the button -
-  */
-  background: PropTypes.oneOf(options.colors),
-
-  /**
-  * The color of the text -
-  */
-  foreground: PropTypes.oneOf(options.colors),
-
-  /**
-  * The color of the border
-  */
-  borderColor: PropTypes.oneOf(options.colors),
-
-  /**
-  * The width of the border
-  */
-  borderWidth: PropTypes.number,
-
-  /**
-  * The radius of the button -
-  */
-  radius: PropTypes.oneOf(options.radiuses),
-
-  /**
   * The custom styles to be applied
   */
   styles: PropTypes.object
