@@ -19,7 +19,7 @@ sites together more quickly and consistently.
 
 We are building this with a living style guide to showcase how to use the various components, using React Styleguidist.
 
-The styleguide will be publicly available at...
+The styleguide will be publicly available at [https://everydayhero.github.io/ps-utils](https://everydayhero.github.io/ps-utils)
 
 While developing, it is useful to serve the styleguide using `yarn start`, which will hot reload changes as you develop.
 
