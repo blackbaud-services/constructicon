@@ -68,8 +68,6 @@ Section.propTypes = {
 
 Section.defaultProps = {
   tag: 'section',
-  background: 'light',
-  foreground: 'dark',
   borderColor: 'shade',
   padding: {x: 1, y: 1},
   styles: {}

@@ -17,8 +17,8 @@ export default (props, traits) => {
   return {
     root: {
       padding: `${rhythm(padding.y)} ${rhythm(padding.x)}`,
-      backgroundColor: colors[background],
-      color: colors[foreground],
+      backgroundColor: background && colors[background],
+      color: foreground && colors[foreground],
       border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
       borderRadius: radius && rhythm(radiuses[radius]),
       ...props.styles

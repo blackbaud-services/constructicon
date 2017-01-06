@@ -16,6 +16,7 @@ export default (props, traits) => {
   return {
     root: {
       maxWidth: rhythm(width, 'em'),
+      minHeight: '100vh',
       margin: '0 auto',
       backgroundColor: colors.light,
       color: colors.dark,
