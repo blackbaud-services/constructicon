@@ -31,7 +31,7 @@ Section.propTypes = {
   ]),
 
   /**
-  * The background color of the button -
+  * The background color of the section -
   */
   background: PropTypes.oneOf(options.colors),
 
@@ -51,17 +51,17 @@ Section.propTypes = {
   borderWidth: PropTypes.number,
 
   /**
-  * The radius of the button -
+  * The radius of the section -
   */
   radius: PropTypes.oneOf(options.radiuses),
 
   /**
-  * The padding to be applied between buttons (rhythm)
+  * The padding to be applied between section (rhythm)
   */
   padding: PropTypes.object,
 
   /**
-  * The custom styles to be applied to the container
+  * The custom styles to be applied to the section
   */
   styles: PropTypes.object
 }

@@ -1,3 +1,6 @@
+/**
+* Sizing and Spacing
+*/
 export const rhythm = (value = 1, unit = 'rem', basis = 1.5) => (
   `${basis * value}${unit}`
 )
@@ -6,6 +9,9 @@ export const scale = (exponent = 0, scale = 1.2) => (
   `${Math.pow(scale, exponent)}rem`
 )
 
+/**
+* Colors
+*/
 export const colors = {
   light: '#ffffff',
   dark: '#000000',
@@ -16,6 +22,9 @@ export const colors = {
   tint: 'rgba(255, 255, 255, 0.25)'
 }
 
+/**
+* Fonts
+*/
 export const fonts = {
   head: '"Open Sans", sans-serif',
   body: '"Open Sans", sans-serif'
@@ -23,22 +32,6 @@ export const fonts = {
 
 export const measures = {
   medium: 1.425
-}
-
-export const shadows = {
-  none: 'none',
-  light: '0 0 15px rgba(0, 0, 0, 0.125)'
-}
-
-export const radiuses = {
-  none: 0,
-  small: 0.25,
-  medium: 0.5,
-  large: 50
-}
-
-export const transitions = {
-  easeOut: 'ease-out .25s'
 }
 
 export const treatments = {
@@ -54,6 +47,41 @@ export const treatments = {
     textTransform: 'uppercase',
     fontWeight: 700
   }
+}
+
+/**
+* Borders and Edges
+*/
+export const shadows = {
+  none: 'none',
+  light: '0 0 15px rgba(0, 0, 0, 0.125)'
+}
+
+export const radiuses = {
+  none: 0,
+  small: 0.25,
+  medium: 0.5,
+  large: 50
+}
+
+/**
+* Media Queries
+*/
+export const breakpoints = {
+  sm: '32.5em',
+  md: '45em',
+  lg: '57.5em'
+}
+
+export const mediaQuery = (size = 'sm', query = 'min-width') => (
+  `@media (${query}: ${breakpoints[size]})`
+)
+
+/**
+* Effects, Animations, Transitions, Utils
+*/
+export const transitions = {
+  easeOut: 'ease-out .25s'
 }
 
 export const utils = {

@@ -2,19 +2,9 @@ Site Container
 
 ```
 <Container styles={{ backgroundColor: '#eee' }}>
-  <div>Header</div>
-  <div>Body</div>
-  <div>Footer</div>
-</Container>
-```
-
-Tag e.g. div, section
-
-```
-<Container tag='section' styles={{ backgroundColor: '#eee' }}>
-  <div>Header</div>
-  <div>Body</div>
-  <div>Footer</div>
+  <Section>Header</Section>
+  <Section>Body</Section>
+  <Section>Footer</Section>
 </Container>
 ```
 
@@ -22,9 +12,9 @@ Width
 
 ```
 <Container width={10} styles={{ backgroundColor: '#eee' }}>
-  <div>Header</div>
-  <div>Body</div>
-  <div>Footer</div>
+  <Section>Header</Section>
+  <Section>Body</Section>
+  <Section>Footer</Section>
 </Container>
 ```
 
@@ -32,8 +22,8 @@ Shadow
 
 ```
 <Container shadow='light'>
-  <div>Header</div>
-  <div>Body</div>
-  <div>Footer</div>
+  <Section>Header</Section>
+  <Section>Body</Section>
+  <Section>Footer</Section>
 </Container>
 ```
