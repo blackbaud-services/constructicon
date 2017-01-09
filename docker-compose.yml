@@ -1,0 +1,16 @@
+build:
+  image: node:6.9.1
+  working_dir: /code
+  volumes:
+    - .:/code
+    - $SSH_AUTH_SOCK:/ssh-agent
+  environment:
+    - AWS_KEY
+    - AWS_SECRET
+    - NPM_USER
+    - NPM_PASS
+    - NPM_EMAIL
+    - SLACK_WEBHOOK_URL
+    - BUILD_URL
+    - BUILDKITE_BUILD_URL
+    - BUILDKITE_BUILD_NUMBER

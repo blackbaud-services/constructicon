@@ -10,7 +10,8 @@
     "test": "npm run test:lint && npm run test:unit",
     "build": "babel source -d dist",
     "build:styleguide": "styleguidist build",
-    "deploy:styleguide": "npm run test && npm run build:styleguide && gh-pages -d styleguide"
+    "deploy:styleguide": "npm run test && npm run build:styleguide && gh-pages -d styleguide",
+    "prepublish": "npm run test && npm run build"
   },
   "files": [
     "dist"

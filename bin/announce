@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -eux
+
+curl \
+${SLACK_WEBHOOK_URL} \
+-X POST \
+-H 'Content-Type: application/json' \
+-d @/dev/stdin <<JSON
+{
+  "text": "PS Components version released :tada:",
+  "channel": "#profs-dev",
+  "username": "PS Components",
+  "icon_emoji": ":${SLACK_ANNOUNCE_EMOJI}:"
+}
+JSON
