@@ -35,6 +35,11 @@ Container.propTypes = {
   width: PropTypes.number,
 
   /**
+  * Sets the min-height to the height of the viewport
+  */
+  fullHeight: PropTypes.bool,
+
+  /**
   * The shadow to be applies to the container
   */
   shadow: PropTypes.oneOf(options.shadows),

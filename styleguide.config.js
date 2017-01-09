@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  title: 'Professional Services Utils',
+  title: 'PS Components',
   template: './styleguide.template.html',
   getComponentPathLine: function (componentPath) {
     var dirname = path.dirname(componentPath, '.js')
