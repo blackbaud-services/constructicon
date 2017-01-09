@@ -34,6 +34,26 @@ GridColumn.propTypes = {
   lg: PropTypes.number,
 
   /**
+  * The default alignment
+  */
+  xsAlign: PropTypes.oneOf([ 'left', 'center', 'right' ]),
+
+  /**
+  * The alignment at the `sm` breakpoint
+  */
+  smAlign: PropTypes.oneOf([ 'left', 'center', 'right' ]),
+
+  /**
+  * The alignment at the `md` breakpoint
+  */
+  mdAlign: PropTypes.oneOf([ 'left', 'center', 'right' ]),
+
+  /**
+  * The alignment at the `lg` breakpoint
+  */
+  lgAlign: PropTypes.oneOf([ 'left', 'center', 'right' ]),
+
+  /**
   * The background color of the section -
   */
   background: PropTypes.oneOf(options.colors),

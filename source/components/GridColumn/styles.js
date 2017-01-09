@@ -11,6 +11,10 @@ export default (props, traits) => {
     sm,
     md,
     lg,
+    xsAlign,
+    smAlign,
+    mdAlign,
+    lgAlign,
     background,
     borderColor,
     borderWidth,
@@ -32,10 +36,20 @@ export default (props, traits) => {
       color: colors[foreground],
       border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
       borderRadius: radius && rhythm(radiuses[radius]),
+      textAlign: xsAlign,
       ...calculateSize(xs),
-      [mediaQuery('sm')]: calculateSize(sm),
-      [mediaQuery('md')]: calculateSize(md),
-      [mediaQuery('lg')]: calculateSize(lg),
+      [mediaQuery('sm')]: {
+        textAlign: smAlign,
+        ...calculateSize(sm)
+      },
+      [mediaQuery('md')]: {
+        textAlign: mdAlign,
+        ...calculateSize(md)
+      },
+      [mediaQuery('lg')]: {
+        textAlign: lgAlign,
+        ...calculateSize(lg)
+      },
       ...styles,
     }
   }

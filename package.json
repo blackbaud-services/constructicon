@@ -2,7 +2,7 @@
   "name": "ps-utils",
   "version": "0.0.1",
   "description": "Library of re-usable components for Professional Services projects",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "styleguidist server",
     "test:lint": "standard",
