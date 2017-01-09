@@ -36,7 +36,7 @@ export const withStyles = (styles) => (ComponentToWrap) => {
       const stylesIsFunction = typeof styles === 'function'
       const stylesObj = stylesIsFunction ? styles(combinedProps, traits) : styles
 
-      // build out our final props to be passed down to the original child component
+      // build out our final props to be passed down to the original component
       const newProps = {
         ...combinedProps,
         styles: stylesObj,
