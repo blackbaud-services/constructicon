@@ -1,5 +1,5 @@
 /**
-* Sizing and Spacing
+* Sizing and Rhythm
 */
 export const rhythm = (value = 1, unit = 'rem', basis = 1.5) => (
   `${basis * value}${unit}`
@@ -135,4 +135,54 @@ export const effects = {
       transform: 'scale(0.925)'
     }
   }
+}
+
+/**
+* Spacing - for handling padding/margin props
+* e.g. { x: 1, y: 2 } or { l: 1, t: 2 } or 5 etc.
+*/
+
+const defaultOptions = {
+  multiplier: 1
+}
+
+export const calculateSpacing = (spacing, type = 'padding', args = {}) => {
+  const options = {
+    ...defaultOptions,
+    ...args
+  }
+
+  switch (typeof spacing) {
+    case 'number':
+      return {
+        [type]: rhythm(spacing * options.multiplier, options.unit, options.basis)
+      }
+    case 'object':
+      return Object.keys(spacing).reduce((styles, direction) => ({
+        ...styles,
+        ...spacingDirection(direction, spacing[direction], type, options)
+      }), {})
+    default:
+      return {}
+  }
+}
+
+const spacingDirection = (direction, space, type, options) => {
+  const map = {
+    t: [ 'Top' ],
+    r: [ 'Right' ],
+    b: [ 'Bottom' ],
+    l: [ 'Left' ],
+    x: [ 'Left', 'Right' ],
+    y: [ 'Top', 'Bottom' ]
+  }
+
+  const fields = map[direction] || []
+
+  const styles = fields.reduce((styles, property) => ({
+    ...styles,
+    [`${type}${property}`]: rhythm(space * options.multiplier, options.unit, options.basis)
+  }), {})
+
+  return styles
 }

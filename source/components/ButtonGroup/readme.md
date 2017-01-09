@@ -8,10 +8,10 @@ Button Group
 </ButtonGroup>
 ```
 
-Adjust Padding
+Adjust Spacing
 
 ```
-<ButtonGroup padding={{ x: 1, y: 0.25 }}>
+<ButtonGroup spacing={{ x: 1, y: 0.25 }}>
   <Button>Click Me</Button>
   <Button>Click Me</Button>
   <Button>Click Me</Button>

@@ -2,7 +2,8 @@ export default (props, traits) => {
   const {
     colors,
     radiuses,
-    rhythm
+    rhythm,
+    calculateSpacing
   } = traits
 
   const {
@@ -11,17 +12,19 @@ export default (props, traits) => {
     borderWidth,
     foreground,
     padding,
-    radius
+    radius,
+    spacing,
+    styles
   } = props
 
   return {
     root: {
-      padding: `${rhythm(padding.y)} ${rhythm(padding.x)}`,
+      ...calculateSpacing(spacing),
       backgroundColor: background && colors[background],
       color: foreground && colors[foreground],
       border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
       borderRadius: radius && rhythm(radiuses[radius]),
-      ...props.styles
+      ...styles
     }
   }
 }

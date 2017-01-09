@@ -1,8 +1,6 @@
 Traits Example
 
 ```
-// Need to fix formatting, would usually just pass through like {...traits} or individually as colors={} fonts={} etc.
-
 <TraitsProvider traits={{
   colors: {
     primary: '#DD9955',

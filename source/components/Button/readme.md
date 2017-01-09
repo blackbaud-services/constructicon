@@ -39,12 +39,13 @@ Font Size
 </ButtonGroup>
 ```
 
-Padding
+Spacing
 
 ```
 <ButtonGroup>
-  <Button padding={{ x: 0.5, y: 0.25 }}>Click Me</Button>
-  <Button padding={{ x: 2, y: 1 }}>Click Me</Button>
+  <Button spacing={{ x: 1, y: 1 }}>Click Me</Button>
+  <Button spacing={{ l: 1, r: 1, b: 1, t: 1 }}>Click Me</Button>
+  <Button spacing={1}>Click Me</Button>
 </ButtonGroup>
 ```
 

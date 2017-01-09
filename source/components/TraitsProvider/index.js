@@ -1,4 +1,5 @@
 import { Component, PropTypes } from 'react'
+import merge from 'lodash/merge'
 import * as defaultTraits from '../../lib/traits'
 
 /**
@@ -6,26 +7,8 @@ import * as defaultTraits from '../../lib/traits'
 */
 class TraitsProvider extends Component {
   getChildContext () {
-    const providedTraits = this.props.traits || {}
-
-    const mergedTraits = Object.keys(defaultTraits).reduce((acc, key) => {
-      // if trait is an object, merge it
-      // otherwise overwrite it if set
-      const isTraitAnObject = typeof providedTraits[key] === 'object'
-      const combinedTrait = isTraitAnObject ? {
-        ...defaultTraits[key],
-        ...providedTraits[key]
-      } : providedTraits[key] || defaultTraits[key]
-
-      // add trait to our merged traits object
-      return {
-        ...acc,
-        [key]: combinedTrait
-      }
-    }, {})
-
     return {
-      traits: mergedTraits
+      traits: merge(defaultTraits, this.props.traits)
     }
   }
 

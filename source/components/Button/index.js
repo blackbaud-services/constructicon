@@ -62,9 +62,12 @@ Button.propTypes = {
   size: PropTypes.number,
 
   /**
-  * The padding to be passed through rhythm in ems (x and y axis)
+  * The spacing to be applied
   */
-  padding: PropTypes.object,
+  spacing: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number
+  ]),
 
   /**
   * The radius of the button -
@@ -95,7 +98,7 @@ Button.defaultProps = {
   borderWidth: 2,
   font: 'button',
   size: 0,
-  padding: {x: 1, y: 0.5},
+  spacing: {x: 1, y: 0.5},
   radius: 'small',
   effect: 'tint',
   styles: {}

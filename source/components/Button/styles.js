@@ -1,5 +1,6 @@
 export default (props = {}, traits = {}) => {
   const {
+    calculateSpacing,
     colors,
     effects,
     radiuses,
@@ -16,10 +17,10 @@ export default (props = {}, traits = {}) => {
     effect,
     font,
     foreground,
-    padding,
     radius,
     shadow,
     size,
+    spacing,
     styles
   } = props
 
@@ -28,7 +29,7 @@ export default (props = {}, traits = {}) => {
       display: 'inline-block',
       cursor: 'pointer',
       textDecoration: 'none',
-      padding: `${rhythm(padding.y, 'em')} ${rhythm(padding.x, 'em')}`,
+      ...calculateSpacing(spacing),
       backgroundColor: colors[background],
       color: colors[foreground],
       border: `${borderWidth}px solid ${colors[borderColor]}`,

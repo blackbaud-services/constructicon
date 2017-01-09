@@ -56,9 +56,12 @@ Section.propTypes = {
   radius: PropTypes.oneOf(options.radiuses),
 
   /**
-  * The padding to be applied between section (rhythm)
+  * The spacing to be applied
   */
-  padding: PropTypes.object,
+  spacing: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number
+  ]),
 
   /**
   * The custom styles to be applied to the section
@@ -69,7 +72,7 @@ Section.propTypes = {
 Section.defaultProps = {
   tag: 'section',
   borderColor: 'shade',
-  padding: {x: 1, y: 1},
+  spacing: {x: 1, y: 1},
   styles: {}
 }
 

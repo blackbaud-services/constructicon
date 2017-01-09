@@ -8,7 +8,10 @@ describe('Section', () => {
     const section = wrapper.find('section')
     const rule = utils.findRule(css.rules, section.props().className)
     expect(section.text()).to.eql('Content here')
-    expect(rule.css).to.contain(`padding:1.5rem 1.5rem`)
+    expect(rule.css).to.contain('padding-left:1.5rem')
+    expect(rule.css).to.contain('padding-right:1.5rem')
+    expect(rule.css).to.contain('padding-top:1.5rem')
+    expect(rule.css).to.contain('padding-bottom:1.5rem')
   })
 
   it('should allow us to specify the tag', () => {

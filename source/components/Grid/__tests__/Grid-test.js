@@ -26,14 +26,17 @@ describe('Grid', () => {
 
   it('should allow us to set the spacing of the grid', () => {
     const wrapper = mount(
-      <Grid padding={{ x: 2, y: 4 }}>
+      <Grid spacing={{ x: 2, y: 4 }}>
         <GridColumn>Column 1</GridColumn>
         <GridColumn>Column 2</GridColumn>
       </Grid>
     )
     const container = wrapper.find('Grid')
     const rule = utils.findRule(css.rules, container.prop('classNames').root)
-    expect(rule.css).to.contain(`margin:${rhythm(-4 * 0.5)} ${rhythm(-2 * 0.5)}`)
+    expect(rule.css).to.contain(`margin-left:${rhythm(-2 * 0.5)}`)
+    expect(rule.css).to.contain(`margin-right:${rhythm(-2 * 0.5)}`)
+    expect(rule.css).to.contain(`margin-top:${rhythm(-4 * 0.5)}`)
+    expect(rule.css).to.contain(`margin-bottom:${rhythm(-4 * 0.5)}`)
   })
 
   it('should allow us to set breakpoints on a column', () => {

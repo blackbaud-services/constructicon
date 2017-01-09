@@ -43,9 +43,12 @@ Grid.propTypes = {
   ]),
 
   /**
-  * The padding to be applied between columns
+  * The spacing to be applied
   */
-  padding: PropTypes.object,
+  spacing: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number
+  ]),
 
   /**
   * Custom styles to apply
@@ -57,7 +60,7 @@ Grid.defaultProps = {
   align: 'flex-start',
   justify: 'space-between',
   direction: 'row',
-  padding: {x: 1, y: 1},
+  spacing: 1,
   styles: {}
 }
 

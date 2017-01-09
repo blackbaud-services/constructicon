@@ -1,20 +1,21 @@
 export default (props = {}, traits = {}) => {
   const {
+    calculateSpacing,
     rhythm
   } = traits
 
   const {
-    padding,
+    spacing,
     styles
   } = props
 
   return {
     root: {
-      margin: `${rhythm(padding.y * -1, 'em')} ${rhythm(padding.x * -1, 'em')}`,
+      ...calculateSpacing(spacing, 'margin', { multiplier: -1 }),
       ...styles,
 
       '> *': {
-        margin: `${rhythm(padding.y, 'em')} ${rhythm(padding.x, 'em')}`
+        ...calculateSpacing(spacing, 'margin')
       }
     }
   }

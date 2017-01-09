@@ -24,9 +24,12 @@ ButtonGroup.propTypes = {
   ]),
 
   /**
-  * The padding to be applied between buttons (rhythm)
+  * The spacing to be applied
   */
-  padding: PropTypes.object,
+  spacing: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number
+  ]),
 
   /**
   * Custom styles to be applied to the button
@@ -35,7 +38,7 @@ ButtonGroup.propTypes = {
 }
 
 ButtonGroup.defaultProps = {
-  padding: {x: 0.25, y: 0.25},
+  spacing: {x: 0.25, y: 0.25},
   styles: {}
 }
 
