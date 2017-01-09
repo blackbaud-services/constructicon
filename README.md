@@ -36,3 +36,11 @@ We can manage the look of most components via various props, and even have custo
 We are aiming to build from the ground up with tests where appropriate, using Mocha, Chai and Enzyme.
 
 To execute the tests, simply run `yarn test`.
+
+### Proposed Name Change
+
+There has been a proposed name change to `constructicon` to keep with the Transformers theme.
+
+Like taking small components and constructing bigger things with them, like this...
+
+![alt text](http://media2.giphy.com/media/ptat2RGLUnhbG/giphy.gif "Constructicon")
