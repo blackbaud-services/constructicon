@@ -60,7 +60,7 @@ Grid.defaultProps = {
   align: 'flex-start',
   justify: 'space-between',
   direction: 'row',
-  spacing: 1,
+  spacing: 0,
   styles: {}
 }
 
