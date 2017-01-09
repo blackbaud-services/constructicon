@@ -31,6 +31,7 @@ export default (props = {}, traits = {}) => {
       textDecoration: 'none',
       overflow: 'hidden',
       transform: 'translateZ(0)', // workaround for transition vs overflow:hidden/border-radius bug
+      verticalAlign: 'middle',
       ...calculateSpacing(spacing),
       backgroundColor: colors[background],
       color: colors[foreground],

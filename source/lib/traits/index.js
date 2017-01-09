@@ -138,15 +138,15 @@ export const effects = {
 }
 
 /**
-* Spacing - for handling padding/margin props
+* Spacing - for handling spacing objects i.e. padding/margin props
 * e.g. { x: 1, y: 2 } or { l: 1, t: 2 } or 5 etc.
 */
 
-const defaultOptions = {
-  multiplier: 1
-}
-
 export const calculateSpacing = (spacing, type = 'padding', args = {}) => {
+  const defaultOptions = {
+    multiplier: 1
+  }
+  
   const options = {
     ...defaultOptions,
     ...args
