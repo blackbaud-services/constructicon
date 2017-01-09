@@ -32,6 +32,17 @@ describe('RichText', () => {
     expect(utils.findRule(css.rules, `${className} ul`)).to.exist
     expect(utils.findRule(css.rules, `${className} ol`)).to.exist
     expect(utils.findRule(css.rules, `${className} blockquote`)).to.exist
+  })
 
+  it('should apply custom styles', () => {
+    const styles = {
+      h1: {
+        fontSize: 100
+      }
+    }
+    const wrapper = mount(<RichText styles={styles}>'<h1>Heading</h1><h2>Body</h2>'</RichText>)
+    const className = wrapper.find('RichText').prop('classNames').root
+    const rule = utils.findRule(css.rules, `${className} h1`)
+    expect(rule.css).to.contain(`font-size:100px`)
   })
 })

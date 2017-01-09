@@ -29,11 +29,17 @@ RichText.propTypes = {
   /**
   * The tag to be used for the containing element
   */
-  tag: PropTypes.string
+  tag: PropTypes.string,
+
+  /**
+  * Custom styles to be added to the element
+  */
+  styles: PropTypes.object
 }
 
 RichText.defaultProps = {
-  tag: 'div'
+  tag: 'div',
+  styles: {}
 }
 
 export default withStyles(styles)(RichText)

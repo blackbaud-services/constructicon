@@ -31,3 +31,18 @@ Provides a standard format for chunks of markup
   <p>Donec id elit non mi <strong>porta gravida at eget metus</strong>. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed <em>diam eget risus varius blandit sit amet non magna</em>. Etiam porta sem malesuada magna mollis euismod.</p>
 </RichText>
 ```
+
+**Custom Styles**
+
+You can pass through custom styles to be applied
+
+```
+<RichText styles={{
+  h1: {
+    color: '#42AA4C'
+  }
+}}>
+  <h1>Heading 1</h1>
+  <p>Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus varius blandit sit amet non magna. Etiam porta sem malesuada magna mollis euismod.</p>
+</RichText>
+```
