@@ -6,7 +6,7 @@ module.exports = {
   getComponentPathLine: function (componentPath) {
     var dirname = path.dirname(componentPath, '.js')
     var name = dirname.split('/').slice(-1)[0]
-    return 'import { ' + name + ' } from \'ps-utils\''
+    return 'import { ' + name + ' } from \'ps-components\''
   },
   sections: [
     {

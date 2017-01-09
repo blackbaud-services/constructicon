@@ -1,5 +1,5 @@
 {
-  "name": "ps-utils",
+  "name": "ps-components",
   "version": "0.0.1",
   "description": "Library of re-usable components for Professional Services projects",
   "main": "dist/index.js",
@@ -17,10 +17,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/everydayhero/ps-utils.git"
+    "url": "git+https://github.com/everydayhero/ps-components.git"
   },
   "bugs": {
-    "url": "https://github.com/everydayhero/ps-utils/issues"
+    "url": "https://github.com/everydayhero/ps-components/issues"
   },
   "author": "Dan Henderson <dan.henderson@everydayhero.com>",
   "license": "MIT",
