@@ -12,7 +12,7 @@ Specify the tag or component e.g. a, button, Link etc.
 </ButtonGroup>
 ```
 
-** Colors **
+**Colors**
 
 Change the background color to one of the theme's colors
 

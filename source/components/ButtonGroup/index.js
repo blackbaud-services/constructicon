@@ -18,7 +18,7 @@ ButtonGroup.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element
-  ]),
+  ]).isRequired,
 
   /**
   * The spacing to be applied
