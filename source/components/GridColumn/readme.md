@@ -1,4 +1,8 @@
-Simple Responsive Grid
+# Examples
+
+**Simple Responsive Grid**
+
+Simple main content and sidebar style grid that snaps into single column on smaller screens
 
 ```
 <Grid>

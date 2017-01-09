@@ -2,8 +2,36 @@ const path = require('path')
 
 module.exports = {
   title: 'Professional Services Utils',
-  components: './source/components/*/index.js',
   template: './styleguide.template.html',
+  getComponentPathLine: function (componentPath) {
+    var dirname = path.dirname(componentPath, '.js')
+    var name = dirname.split('/').slice(-1)[0]
+    return 'import { ' + name + ' } from \'ps-utils\''
+  },
+  sections: [
+    {
+      name: 'Components',
+      components: () => ([
+        path.resolve(__dirname, 'source/components/Button', 'index.js'),
+        path.resolve(__dirname, 'source/components/ButtonGroup', 'index.js')
+      ])
+    },
+    {
+      name: 'Layout',
+      components: () => ([
+        path.resolve(__dirname, 'source/components/Container', 'index.js'),
+        path.resolve(__dirname, 'source/components/Grid', 'index.js'),
+        path.resolve(__dirname, 'source/components/GridColumn', 'index.js'),
+        path.resolve(__dirname, 'source/components/Section', 'index.js')
+      ])
+    },
+    {
+      name: 'Theming',
+      components: () => ([
+        path.resolve(__dirname, 'source/components/TraitsProvider', 'index.js')
+      ])
+    }
+  ],
   updateWebpackConfig: (webpackConfig) => {
    webpackConfig.module.loaders.push(
      {

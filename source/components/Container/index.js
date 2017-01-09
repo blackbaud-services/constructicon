@@ -3,10 +3,6 @@ import { withStyles } from '../../lib/css'
 import options from '../../lib/traits/options'
 import styles from './styles'
 
-/**
-* Container for containing outer site content. This is used to wrap and contain
-* the site's content
-*/
 const Container = ({
   children,
   tag: Tag,

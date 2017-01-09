@@ -1,4 +1,8 @@
-Section
+# Examples
+
+**Standard Use**
+
+Used to apply consistent padding to sections of content
 
 ```
 <Section>
@@ -6,7 +10,9 @@ Section
 </Section>
 ```
 
-Padding
+**Spacing**
+
+Adjust the spacing by passing in a spacing object or a number
 
 ```
 <Section padding={{ x: 3, y: 1 }}>
@@ -14,7 +20,9 @@ Padding
 </Section>
 ```
 
-Colors
+**Colors**
+
+Set the background and/or foreground colors of the section to one of theme's colors
 
 ```
 <Section background='primary' foreground='light'>
@@ -22,7 +30,9 @@ Colors
 </Section>
 ```
 
-Border
+**Borders**
+
+Set the border width, border color and/or border radius
 
 ```
 <Section borderWidth={3} radius='medium'>

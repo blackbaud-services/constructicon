@@ -2,9 +2,6 @@ import { Component, PropTypes } from 'react'
 import merge from 'lodash/merge'
 import * as defaultTraits from '../../lib/traits'
 
-/**
-* Takes the default traits, and merges in any custom traits for your project
-*/
 class TraitsProvider extends Component {
   getChildContext () {
     return {

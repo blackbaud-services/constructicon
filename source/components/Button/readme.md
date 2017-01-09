@@ -1,4 +1,8 @@
-Tag e.g. anchor, button, a React Router Link etc.
+## Examples
+
+**Tag**
+
+Specify the tag or component e.g. a, button, Link etc.
 
 ```
 <ButtonGroup>
@@ -8,7 +12,9 @@ Tag e.g. anchor, button, a React Router Link etc.
 </ButtonGroup>
 ```
 
-Background Color
+** Colors **
+
+Change the background color to one of the theme's colors
 
 ```
 <ButtonGroup>
@@ -19,7 +25,7 @@ Background Color
 </ButtonGroup>
 ```
 
-Foreground Color
+Change the foreground color to one of the theme's colors
 
 ```
 <ButtonGroup>
@@ -28,7 +34,9 @@ Foreground Color
 </ButtonGroup>
 ```
 
-Font Size
+**Size**
+
+Alter the font size, using a factor to be passed into the `scale` function
 
 ```
 <ButtonGroup>
@@ -39,7 +47,9 @@ Font Size
 </ButtonGroup>
 ```
 
-Spacing
+**Spacing**
+
+Change the padding of the button by passing in a spacing object or number
 
 ```
 <ButtonGroup>
@@ -49,7 +59,9 @@ Spacing
 </ButtonGroup>
 ```
 
-Border
+**Border**
+
+Set the border width (px) and/or color to one of the theme's colors
 
 ```
 <ButtonGroup>
@@ -71,7 +83,9 @@ Border Radius
 </ButtonGroup>
 ```
 
-Fonts
+**Fonts**
+
+Specify a specific font treatment
 
 ```
 <ButtonGroup>
@@ -80,8 +94,9 @@ Fonts
   <Button font='body'>Click Me</Button>
 </ButtonGroup>
 ```
+**Hover Effects**
 
-Hover Effects
+Set the hover effect of the button
 
 ```
 <ButtonGroup>
@@ -93,27 +108,13 @@ Hover Effects
 </ButtonGroup>
 ```
 
-Custom Styles
+**Custom Styles**
+
+Pass in an object of custom style rules to be applied
 
 ```
 <Button styles={{
   fontSize: '10px',
   backgroundColor: '#777'
 }}>Custom Styles</Button>
-```
-
-With Traits Provider
-
-```
-<TraitsProvider colors={{
-  primary: '#079',
-  secondary: '#606',
-  tertiary: '#793'
-}}>
-  <ButtonGroup>
-    <Button background='primary'>Click Me</Button>
-    <Button background='secondary'>Click Me</Button>
-    <Button background='tertiary'>Click Me</Button>
-  </ButtonGroup>
-</TraitsProvider>
 ```

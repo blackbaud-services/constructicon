@@ -2,9 +2,6 @@ import React, { PropTypes } from 'react'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
 
-/**
- * Used for grouping buttons
- */
 const ButtonGroup = ({
   children,
   classNames

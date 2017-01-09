@@ -3,9 +3,6 @@ import { withStyles } from '../../lib/css'
 import options from '../../lib/traits/options'
 import styles from './styles'
 
-/**
- * Button
- */
 const Button = ({
   children,
   tag: Tag,

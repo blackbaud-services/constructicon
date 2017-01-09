@@ -3,9 +3,6 @@ import { withStyles } from '../../lib/css'
 import options from '../../lib/traits/options'
 import styles from './styles'
 
-/**
-* Section of content, used to contain and pad sections of content.
-*/
 const Section = ({
   children,
   tag: Tag,

@@ -15,9 +15,9 @@ export const scale = (exponent = 0, scale = 1.2) => (
 export const colors = {
   light: '#ffffff',
   dark: '#000000',
-  primary: '#cc0033',
-  secondary: '#339955',
-  tertiary: '#3355cc',
+  primary: '#42AA4C',
+  secondary: '#096010',
+  tertiary: '#585858',
   shade: 'rgba(0, 0, 0, 0.125)',
   tint: 'rgba(255, 255, 255, 0.25)'
 }

@@ -1,4 +1,6 @@
-Button Group
+# Examples
+
+**Standard Use**
 
 ```
 <ButtonGroup>
@@ -8,7 +10,9 @@ Button Group
 </ButtonGroup>
 ```
 
-Adjust Spacing
+**Spacing**
+
+Adjust the spacing between buttons using a spacing object or a number
 
 ```
 <ButtonGroup spacing={{ x: 1, y: 0.25 }}>
@@ -18,7 +22,9 @@ Adjust Spacing
 </ButtonGroup>
 ```
 
-Custom Styles
+**Custom Styles**
+
+Pass in custom style rules to be applied to the group
 
 ```
 <ButtonGroup styles={{ backgroundColor: '#ddd' }}>

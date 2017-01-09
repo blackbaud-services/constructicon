@@ -1,4 +1,8 @@
-Site Container
+# Examples
+
+**Standard Use**
+
+Used to contain site content within a centered and minimum width container
 
 ```
 <Container styles={{ backgroundColor: '#eee' }}>
@@ -8,7 +12,9 @@ Site Container
 </Container>
 ```
 
-Width
+**Width**
+
+Alter the minimum width of the container
 
 ```
 <Container width={10} styles={{ backgroundColor: '#eee' }}>
@@ -18,7 +24,9 @@ Width
 </Container>
 ```
 
-Shadow
+**Shadow**
+
+Apply one of the theme's shadows to the container
 
 ```
 <Container shadow='light'>
