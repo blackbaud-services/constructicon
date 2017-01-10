@@ -41,7 +41,15 @@ export default (props = {}, traits = {}) => {
       fontSize: scale(size),
       ...treatments[font],
       ...effects[effect],
-      ...styles
+      ...styles,
+
+      'svg:first-child': {
+        marginRight: rhythm(0.25)
+      },
+
+      'svg:last-child': {
+        marginLeft: rhythm(0.25)
+      }
     }
   }
 }
