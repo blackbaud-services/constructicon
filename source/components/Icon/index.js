@@ -5,20 +5,30 @@ import * as icons from './icons'
 
 const Icon = ({
   name,
+  paths,
   classNames
-}) => (
-  <svg className={classNames.root} viewBox='0 0 32 32'>
-    {icons[name] && icons[name].map((pathProps, i) => (
-      <path {...pathProps} key={i} />
-    ))}
-  </svg>
-)
+}) => {
+  const iconPaths = name ? icons[name] : paths
+
+  return (
+    <svg className={classNames.root} viewBox='0 0 32 32'>
+      {iconPaths.map((pathProps, i) => (
+        <path {...pathProps} key={i} />
+      ))}
+    </svg>
+  )
+}
 
 Icon.propTypes = {
   /**
   * The name of the icon e.g. chevron, facebook etc.
   */
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
+
+  /**
+  * The paths of a custom icon
+  */
+  paths: PropTypes.array,
 
   /**
   * The size of the icon in ems
@@ -47,6 +57,7 @@ Icon.propTypes = {
 }
 
 Icon.defaultProps = {
+  paths: [],
   size: 1,
   color: 'currentColor',
   spin: false,
