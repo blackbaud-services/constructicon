@@ -9,6 +9,26 @@
 	<body>
 		<div id="app"></div>
 		<style type="text/css">
+      :root {
+        font-weight: 500;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        :root {
+          -webkit-font-smoothing: subpixel-antialiased;
+        }
+      }
+
+      .ReactStyleguidist-common__font {
+        font-family: "proxima-nova", sans-serif;
+      }
+
+      .ReactStyleguidist-StyleGuide__heading {
+        font-weight: 900;
+      }
+
 			.ReactStyleguidist-Markdown__strong {
 				font-weight: 700;
 			}
@@ -24,6 +44,71 @@
 			.ReactStyleguidist-Props__cell .ReactStyleguidist-Markdown__code {
 				white-space: nowrap;
 			}
+
+      .ReactStyleguidist-TableOfContents__root input.ReactStyleguidist-TableOfContents__search {
+        background: white;
+        border: thin solid #ddd;
+        border-radius: 2px;
+      }
+
+      .ReactStyleguidist-TableOfContents__root input.ReactStyleguidist-TableOfContents__search:focus {
+        border-color: #43aa4c;
+      }
+
+      .ReactStyleguidist-colors__link, .ReactStyleguidist-colors__link:link, .ReactStyleguidist-colors__link:visited {
+        color: #43aa4c;
+      }
+
+      .ReactStyleguidist-colors__link:visited {
+        color: #55ba6f;
+      }
+
+      .ReactStyleguidist-colors__link:hover, .ReactStyleguidist-colors__link:link:hover, .ReactStyleguidist-colors__link:visited:hover {
+        color: #389040;
+      }
+
+      .ReactStyleguidist-StyleGuide__sidebar {
+        padding-bottom: 60px;
+        overflow: hidden;
+      }
+
+      .ReactStyleguidist-StyleGuide__sidebar > div {
+        overflow: auto;
+        max-height: calc(100vh - 115px);
+      }
+
+      @media (max-width: 600px) {
+        .ReactStyleguidist-StyleGuide__sidebar {
+          position: relative;
+        }
+      }
+
+      .ReactStyleguidist-StyleGuide__sidebar:before {
+        content: '';
+        position: absolute;
+        bottom: 18px;
+        left: 20px;
+        right: 20px;
+        height: 30px;
+        background: url("http://everydayhero.do.s3.amazonaws.com/assets.everydayhero.do/edh-logos/edh-logo.svg") no-repeat center;
+        background-size: contain;
+      }
+
 		</style>
+
+    <script src="https://use.typekit.net/lbp2sai.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    <script>
+      document.addEventListener('click', function(e) {
+        var el = e.target;
+
+        if (el.tagName === "A" && el.getAttribute('href') === "/") {
+          e.preventDefault();
+          var location = window.location;
+          location.assign(location.href.replace(location.hash, ''));
+        }
+      });
+    </script>
 	<script type="text/javascript" src="build/bundle.js"></script></body>
 </html>
