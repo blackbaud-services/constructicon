@@ -8,6 +8,9 @@
 	</head>
 	<body>
 		<div id="app"></div>
+
+    <a class='github-link' href="https://github.com/everydayhero/ps-components">Github</a>
+
 		<style type="text/css">
       :root {
         font-weight: 500;
@@ -94,6 +97,34 @@
         background-size: contain;
       }
 
+      .ReactStyleguidist-ReactComponent__props {
+        padding: 1.5em;
+        background: whitesmoke;
+      }
+
+      .ReactStyleguidist-Markdown__h3 {
+        border-bottom: thin solid #e0e0e0;
+        padding-bottom: 0.25em;
+      }
+
+      a.github-link {
+        position: fixed;
+        width: 200px;
+        padding: 0 20px;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        height: 52px;
+        line-height: 52px;
+        opacity: 0;
+      }
+
+      @media (max-width: 600px) {
+        a.github-link {
+          position: absolute;
+          width: 100%;
+        }
+      }
 		</style>
 
     <script src="https://use.typekit.net/lbp2sai.js"></script>
