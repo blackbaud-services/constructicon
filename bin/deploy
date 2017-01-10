@@ -6,5 +6,6 @@ set -euo pipefail
 echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
 npm install yarn -g
 yarn
+yarn run deploy:styleguide
 yarn run build
 npm publish
