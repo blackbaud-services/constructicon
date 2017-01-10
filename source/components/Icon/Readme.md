@@ -15,6 +15,14 @@
 ```
 
 ```
+<Icon name='google' />
+```
+
+```
+<Icon name='youtube' />
+```
+
+```
 <Icon name='calendar' />
 ```
 
