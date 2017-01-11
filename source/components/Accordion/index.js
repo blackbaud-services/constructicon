@@ -3,6 +3,7 @@ import Icon from '../Icon'
 import compose from '../../lib/compose'
 import { withStyles } from '../../lib/css'
 import toggle from '../../lib/toggle'
+import options from '../../lib/traits/options'
 import styles from './styles'
 
 const Accordion = ({
@@ -51,7 +52,12 @@ Accordion.propTypes = {
   /**
   * The color to apply to icon/border when active
   */
-  color: PropTypes.string,
+  color: PropTypes.oneOf(options.colors),
+
+  /**
+  * The font treatment to be used for the title
+  */
+  font: PropTypes.oneOf(options.fonts),
 
   /**
   * Opens the accordion by default
@@ -69,7 +75,7 @@ Accordion.propTypes = {
   closed: PropTypes.any,
 
   /**
-  * Custom styles be applied { root, head, body }
+  * Custom styles be applied { root, head, title, body }
   */
   styles: PropTypes.object
 }
@@ -78,6 +84,7 @@ Accordion.defaultProps = {
   gutter: 1,
   border: true,
   color: 'primary',
+  font: 'head',
   opened: <Icon name='minus' />,
   closed: <Icon name='plus' />,
   styles: {}

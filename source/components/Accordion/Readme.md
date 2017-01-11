@@ -27,21 +27,39 @@
 </div>
 ```
 
-**Color**
-```
-<Accordion title='Question here?' color='tertiary'>
-  <p>Answer here...</p>
-</Accordion>
-```
+**Default State**
 
-**Default Open/Close**
+Open the accordion by default
+
 ```
 <Accordion title='Question here?' toggled>
   <p>Answer here...</p>
 </Accordion>
 ```
 
+**Color**
+
+Set the active color of the accordion for the icon and borders
+
+```
+<Accordion title='Question here?' color='tertiary'>
+  <p>Answer here...</p>
+</Accordion>
+```
+
+**Font**
+
+Set the font style for the title
+
+```
+<Accordion title='Question here?' font='body'>
+  <p>Answer here...</p>
+</Accordion>
+```
+
 **Custom Icons**
+
+Set the open and close icon or text
 
 ```
 const opened = 'Close';
@@ -56,8 +74,33 @@ const closed = 'Open';
 
 **Remove Border**
 
+Remove the border from the accordion
+
 ```
 <Accordion title='Question here?' border={false}>
+  <p>Answer here...</p>
+</Accordion>
+```
+
+**Custom Styles**
+
+Apply a custom styles object to alter the look
+
+```
+const styles = {
+  head: {
+    padding: '1.5em',
+    border: '1px solid #eee',
+    backgroundColor: '#f6f6f6'
+  },
+  body: {
+    paddingBottom: '1.5em',
+    border: '1px solid #eee',
+    borderTop: 'none'
+  }
+};
+
+<Accordion title='Question here?' border={false} styles={styles}>
   <p>Answer here...</p>
 </Accordion>
 ```

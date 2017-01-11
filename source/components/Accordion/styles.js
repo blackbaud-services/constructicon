@@ -2,6 +2,7 @@ export default (props, traits) => {
   const {
     border,
     color,
+    font,
     gutter,
     toggled,
     styles
@@ -10,12 +11,14 @@ export default (props, traits) => {
   const {
     colors,
     scale,
-    rhythm
+    rhythm,
+    treatments
   } = traits
 
   const {
     root = {},
     head = {},
+    title = {},
     body = {}
   } = styles
 
@@ -45,8 +48,13 @@ export default (props, traits) => {
       flexBasis: rhythm(gutter),
       display: 'flex',
       alignItems: 'flex-start',
-      fontSize: scale(-1),
+      fontSize: scale(-2),
       color: toggled ? colors[color] : colors.lightGrey
+    },
+
+    title: {
+      ...treatments[font],
+      ...title
     },
 
     body: {
