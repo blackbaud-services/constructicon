@@ -16,6 +16,7 @@ module.exports = {
         path.resolve(__dirname, 'source/components/Button', 'index.js'),
         path.resolve(__dirname, 'source/components/ButtonGroup', 'index.js'),
         path.resolve(__dirname, 'source/components/Icon', 'index.js'),
+        path.resolve(__dirname, 'source/components/Modal', 'index.js'),
         path.resolve(__dirname, 'source/components/RichText', 'index.js')
       ])
     },

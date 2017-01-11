@@ -12,7 +12,7 @@ const Icon = ({
 
   return (
     <svg className={classNames.root} viewBox='0 0 32 32'>
-      {iconPaths.map((pathProps, i) => (
+      {iconPaths && iconPaths.map((pathProps, i) => (
         <path {...pathProps} key={i} />
       ))}
     </svg>

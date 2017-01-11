@@ -16,11 +16,11 @@ export default (props, traits) => {
       alignItems: props.align,
       justifyContent: props.justify,
       direction: props.direction,
-      ...calculateSpacing(spacing, 'margin', { multiplier: -0.5 }),
+      ...calculateSpacing(spacing, 'margin', { multiplier: -1 }),
       ...styles,
 
       '> *': {
-        ...calculateSpacing(spacing, 'padding', { multiplier: 0.5 })
+        ...calculateSpacing(spacing, 'padding')
       }
     }
   }

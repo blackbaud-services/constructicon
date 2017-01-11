@@ -12,6 +12,7 @@ export default (props = {}, traits = {}) => {
 
   const {
     background,
+    block,
     borderColor,
     borderWidth,
     effect,
@@ -26,12 +27,14 @@ export default (props = {}, traits = {}) => {
 
   return {
     root: {
-      display: 'inline-block',
+      display: block ? 'block' : 'inline-block',
+      width: block ? '100%' : 'auto',
       cursor: 'pointer',
       textDecoration: 'none',
       overflow: 'hidden',
       transform: 'translateZ(0)', // workaround for transition vs overflow:hidden/border-radius bug
       verticalAlign: 'middle',
+      textAlign: 'center',
       ...calculateSpacing(spacing),
       backgroundColor: colors[background],
       color: colors[foreground],

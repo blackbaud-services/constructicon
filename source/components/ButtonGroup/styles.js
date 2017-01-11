@@ -15,6 +15,7 @@ export default (props = {}, traits = {}) => {
       ...styles,
 
       '> *': {
+        display: 'inline-block',
         ...calculateSpacing(spacing, 'margin')
       }
     }
