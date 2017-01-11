@@ -55,7 +55,15 @@
 ```
 
 ```
+<Icon name='minus' />
+```
+
+```
 <Icon name='pin' />
+```
+
+```
+<Icon name='plus' />
 ```
 
 ```
