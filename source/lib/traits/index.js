@@ -21,7 +21,12 @@ export const colors = {
   secondary: '#096010',
   tertiary: '#585858',
   shade: 'rgba(0, 0, 0, 0.125)',
-  tint: 'rgba(255, 255, 255, 0.25)'
+  tint: 'rgba(255, 255, 255, 0.25)',
+  facebook: '#3b5999',
+  twitter: '#55acee',
+  instagram: '#e4405f',
+  youtube: '#cd201f',
+  google: '#dd4b39'
 }
 
 /**

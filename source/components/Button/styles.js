@@ -43,12 +43,16 @@ export default (props = {}, traits = {}) => {
       ...effects[effect],
       ...styles,
 
+      '> *': {
+        margin: `0 ${rhythm(0.125)}`
+      },
+
       'svg:first-child': {
-        marginRight: rhythm(0.25)
+        marginLeft: 0
       },
 
       'svg:last-child': {
-        marginLeft: rhythm(0.25)
+        marginRight: 0
       }
     }
   }
