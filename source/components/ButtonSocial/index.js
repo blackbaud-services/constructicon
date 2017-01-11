@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import Button from '../Button'
 import Icon from '../Icon'
+import openShareDialog from './openShareDialog'
 
 /**
 * Uses the Button component to create a social icon
@@ -8,12 +9,14 @@ import Icon from '../Icon'
 * Will accept any props that the Button accepts
 */
 const ButtonSocial = ({
+  share,
   type,
   ...props
 }) => (
   <Button
     background={type}
-    tag='a'
+    tag={share ? 'button' : 'a'}
+    onClick={share && openShareDialog(type)}
     {...props}>
     <Icon name={type} />
   </Button>
@@ -29,13 +32,19 @@ ButtonSocial.propTypes = {
     'instagram',
     'google',
     'youtube'
-  ]).isRequired
+  ]).isRequired,
+
+  /**
+  * Makes the button a share button (only available for twitter, facebook and google)
+  */
+  share: PropTypes.bool
 }
 
 ButtonSocial.defaultProps = {
   spacing: 0.5,
   effect: 'grow',
-  radius: 'large'
+  radius: 'large',
+  target: '_blank'
 }
 
 export default ButtonSocial

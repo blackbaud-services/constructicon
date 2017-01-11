@@ -92,10 +92,10 @@ Button.defaultProps = {
   background: 'primary',
   foreground: 'light',
   borderColor: 'shade',
-  borderWidth: 2,
+  borderWidth: 0,
   font: 'button',
   size: 0,
-  spacing: {x: 1, y: 0.5},
+  spacing: {x: 0.75, y: 0.5},
   radius: 'small',
   effect: 'tint',
   styles: {}

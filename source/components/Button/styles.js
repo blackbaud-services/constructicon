@@ -47,12 +47,16 @@ export default (props = {}, traits = {}) => {
         margin: `0 ${rhythm(0.125)}`
       },
 
-      'svg:first-child': {
+      '> *:first-child': {
         marginLeft: 0
       },
 
-      'svg:last-child': {
+      '> *:last-child': {
         marginRight: 0
+      },
+
+      '> *:first-child:last-child': {
+        display: 'block' // removes awkward spacing around single child e.g. share icon
       }
     }
   }

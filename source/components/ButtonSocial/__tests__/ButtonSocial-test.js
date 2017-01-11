@@ -15,8 +15,14 @@ describe('ButtonSocial', () => {
 
   it('should allow us to override props', () => {
     const wrapper = mount(<ButtonSocial type='facebook' href='http://facebook.com' background='primary' />)
-    const button  = wrapper.find('a')
+    const button = wrapper.find('a')
     const rule = utils.findRule(css.rules, button.props().className)
     expect(rule.css).to.contain(`background-color:${colors.primary}`)
+  })
+
+  it('should show a share button', () => {
+    const wrapper = mount(<ButtonSocial type='facebook' share />)
+    const button = wrapper.find('Button')
+    expect(typeof button.prop('onClick')).to.eql('function')
   })
 })
