@@ -13,8 +13,10 @@ export const scale = (exponent = 0, scale = 1.2) => (
 * Colors
 */
 export const colors = {
-  light: '#ffffff',
-  dark: '#000000',
+  light: '#fff',
+  dark: '#000',
+  grey: '#777',
+  lightGrey: '#bbb',
   primary: '#42AA4C',
   secondary: '#096010',
   tertiary: '#585858',
@@ -146,7 +148,7 @@ export const calculateSpacing = (spacing, type = 'padding', args = {}) => {
   const defaultOptions = {
     multiplier: 1
   }
-  
+
   const options = {
     ...defaultOptions,
     ...args

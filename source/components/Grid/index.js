@@ -13,6 +13,14 @@ const Grid = ({
 
 Grid.propTypes = {
   /**
+  * Single or array of GridColumn children
+  */
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element
+  ]).isRequired,
+
+  /**
   * Flexbox align option
   */
   align: PropTypes.oneOf([
