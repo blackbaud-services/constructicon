@@ -1,5 +1,4 @@
 import Modal from '..'
-import ReactTestUtils from 'react-addons-test-utils'
 
 /*
   Difficult to test modal itself as it is mounted as a portal component outside the scope
