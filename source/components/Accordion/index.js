@@ -30,7 +30,7 @@ const Accordion = ({
 
 Accordion.propTypes = {
   /**
-  * The content of the AccordionPanel
+  * The content of the Accordion
   */
   children: PropTypes.any.isRequired,
 

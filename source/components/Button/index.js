@@ -82,6 +82,11 @@ Button.propTypes = {
   effect: PropTypes.oneOf(options.effects),
 
   /**
+  * Makes the button full width
+  */
+  block: PropTypes.bool,
+
+  /**
   * Custom styles to be applied to the button
   */
   styles: PropTypes.object
