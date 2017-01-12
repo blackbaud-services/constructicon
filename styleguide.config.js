@@ -30,6 +30,12 @@ module.exports = {
       ])
     },
     {
+      name: 'Everydayhero',
+      components: () => ([
+        path.resolve(__dirname, 'source/components/Leaderboard', 'index.js')
+      ])
+    },
+    {
       name: 'Theming',
       components: () => ([
         path.resolve(__dirname, 'source/components/TraitsProvider', 'index.js')
