@@ -8,6 +8,12 @@ Provides a standard format for page/section headings
 <Heading id='heading-1'>Heading 1</Heading>
 ```
 
+**Color**
+
+```
+<Heading color='primary'>Heading 1</Heading>
+```
+
 **Custom Styles**
 
 You can pass through custom styles to be applied

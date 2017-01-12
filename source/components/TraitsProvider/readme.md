@@ -29,12 +29,35 @@ light
 shade, tint, grow, shrink
 
 ```
-<TraitsProvider traits={{
+const fonts = {
+  head: 'Roboto',
+  body: 'Roboto'
+};
+
+const traits = {
+  fonts,
   colors: {
-    primary: '#DD9955',
-    secondary: '#33AACC'
+    primary: '#42AA4C',
+    secondary: '#096010',
+    tertiary: '#585858'
+  },
+  treatments: {
+    head: {
+      fontFamily: fonts.head,
+      fontWeight: 700
+    },
+    body: {
+      fontFamily: fonts.body
+    },
+    button: {
+      fontFamily: fonts.head,
+      fontWeight: 700,
+      textTransform: 'uppercase'
+    }
   }
-}}>
+};
+
+<TraitsProvider traits={traits}>
   <ButtonGroup>
     <Button>Click Me</Button>
     <Button background='secondary'>Click Me</Button>

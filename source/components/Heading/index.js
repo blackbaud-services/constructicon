@@ -34,6 +34,11 @@ Heading.propTypes = {
   id: PropTypes.string,
 
   /**
+  * The theme color to be used for the heading
+  */
+  color: PropTypes.string,
+
+  /**
   * Custom styles to be added to the element
   */
   styles: PropTypes.object

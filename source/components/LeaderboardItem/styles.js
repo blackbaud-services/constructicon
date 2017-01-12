@@ -14,7 +14,7 @@ export default (props, traits) => {
   const defaultStyles = {
     root: {
       position: 'relative',
-      height: rhythm(2),
+      minHeight: rhythm(2),
       padding: rhythm(0.33),
       paddingLeft: rhythm(2),
       fontSize: scale(-1),
