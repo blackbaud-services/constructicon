@@ -21,6 +21,12 @@ module.exports = {
       ])
     },
     {
+      name: 'Forms',
+      components: () => ([
+        path.resolve(__dirname, 'source/components/Filter', 'index.js')
+      ])
+    },
+    {
       name: 'Layout',
       components: () => ([
         path.resolve(__dirname, 'source/components/Container', 'index.js'),
