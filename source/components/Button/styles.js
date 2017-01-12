@@ -46,12 +46,20 @@ export default (props = {}, traits = {}) => {
       ...effects[effect],
       ...styles,
 
-      'svg:first-child': {
-        marginRight: rhythm(0.25)
+      '> *': {
+        margin: `0 ${rhythm(0.125)}`
       },
 
-      'svg:last-child': {
-        marginLeft: rhythm(0.25)
+      '> *:first-child': {
+        marginLeft: 0
+      },
+
+      '> *:last-child': {
+        marginRight: 0
+      },
+
+      '> *:first-child:last-child': {
+        display: 'block' // removes awkward spacing around single child e.g. share icon
       }
     }
   }
