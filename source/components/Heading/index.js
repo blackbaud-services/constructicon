@@ -5,10 +5,11 @@ import styles from './styles'
 const Heading = ({
   children,
   tag: Tag,
+  id,
   classNames
 }) => (
-  <Tag className={classNames.root}>
-    {children}  
+  <Tag id={id} className={classNames.root}>
+    {children}
   </Tag>
 )
 
@@ -26,6 +27,11 @@ Heading.propTypes = {
   * The tag to be used for the containing element
   */
   tag: PropTypes.string,
+
+  /**
+  * The ID attribute be added to the element (useful for navigation)
+  */
+  id: PropTypes.string,
 
   /**
   * Custom styles to be added to the element

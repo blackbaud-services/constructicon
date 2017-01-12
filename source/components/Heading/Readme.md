@@ -5,7 +5,7 @@
 Provides a standard format for page/section headings
 
 ```
-<Heading>Heading 1</Heading>
+<Heading id='heading-1'>Heading 1</Heading>
 ```
 
 **Custom Styles**

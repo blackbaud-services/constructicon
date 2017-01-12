@@ -18,4 +18,11 @@ describe('Heading', () => {
     const rule = utils.findRule(css.rules, `${className}`)
     expect(rule.css).to.contain(`font-size:100px`)
   })
+
+  it('should apply an id', () => {
+    const wrapper = mount(
+      <Heading id='section'>Informative Section Heading</Heading>
+    )
+    expect(wrapper.prop('id')).to.eql('section')
+  })
 })
