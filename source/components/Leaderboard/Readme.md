@@ -20,7 +20,7 @@ const leaders = [ leader, leader, leader, leader, leader, leader ];
       href={leader.href}
       image={leader.image}
       title={leader.name}
-      subtitle={leader.subtitle}
+      subtitle={leader.charity}
       amount={leader.amount}
     />
   ))}
