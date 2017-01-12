@@ -1,11 +1,17 @@
+import merge from 'lodash/merge'
+
 export default (props, traits) => {
+  const {
+    styles
+  } = props
+
   const {
     measures,
     rhythm,
     scale
   } = traits
 
-  return {
+  const defaultStyles = {
     root: {
       position: 'relative',
       padding: rhythm(0.33),
@@ -57,7 +63,6 @@ export default (props, traits) => {
 
     subtitle: {
       lineHeight: measures.medium,
-      textTransform: 'uppercase',
       fontSize: '0.75em',
       opacity: 0.7,
       whiteSpace: 'nowrap',
@@ -73,4 +78,6 @@ export default (props, traits) => {
       lineHeight: measures.medium
     }
   }
+
+  return merge(defaultStyles, styles)
 }

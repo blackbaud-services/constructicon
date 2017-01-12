@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import Leader from './Leader'
 import Icon from '../Icon'
 import { withStyles } from '../../lib/css'
 import options from '../../lib/traits/options'
@@ -18,7 +17,7 @@ class Leaderboard extends Component {
 
   renderLeaderboard () {
     const {
-      leaders,
+      children,
       loading,
       error
     } = this.props
@@ -31,7 +30,7 @@ class Leaderboard extends Component {
       return this.renderError()
     }
 
-    if (!leaders.length) {
+    if (!children) {
       return this.renderEmpty()
     }
 
@@ -50,7 +49,7 @@ class Leaderboard extends Component {
     return (
       <div className={this.props.classNames.state}>
         <Icon name='warning' />
-        There was an error loading the results
+        {this.props.errorLabel}
       </div>
     )
   }
@@ -59,25 +58,20 @@ class Leaderboard extends Component {
     return (
       <div className={this.props.classNames.state}>
         <Icon name='warning' />
-        No results found
+        {this.props.emptyLabel}
       </div>
     )
   }
 
   renderLeaders () {
     const {
-      leaders,
+      children,
       classNames
     } = this.props
 
     return (
       <ol className={classNames.leaders}>
-        {leaders.map((leader, i) => (
-          <Leader
-            leader={leader}
-            key={i}
-          />
-        ))}
+        {children}
       </ol>
     )
   }
@@ -85,9 +79,12 @@ class Leaderboard extends Component {
 
 Leaderboard.propTypes = {
   /**
-  * The leaders to display on the leaderboard
+  * An an array of leaderboard items for each leader
   */
-  leaders: PropTypes.array,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]),
 
   /**
   * If the results are currently loading
@@ -95,9 +92,22 @@ Leaderboard.propTypes = {
   loading: PropTypes.bool,
 
   /**
-  * If there was an error loading the results
+  * Set the error message or set to true to show default message
   */
-  error: PropTypes.bool,
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string
+  ]),
+
+  /**
+  * Set the message to display if there are no results
+  */
+  emptyLabel: PropTypes.string,
+
+  /**
+  * Set the message to display if there is an error
+  */
+  errorLabel: PropTypes.string,
 
   /**
   * An object to specify how many columns to use at which breakpoints (e.g. { xs: 1, sm: 2, md: 3 })
@@ -117,13 +127,15 @@ Leaderboard.propTypes = {
   /**
   * Custom styles to be applied to root, leaders
   */
-  styles: PropTypes.styles
+  styles: PropTypes.object
 }
 
 Leaderboard.defaultProps = {
   leaders: [],
   columns: {},
-  styles: {}
+  styles: {},
+  emptyLabel: 'No results found',
+  errorLabel: 'There was an error loading the results'
 }
 
 export default withStyles(styles)(Leaderboard)

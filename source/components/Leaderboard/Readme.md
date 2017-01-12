@@ -6,14 +6,25 @@
 const leader = {
   href: 'http://google.com',
   image: 'http://placehold.it/250x250',
-  title: 'Leader Name',
-  subtitle: 'Charity Name',
+  name: 'Leader Name',
+  charity: 'Charity Name',
   amount: '$1,500'
 };
 
 const leaders = [ leader, leader, leader, leader, leader, leader ];
 
-<Leaderboard leaders={leaders} />
+<Leaderboard>
+  {leaders.map((leader, i) => (
+    <LeaderboardItem
+      key={i}
+      href={leader.href}
+      image={leader.image}
+      title={leader.name}
+      subtitle={leader.subtitle}
+      amount={leader.amount}
+    />
+  ))}
+</Leaderboard>
 ```
 
 **Colors**
@@ -24,14 +35,25 @@ Set the background and foreground color of the leaderboard
 const leader = {
   href: 'http://google.com',
   image: 'http://placehold.it/250x250',
-  title: 'Leader Name',
-  subtitle: 'Charity Name',
+  name: 'Leader Name',
+  charity: 'Charity Name',
   amount: '$1,500'
 };
 
 const leaders = [ leader, leader, leader, leader, leader, leader ];
 
-<Leaderboard leaders={leaders} background='primary' foreground='light' />
+<Leaderboard background='primary' foreground='light'>
+  {leaders.map((leader, i) => (
+    <LeaderboardItem
+      key={i}
+      href={leader.href}
+      image={leader.image}
+      title={leader.name}
+      subtitle={leader.charity}
+      amount={leader.amount}
+    />
+  ))}
+</Leaderboard>
 ```
 
 **Columns**
@@ -42,46 +64,62 @@ Set the leaderboard to break into columns at certain breakpoints
 const leader = {
   href: 'http://google.com',
   image: 'http://placehold.it/250x250',
-  title: 'Leader Name',
-  subtitle: 'Charity Name',
+  name: 'Leader Name',
+  charity: 'Charity Name',
   amount: '$1,500'
 };
 
 const leaders = [ leader, leader, leader, leader, leader, leader ];
 
-<Leaderboard leaders={leaders} columns={{ md: 2 }} />
+<Leaderboard columns={{ md: 2 }}>
+  {leaders.map((leader, i) => (
+    <LeaderboardItem
+      key={i}
+      href={leader.href}
+      image={leader.image}
+      title={leader.name}
+      subtitle={leader.charity}
+      amount={leader.amount}
+    />
+  ))}
+</Leaderboard>
 ```
 
 **Custom Styles**
 
 Set custom styles
 
-**root**
+**root** - applied to the wrapper
 
-applied to the wrapper
-
-**leaders**
-
-applied to the leaders listing
+**leaders** - applied to the leaders listing
 
 ```
 const leader = {
   href: 'http://google.com',
   image: 'http://placehold.it/250x250',
-  title: 'Leader Name',
-  subtitle: 'Charity Name',
+  name: 'Leader Name',
+  charity: 'Charity Name',
   amount: '$1,500'
 };
 
 const leaders = [ leader, leader, leader, leader, leader, leader ];
 
-const styles = {
+<Leaderboard styles={{
   leaders: {
     backgroundColor: '#f6f6f6'
   }
-};
-
-<Leaderboard leaders={leaders} styles={styles} />
+}}>
+  {leaders.map((leader, i) => (
+    <LeaderboardItem
+      key={i}
+      href={leader.href}
+      image={leader.image}
+      title={leader.name}
+      subtitle={leader.charity}
+      amount={leader.amount}
+    />
+  ))}
+</Leaderboard>
 ```
 
 **Loading**

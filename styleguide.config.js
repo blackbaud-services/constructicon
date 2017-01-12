@@ -32,7 +32,8 @@ module.exports = {
     {
       name: 'Everydayhero',
       components: () => ([
-        path.resolve(__dirname, 'source/components/Leaderboard', 'index.js')
+        path.resolve(__dirname, 'source/components/Leaderboard', 'index.js'),
+        path.resolve(__dirname, 'source/components/LeaderboardItem', 'index.js')
       ])
     },
     {

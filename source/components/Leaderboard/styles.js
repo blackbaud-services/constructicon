@@ -1,3 +1,5 @@
+import merge from 'lodash/merge'
+
 export default (props, traits) => {
   const {
     background,
@@ -13,11 +15,6 @@ export default (props, traits) => {
     rhythm
   } = traits
 
-  const {
-    root,
-    leaders
-  } = styles
-
   const createColumns = () => {
     return Object.keys(columns).reduce((styles, breakpoint) => ({
       ...styles,
@@ -27,19 +24,15 @@ export default (props, traits) => {
     }), {})
   }
 
-  console.log(background)
-
-  return {
+  const defaultStyles = {
     root: {
       backgroundColor: background && colors[background],
-      color: foreground && colors[foreground],
-      ...root
+      color: foreground && colors[foreground]
     },
 
     leaders: {
       counterReset: 'board',
-      ...createColumns(),
-      ...leaders
+      ...createColumns()
     },
 
     state: {
@@ -54,4 +47,6 @@ export default (props, traits) => {
       }
     }
   }
+
+  return merge(defaultStyles, styles)
 }
