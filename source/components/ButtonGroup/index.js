@@ -29,13 +29,18 @@ ButtonGroup.propTypes = {
   ]),
 
   /**
+  * The alignment of the buttons in the group
+  */
+  align: PropTypes.oneOf([ 'left', 'center', 'right' ]),
+
+  /**
   * Custom styles to be applied to the button
   */
   styles: PropTypes.object
 }
 
 ButtonGroup.defaultProps = {
-  spacing: {x: 0.25, y: 0.25},
+  spacing: 0.25,
   styles: {}
 }
 
