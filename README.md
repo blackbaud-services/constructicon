@@ -1,5 +1,5 @@
 
-# PS Components &nbsp; [![Build status](https://badge.buildkite.com/670ae004c2a2a3b10f5d875b5093edcb90c18c6a1e7855939e.svg)](https://buildkite.com/everyday-hero/ps-components)
+# PS Components &nbsp; [![Build status](https://badge.buildkite.com/670ae004c2a2a3b10f5d875b5093edcb90c18c6a1e7855939e.svg)](https://buildkite.com/everyday-hero/ps-components) &nbsp; [![npm version](https://badge.fury.io/js/ps-components.svg)](https://badge.fury.io/js/ps-components)
 
 #### A collection of common patterns used across many Professional Services projects.
 
