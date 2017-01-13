@@ -7,4 +7,4 @@ echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
 npm install yarn -g
 yarn
 yarn run build
-npm publish
+npm publish npm-ps-components

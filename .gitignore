@@ -1,4 +1,5 @@
 dist
 node_modules
 npm-debug.log
+npm-ps-components
 styleguide

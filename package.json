@@ -2,7 +2,7 @@
   "name": "ps-components",
   "version": "0.0.2-1",
   "description": "Library of re-usable components for Professional Services projects",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "styleguidist server",
     "test:lint": "standard",
@@ -11,7 +11,8 @@
     "build": "babel source -d dist",
     "build:styleguide": "styleguidist build",
     "deploy:styleguide": "npm run build:styleguide && gh-pages -d styleguide",
-    "prepublish": "npm run test && npm run build"
+    "deploy:prepare": "gulp npm-prepare",
+    "prepublish": "npm run test && npm run build && npm run deploy:prepare"
   },
   "files": [
     "dist"
@@ -34,6 +35,7 @@
   },
   "dependencies": {
     "cxsync": "^1.0.9",
+    "gulp-replace-path": "^0.4.0",
     "minimal.css": "^1.0.0",
     "react": "^0.14.8",
     "react-dom": "0.14.8",
@@ -50,6 +52,7 @@
     "chai": "^3.5.0",
     "enzyme": "^2.7.0",
     "gh-pages": "^0.12.0",
+    "gulp": "^3.9.1",
     "jsdom": "^9.9.1",
     "mocha": "^2.5.3",
     "react-addons-test-utils": "0.14.8",
