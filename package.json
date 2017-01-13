@@ -15,7 +15,7 @@
     "prepublish": "npm run test && npm run build && npm run deploy:prepare"
   },
   "files": [
-    "dist"
+    "npm-ps-components"
   ],
   "repository": {
     "type": "git",
