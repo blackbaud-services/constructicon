@@ -2,6 +2,7 @@ import merge from 'lodash/merge'
 
 export default (props, traits) => {
   const {
+    colors,
     rhythm,
     scale,
     treatments
@@ -12,6 +13,7 @@ export default (props, traits) => {
     fontSize: scale(3),
     marginTop: rhythm(1),
     marginBottom: rhythm(1),
+    color: props.color && colors[props.color],
     ':first-child': {
       marginTop: 0
     }

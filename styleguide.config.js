@@ -16,9 +16,9 @@ module.exports = {
         path.resolve(__dirname, 'source/components/Button', 'index.js'),
         path.resolve(__dirname, 'source/components/ButtonGroup', 'index.js'),
         path.resolve(__dirname, 'source/components/ButtonSocial', 'index.js'),
+        path.resolve(__dirname, 'source/components/Heading', 'index.js'),
         path.resolve(__dirname, 'source/components/Icon', 'index.js'),
         path.resolve(__dirname, 'source/components/Modal', 'index.js'),
-        path.resolve(__dirname, 'source/components/Heading', 'index.js'),
         path.resolve(__dirname, 'source/components/RichText', 'index.js')
       ])
     },
@@ -38,7 +38,7 @@ module.exports = {
       ])
     },
     {
-      name: 'Everydayhero',
+      name: 'everydayhero',
       components: () => ([
         path.resolve(__dirname, 'source/components/Leaderboard', 'index.js'),
         path.resolve(__dirname, 'source/components/LeaderboardItem', 'index.js')
