@@ -14,9 +14,6 @@
     "deploy:prepare": "gulp npm-prepare",
     "prepublish": "npm run test && npm run build && npm run deploy:prepare"
   },
-  "files": [
-    "npm-ps-components"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/everydayhero/ps-components.git"
