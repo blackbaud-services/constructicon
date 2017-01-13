@@ -17,18 +17,58 @@
         -moz-osx-font-smoothing: grayscale;
       }
 
-      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        :root {
-          -webkit-font-smoothing: subpixel-antialiased;
-        }
-      }
-
       .ReactStyleguidist-common__font {
         font-family: "proxima-nova", sans-serif;
       }
 
-      .ReactStyleguidist-StyleGuide__heading {
-        font-weight: 900;
+      .ReactStyleguidist-StyleGuide__content {
+        max-width: 50rem;
+        padding: 2rem;
+      }
+
+      .ReactStyleguidist-StyleGuide__components {
+        padding-top: 2rem;
+      }
+
+      @media (max-width: 600px) {
+        .ReactStyleguidist-StyleGuide__content {
+          padding: 1.5rem;
+        }
+      }
+
+      .ReactStyleguidist-Section__root:not(:first-child) {
+        padding-top: 2rem;
+        border-top: 2px solid #ddd;
+      }
+
+      .ReactStyleguidist-Section__heading {
+        position: relative;
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
+        margin-bottom: 3rem;
+      }
+
+      .ReactStyleguidist-Section__heading:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 3rem;
+        border-bottom: 3px solid #55ba6f;
+      }
+
+      .ReactStyleguidist-ReactComponent__primaryHeading {
+        padding-top: 1.25rem;
+      }
+
+      .ReactStyleguidist-Markdown__h3,
+      .ReactStyleguidist-Markdown__h4 {
+        border-bottom: thin solid #e0e0e0;
+        padding-bottom: 0.25em;
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
       }
 
 			.ReactStyleguidist-Markdown__strong {
@@ -43,14 +83,22 @@
 				margin-bottom: 100px;
 			}
 
+      .ReactStyleguidist-ReactComponent__pathLine {
+        margin: 1rem 0;
+      }
+
+      .ReactStyleguidist-ReactComponent__props {
+        padding: 1.5em;
+        background: whitesmoke;
+      }
+
 			.ReactStyleguidist-Props__cell .ReactStyleguidist-Markdown__code {
 				white-space: nowrap;
 			}
 
       .ReactStyleguidist-TableOfContents__root input.ReactStyleguidist-TableOfContents__search {
         background: white;
-        border: thin solid #ddd;
-        border-radius: 2px;
+        border-radius: 3px;
       }
 
       .ReactStyleguidist-TableOfContents__root input.ReactStyleguidist-TableOfContents__search:focus {
@@ -69,14 +117,52 @@
         color: #389040;
       }
 
+      /* Sidebar */
+
       .ReactStyleguidist-StyleGuide__sidebar {
-        padding-bottom: 60px;
         overflow: hidden;
+        background: #43aa4c;
+        color: white;
+        border: 0;
+      }
+
+      @media (min-width: 600px) {
+        .ReactStyleguidist-StyleGuide__sidebar {
+          padding-bottom: 60px;
+        }
       }
 
       .ReactStyleguidist-StyleGuide__sidebar > div {
         overflow: auto;
         max-height: calc(100vh - 115px);
+      }
+
+      @media (min-width: 600px) {
+        .ReactStyleguidist-StyleGuide__sidebar:before {
+          content: '';
+          position: absolute;
+          bottom: 18px;
+          left: 20px;
+          right: 20px;
+          height: 30px;
+          background: url("https://assets.everydayhero.do/edh-logos/edh-logo-white.svg") no-repeat center;
+          background-size: contain;
+        }
+      }
+
+      .ReactStyleguidist-StyleGuide__sidebar .ReactStyleguidist-colors__link {
+        color: white;
+      }
+
+      .ReactStyleguidist-StyleGuide__sidebar .ReactStyleguidist-colors__link:hover {
+        color: whitesmoke;
+      }
+
+      .ReactStyleguidist-StyleGuide__heading {
+        font-weight: 900;
+        background: #389040;
+        color: white;
+        border: 0;
       }
 
       @media (max-width: 600px) {
@@ -85,26 +171,8 @@
         }
       }
 
-      .ReactStyleguidist-StyleGuide__sidebar:before {
-        content: '';
-        position: absolute;
-        bottom: 18px;
-        left: 20px;
-        right: 20px;
-        height: 30px;
-        background: url("http://everydayhero.do.s3.amazonaws.com/assets.everydayhero.do/edh-logos/edh-logo.svg") no-repeat center;
-        background-size: contain;
-      }
 
-      .ReactStyleguidist-ReactComponent__props {
-        padding: 1.5em;
-        background: whitesmoke;
-      }
-
-      .ReactStyleguidist-Markdown__h3 {
-        border-bottom: thin solid #e0e0e0;
-        padding-bottom: 0.25em;
-      }
+      /* Hacks */
 
       a.github-link {
         position: fixed;
@@ -132,6 +200,14 @@
     <script>
       document.addEventListener('click', function(e) {
         var el = e.target;
+
+        if (el.classList && el.classList.contains('ReactStyleguidist-ReactComponent__pathLine')) {
+          var r = document.createRange();
+          var sel=window.getSelection();
+          r.selectNodeContents(el);
+          sel.removeAllRanges();
+          sel.addRange(r);
+        }
 
         if (el.tagName === "A" && el.getAttribute('href') === "/") {
           e.preventDefault();
