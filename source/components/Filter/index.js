@@ -5,6 +5,21 @@ import options from '../../lib/traits/options'
 import styles from './styles'
 
 class Filter extends Component {
+  onChange () {
+    const {
+      onChange,
+      debounce
+    } = this.props
+
+    if (onChange) {
+      if (debounce) {
+        return this.debounce(onChange)
+      } else {
+        return this.noDebounce(onChange)
+      }
+    }
+  }
+
   debounce (callback, delay = 500) {
     let timeout
     return () => {
@@ -16,9 +31,15 @@ class Filter extends Component {
     }
   }
 
+  noDebounce (callback) {
+    return () => {
+      const val = this.refs.field.value
+      callback(val)
+    }
+  }
+
   render () {
     const {
-      onChange,
       placeholder,
       classNames,
       styles
@@ -35,7 +56,7 @@ class Filter extends Component {
           ref='field'
           type='text'
           placeholder={placeholder}
-          onChange={onChange && this.debounce(onChange)}
+          onChange={this.onChange()}
           className={classNames.input}
         />
       </form>
@@ -67,12 +88,18 @@ Filter.propTypes = {
   /**
   * Custom styles for the component
   */
-  styles: PropTypes.object
+  styles: PropTypes.object,
+
+  /**
+  * Whether or not to debounce the onChange callback
+  */
+  debounce: PropTypes.bool
 }
 
 Filter.defaultProps = {
   placeholder: 'Filter results',
-  styles: {}
+  styles: {},
+  debounce: true
 }
 
 export default withStyles(styles)(Filter)

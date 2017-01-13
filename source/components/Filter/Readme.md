@@ -8,6 +8,14 @@ Pass an onChange callback to be notified of changes
 <Filter onChange={(val) => alert(val)}/>
 ```
 
+**Disable Debounce**
+
+We can turn the debouncing off if required
+
+```
+<Filter onChange={(val) => alert(val)} debounce={false} />
+```
+
 **Colors**
 
 Update the background and foreground colors

@@ -12,12 +12,12 @@ const LeaderboardItem = ({
 }) => (
   <li className={classNames.root}>
     <a href={href} target='_blank' className={classNames.link}>
-      <img src={image} className={classNames.image} />
+      {image && <img src={image} className={classNames.image} />}
       <div className={classNames.info}>
         <div className={classNames.title}>{title}</div>
         {subtitle && <div className={classNames.subtitle}>{subtitle}</div>}
       </div>
-      <div className={classNames.amount}>{amount}</div>
+      {amount && <div className={classNames.amount}>{amount}</div>}
     </a>
   </li>
 )
@@ -31,7 +31,7 @@ LeaderboardItem.propTypes = {
   /**
   * The avatar for the leader
   */
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
 
   /**
   * The name or title of the leader
@@ -46,7 +46,7 @@ LeaderboardItem.propTypes = {
   /**
   * The amount being ranked by
   */
-  amount: PropTypes.string.isRequired,
+  amount: PropTypes.string,
 
   /**
   * The custom styles to be applied
