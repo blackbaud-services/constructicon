@@ -23,12 +23,25 @@ module.exports = {
       ])
     },
     {
+      name: 'Forms',
+      components: () => ([
+        path.resolve(__dirname, 'source/components/Filter', 'index.js')
+      ])
+    },
+    {
       name: 'Layout',
       components: () => ([
         path.resolve(__dirname, 'source/components/Container', 'index.js'),
         path.resolve(__dirname, 'source/components/Grid', 'index.js'),
         path.resolve(__dirname, 'source/components/GridColumn', 'index.js'),
         path.resolve(__dirname, 'source/components/Section', 'index.js')
+      ])
+    },
+    {
+      name: 'Everydayhero',
+      components: () => ([
+        path.resolve(__dirname, 'source/components/Leaderboard', 'index.js'),
+        path.resolve(__dirname, 'source/components/LeaderboardItem', 'index.js')
       ])
     },
     {
