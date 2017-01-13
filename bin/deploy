@@ -2,8 +2,9 @@
 
 set -euo pipefail
 
-# Publish to npm
+# Publish to npm and spublish styleguide to github pages
 echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
 npm install yarn -g
 yarn
 npm publish npm-ps-components
+npm run deploy:styleguide

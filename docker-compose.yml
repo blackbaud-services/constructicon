@@ -13,3 +13,4 @@ build:
     - SLACK_WEBHOOK_URL
     - BUILD_URL
     - BUILDKITE_MESSAGE
+    - SSH_AUTH_SOCK=/ssh-agent
