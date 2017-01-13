@@ -10,7 +10,7 @@ steps:
   - wait
 
   - name: ":shipit: Deploy Styleguide"
-    command: "docker-compose run --rm build bin/deploy"
+    command: "docker-compose run --rm build bin/staging"
     branches: master
     agents:
       queue: elastic
@@ -18,7 +18,7 @@ steps:
   - wait
 
   - name: ":shipit: Deploy NPM Package"
-    command: "docker-compose run --rm build bin/staging"
+    command: "docker-compose run --rm build bin/deploy"
     branches: master
     agents:
       queue: elastic
