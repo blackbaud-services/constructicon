@@ -1,5 +1,6 @@
 var gulp = require('gulp')
-var replacePath = require('gulp-replace-path')
+var replace = require('gulp-replace')
+var rename = require('gulp-rename')
 
 var npmDir = './npm-ps-components'
 
@@ -18,12 +19,19 @@ var otherFiles = [
   '!./dist/*.js'
 ]
 
+var camelCaseToDashCase = function (string) {
+  return string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+}
+
 /**
 * Place components straight into the root directory and update references
 */
 gulp.task('npm-prep-components', function() {
   return gulp.src(componentsFiles)
-    .pipe(replacePath('../..', '..'))
+    .pipe(replace('../..', '..'))
+    .pipe(rename(function (path) {
+      path.dirname = camelCaseToDashCase(path.dirname)
+    }))
     .pipe(gulp.dest(npmDir))
 })
 
@@ -32,7 +40,10 @@ gulp.task('npm-prep-components', function() {
 */
 gulp.task('npm-prep-root', function() {
   return gulp.src(rootFiles)
-    .pipe(replacePath('./components/', './'))
+    .pipe(replace(/.\/components\/(.*)/g, function(match) {
+      var name = match.replace(/.\/components\//g, './');
+      return camelCaseToDashCase(name)
+    }))
     .pipe(gulp.dest(npmDir))
 })
 
