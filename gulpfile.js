@@ -32,6 +32,9 @@ gulp.task('npm-prep-components', function() {
     .pipe(rename(function (path) {
       path.dirname = camelCaseToDashCase(path.dirname)
     }))
+    .pipe(replace(/require\(\'\.\.(.*)/g, function(match) {
+      return camelCaseToDashCase(match)
+    }))
     .pipe(gulp.dest(npmDir))
 })
 
