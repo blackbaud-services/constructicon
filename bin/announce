@@ -2,13 +2,20 @@
 
 set -eux
 
+PACKAGE_VERSION=$(cat package.json \
+  | grep version \
+  | head -1 \
+  | awk -F: '{ print $2 }' \
+  | sed 's/[",]//g' \
+  | tr -d '[[:space:]]')
+
 curl \
 ${SLACK_WEBHOOK_URL} \
 -X POST \
 -H 'Content-Type: application/json' \
 -d @/dev/stdin <<JSON
 {
-  "text": "PS Components version ${BUILDKITE_MESSAGE} released :tada:",
+  "text": "PS Components version ${PACKAGE_VERSION} released :tada:",
   "channel": "#profs-dev",
   "username": "PS Components",
   "icon_emoji": ":${SLACK_ANNOUNCE_EMOJI}:"
