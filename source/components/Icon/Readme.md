@@ -63,6 +63,10 @@
 ```
 
 ```
+<Icon name='menu' />
+```
+
+```
 <Icon name='minus' />
 ```
 
