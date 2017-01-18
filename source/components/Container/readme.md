@@ -5,7 +5,7 @@
 Used to contain site content within a centered and minimum width container
 
 ```
-<Container styles={{ backgroundColor: '#eee' }}>
+<Container>
   <Section>Header</Section>
   <Section>Body</Section>
   <Section>Footer</Section>
