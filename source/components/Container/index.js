@@ -45,6 +45,16 @@ Container.propTypes = {
   shadow: PropTypes.oneOf(options.shadows),
 
   /**
+  * The background color of the container
+  */
+  background: PropTypes.oneOf(options.colors),
+
+  /**
+  * The foreground color of the area
+  */
+  foreground: PropTypes.oneOf(options.colors),
+
+  /**
   * The color of the area outside the container
   */
   outerColor: PropTypes.oneOf(options.colors),
