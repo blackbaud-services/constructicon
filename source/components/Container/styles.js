@@ -29,7 +29,7 @@ export default (props, traits) => {
     },
 
     outer: {
-      backgroundColor: colors[outerColor]
+      backgroundColor: outerColor && colors[outerColor]
     }
   }
 }
