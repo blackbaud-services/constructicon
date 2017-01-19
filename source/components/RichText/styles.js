@@ -24,16 +24,20 @@ export default (props, traits) => {
 
     ul: {
       listStyleType: 'disc',
-      listStylePosition: 'inside',
+      listStylePosition: 'outside',
       paddingBottom: rhythm(1),
       lineHeight: measures.medium
     },
 
     ol: {
       listStyleType: 'decimal',
-      listStylePosition: 'inside',
+      listStylePosition: 'outside',
       paddingBottom: rhythm(1),
       lineHeight: measures.medium
+    },
+
+    li: {
+      marginLeft: rhythm(1)
     },
 
     blockquote: {
