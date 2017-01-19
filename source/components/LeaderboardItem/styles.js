@@ -41,6 +41,7 @@ export default (props, traits) => {
     },
 
     image: {
+      flexShrink: 0,
       width: rhythm(1.25),
       height: rhythm(1.25),
       backgroundColor: 'rgba(0,0,0,0.125)',
