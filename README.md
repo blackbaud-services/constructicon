@@ -1,5 +1,5 @@
 
-# PS Components &nbsp; [![Build status](https://badge.buildkite.com/670ae004c2a2a3b10f5d875b5093edcb90c18c6a1e7855939e.svg?branch=master&style=flat-square)](https://buildkite.com/everyday-hero/ps-components) &nbsp; [![npm](https://img.shields.io/npm/v/ps-components.svg?style=flat-square)](https://www.npmjs.com/package/ps-components)
+# Constructicon &nbsp; [![Build status](https://badge.buildkite.com/670ae004c2a2a3b10f5d875b5093edcb90c18c6a1e7855939e.svg?branch=master&style=flat-square)](https://buildkite.com/everyday-hero/constructicon) &nbsp; [![npm](https://img.shields.io/npm/v/constructicon.svg?style=flat-square)](https://www.npmjs.com/package/constructicon)
 
 #### A collection of common patterns used across many Professional Services projects.
 
@@ -10,7 +10,7 @@ sites together more quickly and consistently.
 
 We are building this with a living style guide to showcase how to use the various components, using React Styleguidist.
 
-The styleguide will be publicly available at [https://everydayhero.github.io/ps-components](https://everydayhero.github.io/ps-components)
+The styleguide will be publicly available at [https://everydayhero.github.io/constructicon](https://everydayhero.github.io/constructicon)
 
 While developing, it is useful to serve the styleguide using `yarn start`, which will hot reload changes as you develop.
 
@@ -41,13 +41,3 @@ We can manage the look of most components via various props, and even have custo
 We are aiming to build from the ground up with tests where appropriate, using Mocha, Chai and Enzyme.
 
 To execute the tests, simply run `yarn test`.
-
----
-
-### Proposed Name Change
-
-There has been a proposed name change to `constructicon` to keep with the Transformers theme.
-
-Like taking small components and constructing bigger things with them, like this...
-
-![alt text](http://media2.giphy.com/media/ptat2RGLUnhbG/giphy.gif "Constructicon")
