@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "cxsync": "^1.0.9",
+    "lodash": "^4.17.4",
     "minimal.css": "^1.0.0",
     "react": "^0.14.8",
     "react-dom": "0.14.8",

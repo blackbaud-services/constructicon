@@ -1,5 +1,5 @@
 import TraitsProvider from '..'
-import Button from '../../Button'
+import Button from '../../button'
 import { css } from '../../../lib/css'
 
 describe('TraitsProvider', () => {
