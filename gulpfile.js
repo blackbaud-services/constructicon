@@ -2,7 +2,7 @@ var gulp = require('gulp')
 var replace = require('gulp-replace')
 var rename = require('gulp-rename')
 
-var npmDir = './npm-ps-components'
+var npmDir = './npm-constructicon'
 
 var componentsFiles = [
   './dist/components/**/*.js',

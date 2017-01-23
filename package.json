@@ -1,5 +1,5 @@
 {
-  "name": "ps-components",
+  "name": "constructicon",
   "version": "0.2.5",
   "description": "Library of re-usable components for Professional Services projects",
   "main": "index.js",
@@ -16,10 +16,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/everydayhero/ps-components.git"
+    "url": "git+https://github.com/everydayhero/constructicon.git"
   },
   "bugs": {
-    "url": "https://github.com/everydayhero/ps-components/issues"
+    "url": "https://github.com/everydayhero/constructicon/issues"
   },
   "author": "Dan Henderson <dan.henderson@everydayhero.com>",
   "license": "MIT",

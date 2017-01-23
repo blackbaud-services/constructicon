@@ -2,13 +2,13 @@ const path = require('path')
 const { version } = require('./package.json')
 
 module.exports = {
-  title: `PS Components | ${version}`,
+  title: `Constructicon | ${version}`,
   template: './styleguide.template.html',
   getComponentPathLine: function (componentPath) {
     var dirname = path.dirname(componentPath, '.js')
     var name = dirname.split('/').slice(-1)[0]
 
-    return 'import ' + name + ' from \'ps-components/' + name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase() + '\''
+    return 'import ' + name + ' from \'constructicon/' + name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase() + '\''
   },
   sections: [
     {
