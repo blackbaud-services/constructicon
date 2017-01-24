@@ -1,5 +1,5 @@
 import Grid from '..'
-import GridColumn from '../../GridColumn'
+import GridColumn from '../../grid-column'
 import { css } from '../../../lib/css'
 import { mediaQuery, rhythm } from '../../../lib/traits'
 

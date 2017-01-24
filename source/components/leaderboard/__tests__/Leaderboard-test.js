@@ -1,5 +1,5 @@
 import Leaderboard from '..'
-import LeaderboardItem from '../../LeaderboardItem'
+import LeaderboardItem from '../../leaderboard-item'
 
 describe('Leaderboard', () => {
   const defaultItem = (
