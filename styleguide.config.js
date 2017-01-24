@@ -14,42 +14,42 @@ module.exports = {
     {
       name: 'Components',
       components: () => ([
-        path.resolve(__dirname, 'source/components/Accordion', 'index.js'),
-        path.resolve(__dirname, 'source/components/Button', 'index.js'),
-        path.resolve(__dirname, 'source/components/ButtonGroup', 'index.js'),
-        path.resolve(__dirname, 'source/components/ButtonSocial', 'index.js'),
-        path.resolve(__dirname, 'source/components/Heading', 'index.js'),
-        path.resolve(__dirname, 'source/components/Icon', 'index.js'),
-        path.resolve(__dirname, 'source/components/Modal', 'index.js'),
-        path.resolve(__dirname, 'source/components/RichText', 'index.js')
+        path.resolve(__dirname, 'source/components/accordion', 'index.js'),
+        path.resolve(__dirname, 'source/components/button', 'index.js'),
+        path.resolve(__dirname, 'source/components/button-group', 'index.js'),
+        path.resolve(__dirname, 'source/components/button-social', 'index.js'),
+        path.resolve(__dirname, 'source/components/heading', 'index.js'),
+        path.resolve(__dirname, 'source/components/icon', 'index.js'),
+        path.resolve(__dirname, 'source/components/modal', 'index.js'),
+        path.resolve(__dirname, 'source/components/rich-text', 'index.js')
       ])
     },
     {
       name: 'Forms',
       components: () => ([
-        path.resolve(__dirname, 'source/components/Filter', 'index.js')
+        path.resolve(__dirname, 'source/components/filter', 'index.js')
       ])
     },
     {
       name: 'Layout',
       components: () => ([
-        path.resolve(__dirname, 'source/components/Container', 'index.js'),
-        path.resolve(__dirname, 'source/components/Grid', 'index.js'),
-        path.resolve(__dirname, 'source/components/GridColumn', 'index.js'),
-        path.resolve(__dirname, 'source/components/Section', 'index.js')
+        path.resolve(__dirname, 'source/components/container', 'index.js'),
+        path.resolve(__dirname, 'source/components/grid', 'index.js'),
+        path.resolve(__dirname, 'source/components/grid-column', 'index.js'),
+        path.resolve(__dirname, 'source/components/section', 'index.js')
       ])
     },
     {
       name: 'everydayhero',
       components: () => ([
-        path.resolve(__dirname, 'source/components/Leaderboard', 'index.js'),
-        path.resolve(__dirname, 'source/components/LeaderboardItem', 'index.js')
+        path.resolve(__dirname, 'source/components/leaderboard', 'index.js'),
+        path.resolve(__dirname, 'source/components/leaderboard-item', 'index.js')
       ])
     },
     {
       name: 'Theming',
       components: () => ([
-        path.resolve(__dirname, 'source/components/TraitsProvider', 'index.js')
+        path.resolve(__dirname, 'source/components/traits-provider', 'index.js')
       ])
     }
   ],
