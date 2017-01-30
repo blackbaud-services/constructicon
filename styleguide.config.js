@@ -1,14 +1,17 @@
 const path = require('path')
+const camelCase = require('lodash/camelCase')
+const upperFirst = require('lodash/upperFirst')
 const { version } = require('./package.json')
 
 module.exports = {
   title: `Constructicon | ${version}`,
   template: './styleguide.template.html',
-  getComponentPathLine: function (componentPath) {
-    var dirname = path.dirname(componentPath, '.js')
-    var name = dirname.split('/').slice(-1)[0]
+  getComponentPathLine: (componentPath) => {
+    const dirname = path.dirname(componentPath, '.js')
+    const name = dirname.split('/').slice(-1)[0]
+    const componentName = upperFirst(camelCase(name))
 
-    return 'import ' + name + ' from \'constructicon/' + name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase() + '\''
+    return 'import ' + componentName + ' from \'constructicon/' + name + '\''
   },
   sections: [
     {
@@ -67,7 +70,7 @@ module.exports = {
      }
    )
 
-   webpackConfig.entry.push(path.join(__dirname, 'node_modules/minimal.css/minimal.css'));
+   webpackConfig.entry.push(path.join(__dirname, 'node_modules/minimal.css/minimal.css'))
 
    return webpackConfig
   }
