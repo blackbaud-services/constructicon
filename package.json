@@ -27,7 +27,7 @@
     "ignore": [
       "source/**/**/__tests__/*.js",
       "test",
-      "*.js"
+      "gulpfile.js"
     ]
   },
   "dependencies": {
