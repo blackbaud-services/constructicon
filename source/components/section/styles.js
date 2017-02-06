@@ -11,7 +11,6 @@ export default (props, traits) => {
     borderColor,
     borderWidth,
     foreground,
-    padding,
     radius,
     spacing,
     styles

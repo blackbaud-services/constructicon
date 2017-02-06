@@ -9,9 +9,9 @@ const RichText = ({
 }) => (
   <Tag className={classNames.root}>
     {
-      typeof children === 'string' ?
-        <span dangerouslySetInnerHTML={{ __html: children }} /> :
-        children
+      typeof children === 'string'
+        ? <span dangerouslySetInnerHTML={{ __html: children }} />
+        : children
     }
   </Tag>
 )
