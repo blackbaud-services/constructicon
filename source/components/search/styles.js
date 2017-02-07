@@ -1,17 +1,10 @@
 import merge from 'lodash/merge'
 
 export default (props, traits) => {
-  const {
-    treatments,
-    scale
-  } = traits
+  const { scale } = traits
+  const { styles } = props
 
-  const baseStyles = {
-    ...treatments.body
-  }
-
-  return {
-    wrapper: merge(baseStyles, props.styles),
+  const defaultStyles = {
     loading: {
       textAlign: 'center',
       fontSize: scale(2)
@@ -20,4 +13,6 @@ export default (props, traits) => {
       marginBottom: '0'
     }
   }
+
+  return merge(defaultStyles, styles)
 }
