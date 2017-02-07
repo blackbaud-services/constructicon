@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import Filter from '../filter'
-import Result from '../Result'
+import Result from '../result'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
 
@@ -9,14 +9,18 @@ const Search = ({
   classNames,
   results
 }) => (
-  <Tag className={classNames.root}>
+  <Tag className={classNames.wrapper}>
     <Filter />
-    { results && results.map((result, i) => (
-      <Result
-        {...result}
-        key={i}
-      />
-    )) }
+    { results.length ? (
+      <ul>
+        { results.map((result, i) => (
+          <Result
+            {...result}
+            key={i}
+          />
+        )) }
+      </ul>
+    ) : null }
   </Tag>
 )
 

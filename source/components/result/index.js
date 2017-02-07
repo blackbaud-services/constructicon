@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import Button from '../Button'
+import Button from '../button'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
 
@@ -8,15 +8,16 @@ const Result = ({
   image,
   subtitle,
   title,
-  url
+  url,
+  classNames
 }) => (
-  <li>
+  <li className={classNames.wrapper}>
     <div>
-      <img src={image} />
+      <img src={image} className={classNames.avatar} />
     </div>
-    <div>
-      <h4>{title}</h4>
-      <h6>{subtitle}</h6>
+    <div className={classNames.titles}>
+      <h4 className={classNames.title}>{title}</h4>
+      <h6 className={classNames.subtitle}>{subtitle}</h6>
     </div>
     <div>
       <Button tag='a' href={url} target='_blank'>Support</Button>
