@@ -9,10 +9,11 @@ const Search = ({
   tag: Tag,
   classNames,
   results,
-  status
+  status,
+  onChange
 }) => (
   <Tag className={classNames.wrapper}>
-    <Filter />
+    <Filter onChange={onChange} />
     { !status && results.length ? (
       <ul>
         { results.map((result, i) => (
@@ -63,7 +64,12 @@ Search.propTypes = {
     'loading',
     'noResult',
     'error'
-  ])
+  ]),
+
+  /**
+  * The onChange event handler to be fired
+  */
+  onChange: PropTypes.func.isRequired
 }
 
 Search.defaultProps = {
