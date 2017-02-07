@@ -8,6 +8,7 @@ describe('Carousel', () => {
         <div>Slide 2</div>
       </Carousel>
     )
+    expect(wrapper.find('.slick-slide').nodes[1].innerHTML).to.equal('Slide 1')
     expect(wrapper.find('.slick-track')).to.have.length(1)
   })
 
