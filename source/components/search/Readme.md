@@ -1,13 +1,5 @@
 # Examples
 
-**Standard Use**
-
-Provides a standard form for querying a dataset.
-
-```
-<Search />
-```
-
 **Results**
 
 You can pass through a result set to display.
@@ -26,4 +18,20 @@ You can pass through a result set to display.
     url: 'http://www.example.com'
   }
 ]} />
+```
+
+**Empty data states**
+
+Different `status` values can be set to provide feedback on the data query.
+
+```
+<Search status='loading' />
+```
+
+```
+<Search status='noResult' />
+```
+
+```
+<Search status='error' />
 ```

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import Icon from '../icon'
 import Filter from '../filter'
 import Result from '../result'
 import { withStyles } from '../../lib/css'
@@ -7,11 +8,12 @@ import styles from './styles'
 const Search = ({
   tag: Tag,
   classNames,
-  results
+  results,
+  status
 }) => (
   <Tag className={classNames.wrapper}>
     <Filter />
-    { results.length ? (
+    { !status && results.length ? (
       <ul>
         { results.map((result, i) => (
           <Result
@@ -21,6 +23,20 @@ const Search = ({
         )) }
       </ul>
     ) : null }
+
+    { status === 'loading' && (
+      <div className={classNames.loading}>
+        <Icon name='loading' spin aria-label='Loading results' />
+      </div>
+    ) }
+
+    { status === 'noResult' && (
+      <p className={classNames.status}>No results found.</p>
+    ) }
+
+    { status === 'error' && (
+      <p className={classNames.status}>Something went wrong!</p>
+    ) }
   </Tag>
 )
 
@@ -38,7 +54,16 @@ Search.propTypes = {
   /**
   * Results to be listed
   */
-  results: PropTypes.array
+  results: PropTypes.array,
+
+  /**
+  * Status of the search.
+  */
+  status: PropTypes.oneOf([
+    'loading',
+    'noResult',
+    'error'
+  ])
 }
 
 Search.defaultProps = {

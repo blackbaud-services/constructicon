@@ -2,7 +2,8 @@ import merge from 'lodash/merge'
 
 export default (props, traits) => {
   const {
-    treatments
+    treatments,
+    scale
   } = traits
 
   const baseStyles = {
@@ -10,6 +11,13 @@ export default (props, traits) => {
   }
 
   return {
-    wrapper: merge(baseStyles, props.styles)
+    wrapper: merge(baseStyles, props.styles),
+    loading: {
+      textAlign: 'center',
+      fontSize: scale(2)
+    },
+    status: {
+      marginBottom: '0'
+    }
   }
 }
