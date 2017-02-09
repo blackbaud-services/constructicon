@@ -7,7 +7,7 @@ export default (props, traits) => {
   return {
     wrapper: {
       display: 'flex',
-      alignItems: 'flex-start',
+      alignItems: 'center',
       justifyContent: 'space-between',
       flexAlign: 'justify',
       '> div': {
@@ -24,18 +24,22 @@ export default (props, traits) => {
       borderRadius: '50%'
     },
 
+    placeholder: {
+      height: rhythm(1.65)
+    },
+
     titles: {
       flex: 1
     },
 
     title: {
-      fontWeight: 'bold',
-      paddingBottom: rhythm(0.25)
+      fontWeight: 'bold'
     },
 
     subtitle: {
       fontSize: scale(-1),
-      lineHeight: '1.45em'
+      lineHeight: '1.45em',
+      paddingTop: rhythm(0.25)
     }
   }
 }

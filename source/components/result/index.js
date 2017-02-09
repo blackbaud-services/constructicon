@@ -12,16 +12,22 @@ const Result = ({
   classNames
 }) => (
   <li className={classNames.wrapper}>
-    <div>
-      <img src={image} className={classNames.avatar} />
-    </div>
+    { image
+      ? (
+        <div>
+          <img src={image} className={classNames.avatar} />
+        </div>
+      ) : (
+        <div className={classNames.placeholder} />
+      )
+    }
     <div className={classNames.titles}>
       <h4 className={classNames.title}>{title}</h4>
-      <h6 className={classNames.subtitle}>{subtitle}</h6>
+      { subtitle && <h6 className={classNames.subtitle}>{subtitle}</h6> }
     </div>
-    <div>
+    { url && <div>
       <Button tag='a' href={url} target='_blank'>Support</Button>
-    </div>
+    </div> }
   </li>
 )
 
@@ -39,7 +45,7 @@ Result.propTypes = {
   /**
   * Name of the result to display
   */
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
 
   /**
   * Additional text to display below the title
