@@ -15,17 +15,6 @@ describe('Search', () => {
 		expect(element.length).to.equal(1)
   })
 
-  it('should allow us to pass in custom styles', () => {
-    const element = utils.getMountedElement(
-      <Search
-        onChange={() => {}}
-        styles={{ wrapper: { opacity: 0.5 }}}
-      />, 'Search')
-
-    const rule = utils.findRule(css.rules, element.props().classNames.wrapper)
-    expect(rule.css).to.contain(`opacity:0.5`)
-  })
-
   it('should render a result', () => {
     const element = utils.getMountedElement(<Search
       onChange={() => {}}
@@ -67,5 +56,81 @@ describe('Search', () => {
 
     const message = element.findWhere(n => n.prop('children') === 'Something went wrong!')
     expect(message.length).to.equal(1)
+  })
+
+  describe('custom styles', () => {
+    it('should allow us to style the modal button', () => {
+      const element = mount(<Search
+        onChange={() => {}}
+        styles={{
+          modalButton: {
+            opacity: '0.5'
+          }
+        }}
+        modalTrigger='Foo'
+      />)
+
+      const modalTrigger = element.find('Button')
+      expect(modalTrigger.prop('styles').root.opacity).to.eql('0.5')
+    })
+
+    it('should allow us to style the Modal component', () => {
+      const element = mount(<Search
+        onChange={() => {}}
+        styles={{
+          modal: {
+            wrapper: {
+              container: {
+                opacity: '0.5'
+              }
+            }
+          }
+        }}
+        modalTrigger='Foo'
+        toggled={true}
+      />)
+
+      const modal = element.find('Modal')
+      const styles = modal.nodes[0].props.styles.wrapper.container
+      expect(styles.opacity).to.eql('0.5')
+    })
+
+    it('should allow us to style the Filter component', () => {
+      const element = mount(<Search
+        onChange={() => {}}
+        styles={{
+          filter: {
+            root: {
+              opacity: '0.5'
+            }
+          }
+        }}
+      />)
+
+      const filter = element.find('Filter')
+      expect(filter.prop('styles').root.opacity).to.eql('0.5')
+    })
+
+    it('should allow us to style the Result components', () => {
+      const element = mount(<Search
+        onChange={() => {}}
+        styles={{
+          result: {
+            wrapper: {
+              opacity: '0.5'
+            }
+          }
+        }}
+        results={[
+          {
+            title: 'Cat',
+            subtitle: 'Dog'
+          }
+        ]}
+      />)
+
+      const result = element.find('Result')
+      expect(result.prop('styles').wrapper.opacity).to.eql('0.5')
+    })
   })
 })

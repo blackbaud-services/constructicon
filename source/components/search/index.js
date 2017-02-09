@@ -26,7 +26,7 @@ const SearchForm = ({
         { results.map((result, i) => (
           <Result
             {...result}
-            style={classNames.result}
+            styles={styles.result}
             key={i}
           />
         )) }
@@ -74,7 +74,7 @@ const ModalSearch = ({
         {...props}
         tag='div'
         classNames={classNames}
-        styreturnles={styles}
+        styles={styles}
       />
     </Modal>
   </Tag>
