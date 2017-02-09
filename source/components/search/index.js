@@ -1,24 +1,32 @@
 import React, { PropTypes } from 'react'
-import Icon from '../icon'
+import Button from '../button'
 import Filter from '../filter'
+import Icon from '../icon'
+import Modal from '../modal'
 import Result from '../result'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
+import toggle from '../../lib/toggle'
 
-const Search = ({
+const SearchForm = ({
   tag: Tag,
   classNames,
   results,
   status,
-  onChange
+  onChange,
+  styles
 }) => (
-  <Tag className={classNames.wrapper}>
-    <Filter onChange={onChange} />
+  <Tag className={classNames.search}>
+    <Filter
+      onChange={onChange}
+      styles={styles.filter}
+    />
     { !status && results.length ? (
-      <ul>
+      <ul className={classNames.results} >
         { results.map((result, i) => (
           <Result
             {...result}
+            style={classNames.result}
             key={i}
           />
         )) }
@@ -40,6 +48,49 @@ const Search = ({
     ) }
   </Tag>
 )
+
+const ModalSearch = ({
+  tag: Tag,
+  onToggleOn,
+  toggled,
+  onToggleOff,
+  classNames,
+  styles,
+  ...props
+}) => (
+  <Tag className={classNames.modal}>
+    <Button
+      onClick={onToggleOn}
+      styles={styles.modalButton}
+    >
+      Open Modal
+    </Button>
+    <Modal
+      isOpen={toggled}
+      onRequestClose={onToggleOff}
+      styles={styles.modal}
+    >
+      <SearchForm
+        {...props}
+        tag='div'
+        classNames={classNames}
+        styreturnles={styles}
+      />
+    </Modal>
+  </Tag>
+)
+
+const Search = ({
+  modalTrigger,
+  ...props
+}) => {
+  if (modalTrigger) {
+    const ModalSearchForm = toggle(ModalSearch)
+    return <ModalSearchForm {...props} />
+  } else {
+    return <SearchForm {...props} />
+  }
+}
 
 Search.propTypes = {
   /**

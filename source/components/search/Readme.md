@@ -38,3 +38,11 @@ Different `status` values can be set to provide feedback on the data query.
 ```
 <Search status='error' onChange={() => {}} />
 ```
+
+**Modal search**
+
+By passing a value to `modalTrigger`, a button will be displayed which allows toggling a Search modal.
+
+```
+<Search onChange={() => {}} modalTrigger='Search' />
+```

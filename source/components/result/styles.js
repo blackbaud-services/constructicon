@@ -1,10 +1,13 @@
+import merge from 'lodash/merge'
+
 export default (props, traits) => {
+  const { styles } = props
   const {
     rhythm,
     scale
   } = traits
 
-  return {
+  const defaultStyles = {
     wrapper: {
       display: 'flex',
       alignItems: 'center',
@@ -42,4 +45,6 @@ export default (props, traits) => {
       paddingTop: rhythm(0.25)
     }
   }
+
+  return merge(defaultStyles, styles)
 }
