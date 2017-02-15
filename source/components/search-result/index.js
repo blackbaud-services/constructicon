@@ -3,7 +3,7 @@ import Button from '../button'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
 
-const Result = ({
+const SearchResult = ({
   cta,
   image,
   subtitle,
@@ -31,7 +31,7 @@ const Result = ({
   </li>
 )
 
-Result.propTypes = {
+SearchResult.propTypes = {
   /**
   * The label for the CTA Button
   */
@@ -58,6 +58,6 @@ Result.propTypes = {
   url: PropTypes.string
 }
 
-Result.defaultProps = {}
+SearchResult.defaultProps = {}
 
-export default withStyles(styles)(Result)
+export default withStyles(styles)(SearchResult)

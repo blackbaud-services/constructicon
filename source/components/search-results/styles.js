@@ -1,7 +1,10 @@
 import merge from 'lodash/merge'
 
 export default (props, traits) => {
-  const { scale } = traits
+  const {
+    scale,
+    rhythm
+  } = traits
   const { styles } = props
 
   const defaultStyles = {
@@ -11,6 +14,17 @@ export default (props, traits) => {
     },
     status: {
       marginBottom: '0'
+    },
+    state: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      justifyContent: 'center',
+      padding: rhythm(2),
+      fontSize: scale(-1),
+
+      '> *': {
+        margin: `0 ${rhythm(0.25)}`
+      }
     }
   }
 

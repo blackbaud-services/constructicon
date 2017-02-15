@@ -31,7 +31,7 @@ module.exports = {
       name: 'Forms',
       components: () => ([
         path.resolve(__dirname, 'source/components/filter', 'index.js'),
-        path.resolve(__dirname, 'source/components/search', 'index.js')
+        path.resolve(__dirname, 'source/components/search-results', 'index.js')
       ])
     },
     {

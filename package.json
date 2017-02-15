@@ -28,6 +28,13 @@
       "source/**/**/__tests__/*.js",
       "test",
       "gulpfile.js"
+    ],
+    "globals": [
+      "it",
+      "describe",
+      "mount",
+      "expect",
+      "utils"
     ]
   },
   "dependencies": {

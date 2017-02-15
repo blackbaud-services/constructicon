@@ -1,13 +1,4 @@
 import Result from '..'
-import { css } from '../../../lib/css'
-
-import {
-  colors,
-  radiuses,
-  rhythm,
-  scale,
-  treatments
-} from '../../../lib/traits'
 
 const defaultComponent = <Result title='foo' />
 const fullComponent = <Result
