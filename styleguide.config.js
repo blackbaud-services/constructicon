@@ -31,7 +31,8 @@ module.exports = {
       name: 'Forms',
       components: () => ([
         path.resolve(__dirname, 'source/components/filter', 'index.js'),
-        path.resolve(__dirname, 'source/components/search', 'index.js')
+        path.resolve(__dirname, 'source/components/search-form', 'index.js')
+
       ])
     },
     {
@@ -44,10 +45,12 @@ module.exports = {
       ])
     },
     {
-      name: 'everydayhero',
+      name: 'Pages',
       components: () => ([
         path.resolve(__dirname, 'source/components/leaderboard', 'index.js'),
-        path.resolve(__dirname, 'source/components/leaderboard-item', 'index.js')
+        path.resolve(__dirname, 'source/components/leaderboard-item', 'index.js'),
+        path.resolve(__dirname, 'source/components/search-results', 'index.js'),
+        path.resolve(__dirname, 'source/components/search-result', 'index.js')
       ])
     },
     {

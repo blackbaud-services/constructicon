@@ -1,7 +1,10 @@
 import merge from 'lodash/merge'
 
 export default (props, traits) => {
-  const { styles } = props
+  const {
+    styles
+  } = props
+
   const {
     rhythm,
     scale
@@ -25,10 +28,6 @@ export default (props, traits) => {
       height: rhythm(1.65),
       width: rhythm(1.65),
       borderRadius: '50%'
-    },
-
-    placeholder: {
-      height: rhythm(1.65)
     },
 
     titles: {

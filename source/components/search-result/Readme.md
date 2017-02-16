@@ -5,11 +5,11 @@
 Provides a list item suited for a search results listing.
 
 ```
-<Result
+<SearchResult
   cta='Support'
   image='http://placehold.it/100x100'
-  subtitle='Feline',
-  title='Cat',
-  url='http://www.example.com'
-/>
+  title='Support Name'
+  subtitle='Supporter Charity'>
+  <Button tag='a' href='http://google.com'>Support</Button>
+</SearchResult>
 ```

@@ -4,18 +4,18 @@ import { withStyles } from '../../lib/css'
 import options from '../../lib/traits/options'
 import styles from './styles'
 
-class Leaderboard extends Component {
+class SearchResults extends Component {
   render () {
     const { classNames } = this.props
 
     return (
       <div className={classNames.root}>
-        {this.renderLeaderboard()}
+        {this.renderSearchResults()}
       </div>
     )
   }
 
-  renderLeaderboard () {
+  renderSearchResults () {
     const {
       children,
       loading,
@@ -34,7 +34,7 @@ class Leaderboard extends Component {
       return this.renderEmpty()
     }
 
-    return this.renderLeaders()
+    return this.renderResults()
   }
 
   renderLoading () {
@@ -63,21 +63,16 @@ class Leaderboard extends Component {
     )
   }
 
-  renderLeaders () {
-    const {
-      children,
-      classNames
-    } = this.props
-
+  renderResults () {
     return (
-      <ol className={classNames.leaders}>
-        {children}
-      </ol>
+      <ul>
+        {this.props.children}
+      </ul>
     )
   }
 }
 
-Leaderboard.propTypes = {
+SearchResults.propTypes = {
   /**
   * An an array of leaderboard items for each leader
   */
@@ -110,11 +105,6 @@ Leaderboard.propTypes = {
   errorLabel: PropTypes.string,
 
   /**
-  * An object to specify how many columns to use at which breakpoints (e.g. { xs: 1, sm: 2, md: 3 })
-  */
-  columns: PropTypes.object,
-
-  /**
   * The background color for the leaderboard
   */
   background: PropTypes.oneOf(options.colors),
@@ -130,11 +120,10 @@ Leaderboard.propTypes = {
   styles: PropTypes.object
 }
 
-Leaderboard.defaultProps = {
-  columns: {},
+SearchResults.defaultProps = {
   styles: {},
   emptyLabel: 'No results found',
   errorLabel: 'There was an error loading the results'
 }
 
-export default withStyles(styles)(Leaderboard)
+export default withStyles(styles)(SearchResults)
