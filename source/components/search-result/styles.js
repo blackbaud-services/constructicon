@@ -6,6 +6,7 @@ export default (props, traits) => {
   } = props
 
   const {
+    colors,
     rhythm,
     scale
   } = traits
@@ -16,6 +17,8 @@ export default (props, traits) => {
       alignItems: 'center',
       justifyContent: 'space-between',
       flexAlign: 'justify',
+      borderBottom: `1px solid ${colors.shade}`,
+
       '> div': {
         padding: rhythm(0.5)
       },
