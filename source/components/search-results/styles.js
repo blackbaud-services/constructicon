@@ -2,23 +2,19 @@ import merge from 'lodash/merge'
 
 export default (props, traits) => {
   const {
-    background,
-    foreground,
-    styles
-  } = props
-
-  const {
-    colors,
     scale,
     rhythm
   } = traits
+  const { styles } = props
 
   const defaultStyles = {
-    root: {
-      backgroundColor: background && colors[background],
-      color: foreground && colors[foreground]
+    loading: {
+      textAlign: 'center',
+      fontSize: scale(2)
     },
-
+    status: {
+      marginBottom: '0'
+    },
     state: {
       display: 'flex',
       alignItems: 'flex-start',
