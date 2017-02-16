@@ -50,7 +50,7 @@ export default (props, traits) => {
         textAlign: lgAlign,
         ...calculateSize(lg)
       },
-      ...styles,
+      ...styles
     }
   }
 }

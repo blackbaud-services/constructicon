@@ -141,8 +141,8 @@ Set the error prop if there was an error loading the leaders
 
 **Empty**
 
-If the leaders array is empty, an empty message will be shown
+If the no leaderboard items are passed in, an empty message will be shown
 
 ```
-<Leaderboard leaders={[]} />
+<Leaderboard />
 ```

@@ -1,7 +1,6 @@
 export default (props = {}, traits = {}) => {
   const {
-    calculateSpacing,
-    rhythm
+    calculateSpacing
   } = traits
 
   const {

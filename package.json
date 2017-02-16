@@ -1,6 +1,6 @@
 {
   "name": "constructicon",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "Library of re-usable components for Professional Services projects",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,14 @@
     "ignore": [
       "source/**/**/__tests__/*.js",
       "test",
-      "*.js"
+      "gulpfile.js"
+    ],
+    "globals": [
+      "it",
+      "describe",
+      "mount",
+      "expect",
+      "utils"
     ]
   },
   "dependencies": {

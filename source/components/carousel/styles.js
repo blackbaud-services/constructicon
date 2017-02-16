@@ -4,8 +4,6 @@ export default (props, traits) => {
   } = props
 
   const {
-    colors,
-    scale,
     rhythm
   } = traits
 
@@ -40,7 +38,6 @@ export default (props, traits) => {
           outline: 'none'
         },
         '.dragging': {
-          cursor: 'pointer',
           cursor: 'hand'
         }
       },
@@ -83,7 +80,7 @@ export default (props, traits) => {
         display: 'block'
       },
       '.slick-loading .slick-slide': {
-        visibility: 'hidden',
+        visibility: 'hidden'
       },
       '.slick-vertical .slick-slide': {
         display: 'block',
@@ -163,25 +160,25 @@ export default (props, traits) => {
               margin: '-4px',
               opacity: 0.25,
               borderRadius: '50%',
-              background: 'black',
+              background: 'black'
             },
             ':hover': {
               outline: 'none',
               ':before': {
-                opacity: '1',
+                opacity: '1'
               }
             },
             ':focus': {
               outline: 'none',
               ':before': {
-                opacity: '1',
+                opacity: '1'
               }
             }
           }
         },
         'li.slick-active button:before': {
           opacity: 0.75,
-          color: 'black',
+          color: 'black'
         }
       }
     }

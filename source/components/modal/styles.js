@@ -1,3 +1,5 @@
+import merge from 'lodash/merge'
+
 export default (props, traits) => {
   const {
     spacing,
@@ -9,14 +11,7 @@ export default (props, traits) => {
     rhythm
   } = traits
 
-  const {
-    overlay = {},
-    content = {},
-    container = {},
-    close = {}
-  } = styles
-
-  return {
+  const defaultStyles = {
     wrapper: {
       overlay: {
         position: 'fixed',
@@ -25,8 +20,7 @@ export default (props, traits) => {
         right: 0,
         bottom: 0,
         zIndex: 100,
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
-        ...overlay
+        backgroundColor: 'rgba(0, 0, 0, 0.75)'
       },
       content: {
         position: 'absolute',
@@ -44,23 +38,22 @@ export default (props, traits) => {
         WebkitOverflowScrolling: 'touch',
         borderRadius: '4px',
         outline: 'none',
-        padding: '0',
-        ...content
+        padding: '0'
       }
     },
 
     container: {
       ...calculateSpacing(spacing),
       overflow: 'auto',
-      maxHeight: 'calc(100vh - 2rem)',
-      ...container
+      maxHeight: 'calc(100vh - 2rem)'
     },
 
     close: {
       position: 'absolute',
       top: rhythm(0.75),
-      right: rhythm(0.75),
-      ...close
+      right: rhythm(0.75)
     }
   }
+
+  return merge(defaultStyles, styles)
 }

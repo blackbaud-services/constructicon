@@ -31,7 +31,8 @@ module.exports = {
     {
       name: 'Forms',
       components: () => ([
-        path.resolve(__dirname, 'source/components/filter', 'index.js')
+        path.resolve(__dirname, 'source/components/filter', 'index.js'),
+        path.resolve(__dirname, 'source/components/search-form', 'index.js')
       ])
     },
     {
@@ -44,10 +45,12 @@ module.exports = {
       ])
     },
     {
-      name: 'everydayhero',
+      name: 'Pages',
       components: () => ([
         path.resolve(__dirname, 'source/components/leaderboard', 'index.js'),
-        path.resolve(__dirname, 'source/components/leaderboard-item', 'index.js')
+        path.resolve(__dirname, 'source/components/leaderboard-item', 'index.js'),
+        path.resolve(__dirname, 'source/components/search-results', 'index.js'),
+        path.resolve(__dirname, 'source/components/search-result', 'index.js')
       ])
     },
     {
@@ -58,21 +61,20 @@ module.exports = {
     }
   ],
   updateWebpackConfig: (webpackConfig) => {
-   webpackConfig.module.loaders.push(
-     {
-       test: /\.jsx?$/,
-       include: path.join(__dirname, 'source'),
-       loader: 'babel'
-     },
-     {
-       test: /\.css$/,
-       include: path.join(__dirname, 'node_modules', 'minimal.css'),
-       loader: 'style!css?modules&importLoaders=1'
-     }
-   )
+    webpackConfig.module.loaders.push(
+      {
+        test: /\.jsx?$/,
+        include: path.join(__dirname, 'source'),
+        loader: 'babel'
+      }, {
+        test: /\.css$/,
+        include: path.join(__dirname, 'node_modules', 'minimal.css'),
+        loader: 'style!css?modules&importLoaders=1'
+      }
+    )
 
-   webpackConfig.entry.push(path.join(__dirname, 'node_modules/minimal.css/minimal.css'))
+    webpackConfig.entry.push(path.join(__dirname, 'node_modules/minimal.css/minimal.css'))
 
-   return webpackConfig
+    return webpackConfig
   }
 }
