@@ -43,7 +43,8 @@
     "minimal.css": "^1.0.0",
     "react": "^0.14.8",
     "react-dom": "0.14.8",
-    "react-modal": "^1.6.5"
+    "react-modal": "^1.6.5",
+    "react-slick": "^0.14.5"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
