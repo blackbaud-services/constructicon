@@ -20,8 +20,9 @@ class SearchForm extends Component {
   }
 
   closeForm () {
-    this.props.onToggleOff()
     this.refs.field.value = ''
+    this.props.onToggleOff()
+    this.props.onChange()
   }
 
   handleKeyDown (e) {

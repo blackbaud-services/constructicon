@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import isEmpty from 'lodash/isEmpty'
 import Icon from '../icon'
 import { withStyles } from '../../lib/css'
 import options from '../../lib/traits/options'
@@ -30,7 +31,7 @@ class SearchResults extends Component {
       return this.renderError()
     }
 
-    if (!children) {
+    if (isEmpty(children)) {
       return this.renderEmpty()
     }
 
