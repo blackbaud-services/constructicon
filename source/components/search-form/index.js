@@ -83,9 +83,11 @@ class SearchForm extends Component {
             />
           </div>
         </div>
-        <div className={classNames.results}>
-          {children}
-        </div>
+        {children && (
+          <div className={classNames.results}>
+            {children}
+          </div>
+        )}
       </div>
     )
   }
