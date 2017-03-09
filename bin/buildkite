@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -u
-
-export COMMIT="${BUILDKITE_COMMIT}"
-
-"$@"

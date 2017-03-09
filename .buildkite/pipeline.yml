@@ -11,15 +11,15 @@ steps:
   - wait
 
   - name: ":shipit: Deploy Styleguide"
-    command: "bin/buildkite docker-compose run --rm build bin/only-for-version-releases bin/deploy-docs"
+    command: "docker-compose run --rm build bin/only-for-version-releases bin/deploy-docs"
     branches: master
 
   - name: ":shipit: Deploy NPM Package"
-    command: "bin/buildkite docker-compose run --rm build bin/only-for-version-releases bin/deploy"
+    command: "docker-compose run --rm build bin/only-for-version-releases bin/deploy"
     branches: master
 
   - wait
 
   - name: ":loudspeaker: Announce It"
-    command: "bin/buildkite docker-compose run --rm build bin/only-for-version-releases bin/announce"
+    command: "docker-compose run --rm build bin/only-for-version-releases bin/announce"
     branches: master
