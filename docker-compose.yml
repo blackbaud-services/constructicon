@@ -1,5 +1,5 @@
 build:
-  image: node:6.9.1
+  image: arhea/yarn:6
   working_dir: /code
   volumes:
     - .:/code
@@ -13,5 +13,6 @@ build:
     - SLACK_WEBHOOK_URL
     - BUILD_URL
     - BUILDKITE_MESSAGE
+    - COMMIT=${BUILDKITE_COMMIT}
     - GITHUB_RELEASE_ACCESS_TOKEN
     - SSH_AUTH_SOCK=/ssh-agent
