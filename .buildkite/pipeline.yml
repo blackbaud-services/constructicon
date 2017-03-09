@@ -4,29 +4,22 @@ steps:
 
   - name: ":nodejs: Test It"
     command: "docker-compose run --rm build bin/test"
-    agents:
-      queue: elastic
+
+  - name: ":nodejs: Lint It"
+    command: "docker-compose run --rm build bin/lint"
 
   - wait
 
   - name: ":shipit: Deploy Styleguide"
-    command: "docker-compose run --rm build bin/staging"
+    command: "docker-compose run --rm build bin/only-for-version-releases bin/deploy-docs"
     branches: master
-    agents:
-      queue: elastic
-
-  - wait
 
   - name: ":shipit: Deploy NPM Package"
-    command: "docker-compose run --rm build bin/deploy"
+    command: "docker-compose run --rm build bin/only-for-version-releases bin/deploy"
     branches: master
-    agents:
-      queue: elastic
 
   - wait
 
   - name: ":loudspeaker: Announce It"
-    command: "./bin/announce"
+    command: "bin/only-for-version-releases ./bin/announce"
     branches: master
-    agents:
-      queue: elastic

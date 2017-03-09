@@ -5,14 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "styleguidist server",
-    "test:lint": "standard",
-    "test:unit": "mocha source/**/**/__tests__/*.js",
-    "test": "npm run test:lint && npm run test:unit",
+    "lint": "standard",
+    "test": "mocha source/**/**/__tests__/*.js",
     "build": "babel source -d dist",
     "build:styleguide": "styleguidist build",
     "deploy:styleguide": "npm run build:styleguide && gh-pages -d styleguide",
-    "deploy:prepare": "gulp npm-prepare",
-    "prepublish": "npm run test && npm run build && npm run deploy:prepare"
+    "deploy:prepare": "gulp npm-prepare"
   },
   "repository": {
     "type": "git",

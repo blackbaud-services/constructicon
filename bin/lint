@@ -3,4 +3,4 @@
 set -eu pipefail
 
 yarn
-yarn test
+yarn lint

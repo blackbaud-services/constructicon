@@ -1,5 +1,5 @@
 build:
-  image: node:6.9.1
+  image: arhea/yarn:6
   working_dir: /code
   volumes:
     - .:/code
