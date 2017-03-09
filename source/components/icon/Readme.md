@@ -47,6 +47,10 @@
 ```
 
 ```
+<Icon name='dollar' />
+```
+
+```
 <Icon name='heart' />
 ```
 
@@ -84,6 +88,10 @@
 
 ```
 <Icon name='star' />
+```
+
+```
+<Icon name='target' />
 ```
 
 ```
