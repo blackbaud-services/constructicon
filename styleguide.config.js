@@ -50,6 +50,8 @@ module.exports = {
       components: () => ([
         path.resolve(__dirname, 'source/components/leaderboard', 'index.js'),
         path.resolve(__dirname, 'source/components/leaderboard-item', 'index.js'),
+        path.resolve(__dirname, 'source/components/metric', 'index.js'),
+        path.resolve(__dirname, 'source/components/metric-group', 'index.js'),
         path.resolve(__dirname, 'source/components/search-results', 'index.js'),
         path.resolve(__dirname, 'source/components/search-result', 'index.js')
       ])
