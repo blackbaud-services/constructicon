@@ -38,7 +38,10 @@ Metric.propTypes = {
   /**
   * The actual amount
   */
-  amount: PropTypes.string.isRequired,
+  amount: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]).isRequired,
 
   /**
   * The icon to display above the metric
