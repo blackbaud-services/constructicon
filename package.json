@@ -39,8 +39,6 @@
     "cxsync": "^1.0.9",
     "lodash": "^4.17.4",
     "minimal.css": "^1.0.0",
-    "react": "^0.14.8",
-    "react-dom": "0.14.8",
     "react-modal": "^1.6.5",
     "react-slick": "^0.14.5"
   },
@@ -60,9 +58,15 @@
     "gulp-replace": "^0.5.4",
     "jsdom": "^9.9.1",
     "mocha": "^2.5.3",
-    "react-addons-test-utils": "0.14.8",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
     "react-styleguidist": "^4.5.1",
     "standard": "^9.0.0",
     "webpack": "^1.14.0"
+  },
+  "peerDependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
