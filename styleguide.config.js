@@ -33,6 +33,8 @@ module.exports = {
       name: 'Forms',
       components: () => ([
         path.resolve(__dirname, 'source/components/filter', 'index.js'),
+        path.resolve(__dirname, 'source/components/input-field', 'index.js'),
+        path.resolve(__dirname, 'source/components/input-select', 'index.js'),
         path.resolve(__dirname, 'source/components/search-form', 'index.js')
       ])
     },
