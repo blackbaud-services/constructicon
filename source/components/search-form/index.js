@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Button from '../button'
 import { withStyles } from '../../lib/css'
-import toggle from '../../lib/toggle'
+import withToggle from '../with-toggle'
 import compose from '../../lib/compose'
 import styles from './styles'
 
@@ -152,6 +152,6 @@ SearchForm.defaultProps = {
 }
 
 export default compose(
-  toggle,
+  withToggle,
   withStyles(styles)
 )(SearchForm)

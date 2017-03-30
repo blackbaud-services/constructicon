@@ -30,9 +30,9 @@ export default (props, traits) => {
       color: colors.dark,
       border: `1px solid ${colors.shade}`,
       borderRadius: rhythm(radiuses.small),
-      borderColor: props.invalid && colors.danger,
+      borderColor: props.error && colors.danger,
       ':focus': {
-        borderColor: props.invalid ? colors.danger : colors.primary
+        borderColor: props.error ? colors.danger : colors.primary
       }
     }
   }

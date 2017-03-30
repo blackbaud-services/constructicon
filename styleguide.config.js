@@ -63,6 +63,19 @@ module.exports = {
       components: () => ([
         path.resolve(__dirname, 'source/components/traits-provider', 'index.js')
       ])
+    },
+    {
+      name: 'Higher Order Components',
+      sections: [
+        {
+          name: 'withForm',
+          content: 'source/components/with-form/Readme.md'
+        },
+        {
+          name: 'withToggle',
+          content: 'source/components/with-toggle/Readme.md'
+        }
+      ]
     }
   ],
   updateWebpackConfig: (webpackConfig) => {

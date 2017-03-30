@@ -43,12 +43,12 @@ class ModalExample extends React.Component {
 
 **Example Using Toggle**
 
-Example using the toggle higher order component
+Example using the withToggle higher order component
 
 ```
-const toggle = require('../../lib/toggle').default;
+const withToggle = require('../with-toggle').default;
 
-const Component = toggle((props) => (
+const ModalExample = withToggle((props) => (
   <div>
     <Button onClick={props.onToggleOn}>Open Modal</Button>
     <Modal isOpen={props.toggled} onRequestClose={props.onToggleOff} contentLabel='Label'>
@@ -60,8 +60,6 @@ const Component = toggle((props) => (
   </div>
 ));
 
-const ModalExample = toggle(Component);
-
 <ModalExample />
 ```
 
@@ -70,7 +68,7 @@ const ModalExample = toggle(Component);
 Contains some custom spacing, styles and close button
 
 ```
-const toggle = require('../../lib/toggle').default;
+const withToggle = require('../with-toggle').default;
 
 const styles = {
   content: {
@@ -78,7 +76,7 @@ const styles = {
   }
 }
 
-const Component = toggle((props) => (
+const ModalExample = withToggle((props) => (
   <div>
     <Button onClick={props.onToggleOn}>Open Modal</Button>
     <Modal
@@ -119,8 +117,6 @@ const Component = toggle((props) => (
     </Modal>
   </div>
 ));
-
-const ModalExample = toggle(Component);
 
 <ModalExample />
 ```
