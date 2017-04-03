@@ -3766,9 +3766,9 @@ mimeparse@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/mimeparse/-/mimeparse-0.1.4.tgz#dafb02752370fd226093ae3152c271af01ac254a"
 
-minimal.css@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/minimal.css/-/minimal.css-1.0.0.tgz#074db85626ebed501cd00bb67a83e235368ce31b"
+minimal.css@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/minimal.css/-/minimal.css-1.0.1.tgz#89bf8dd56b212561691dde2761f712bde657ee9c"
 
 minimatch@0.3:
   version "0.3.0"

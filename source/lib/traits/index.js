@@ -26,7 +26,9 @@ export const colors = {
   twitter: '#55acee',
   instagram: '#e4405f',
   youtube: '#cd201f',
-  google: '#dd4b39'
+  google: '#dd4b39',
+  danger: '#d9534f',
+  success: '#5cb85c'
 }
 
 /**
