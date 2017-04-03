@@ -35,6 +35,14 @@ Container.propTypes = {
   width: PropTypes.number,
 
   /**
+  * The internal padding to be applied
+  */
+  spacing: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number
+  ]),
+
+  /**
   * Sets the min-height to the height of the viewport
   */
   fullHeight: PropTypes.bool,
@@ -68,6 +76,7 @@ Container.propTypes = {
 Container.defaultProps = {
   tag: 'article',
   width: 40,
+  spacing: 0,
   styles: {}
 }
 
