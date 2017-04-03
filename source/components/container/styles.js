@@ -1,5 +1,6 @@
 export default (props, traits) => {
   const {
+    calculateSpacing,
     colors,
     rhythm,
     shadows,
@@ -13,6 +14,7 @@ export default (props, traits) => {
     outerColor,
     styles,
     width,
+    spacing,
     fullHeight
   } = props
 
@@ -21,6 +23,7 @@ export default (props, traits) => {
       maxWidth: rhythm(width, 'em'),
       minHeight: fullHeight && '100vh',
       margin: '0 auto',
+      ...calculateSpacing(spacing),
       backgroundColor: background && colors[background],
       color: foreground && colors[foreground],
       ...treatments.body,
