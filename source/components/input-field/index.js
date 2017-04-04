@@ -14,10 +14,12 @@ const InputField = ({
   ...props
 }) => (
   <div className={classNames.root}>
-    <label className={classNames.label}>
-      {label}
-      <span className={classNames.required}>*</span>
-    </label>
+    {label && (
+      <label className={classNames.label}>
+        {label}
+        {required && <span className={classNames.required}>*</span>}
+      </label>
+    )}
     <input
       type={type}
       name={name}
@@ -35,7 +37,10 @@ InputField.propTypes = {
   /**
   * The label for the field
   */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]),
 
   /**
   * The name of the field
@@ -58,7 +63,7 @@ InputField.propTypes = {
   /**
   * The type of field
   */
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['color', 'date', 'email', 'hidden', 'month', 'number', 'password', 'range', 'search', 'tel', 'time', 'url', 'week']),
 
   /**
   * The placeholder for the field

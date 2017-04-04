@@ -26,6 +26,8 @@ export default (props, traits) => {
       display: 'block',
       width: '100%',
       padding: rhythm(0.33, 'em'),
+      backgroundColor: colors.light,
+      color: colors.dark,
       border: `1px solid ${colors.shade}`,
       borderRadius: rhythm(radiuses.small),
       borderColor: props.invalid && colors.danger,
