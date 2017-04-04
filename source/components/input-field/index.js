@@ -63,7 +63,7 @@ InputField.propTypes = {
   /**
   * The type of field
   */
-  type: PropTypes.oneOf(['color', 'date', 'email', 'hidden', 'month', 'number', 'password', 'range', 'search', 'tel', 'time', 'url', 'week']),
+  type: PropTypes.oneOf(['color', 'date', 'email', 'hidden', 'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'time', 'url', 'week']),
 
   /**
   * The placeholder for the field
