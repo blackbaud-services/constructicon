@@ -10,7 +10,7 @@ export default (props, traits) => {
 
   const baseStyles = {
     ...treatments.head,
-    fontSize: scale(3),
+    fontSize: scale(props.size),
     marginTop: rhythm(1),
     marginBottom: rhythm(1),
     color: props.color && colors[props.color],

@@ -39,6 +39,11 @@ Heading.propTypes = {
   color: PropTypes.string,
 
   /**
+  * The size of the heading (using the font scale)
+  */
+  size: PropTypes.number,
+
+  /**
   * Custom styles to be added to the element
   */
   styles: PropTypes.object
@@ -46,6 +51,7 @@ Heading.propTypes = {
 
 Heading.defaultProps = {
   tag: 'h2',
+  size: 3,
   styles: {}
 }
 
