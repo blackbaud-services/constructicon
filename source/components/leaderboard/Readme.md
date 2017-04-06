@@ -36,7 +36,7 @@ const leader = {
   href: 'http://google.com',
   image: 'http://placehold.it/250x250',
   name: 'Leader Name',
-  charity: 'Charity Name',
+  charity: 'Charity name that is actually rather long',
   amount: '$1,500'
 };
 

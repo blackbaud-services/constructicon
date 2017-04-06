@@ -51,7 +51,7 @@ export default (props, traits) => {
     },
 
     info: {
-      flex: '0 1 auto',
+      flex: 1,
       minWidth: 0
     },
 
@@ -73,7 +73,7 @@ export default (props, traits) => {
     },
 
     amount: {
-      flex: 1,
+      flex: '0 0 auto',
       paddingLeft: rhythm(0.5),
       paddingRight: rhythm(0.5),
       textAlign: 'right',
