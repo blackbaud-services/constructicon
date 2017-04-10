@@ -1,16 +1,18 @@
 import React, { PropTypes } from 'react'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
+import Button from '../button'
 
 const SearchResult = ({
-  cta,
   image,
   subtitle,
   title,
-  children,
+  url,
+  button,
+  cta,
   classNames
 }) => (
-  <li className={classNames.wrapper}>
+  <li className={classNames.root}>
     {image && (
       <div>
         <img src={image} className={classNames.avatar} />
@@ -21,17 +23,17 @@ const SearchResult = ({
       {subtitle && <h6 className={classNames.subtitle}>{subtitle}</h6>}
     </div>
     <div>
-      {children}
+      <Button
+        tag='a'
+        href={url}
+        children={cta}
+        {...button}
+      />
     </div>
   </li>
 )
 
 SearchResult.propTypes = {
-  /**
-  * The label for the CTA Button
-  */
-  cta: PropTypes.string,
-
   /**
   * Image URL
   */
@@ -48,9 +50,23 @@ SearchResult.propTypes = {
   subtitle: PropTypes.string,
 
   /**
-  * Placed on the right hand side button area
+  * The URL for the page
   */
-  children: PropTypes.element
+  url: PropTypes.string,
+
+  /**
+  * Props to be passed into the button
+  */
+  button: PropTypes.object,
+
+  /**
+  * The button text
+  */
+  cta: PropTypes.string
+}
+
+SearchResult.defaultProps = {
+  cta: 'Support'
 }
 
 export default withStyles(styles)(SearchResult)

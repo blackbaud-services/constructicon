@@ -7,9 +7,9 @@ describe('SearchResult', () => {
       <SearchResult
         title='Name'
         subtitle='Charity'
-        image='http://placehold.it/250x250'>
-        <Button>Support</Button>
-      </SearchResult>
+        image='http://placehold.it/250x250'
+        cta='Support'
+      />
     )
     const item = wrapper.find('SearchResult')
     const image = wrapper.find('img')

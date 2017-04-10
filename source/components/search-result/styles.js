@@ -12,12 +12,11 @@ export default (props, traits) => {
   } = traits
 
   const defaultStyles = {
-    wrapper: {
+    root: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
       flexAlign: 'justify',
-      borderBottom: `1px solid ${colors.shade}`,
 
       '> div': {
         padding: rhythm(0.5)
