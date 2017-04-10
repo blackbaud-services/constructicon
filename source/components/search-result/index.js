@@ -27,6 +27,7 @@ const SearchResult = ({
         tag='a'
         href={url}
         children={cta}
+        target='_blank'
         {...button}
       />
     </div>
