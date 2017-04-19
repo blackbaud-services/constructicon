@@ -16,7 +16,7 @@ ${SLACK_WEBHOOK_URL} \
 -d @/dev/stdin <<JSON
 {
   "text": "Constructicon version ${PACKAGE_VERSION} released :tada:",
-  "channel": "#profs-dev",
+  "channel": "#edh-profs-dev",
   "username": "Constructicon",
   "icon_emoji": ":${SLACK_ANNOUNCE_EMOJI}:"
 }
