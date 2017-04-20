@@ -25,7 +25,7 @@ describe('Modal', () => {
 
   it('should allow us to set the close icon', () => {
     const wrapper = mount(
-      <Modal isOpen={true} closeIcon='Close'>
+      <Modal isOpen={true} closeIcon='Close' contentLabel='Modal'>
         <div className='my-content'>My modal content</div>
       </Modal>
     )

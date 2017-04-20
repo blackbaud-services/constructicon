@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import omit from 'lodash/omit'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
 
@@ -12,26 +13,31 @@ const InputField = ({
   required,
   classNames,
   ...props
-}) => (
-  <div className={classNames.root}>
-    {label && (
-      <label className={classNames.label}>
-        {label}
-        {required && <span className={classNames.required}>*</span>}
-      </label>
-    )}
-    <input
-      type={type}
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
-      className={classNames.field}
-      required
-      {...props}
-    />
-  </div>
-)
+}) => {
+  const propsBlacklist = ['label', 'styles']
+  const allowedProps = omit(props, propsBlacklist)
+
+  return (
+    <div className={classNames.root}>
+      {label && (
+        <label className={classNames.label}>
+          {label}
+          {required && <span className={classNames.required}>*</span>}
+        </label>
+      )}
+      <input
+        type={type}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        onChange={(e) => onChange(e.target.value)}
+        className={classNames.field}
+        required
+        {...allowedProps}
+      />
+    </div>
+  )
+}
 
 InputField.propTypes = {
   /**

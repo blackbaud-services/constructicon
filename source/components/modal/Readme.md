@@ -27,7 +27,7 @@ class ModalExample extends React.Component {
       return (
         <div>
           <Button onClick={this.openModal}>Open Modal</Button>
-          <Modal isOpen={this.state.open} onRequestClose={this.closeModal}>
+          <Modal isOpen={this.state.open} onRequestClose={this.closeModal} contentLabel='Label'>
             <RichText>
               <h1>Everydayhero</h1>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus.</p>
@@ -51,7 +51,7 @@ const toggle = require('../../lib/toggle').default;
 const Component = toggle((props) => (
   <div>
     <Button onClick={props.onToggleOn}>Open Modal</Button>
-    <Modal isOpen={props.toggled} onRequestClose={props.onToggleOff}>
+    <Modal isOpen={props.toggled} onRequestClose={props.onToggleOff} contentLabel='Label'>
       <RichText>
         <h1>Everydayhero</h1>
         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus.</p>
@@ -86,7 +86,8 @@ const Component = toggle((props) => (
       onRequestClose={props.onToggleOff}
       spacing={0}
       closeIcon={false}
-      styles={styles}>
+      styles={styles}
+      contentLabel='Modal'>
       <div>
         <Section background='primary' foreground='light'>
           <h1>Everydayhero</h1>
