@@ -4692,9 +4692,9 @@ react-responsive-mixin@^0.4.0:
     enquire.js "^2.1.1"
     json2mq "^0.2.0"
 
-react-slick@^0.14.5:
-  version "0.14.6"
-  resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.14.6.tgz#dd0439b2434bafd43ed50f93aa483d104ff6b1e2"
+react-slick@0.14.4:
+  version "0.14.4"
+  resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.14.4.tgz#50562de13c4fc99629fabfdeddfe9f53c7ac90e9"
   dependencies:
     classnames "^2.2.5"
     json2mq "^0.2.0"

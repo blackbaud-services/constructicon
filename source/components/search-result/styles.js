@@ -6,7 +6,6 @@ export default (props, traits) => {
   } = props
 
   const {
-    colors,
     rhythm,
     scale
   } = traits
