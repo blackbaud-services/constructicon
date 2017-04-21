@@ -57,6 +57,7 @@ class SearchForm extends Component {
       children,
       placeholder,
       title,
+      expanded,
       toggled,
       classNames
     } = this.props
@@ -77,8 +78,8 @@ class SearchForm extends Component {
           </label>
           <div className={classNames.cta}>
             <Button
-              onClick={toggled ? this.closeForm : this.showForm}
-              children={toggled ? 'Close' : buttonText}
+              onClick={expanded ? this.onChange() : toggled ? this.closeForm : this.showForm}
+              children={expanded ? buttonText : toggled ? 'Close' : buttonText}
               {...button}
             />
           </div>
@@ -110,9 +111,14 @@ SearchForm.propTypes = {
   placeholder: PropTypes.string,
 
   /**
-  * Custom styles for the component
+  * The button text
   */
-  styles: PropTypes.object,
+  buttonText: PropTypes.string,
+
+  /**
+  * Disable toggle functionality (best for modals)
+  */
+  expanded: PropTypes.bool,
 
   /**
   * Whether or note to debounce the onChange callback
@@ -120,9 +126,9 @@ SearchForm.propTypes = {
   debounce: PropTypes.bool,
 
   /**
-  * The button text
+  * Custom styles for the component
   */
-  buttonText: PropTypes.string,
+  styles: PropTypes.object,
 
   /**
   * Props to be passed to the Button component
@@ -138,9 +144,10 @@ SearchForm.propTypes = {
 SearchForm.defaultProps = {
   title: 'Looking for someone?',
   placeholder: 'Find a fundraiser',
-  onChange: () => {},
   buttonText: 'Search',
-  debounce: true
+  expanded: false,
+  debounce: true,
+  onChange: () => {}
 }
 
 export default compose(
