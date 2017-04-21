@@ -10,8 +10,11 @@ export default (props, traits) => {
 
   const {
     toggled,
+    expanded,
     styles = {}
   } = props
+
+  const open = expanded || toggled
 
   const defaultStyles = {
     form: {
@@ -40,7 +43,7 @@ export default (props, traits) => {
       fontSize: scale(2),
       opacity: 0,
       transition: transitions.easeOut,
-      ...toggled && {
+      ...open && {
         width: '100%',
         opacity: 1
       }
@@ -51,7 +54,7 @@ export default (props, traits) => {
       fontSize: scale(2),
       whiteSpace: 'nowrap',
       transition: transitions.easeOut,
-      ...toggled && {
+      ...open && {
         transform: 'translateY(0)',
         fontSize: scale(-1),
         marginTop: '0.6rem'

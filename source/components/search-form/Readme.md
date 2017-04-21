@@ -3,9 +3,13 @@
 **Standard Use**
 
 ```
-<SearchForm
-  onChange={(val) => alert(val)}
-/>
+<SearchForm onChange={(val) => alert(val)} />
+```
+
+**Expanded**
+
+```
+<SearchForm expanded onChange={(val) => alert(val)} />
 ```
 
 **With Search Results**

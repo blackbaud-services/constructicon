@@ -1,19 +1,23 @@
 import SearchForm from '..'
 
 describe('SearchForm', () => {
-  it('should render a simple search form', () => {
+  it('renders a simple search form', () => {
     const wrapper = mount(<SearchForm onChange={() => console.log('test')} />)
     const input = wrapper.find('input')
     expect(input.length).to.eql(1)
   })
 
-  it('should set the placeholder', () => {
+  it('sets the placeholder', () => {
     const wrapper = mount(<SearchForm placeholder='My test placeholder' onChange={() => console.log('test')} />)
     const input = wrapper.find('input')
     expect(input.prop('placeholder')).to.eql('My test placeholder')
   })
 
-  it('should fire the onChange handler', (done) => {
+  it('shows an expanded form', () => {
+    // const wrapper = mount(<SearchForm expanded />)
+  })
+
+  it('fires the onChange handler', (done) => {
     let called
     const wrapper = mount(<SearchForm onChange={() => called = true} />)
     const input = wrapper.find('input')
