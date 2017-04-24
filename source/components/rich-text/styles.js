@@ -63,6 +63,10 @@ export default (props, traits) => {
       maxWidth: '100%'
     },
 
+    iframe: {
+      paddingBottom: rhythm(2)
+    },
+
     strong: {
       fontWeight: 700
     },
