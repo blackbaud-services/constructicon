@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { withStyles } from '../../lib/css'
 import options from '../../lib/traits/options'
 import styles from './styles'
@@ -75,7 +76,6 @@ Container.propTypes = {
 
 Container.defaultProps = {
   tag: 'article',
-  width: 40,
   spacing: 0,
   styles: {}
 }

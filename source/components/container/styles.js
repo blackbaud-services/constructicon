@@ -20,7 +20,7 @@ export default (props, traits) => {
 
   return {
     root: {
-      maxWidth: rhythm(width, 'em'),
+      maxWidth: width ? rhythm(width) : treatments.container.maxWidth,
       minHeight: fullHeight && '100vh',
       margin: '0 auto',
       ...calculateSpacing(spacing),

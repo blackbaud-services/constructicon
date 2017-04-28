@@ -22,6 +22,7 @@ export const colors = {
   tertiary: '#585858',
   shade: 'rgba(0, 0, 0, 0.125)',
   tint: 'rgba(255, 255, 255, 0.25)',
+  transparent: 'transparent',
   facebook: '#3b5999',
   twitter: '#55acee',
   instagram: '#e4405f',
@@ -55,6 +56,9 @@ export const treatments = {
     fontFamily: fonts.head,
     textTransform: 'uppercase',
     fontWeight: 700
+  },
+  container: {
+    maxWidth: rhythm(40)
   }
 }
 

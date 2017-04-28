@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 import Icon from '../icon'
 import { withStyles } from '../../lib/css'
