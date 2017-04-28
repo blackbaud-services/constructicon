@@ -75,7 +75,6 @@ Container.propTypes = {
 
 Container.defaultProps = {
   tag: 'article',
-  width: 40,
   spacing: 0,
   styles: {}
 }
