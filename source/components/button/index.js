@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import omit from 'lodash/omit'
 import { withStyles } from '../../lib/css'
 import options from '../../lib/traits/options'
@@ -10,7 +11,7 @@ const Button = ({
   classNames,
   ...props
 }) => {
-  const propsBlacklist = ['children', 'tag', 'background', 'foreground', 'borderColor', 'borderWidth', 'font', 'size', 'spacing', 'radius', 'shadow', 'effect', 'block', 'styles']
+  const propsBlacklist = ['children', 'background', 'foreground', 'borderColor', 'borderWidth', 'font', 'size', 'spacing', 'radius', 'shadow', 'effect', 'block', 'styles']
   const allowedProps = omit(props, propsBlacklist)
 
   return (

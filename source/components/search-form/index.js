@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Button from '../button'
 import { withStyles } from '../../lib/css'
 import toggle from '../../lib/toggle'
