@@ -8,7 +8,7 @@ describe('Container', () => {
     const container = wrapper.find('article')
     const rule = utils.findRule(css.rules, container.props().className)
     expect(container.text()).to.eql('Content here')
-    expect(rule.css).to.contain(`max-width:60em`)
+    expect(rule.css).to.contain(`max-width:60rem`)
   })
 
   it('should allow us to specify the tag', () => {
@@ -21,7 +21,7 @@ describe('Container', () => {
     const wrapper = mount(<Container width={30}>Content here</Container>)
     const container = wrapper.find('article')
     const rule = utils.findRule(css.rules, container.props().className)
-    expect(rule.css).to.contain(`max-width:45em`)
+    expect(rule.css).to.contain(`max-width:45rem`)
   })
 
   it('should allow us to set the shadow', () => {
