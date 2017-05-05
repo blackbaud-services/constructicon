@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import omit from 'lodash/omit'
+import pick from 'lodash/pick'
 import Slider from 'react-slick'
 import compose from '../../lib/compose'
 import { withStyles } from '../../lib/css'
@@ -13,7 +13,7 @@ const Carousel = ({
   classNames,
   ...props
 }) => {
-  const propsBlacklist = [
+  const propsWhitelist = [
     'children', 'styles', 'accessibility', 'adaptiveHeight', 'afterChange',
     'arrows', 'autoplay', 'autoplaySpeed', 'beforeChange', 'centerMode', 'dots',
     'dotsClass', 'draggable', 'easing', 'fade', 'focusOnSelect', 'infinite',
@@ -22,7 +22,7 @@ const Carousel = ({
     'swipeToSlide', 'touchMove', 'touchThreshold', 'useCSS', 'variableWidth', 'vertical'
   ]
 
-  const allowedProps = omit(props, propsBlacklist)
+  const allowedProps = pick(props, propsWhitelist)
 
   return (
     <div className={classNames.carousel}>
