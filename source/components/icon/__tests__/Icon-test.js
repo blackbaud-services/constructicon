@@ -60,4 +60,10 @@ describe('Icon', () => {
     const wrapper = mount(<Icon paths={paths} />)
     expect(wrapper.find('path').node.getAttribute('d')).to.eql(iconPath)
   })
+
+  it('should set a custom viewBox size', () => {
+    const wrapper = mount(<Icon name='facebook' viewBox={48} />)
+    const attr = wrapper.find('svg').prop('viewBox')
+    expect(attr).to.contain('0 0 48 48')
+  })
 })
