@@ -7,12 +7,13 @@ import * as icons from './icons'
 const Icon = ({
   name,
   paths,
+  viewBox,
   classNames
 }) => {
   const iconPaths = name ? icons[name] : paths
 
   return (
-    <svg className={classNames.root} viewBox='0 0 32 32'>
+    <svg className={classNames.root} viewBox={`0 0 ${viewBox} ${viewBox}`}>
       {iconPaths && iconPaths.map((pathProps, i) => (
         <path {...pathProps} key={i} />
       ))}
@@ -27,9 +28,9 @@ Icon.propTypes = {
   name: PropTypes.string,
 
   /**
-  * The paths of a custom icon
+  * The color of the icon
   */
-  paths: PropTypes.array,
+  color: PropTypes.string,
 
   /**
   * The size of the icon in ems
@@ -37,9 +38,14 @@ Icon.propTypes = {
   size: PropTypes.number,
 
   /**
-  * The color of the icon
+  * The paths of a custom icon
   */
-  color: PropTypes.string,
+  paths: PropTypes.array,
+
+  /**
+  * Rotate the icon a certain number of degrees
+  */
+  rotate: PropTypes.number,
 
   /**
   * Make the icon spin
@@ -47,9 +53,9 @@ Icon.propTypes = {
   spin: PropTypes.bool,
 
   /**
-  * Rotate the icon a certain number of degrees
+  * Custom viewbox sizing
   */
-  rotate: PropTypes.number,
+  viewBox: PropTypes.number,
 
   /**
   * Add custom styles to the icon
@@ -58,12 +64,13 @@ Icon.propTypes = {
 }
 
 Icon.defaultProps = {
-  paths: [],
-  size: 1,
   color: 'currentColor',
-  spin: false,
+  paths: [],
   rotate: 0,
-  styles: {}
+  size: 1,
+  spin: false,
+  styles: {},
+  viewBox: 32
 }
 
 export default withStyles(styles)(Icon)
