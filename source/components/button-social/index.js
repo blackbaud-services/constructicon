@@ -12,12 +12,14 @@ import openShareDialog from './openShareDialog'
 const ButtonSocial = ({
   share,
   type,
+  url,
+  title,
   ...props
 }) => (
   <Button
     background={type}
     tag={share ? 'button' : 'a'}
-    onClick={share && openShareDialog(type)}
+    onClick={share && openShareDialog({ type, url, title })}
     {...props}>
     <Icon name={type} />
   </Button>

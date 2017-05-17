@@ -32,7 +32,13 @@ const openPopup = (url, config) => {
   window.open(url, 'shareWindow', config)
 }
 
-export default (type) => () => {
+export default (options) => () => {
+  const {
+    type,
+    url = window.location.href,
+    title = document.title
+  } = options
+
   const service = services[type]
 
   if (service) {
@@ -43,11 +49,11 @@ export default (type) => () => {
       height: 320
     }
 
-    const url = service({
-      url: window.location.href,
-      title: document.title
+    const shareUrl = service({
+      url,
+      title
     })
 
-    openPopup(url, popupConfig)
+    openPopup(shareUrl, popupConfig)
   }
 }
