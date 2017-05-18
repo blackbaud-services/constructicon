@@ -32,7 +32,8 @@ Button.propTypes = {
   */
   tag: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.element
+    PropTypes.element,
+    PropTypes.func
   ]),
 
   /**
