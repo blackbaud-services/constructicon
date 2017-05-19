@@ -9,11 +9,11 @@ export default (props, traits) => {
   } = props
 
   const flexPack = {
-    ['flex-start']: 'start',
-    ['flex-end']: 'end',
-    ['space-between']: 'justify',
-    ['space-around']: 'distribute',
-    ['center']: 'center'
+    'flex-start': 'start',
+    'flex-end': 'end',
+    'space-between': 'justify',
+    'space-around': 'distribute',
+    'center': 'center'
   }
 
   return {
