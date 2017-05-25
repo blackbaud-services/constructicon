@@ -51,6 +51,10 @@
 ```
 
 ```
+<Icon name='dropdown' />
+```
+
+```
 <Icon name='heart' />
 ```
 
@@ -76,6 +80,10 @@
 
 ```
 <Icon name='pin' />
+```
+
+```
+<Icon name='play' />
 ```
 
 ```
