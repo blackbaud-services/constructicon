@@ -19,6 +19,7 @@ export default (props, traits) => {
   return {
     root: {
       display: 'flex',
+      width: '100%',
       flexWrap: 'wrap',
       alignItems: props.align,
       justifyContent: props.justify,
