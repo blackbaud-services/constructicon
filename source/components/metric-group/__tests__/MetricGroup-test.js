@@ -36,7 +36,7 @@ describe('MetricGroup', () => {
         />
       </MetricGroup>
     )
-    const rule = utils.findRule(css(), wrapper.find('MetricGroup').prop('classNames').root)
+    const rule = utils.findRule(css.rules, wrapper.find('MetricGroup').prop('classNames').root)
     expect(rule.css).to.contain(`opacity:0.5`)
   })
 })

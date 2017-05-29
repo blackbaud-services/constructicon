@@ -11,8 +11,8 @@ describe('Metric', () => {
       />
     )
     const metric = wrapper.find('Metric')
-    const labelClass = metric.prop('classNames').label.replace(/ /g, '.')
-    const amountClass = metric.prop('classNames').amount.replace(/ /g, '.')
+    const labelClass = metric.prop('classNames').label
+    const amountClass = metric.prop('classNames').amount
     expect(wrapper.find(`.${labelClass}`).text()).to.eql('Supporters')
     expect(wrapper.find(`.${amountClass}`).text()).to.eql('100')
   })

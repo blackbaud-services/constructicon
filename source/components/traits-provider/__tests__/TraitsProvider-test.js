@@ -20,7 +20,7 @@ describe('TraitsProvider', () => {
       </TraitsProvider>
     )
 
-    const rule = utils.findRule(css(), button.props().className)
+    const rule = utils.findRule(css.rules, button.props().className)
     expect(rule.css).to.contain(`background-color:${traits.colors.tertiary}`)
   })
 })

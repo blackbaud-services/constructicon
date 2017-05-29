@@ -22,7 +22,7 @@ describe('Button Group', () => {
         <Button>Button 2</Button>
       </ButtonGroup>
     )
-    const rule = utils.findRule(css(), buttonGroup.props().className)
+    const rule = utils.findRule(css.rules, buttonGroup.props().className)
     expect(rule.css).to.contain(`opacity:0.5`)
   })
 })

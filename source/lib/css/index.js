@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import cxs, {getCss} from 'cxsync'
+import cxs from 'cxsync'
 import * as defaultTraits from '../traits'
 
-export const css = getCss
+export const css = cxs
 
 /**
 * Turns a styles object into an object containing the cxs class name for each key
@@ -11,7 +11,7 @@ export const css = getCss
 export const stylesToClasses = (styles = {}) => (
   Object.keys(styles).reduce((acc, key) => ({
     ...acc,
-    [key]: cxs(styles[key])
+    [key]: css(styles[key])
   }), {})
 )
 
