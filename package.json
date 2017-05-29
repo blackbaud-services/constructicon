@@ -6,7 +6,7 @@
   "scripts": {
     "start": "styleguidist server",
     "lint": "standard",
-    "test": "mocha source/**/**/__tests__/*.js",
+    "test": "NODE_ENV=production mocha source/**/**/__tests__/*.js",
     "build": "babel source -d dist",
     "build:styleguide": "styleguidist build",
     "deploy:styleguide": "npm run build:styleguide && gh-pages -d styleguide",
@@ -36,7 +36,7 @@
     ]
   },
   "dependencies": {
-    "cxsync": "^1.0.9",
+    "cxsync": "^2.2.1",
     "lodash": "^4.17.4",
     "minimal.css": "^1.0.1",
     "react-modal": "^1.7.7",

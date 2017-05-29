@@ -26,12 +26,12 @@ describe('RichText', () => {
       <RichText>'<h1>Heading</h1><h2>Body</h2>'</RichText>
     )
     const className = wrapper.find('RichText').prop('classNames').root
-    expect(utils.findRule(css.rules, `${className} h1`)).to.exist
-    expect(utils.findRule(css.rules, `${className} h2`)).to.exist
-    expect(utils.findRule(css.rules, `${className} p`)).to.exist
-    expect(utils.findRule(css.rules, `${className} ul`)).to.exist
-    expect(utils.findRule(css.rules, `${className} ol`)).to.exist
-    expect(utils.findRule(css.rules, `${className} blockquote`)).to.exist
+    expect(utils.findRule(css(), `${className} h1`)).to.exist
+    expect(utils.findRule(css(), `${className} h2`)).to.exist
+    expect(utils.findRule(css(), `${className} p`)).to.exist
+    expect(utils.findRule(css(), `${className} ul`)).to.exist
+    expect(utils.findRule(css(), `${className} ol`)).to.exist
+    expect(utils.findRule(css(), `${className} blockquote`)).to.exist
   })
 
   it('should apply custom styles', () => {
@@ -42,7 +42,7 @@ describe('RichText', () => {
     }
     const wrapper = mount(<RichText styles={styles}>'<h1>Heading</h1><h2>Body</h2>'</RichText>)
     const className = wrapper.find('RichText').prop('classNames').root
-    const rule = utils.findRule(css.rules, `${className} h1`)
+    const rule = utils.findRule(css(), `${className} h1`)
     expect(rule.css).to.contain(`font-size:100px`)
   })
 })

@@ -23,7 +23,7 @@ describe('ProgressBar', () => {
 
   it('should render alt text off screen', () => {
     const progressBar = minimalComponent.find('ProgressBar')
-    const alt = utils.findRule(css.rules, progressBar.prop('classNames').alt)
+    const alt = utils.findRule(css(), progressBar.prop('classNames').alt)
 
     expect(alt.css).to.contain('position:absolute')
     expect(alt.css).to.contain('left:-10000px')
@@ -35,7 +35,7 @@ describe('ProgressBar', () => {
 
   it('should render the fill to the progress width', () => {
     const progressBar = minimalComponent.find('ProgressBar')
-    const rule = utils.findRule(css.rules, progressBar.prop('classNames').fill)
+    const rule = utils.findRule(css(), progressBar.prop('classNames').fill)
     expect(rule.css).to.contain('width:50%')
   })
 
@@ -51,8 +51,8 @@ describe('ProgressBar', () => {
     )
 
     const progressBar = wrapper.find('ProgressBar')
-    const fill = utils.findRule(css.rules, progressBar.prop('classNames').fill)
-    const background = utils.findRule(css.rules, progressBar.prop('classNames').background)
+    const fill = utils.findRule(css(), progressBar.prop('classNames').fill)
+    const background = utils.findRule(css(), progressBar.prop('classNames').background)
 
     expect(fill.css).to.contain(`background:${colors['dark']}`)
     expect(fill.css).to.contain(`border-radius:${radiuses['none']}`)
@@ -77,8 +77,8 @@ describe('ProgressBar', () => {
     )
 
     const progressBar = wrapper.find('ProgressBar')
-    const fill = utils.findRule(css.rules, progressBar.prop('classNames').fill)
-    const background = utils.findRule(css.rules, progressBar.prop('classNames').background)
+    const fill = utils.findRule(css(), progressBar.prop('classNames').fill)
+    const background = utils.findRule(css(), progressBar.prop('classNames').background)
 
     expect(fill.css).to.contain('background:#123456')
     expect(background.css).to.contain('background:#654321')
