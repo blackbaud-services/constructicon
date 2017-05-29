@@ -19,7 +19,7 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').body)
+    const rule = utils.findRule(css(), accordion.prop('classNames').body)
     expect(rule.css).to.contain(`display:none`)
   })
 
@@ -30,7 +30,7 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').body)
+    const rule = utils.findRule(css(), accordion.prop('classNames').body)
     expect(rule.css).to.contain(`display:block`)
   })
 
@@ -41,10 +41,10 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const headerClass = accordion.prop('classNames').head
+    const headerClass = accordion.prop('classNames').head.replace(/ /g, '.')
     wrapper.find(`.${headerClass}`).simulate('click')
 
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').body)
+    const rule = utils.findRule(css(), accordion.prop('classNames').body)
     expect(rule.css).to.contain(`display:block`)
   })
 
@@ -55,10 +55,10 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const headerClass = accordion.prop('classNames').head
+    const headerClass = accordion.prop('classNames').head.replace(/ /g, '.')
     wrapper.find(`.${headerClass}`).simulate('click')
 
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').body)
+    const rule = utils.findRule(css(), accordion.prop('classNames').body)
     expect(rule.css).to.contain(`display:none`)
   })
 
@@ -69,7 +69,7 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').root)
+    const rule = utils.findRule(css(), accordion.prop('classNames').root)
     expect(rule.css).to.contain(`border-left:2px solid ${colors.secondary}`)
   })
 
@@ -80,7 +80,7 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').root)
+    const rule = utils.findRule(css(), accordion.prop('classNames').root)
     expect(rule.css).to.not.contain('border-left')
   })
 })

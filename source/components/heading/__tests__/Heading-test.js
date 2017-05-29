@@ -15,7 +15,7 @@ describe('Heading', () => {
     }
     const wrapper = mount(<Heading styles={styles}>'Informative Section Heading'</Heading>)
     const className = wrapper.find('Heading').prop('classNames').root
-    const rule = utils.findRule(css.rules, `${className}`)
+    const rule = utils.findRule(css(), `${className}`)
     expect(rule.css).to.contain(`font-size:100px`)
   })
 
