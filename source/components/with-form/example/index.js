@@ -1,6 +1,6 @@
 import React from 'react'
 import withForm from '..'
-import Button from '../../button'
+import Form from '../../form'
 import InputField from '../../input-field'
 import validators from '../../../lib/validators'
 
@@ -13,11 +13,14 @@ const Login = ({ form }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form
+      submit='Submit'
+      isDisabled={form.invalid}
+      onSubmit={handleSubmit}
+      noValidate>
       <InputField {...form.fields.email} />
       <InputField {...form.fields.password} />
-      <Button type='submit'>Submit</Button>
-    </form>
+    </Form>
   )
 }
 
