@@ -17,18 +17,19 @@ const withForm = (config) => (ComponentToWrap) => (
       }
     }
 
-    initOptions (options) {
+    initOptions (config) {
       const defaults = { fields: {} }
-      const supplied = typeof options === 'function' ? options(this.props) : options
+      const supplied = typeof config === 'function' ? config(this.props) : config
       return merge(defaults, supplied)
     }
 
     initFields (fields) {
       return mapValues(fields, (field, key) => ({
         ...field,
-        value: field.initial,
+        value: field.initial || '',
         name: key,
-        onChange: this.handleChange(key)
+        onChange: this.handleChange(key),
+        onBlur: this.handleChange(key, true)
       }))
     }
 
@@ -66,10 +67,13 @@ const withForm = (config) => (ComponentToWrap) => (
     }
 
     touchFields (fields) {
-      return mapValues(fields, (field) => merge(field, { touched: true }))
+      return mapValues(fields, (field) => merge(field, {
+        touched: true,
+        error: !isEmpty(field.validations)
+      }))
     }
 
-    handleChange (key) {
+    handleChange (key, touched) {
       return (value) => {
         const field = this.state.fields[key]
         const updatedFields = {
@@ -77,7 +81,7 @@ const withForm = (config) => (ComponentToWrap) => (
           [key]: {
             ...field,
             value,
-            touched: true,
+            touched: touched || field.touched,
             dirty: value !== field.initial
           }
         }

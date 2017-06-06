@@ -11,11 +11,14 @@ const InputSelect = ({
   options = [],
   placeholder,
   onChange,
+  onBlur,
   required,
+  error,
+  validations,
   classNames,
   ...props
 }) => {
-  const propsBlacklist = ['label', 'styles', 'options']
+  const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
   const allowedProps = omit(props, propsBlacklist)
 
   return (
@@ -28,7 +31,8 @@ const InputSelect = ({
         name={name}
         value={value}
         placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange && onChange(e.target.value)}
+        onBlur={(e) => onBlur && onBlur(e.target.value)}
         className={classNames.field}
         required
         {...allowedProps}>
@@ -37,6 +41,16 @@ const InputSelect = ({
           <option value={value} key={index}>{label}</option>
         ))}
       </select>
+
+      {error && (
+        <div className={classNames.errors}>
+          {validations.map((error, i) => (
+            <div className={classNames.error} key={i}>
+              {error}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
@@ -53,6 +67,11 @@ InputSelect.propTypes = {
   name: PropTypes.string.isRequired,
 
   /**
+  * The ID of the field
+  */
+  id: PropTypes.string,
+
+  /**
   * The current value
   */
   value: PropTypes.string,
@@ -66,6 +85,11 @@ InputSelect.propTypes = {
   * The change handler that will receive the updated value as it's only param
   */
   onChange: PropTypes.func.isRequired,
+
+  /**
+  * The blur handler that will receive the updated value as it's only param
+  */
+  onBlur: PropTypes.func,
 
   /**
   * The placeholder for the field

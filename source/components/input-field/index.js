@@ -110,6 +110,11 @@ InputField.propTypes = {
   onChange: PropTypes.func.isRequired,
 
   /**
+  * The blur handler that will receive the updated value as it's only param
+  */
+  onBlur: PropTypes.func,
+
+  /**
   * The type of field
   */
   type: PropTypes.oneOf(['color', 'date', 'email', 'hidden', 'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'time', 'url', 'week']),

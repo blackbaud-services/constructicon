@@ -2,6 +2,7 @@ import React from 'react'
 import withForm from '..'
 import Button from '../../button'
 import InputField from '../../input-field'
+import validators from '../../../lib/validators'
 
 const Login = ({ form }) => {
   const handleSubmit = (e) => {

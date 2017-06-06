@@ -62,6 +62,7 @@ describe('withForm', () => {
     expect(initialProps.fields.name.error).to.be.undefined
 
     initialProps.fields.name.onChange('')
+    initialProps.fields.name.onBlur('')
     const changedProps = form.prop('form')
     expect(changedProps.fields.name.error).to.be.true
   })

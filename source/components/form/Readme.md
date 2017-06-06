@@ -4,7 +4,7 @@
 
 Pass an onSubmit callback to be notified of changes
 
-```
+```javascript
 initialState = {
   email: '',
   password: '',
