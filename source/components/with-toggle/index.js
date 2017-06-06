@@ -1,7 +1,7 @@
 import React from 'react'
 
-const toggle = (Component) => {
-  class withToggle extends React.Component {
+const withToggle = (Component) => {
+  class toggle extends React.Component {
     constructor (props) {
       super(props)
       this.state = { toggled: props.toggled }
@@ -35,7 +35,7 @@ const toggle = (Component) => {
     }
   }
 
-  return withToggle
+  return toggle
 }
 
-export default toggle
+export default withToggle

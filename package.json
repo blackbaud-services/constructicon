@@ -40,7 +40,7 @@
     "lodash": "^4.17.4",
     "minimal.css": "^1.0.1",
     "react-modal": "^1.7.7",
-    "react-slick": "0.14.4"
+    "react-slick": "0.14.11"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
@@ -62,8 +62,8 @@
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-styleguidist": "^4.5.1",
-    "standard": "^9.0.0",
+    "react-styleguidist": "^4.6.3",
+    "standard": "^10.0.2",
     "webpack": "^1.14.0"
   },
   "peerDependencies": {

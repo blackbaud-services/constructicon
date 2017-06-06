@@ -1,0 +1,71 @@
+# Examples
+
+**Standard Use**
+
+Pass an onSubmit callback to be notified of changes
+
+```javascript
+initialState = {
+  email: '',
+  password: '',
+  terms: false,
+  loading: false,
+  submitted: false
+};
+
+handleSubmit = (e) => {
+  e.preventDefault()
+
+  setState({ loading: true })
+
+  setTimeout(() => {
+    setState({
+      loading: false,
+      submitted: true
+    })
+  }, 1500)
+};
+
+<div>
+  <Form
+    isDisabled={!state.email || !state.password || !state.terms}
+    isLoading={state.loading}
+    submit={state.submitted ? 'Thanks!' : 'Sign Up'}
+    onSubmit={(e) => handleSubmit(e)}>
+
+    <InputField
+      type='email'
+      label='Email'
+      name='email'
+      value={state.email}
+      onChange={(v) => setState({ email: v })}
+      required
+    />
+
+    <InputField
+      type='password'
+      label='Password'
+      name='password'
+      value={state.password}
+      onChange={(v) => setState({ password: v })}
+      required
+    />
+
+    <InputField
+      type='checkbox'
+      label='I agree to the terms'
+      name='terms'
+      value={state.terms}
+      onChange={(v) => setState({ terms: v })}
+      required
+    />
+  </Form>
+
+  {state.submitted && (
+    <p style={{ padding: '1rem', background: 'whitesmoke' }}>
+      Email: {state.email || 'N/A'} <br />
+      Password: {Array.from(Array(state.password.length)).map((x, i) => { return '*' }).join('')}
+    </p>
+  )}
+</div>
+```

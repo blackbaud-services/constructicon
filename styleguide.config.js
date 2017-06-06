@@ -33,6 +33,7 @@ module.exports = {
       name: 'Forms',
       components: () => ([
         path.resolve(__dirname, 'source/components/filter', 'index.js'),
+        path.resolve(__dirname, 'source/components/form', 'index.js'),
         path.resolve(__dirname, 'source/components/input-field', 'index.js'),
         path.resolve(__dirname, 'source/components/input-select', 'index.js'),
         path.resolve(__dirname, 'source/components/search-form', 'index.js')
@@ -63,6 +64,19 @@ module.exports = {
       components: () => ([
         path.resolve(__dirname, 'source/components/traits-provider', 'index.js')
       ])
+    },
+    {
+      name: 'Higher Order Components',
+      sections: [
+        {
+          name: 'withForm',
+          content: 'source/components/with-form/Readme.md'
+        },
+        {
+          name: 'withToggle',
+          content: 'source/components/with-toggle/Readme.md'
+        }
+      ]
     }
   ],
   updateWebpackConfig: (webpackConfig) => {

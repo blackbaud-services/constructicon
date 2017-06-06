@@ -3,8 +3,9 @@ import merge from 'lodash/merge'
 export default (props, traits) => {
   const {
     colors,
-    radiuses,
-    rhythm
+    rhythm,
+    scale,
+    radiuses
   } = traits
 
   const baseStyles = {
@@ -29,10 +30,17 @@ export default (props, traits) => {
       height: rhythm(1.5),
       border: `1px solid ${colors.shade}`,
       borderRadius: rhythm(radiuses.small),
-      borderColor: props.invalid && colors.danger,
+      borderColor: props.error && colors.danger,
       ':focus': {
-        borderColor: props.invalid ? colors.danger : colors.primary
+        borderColor: props.error ? colors.danger : colors.primary
       }
+    },
+
+    error: {
+      fontSize: scale(-0.75),
+      fontWeight: 700,
+      marginTop: rhythm(0.5),
+      color: colors.danger
     }
   }
 

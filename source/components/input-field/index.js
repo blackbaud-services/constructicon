@@ -4,19 +4,59 @@ import omit from 'lodash/omit'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
 
+const isBoolean = (type) => {
+  return ['radio', 'checkbox'].indexOf(type) > -1
+}
+
 const InputField = ({
+  type = 'text',
+  required,
   label,
+  id,
   name,
   value,
-  type,
-  placeholder,
   onChange,
-  required,
+  onBlur,
   classNames,
+  error,
+  validations,
   ...props
 }) => {
-  const propsBlacklist = ['label', 'styles']
+  const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
   const allowedProps = omit(props, propsBlacklist)
+
+  const renderField = () => {
+    switch (type) {
+      case 'textarea':
+        return (
+          <textarea
+            className={classNames.field}
+            type={type}
+            name={name}
+            id={id}
+            value={value}
+            onChange={(e) => onChange && onChange(e.target.value)}
+            onBlur={(e) => onBlur && onBlur(e.target.value)}
+            required={required}
+            {...allowedProps}
+          />
+        )
+      default:
+        return (
+          <input
+            className={classNames.field}
+            type={type}
+            name={name}
+            id={id}
+            value={value}
+            onChange={(e) => onChange && onChange(isBoolean(type) ? e.target.checked : e.target.value)}
+            onBlur={(e) => onBlur && onBlur(isBoolean(type) ? e.target.checked : e.target.value)}
+            required={required}
+            {...allowedProps}
+          />
+        )
+    }
+  }
 
   return (
     <div className={classNames.root}>
@@ -26,16 +66,18 @@ const InputField = ({
           {required && <span className={classNames.required}>*</span>}
         </label>
       )}
-      <input
-        type={type}
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
-        className={classNames.field}
-        required
-        {...allowedProps}
-      />
+
+      {renderField()}
+
+      {error && (
+        <div className={classNames.errors}>
+          {validations.map((error, i) => (
+            <div className={classNames.error} key={i}>
+              {error}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
@@ -68,6 +110,11 @@ InputField.propTypes = {
   onChange: PropTypes.func.isRequired,
 
   /**
+  * The blur handler that will receive the updated value as it's only param
+  */
+  onBlur: PropTypes.func,
+
+  /**
   * The type of field
   */
   type: PropTypes.oneOf(['color', 'date', 'email', 'hidden', 'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'time', 'url', 'week']),
@@ -76,6 +123,11 @@ InputField.propTypes = {
   * The placeholder for the field
   */
   placeholder: PropTypes.string,
+
+  /**
+  * The ID for the field
+  */
+  id: PropTypes.string,
 
   /**
   * Mark the field as required and displays an asterisk next to the label

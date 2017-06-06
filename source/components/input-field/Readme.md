@@ -4,7 +4,7 @@
 
 Pass an onChange callback to be notified of changes
 
-```
+```javascript
 initialState = { fn: '', ln: '' };
 
 <div>

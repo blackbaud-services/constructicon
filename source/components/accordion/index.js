@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Icon from '../icon'
 import compose from '../../lib/compose'
 import { withStyles } from '../../lib/css'
-import toggle from '../../lib/toggle'
+import withToggle from '../with-toggle'
 import options from '../../lib/traits/options'
 import styles from './styles'
 
@@ -92,6 +92,6 @@ Accordion.defaultProps = {
 }
 
 export default compose(
-  toggle,
+  withToggle,
   withStyles(styles)
 )(Accordion)
