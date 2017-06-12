@@ -3,26 +3,6 @@
 **Available Icons**
 
 ```
-<Icon name='facebook' />
-```
-
-```
-<Icon name='twitter' />
-```
-
-```
-<Icon name='instagram' />
-```
-
-```
-<Icon name='google' />
-```
-
-```
-<Icon name='youtube' />
-```
-
-```
 <Icon name='calendar' />
 ```
 
@@ -52,6 +32,10 @@
 
 ```
 <Icon name='dropdown' />
+```
+
+```
+<Icon name='download' />
 ```
 
 ```
@@ -106,6 +90,46 @@
 <Icon name='warning' />
 ```
 
+
+**Social / Providers**
+
+```
+<Icon name='facebook' color='facebook' />
+```
+
+```
+<Icon name='twitter' color='twitter' />
+```
+
+```
+<Icon name='instagram' color='instagram' />
+```
+
+```
+<Icon name='youtube' color='youtube' />
+```
+
+```
+<Icon name='linkedin' color='linkedin' />
+```
+
+```
+<Icon name='google' color='google' />
+```
+
+
+```
+<Icon name='strava' color='strava' />
+```
+
+```
+<Icon name='mapmyfitness' color='mapmyfitness' />
+```
+
+```
+<Icon name='fitbit' color='fitbit' />
+```
+
 **Colors**
 
 ```
@@ -113,7 +137,7 @@
 ```
 
 ```
-<Icon name='facebook' color='#3b5998' />
+<Icon name='warning' color='#ff0000' />
 ```
 
 **Spin**
