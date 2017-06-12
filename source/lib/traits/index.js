@@ -61,6 +61,9 @@ export const treatments = {
     textTransform: 'uppercase',
     fontWeight: 700
   },
+  input: {
+    fontFamily: fonts.body
+  },
   container: {
     maxWidth: rhythm(40)
   }

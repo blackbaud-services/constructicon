@@ -14,7 +14,6 @@ export default (props, traits) => {
     form: {
       display: 'block',
       margin: 'auto',
-      maxWidth: rhythm(14),
       paddingBottom: rhythm(1.5)
     },
 

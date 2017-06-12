@@ -5,8 +5,11 @@ export default (props, traits) => {
     colors,
     rhythm,
     scale,
-    radiuses
+    radiuses,
+    treatments
   } = traits
+
+  const { styles } = props
 
   const baseStyles = {
     root: {
@@ -29,8 +32,11 @@ export default (props, traits) => {
       padding: rhythm(0.33, 'em'),
       height: rhythm(1.5),
       border: `1px solid ${colors.shade}`,
-      borderRadius: rhythm(radiuses.small),
       borderColor: props.error && colors.danger,
+      borderRadius: rhythm(radiuses.small),
+      ...treatments.input,
+      ...styles,
+
       ':focus': {
         borderColor: props.error ? colors.danger : colors.primary
       }

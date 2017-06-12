@@ -100,8 +100,11 @@ InputField.propTypes = {
   * The current value
   */
   value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
+    PropTypes.array,
+    PropTypes.bool,
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.string
   ]),
 
   /**
@@ -117,12 +120,15 @@ InputField.propTypes = {
   /**
   * The type of field
   */
-  type: PropTypes.oneOf(['color', 'date', 'email', 'hidden', 'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'time', 'url', 'week']),
+  type: PropTypes.oneOf(['checkbox', 'color', 'date', 'email', 'hidden', 'month', 'number', 'password', 'radio', 'range', 'search', 'tel', 'text', 'time', 'url', 'week']),
 
   /**
   * The placeholder for the field
   */
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
 
   /**
   * The ID for the field
