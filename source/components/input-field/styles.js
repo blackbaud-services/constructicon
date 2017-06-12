@@ -6,10 +6,15 @@ export default (props, traits) => {
     rhythm,
     scale,
     colors,
-    radiuses
+    radiuses,
+    treatments
   } = traits
 
-  const { type } = props
+  const {
+    type,
+    styles
+  } = props
+
   const checkbox = type === 'checkbox' || type === 'radio'
   const textarea = type === 'textarea'
   const invalid = props.touched && props.invalid
@@ -59,6 +64,8 @@ export default (props, traits) => {
       border: `thin solid ${invalid ? colors.danger : colors.lightGrey}`,
       boxShadow: invalid && `0 0 15px ${colors.danger}`,
       borderRadius: rhythm(radiuses.small),
+      ...treatments.input,
+      ...styles,
 
       ':focus': {
         borderColor: invalid ? colors.danger : colors.secondary,

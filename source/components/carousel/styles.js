@@ -38,7 +38,7 @@ export default (props, traits) => {
           outline: 'none'
         },
         '.dragging': {
-          cursor: 'hand'
+          cursor: 'grab'
         }
       },
       '.slick-track': {
