@@ -27,7 +27,11 @@ export const colors = {
   twitter: '#55acee',
   instagram: '#e4405f',
   youtube: '#cd201f',
+  linkedin: '#0084bf',
   google: '#dd4b39',
+  fitbit: '#00b0b9',
+  mapmyfitness: '#004a8d',
+  strava: '#fc4c02',
   danger: '#d9534f',
   success: '#5cb85c'
 }
