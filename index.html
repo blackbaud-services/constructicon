@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
     <link rel="shortcut icon" href="https://d8i1a0qhidbs8.cloudfront.net/image/favicon.png" type="image/vnd.microsoft.icon">
-		<title>Constructicon | 0.10.0</title>
+		<title>Constructicon | 0.10.1</title>
 	</head>
 	<body>
 
@@ -280,6 +280,63 @@
           background: #43aa4c;
           background-image: linear-gradient(#389040 52px, #43aa4c 52px);
         }
+      }
+
+      /* Icon section */
+
+      #Icon-container div:first-child + .ReactStyleguidist-Playground__root,
+      #Icon-container .ReactStyleguidist-Playground__root + div:empty + .ReactStyleguidist-Playground__root,
+      #Icon-container .ReactStyleguidist-Markdown__p + .ReactStyleguidist-Playground__root {
+        display: inline-block;
+        vertical-align: top;
+        min-width: 3.5rem;
+        font-size: 1.5rem;
+        text-align: center;
+        margin-right: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+
+      #Icon-container .ReactStyleguidist-Markdown__p {
+        margin-top: 2rem;
+      }
+
+      #Icon-container div:first-child + .ReactStyleguidist-Playground__root .ReactStyleguidist-Playground__showCode,
+      #Icon-container .ReactStyleguidist-Playground__root + div:empty + .ReactStyleguidist-Playground__root .ReactStyleguidist-Playground__showCode,
+      #Icon-container .ReactStyleguidist-Markdown__p + .ReactStyleguidist-Playground__root .ReactStyleguidist-Playground__showCode,
+      #Icon-container div:first-child + .ReactStyleguidist-Playground__root .ReactStyleguidist-Playground__isolatedLink,
+      #Icon-container .ReactStyleguidist-Playground__root + div:empty + .ReactStyleguidist-Playground__root .ReactStyleguidist-Playground__isolatedLink,
+      #Icon-container .ReactStyleguidist-Markdown__p + .ReactStyleguidist-Playground__root .ReactStyleguidist-Playground__isolatedLink,
+      #Icon-container .ReactStyleguidist-Playground__root + div:empty,
+      #Icon-container div hr {
+        display: none;
+      }
+
+      #Icon-container div:first-child + .ReactStyleguidist-Playground__root:hover,
+      #Icon-container .ReactStyleguidist-Playground__root + div:empty + .ReactStyleguidist-Playground__root:hover,
+      #Icon-container .ReactStyleguidist-Markdown__p + .ReactStyleguidist-Playground__root:hover {
+        z-index: 999;
+      }
+
+      #Icon-container div:first-child + .ReactStyleguidist-Playground__root:hover .ReactStyleguidist-Playground__showCode,
+      #Icon-container .ReactStyleguidist-Playground__root + div:empty + .ReactStyleguidist-Playground__root:hover .ReactStyleguidist-Playground__showCode,
+      #Icon-container .ReactStyleguidist-Markdown__p + .ReactStyleguidist-Playground__root:hover .ReactStyleguidist-Playground__showCode {
+        display: block;
+        z-index: 1000;
+        left: -1px;
+      }
+
+      #Icon-container div:first-child + .ReactStyleguidist-Playground__root .ReactStyleguidist-Playground__hideCode,
+      #Icon-container .ReactStyleguidist-Playground__root + div:empty + .ReactStyleguidist-Playground__root .ReactStyleguidist-Playground__hideCode,
+      #Icon-container .ReactStyleguidist-Markdown__p + .ReactStyleguidist-Playground__root .ReactStyleguidist-Playground__hideCode {
+        background: transparent;
+        border: 0;
+        top: 0;
+        bottom: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 3em;
+        font-size: 12px;
+        right: 0.25em;
       }
 		</style>
 
