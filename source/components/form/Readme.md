@@ -8,6 +8,7 @@ Pass an onSubmit callback to be notified of changes
 initialState = {
   email: '',
   password: '',
+  source: '',
   terms: false,
   loading: false,
   submitted: false
@@ -51,6 +52,28 @@ handleSubmit = (e) => {
       required
     />
 
+    <InputSelect
+      label='Where did you hear about us?'
+      name='source'
+      value={state.source}
+      options={[
+        {
+          label: 'The Internet',
+          value: 'web'
+        },
+        {
+          label: 'From a Friend',
+          value: 'friend'
+        },
+        {
+          label: 'Other',
+          value: 'other'
+        }
+      ]}
+      onChange={(v) => setState({ source: v })}
+      required
+    />
+
     <InputField
       type='checkbox'
       label='I agree to the terms'
@@ -64,7 +87,8 @@ handleSubmit = (e) => {
   {state.submitted && (
     <p style={{ padding: '1rem', background: 'whitesmoke' }}>
       Email: {state.email || 'N/A'} <br />
-      Password: {Array.from(Array(state.password.length)).map((x, i) => { return '*' }).join('')}
+      Password: {Array.from(Array(state.password.length)).map((x, i) => { return '*' }).join('')} <br />
+      Source: {state.source || 'N/A'} 
     </p>
   )}
 </div>

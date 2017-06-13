@@ -3,42 +3,60 @@ import merge from 'lodash/merge'
 export default (props, traits) => {
   const {
     colors,
+    fonts,
+    measures,
+    radiuses,
     rhythm,
     scale,
-    radiuses,
     treatments
   } = traits
 
   const { styles } = props
 
+  const invalid = props.touched && props.invalid
+
   const baseStyles = {
     root: {
+      display: 'block',
+      position: 'relative',
+      fontFamily: fonts.body,
+      textAlign: 'left',
       marginBottom: rhythm(1)
     },
 
     label: {
       display: 'block',
       fontWeight: 700,
-      marginBottom: rhythm(0.25)
+      fontSize: scale(-0.5),
+      lineHeight: measures.medium,
+      textAlign: 'left',
+      marginBottom: rhythm(0.25),
+      'a': {
+        color: colors.primary,
+        textDecoration: 'underline'
+      }
     },
 
     required: {
+      display: 'inline-block',
       color: colors.danger
     },
 
     field: {
       display: 'block',
       width: '100%',
-      padding: rhythm(0.33, 'em'),
-      height: rhythm(1.5),
-      border: `1px solid ${colors.shade}`,
-      borderColor: props.error && colors.danger,
+      textAlign: 'left',
+      backgroundColor: colors.light,
+      height: rhythm(1.666),
+      border: `thin solid ${invalid ? colors.danger : colors.lightGrey}`,
+      boxShadow: invalid && `0 0 5px ${colors.danger}`,
       borderRadius: rhythm(radiuses.small),
       ...treatments.input,
       ...styles,
 
       ':focus': {
-        borderColor: props.error ? colors.danger : colors.primary
+        borderColor: invalid ? colors.danger : colors.secondary,
+        boxShadow: `0 0 5px ${invalid ? colors.danger : colors.secondary}`
       }
     },
 
