@@ -4,6 +4,8 @@ import omit from 'lodash/omit'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
 
+import Icon from '../icon'
+
 const InputSelect = ({
   label,
   name,
@@ -16,6 +18,7 @@ const InputSelect = ({
   error,
   validations,
   classNames,
+  styles,
   ...props
 }) => {
   const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
@@ -23,24 +26,33 @@ const InputSelect = ({
 
   return (
     <div className={classNames.root}>
-      <label className={classNames.label}>
-        {label}
-        <span className={classNames.required}>*</span>
-      </label>
-      <select
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={(e) => onChange && onChange(e.target.value)}
-        onBlur={(e) => onBlur && onBlur(e.target.value)}
-        className={classNames.field}
-        required
-        {...allowedProps}>
-        {placeholder && <option>{placeholder}</option>}
-        {options.map(({ value, label }, index) => (
-          <option value={value} key={index}>{label}</option>
-        ))}
-      </select>
+      {label && (
+        <label className={classNames.label}>
+          {label}
+          {required && <span className={classNames.required}>*</span>}
+        </label>
+      )}
+
+      <div className={classNames.wrapper}>
+        <select
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={(e) => onChange && onChange(e.target.value)}
+          onBlur={(e) => onBlur && onBlur(e.target.value)}
+          className={classNames.input}
+          required
+          {...allowedProps}>
+          {placeholder && <option>{placeholder}</option>}
+          {options.map(({ value, label, disabled }, index) => (
+            <option value={value} key={index} disabled={disabled}>{label}</option>
+          ))}
+        </select>
+
+        <span className={classNames.field} />
+
+        <Icon name='dropdown' size={0.75} styles={styles.icon} />
+      </div>
 
       {error && (
         <div className={classNames.errors}>

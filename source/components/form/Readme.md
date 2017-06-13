@@ -58,6 +58,11 @@ handleSubmit = (e) => {
       value={state.source}
       options={[
         {
+          label: 'Select an option...',
+          value: '',
+          disabled: true
+        },
+        {
           label: 'The Internet',
           value: 'web'
         },
@@ -88,7 +93,7 @@ handleSubmit = (e) => {
     <p style={{ padding: '1rem', background: 'whitesmoke' }}>
       Email: {state.email || 'N/A'} <br />
       Password: {Array.from(Array(state.password.length)).map((x, i) => { return '*' }).join('')} <br />
-      Source: {state.source || 'N/A'} 
+      Source: {state.source || 'N/A'}
     </p>
   )}
 </div>

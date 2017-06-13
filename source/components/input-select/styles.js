@@ -42,22 +42,73 @@ export default (props, traits) => {
       color: colors.danger
     },
 
-    field: {
+    wrapper: {
+      position: 'relative',
+      'select::-ms-expand': {
+        display: 'none'
+      },
+      'select::-ms-value': {
+        background: 'none',
+        color: props.readOnly ? colors.lightGrey : colors.dark
+      },
+      'select:-moz-focusring': {
+        color: 'transparent',
+        textShadow: '0 0 0 #000'
+      }
+    },
+
+    input: {
       display: 'block',
+      position: 'relative',
+      zIndex: 1,
       width: '100%',
       textAlign: 'left',
-      backgroundColor: colors.light,
       height: rhythm(1.666),
+      lineHeight: rhythm(1.666),
+      paddingLeft: rhythm(0.333),
+      paddingRight: rhythm(1.25),
+      borderRadius: rhythm(radiuses.small),
+      border: 0,
+      backgroundColor: 'transparent',
+      backgroundImage: 'none',
+      boxShadow: 'none',
+      appearance: 'none',
+      outline: 'none',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      ...treatments.input,
+      ':focus': {
+        border: 0,
+        outline: 0
+      },
+      ':focus + span': {
+        borderColor: invalid ? colors.danger : colors.secondary,
+        boxShadow: `0 0 5px ${invalid ? colors.danger : colors.secondary}`
+      }
+    },
+
+    field: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: 0,
+      backgroundColor: colors.light,
+      color: props.readOnly ? colors.lightGrey : colors.dark,
       border: `thin solid ${invalid ? colors.danger : colors.lightGrey}`,
       boxShadow: invalid && `0 0 5px ${colors.danger}`,
       borderRadius: rhythm(radiuses.small),
       ...treatments.input,
-      ...styles,
+      ...styles
+    },
 
-      ':focus': {
-        borderColor: invalid ? colors.danger : colors.secondary,
-        boxShadow: `0 0 5px ${invalid ? colors.danger : colors.secondary}`
-      }
+    icon: {
+      position: 'absolute',
+      top: '50%',
+      right: rhythm(0.333),
+      transform: 'translateY(-50%)'
     },
 
     error: {
