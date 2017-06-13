@@ -2,11 +2,12 @@ import merge from 'lodash/merge'
 
 export default (props, traits) => {
   const {
+    colors,
     fonts,
+    measures,
+    radiuses,
     rhythm,
     scale,
-    colors,
-    radiuses,
     treatments
   } = traits
 
@@ -33,7 +34,7 @@ export default (props, traits) => {
       display: 'block',
       fontWeight: 700,
       fontSize: scale(-0.5),
-      lineHeight: '1.5em',
+      lineHeight: measures.medium,
       textAlign: 'left',
       marginBottom: rhythm(0.25),
       'a': {
