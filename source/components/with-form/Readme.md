@@ -73,6 +73,25 @@ You can spread the individual fields across Constructicon form components. This 
 ```
 
 <br/>
+
+__form.updateValues__
+
+You can call form.updateValues() which can update the values of fields from outside user interaction.
+
+Values can be updated in the format below:
+
+```javascript
+componentWillReceiveProps (nextProps) {
+  const { testValue } = nextProps
+  if (testValue !=== this.props.testValue)
+    this.props.form.updateValues({
+      testValue: testValue
+    })
+  }
+}
+```
+
+<br/>
 __form.submit__
 
 You can call form.submit() which will return a promise that will either:

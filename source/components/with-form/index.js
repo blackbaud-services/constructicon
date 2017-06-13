@@ -9,6 +9,7 @@ const withForm = (config) => (ComponentToWrap) => (
     constructor (props) {
       super(props)
       this.handleChange = this.handleChange.bind(this)
+      this.updateValues = this.updateValues.bind(this)
       this.submitForm = this.submitForm.bind(this)
       const options = this.initOptions(config)
       const fields = this.initFields(options.fields)
@@ -99,6 +100,22 @@ const withForm = (config) => (ComponentToWrap) => (
       return mapValues(fields, 'validations')
     }
 
+    updateValues (keys) {
+      const newValues = mapValues(keys, (value, key) => ({
+        ...this.state.fields[key],
+        value: value
+      }))
+
+      const updatedFields = {
+        ...this.state.fields,
+        ...newValues
+      }
+
+      this.setState({
+        fields: this.validateFields(updatedFields)
+      })
+    }
+
     submitForm () {
       const fields = this.touchFields(this.state.fields)
       this.setState({ fields })
@@ -113,6 +130,7 @@ const withForm = (config) => (ComponentToWrap) => (
         values: this.getValues(fields),
         invalid: !this.checkIfValid(fields),
         validations: this.getValidations(fields),
+        updateValues: this.updateValues,
         submit: this.submitForm
       }
     }
