@@ -63,7 +63,7 @@ export default (props, traits) => {
       minHeight: textarea && rhythm(4),
       maxHeight: textarea && rhythm(10),
       border: `thin solid ${invalid ? colors.danger : colors.lightGrey}`,
-      boxShadow: invalid && `0 0 15px ${colors.danger}`,
+      boxShadow: invalid ? `0 0 5px ${colors.danger}` : 'none',
       borderRadius: rhythm(radiuses.small),
       ...treatments.input,
       ...styles,
