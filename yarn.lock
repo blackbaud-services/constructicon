@@ -4861,9 +4861,9 @@ react-group@^1.0.0:
   dependencies:
     prop-types "^15.5.8"
 
-react-modal@^1.7.7:
-  version "1.7.7"
-  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-1.7.7.tgz#70205f51c58708c487aff681ba3fed7946e391d9"
+react-modal@^1.9.4:
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-1.9.4.tgz#f6823c29ca9ecbecd9cc2a9f019e78e4319bafdd"
   dependencies:
     create-react-class "^15.5.2"
     element-class "^0.2.0"
