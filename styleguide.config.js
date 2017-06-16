@@ -24,6 +24,7 @@ module.exports = {
         path.resolve(__dirname, 'source/components/carousel', 'index.js'),
         path.resolve(__dirname, 'source/components/heading', 'index.js'),
         path.resolve(__dirname, 'source/components/icon', 'index.js'),
+        path.resolve(__dirname, 'source/components/meta', 'index.js'),
         path.resolve(__dirname, 'source/components/modal', 'index.js'),
         path.resolve(__dirname, 'source/components/progress-bar', 'index.js'),
         path.resolve(__dirname, 'source/components/rich-text', 'index.js')
