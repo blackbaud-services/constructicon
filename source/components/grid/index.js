@@ -38,7 +38,8 @@ Grid.propTypes = {
     'flex-start',
     'flex-end',
     'space-between',
-    'space-around'
+    'space-around',
+    'center'
   ]),
 
   /**
