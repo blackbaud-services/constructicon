@@ -55,9 +55,10 @@ class Filter extends Component {
         />
         <input
           ref='field'
-          type='text'
+          type='search'
           placeholder={placeholder}
           onChange={this.onChange()}
+          autoComplete='off'
           className={classNames.input}
         />
       </form>

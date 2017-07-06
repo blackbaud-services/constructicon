@@ -45,6 +45,11 @@ LeaderboardItem.propTypes = {
   subtitle: PropTypes.string,
 
   /**
+  * The rank of the leader (optional)
+  */
+  rank: PropTypes.number,
+
+  /**
   * The amount being ranked by
   */
   amount: PropTypes.string,

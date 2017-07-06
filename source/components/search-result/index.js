@@ -64,7 +64,12 @@ SearchResult.propTypes = {
   /**
   * The button text
   */
-  cta: PropTypes.string
+  cta: PropTypes.string,
+
+  /**
+  * Custom styles to be applied
+  */
+  styles: PropTypes.object
 }
 
 SearchResult.defaultProps = {

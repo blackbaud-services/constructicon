@@ -17,6 +17,10 @@ export default (props, traits) => {
   const open = expanded || toggled
 
   const defaultStyles = {
+    root: {
+      position: 'relative'
+    },
+
     form: {
       maxWidth: rhythm(32),
       padding: rhythm(0.5),
