@@ -2,6 +2,7 @@ import merge from 'lodash/merge'
 
 export default (props, traits) => {
   const {
+    rank,
     styles
   } = props
 
@@ -20,7 +21,7 @@ export default (props, traits) => {
       fontSize: scale(-1),
       breakInside: 'avoid',
       ':after': {
-        content: 'counter(board)',
+        content: rank ? `"${rank}."` : 'counter(board) "."',
         counterIncrement: 'board',
         position: 'absolute',
         top: '50%',

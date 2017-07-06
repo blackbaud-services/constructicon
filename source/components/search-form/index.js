@@ -64,7 +64,7 @@ class SearchForm extends Component {
     } = this.props
 
     return (
-      <div>
+      <div className={classNames.root}>
         <div className={classNames.form} onKeyDown={this.handleKeyDown}>
           <label className={classNames.field}>
             <div className={classNames.label}>{title}</div>
