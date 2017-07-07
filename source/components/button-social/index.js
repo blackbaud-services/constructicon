@@ -14,12 +14,13 @@ const ButtonSocial = ({
   type,
   url,
   title,
+  hashtags,
   ...props
 }) => (
   <Button
     background={type}
     tag={share ? 'button' : 'a'}
-    onClick={share && openShareDialog({ type, url, title })}
+    onClick={share && openShareDialog({ type, url, title, hashtags })}
     {...props}>
     <Icon name={type} />
   </Button>
@@ -40,7 +41,12 @@ ButtonSocial.propTypes = {
   /**
   * Makes the button a share button (only available for twitter, facebook and google)
   */
-  share: PropTypes.bool
+  share: PropTypes.bool,
+
+  /**
+  * Hashtags to be added to a Twitter share
+  */
+  hashtags: PropTypes.string
 }
 
 ButtonSocial.defaultProps = {
