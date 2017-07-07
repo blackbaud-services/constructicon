@@ -5,8 +5,8 @@ const services = {
   facebook: ({ url }) => {
     return `http://www.facebook.com/sharer.php?u=${url}`
   },
-  twitter: ({ url, title }) => {
-    return `https://twitter.com/share?url=${url}&text=${title}`
+  twitter: ({ url, title, hashtags = '' }) => {
+    return `https://twitter.com/share?url=${url}&text=${title}&hashtags=${hashtags}`
   },
   google: ({ url }) => {
     return `https://plus.google.com/share?url=${url}`
@@ -36,7 +36,8 @@ export default (options) => () => {
   const {
     type,
     url = window.location.href,
-    title = document.title
+    title = document.title,
+    hashtags
   } = options
 
   const service = services[type]
@@ -51,7 +52,8 @@ export default (options) => () => {
 
     const shareUrl = service({
       url,
-      title
+      title,
+      hashtags
     })
 
     openPopup(shareUrl, popupConfig)
