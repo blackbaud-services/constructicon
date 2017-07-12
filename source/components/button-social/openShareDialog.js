@@ -2,8 +2,8 @@ import defaults from 'lodash/defaults'
 import map from 'lodash/map'
 
 const services = {
-  facebook: ({ url }) => {
-    return `http://www.facebook.com/sharer.php?u=${url}`
+  facebook: ({ url, caption = '' }) => {
+    return `http://www.facebook.com/sharer.php?u=${url}&caption=${caption}`
   },
   twitter: ({ url, title, hashtags = '' }) => {
     return `https://twitter.com/share?url=${url}&text=${title}&hashtags=${hashtags}`
@@ -37,7 +37,8 @@ export default (options) => () => {
     type,
     url = window.location.href,
     title = document.title,
-    hashtags
+    hashtags,
+    caption
   } = options
 
   const service = services[type]
@@ -53,7 +54,8 @@ export default (options) => () => {
     const shareUrl = service({
       url,
       title,
-      hashtags
+      hashtags,
+      caption
     })
 
     openPopup(shareUrl, popupConfig)

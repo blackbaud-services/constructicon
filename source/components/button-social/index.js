@@ -15,12 +15,13 @@ const ButtonSocial = ({
   url,
   title,
   hashtags,
+  caption,
   ...props
 }) => (
   <Button
     background={type}
     tag={share ? 'button' : 'a'}
-    onClick={share && openShareDialog({ type, url, title, hashtags })}
+    onClick={share && openShareDialog({ type, url, title, hashtags, caption })}
     {...props}>
     <Icon name={type} />
   </Button>
@@ -46,7 +47,12 @@ ButtonSocial.propTypes = {
   /**
   * Hashtags to be added to a Twitter share
   */
-  hashtags: PropTypes.string
+  hashtags: PropTypes.string,
+
+  /**
+  * The caption for the Facebook share
+  */
+  caption: PropTypes.string
 }
 
 ButtonSocial.defaultProps = {
