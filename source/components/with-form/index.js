@@ -68,7 +68,7 @@ const withForm = (config) => (ComponentToWrap) => (
     }
 
     touchFields (fields) {
-      return mapValues(fields, (field) => merge(field, {
+      return mapValues(fields, (field) => merge({}, field, {
         touched: true,
         error: !isEmpty(field.validations)
       }))
