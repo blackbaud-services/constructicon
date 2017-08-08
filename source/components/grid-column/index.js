@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '../../lib/css'
-import options from '../../lib/traits/options'
 import styles from './styles'
 
 const GridColumn = ({
@@ -14,6 +13,11 @@ const GridColumn = ({
 )
 
 GridColumn.propTypes = {
+  /**
+  * The content for the column
+  */
+  children: PropTypes.any,
+
   /**
   * The default size of the column in a 12 column grid
   */
@@ -57,17 +61,17 @@ GridColumn.propTypes = {
   /**
   * The background color of the section -
   */
-  background: PropTypes.oneOf(options.colors),
+  background: PropTypes.string,
 
   /**
   * The color of the text -
   */
-  foreground: PropTypes.oneOf(options.colors),
+  foreground: PropTypes.string,
 
   /**
   * The color of the border
   */
-  borderColor: PropTypes.oneOf(options.colors),
+  borderColor: PropTypes.string,
 
   /**
   * The width of the border
@@ -77,7 +81,7 @@ GridColumn.propTypes = {
   /**
   * The radius of the section -
   */
-  radius: PropTypes.oneOf(options.radiuses),
+  radius: PropTypes.string,
 
   /**
   * The custom styles to be applied

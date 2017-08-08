@@ -4,7 +4,6 @@ import Icon from '../icon'
 import compose from '../../lib/compose'
 import { withStyles } from '../../lib/css'
 import withToggle from '../with-toggle'
-import options from '../../lib/traits/options'
 import styles from './styles'
 
 const Accordion = ({
@@ -53,12 +52,12 @@ Accordion.propTypes = {
   /**
   * The color to apply to icon/border when active
   */
-  color: PropTypes.oneOf(options.colors),
+  color: PropTypes.string,
 
   /**
   * The font treatment to be used for the title
   */
-  font: PropTypes.oneOf(options.fonts),
+  font: PropTypes.string,
 
   /**
   * Opens the accordion by default

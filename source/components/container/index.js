@@ -1,26 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '../../lib/css'
-import options from '../../lib/traits/options'
 import styles from './styles'
 
 const Container = ({
   children,
   tag: Tag,
   classNames
-}) => (
-  <div className={classNames.outer}>
-    <Tag className={classNames.root}>
-      {children}
-    </Tag>
-  </div>
-)
+}) => {
+  if (!children) {
+    return null
+  }
+
+  return (
+    <div className={classNames.outer}>
+      <Tag className={classNames.root}>
+        {children}
+      </Tag>
+    </div>
+  )
+}
 
 Container.propTypes = {
   /**
   * The content
   */
-  children: PropTypes.any.isRequired,
+  children: PropTypes.any,
 
   /**
   * The tag or component to be used e.g. div, section
@@ -51,22 +56,22 @@ Container.propTypes = {
   /**
   * The shadow to be applies to the container
   */
-  shadow: PropTypes.oneOf(options.shadows),
+  shadow: PropTypes.string,
 
   /**
   * The background color of the container
   */
-  background: PropTypes.oneOf(options.colors),
+  background: PropTypes.string,
 
   /**
   * The foreground color of the area
   */
-  foreground: PropTypes.oneOf(options.colors),
+  foreground: PropTypes.string,
 
   /**
   * The color of the area outside the container
   */
-  outerColor: PropTypes.oneOf(options.colors),
+  outerColor: PropTypes.string,
 
   /**
   * The custom styles to be applied to the container

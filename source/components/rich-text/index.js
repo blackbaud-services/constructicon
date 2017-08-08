@@ -7,15 +7,21 @@ const RichText = ({
   children,
   tag: Tag,
   classNames
-}) => (
-  <Tag className={classNames.root}>
-    {
-      typeof children === 'string'
-        ? <span dangerouslySetInnerHTML={{ __html: children }} />
-        : children
-    }
-  </Tag>
-)
+}) => {
+  if (!children) {
+    return null
+  }
+
+  return (
+    <Tag className={classNames.root}>
+      {
+        typeof children === 'string'
+          ? <span dangerouslySetInnerHTML={{ __html: children }} />
+          : children
+      }
+    </Tag>
+  )
+}
 
 RichText.propTypes = {
   /**
@@ -25,7 +31,7 @@ RichText.propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element
-  ]).isRequired,
+  ]),
 
   /**
   * The tag to be used for the containing element

@@ -1,24 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '../../lib/css'
-import options from '../../lib/traits/options'
 import styles from './styles'
 
 const Section = ({
   children,
   tag: Tag,
   classNames
-}) => (
-  <Tag className={classNames.root}>
-    {children}
-  </Tag>
-)
+}) => {
+  if (!children) {
+    return null
+  }
+
+  return (
+    <Tag className={classNames.root}>
+      {children}
+    </Tag>
+  )
+}
 
 Section.propTypes = {
   /**
   * The content
   */
-  children: PropTypes.any.isRequired,
+  children: PropTypes.any,
 
   /**
   * The tag or component to be used e.g. div, section
@@ -31,17 +36,17 @@ Section.propTypes = {
   /**
   * The background color of the section -
   */
-  background: PropTypes.oneOf(options.colors),
+  background: PropTypes.string,
 
   /**
   * The color of the text -
   */
-  foreground: PropTypes.oneOf(options.colors),
+  foreground: PropTypes.string,
 
   /**
   * The color of the border
   */
-  borderColor: PropTypes.oneOf(options.colors),
+  borderColor: PropTypes.string,
 
   /**
   * The width of the border
@@ -51,7 +56,7 @@ Section.propTypes = {
   /**
   * The radius of the section -
   */
-  radius: PropTypes.oneOf(options.radiuses),
+  radius: PropTypes.string,
 
   /**
   * The spacing to be applied

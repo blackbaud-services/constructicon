@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import omit from 'lodash/omit'
 import { withStyles } from '../../lib/css'
-import options from '../../lib/traits/options'
 import styles from './styles'
 
 const Button = ({
@@ -39,17 +38,17 @@ Button.propTypes = {
   /**
   * The background color of the button -
   */
-  background: PropTypes.oneOf(options.colors),
+  background: PropTypes.string,
 
   /**
   * The color of the text -
   */
-  foreground: PropTypes.oneOf(options.colors),
+  foreground: PropTypes.string,
 
   /**
   * The color of the border
   */
-  borderColor: PropTypes.oneOf(options.colors),
+  borderColor: PropTypes.string,
 
   /**
   * The width of the border
@@ -59,7 +58,7 @@ Button.propTypes = {
   /**
   * The font for the text -
   */
-  font: PropTypes.oneOf(options.treatments),
+  font: PropTypes.string,
 
   /**
   * The scale to be used for the font size
@@ -77,17 +76,17 @@ Button.propTypes = {
   /**
   * The radius of the button -
   */
-  radius: PropTypes.oneOf(options.radiuses),
+  radius: PropTypes.string,
 
   /**
   * The shadow to be placed on the button
   */
-  shadow: PropTypes.oneOf(options.shadows),
+  shadow: PropTypes.string,
 
   /**
   * The effect to be used on the button
   */
-  effect: PropTypes.oneOf(options.effects),
+  effect: PropTypes.string,
 
   /**
   * Makes the button full width

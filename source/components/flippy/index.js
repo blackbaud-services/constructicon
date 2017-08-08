@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '../../lib/css'
-import options from '../../lib/traits/options'
 import styles from './styles'
 
 const Flippy = ({
@@ -36,17 +35,17 @@ Flippy.propTypes = {
   /**
   * The background color
   */
-  background: PropTypes.oneOf(options.colors),
+  background: PropTypes.string,
 
   /**
   * The color of the text
   */
-  foreground: PropTypes.oneOf(options.colors),
+  foreground: PropTypes.string,
 
   /**
   * The font for the text
   */
-  font: PropTypes.oneOf(options.treatments),
+  font: PropTypes.string,
 
   /**
   * The scale to be used for the font size
