@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty'
 import Icon from '../icon'
 import { withStyles } from '../../lib/css'
-import options from '../../lib/traits/options'
 import styles from './styles'
 
 class SearchResults extends Component {
@@ -109,12 +108,12 @@ SearchResults.propTypes = {
   /**
   * The background color for the leaderboard
   */
-  background: PropTypes.oneOf(options.colors),
+  background: PropTypes.string,
 
   /**
   * The foreground color for the leaderboard
   */
-  foreground: PropTypes.oneOf(options.colors),
+  foreground: PropTypes.string,
 
   /**
   * Custom styles to be applied to root, leaders

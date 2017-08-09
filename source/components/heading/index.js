@@ -8,11 +8,17 @@ const Heading = ({
   tag: Tag,
   id,
   classNames
-}) => (
-  <Tag id={id} className={classNames.root}>
-    {children}
-  </Tag>
-)
+}) => {
+  if (!children) {
+    return null
+  }
+
+  return (
+    <Tag id={id} className={classNames.root}>
+      {children}
+    </Tag>
+  )
+}
 
 Heading.propTypes = {
   /**
@@ -22,7 +28,7 @@ Heading.propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element
-  ]).isRequired,
+  ]),
 
   /**
   * The tag to be used for the containing element

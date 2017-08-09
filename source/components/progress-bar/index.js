@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '../../lib/css'
-import options from '../../lib/traits/options'
 import styles from './styles'
 import template from 'lodash/template'
 
@@ -37,17 +36,17 @@ ProgressBar.propTypes = {
   /**
   * The fill color of the progress bar -
   */
-  fill: PropTypes.oneOf(options.colors),
+  fill: PropTypes.string,
 
   /**
   * The background color of the progress bar -
   */
-  background: PropTypes.oneOf(options.colors),
+  background: PropTypes.string,
 
   /**
   * The border radius of the progress bar -
   */
-  radius: PropTypes.oneOf(options.radiuses),
+  radius: PropTypes.string,
 
   /**
   * Custom styles to be applied to the progress bar
