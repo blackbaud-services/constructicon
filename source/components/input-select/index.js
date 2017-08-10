@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import omit from 'lodash/omit'
+import mapKeys from 'lodash/mapKeys'
+import groupBy from 'lodash/groupBy'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
 
@@ -11,6 +13,7 @@ const InputSelect = ({
   name,
   value,
   options = [],
+  groupOptions,
   placeholder,
   onChange,
   onBlur,
@@ -23,6 +26,35 @@ const InputSelect = ({
 }) => {
   const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
   const allowedProps = omit(props, propsBlacklist)
+
+  const renderOptions = () => {
+    if (groupOptions) {
+      const groupedOptions = groupBy(options, 'group')
+      const resultOptions = []
+
+      mapKeys(groupedOptions, (opts, groupLabel) => {
+        if (groupLabel !== 'undefined') {
+          resultOptions.push(
+            <optgroup key={groupLabel} label={groupLabel}>
+              {opts.map(({ value, label, disabled }, index) => (
+                <option value={value} key={index} disabled={disabled}>{label}</option>
+              ))}
+            </optgroup>
+          )
+        } else {
+          resultOptions.push(opts.map(({ value, label, disabled }, index) => (
+            <option value={value} key={index} disabled={disabled}>{label}</option>
+          )))
+        }
+      })
+
+      return resultOptions
+    } else {
+      return options.map(({ value, label, disabled }, index) => (
+        <option value={value} key={index} disabled={disabled}>{label}</option>
+      ))
+    }
+  }
 
   return (
     <div className={classNames.root}>
@@ -43,10 +75,8 @@ const InputSelect = ({
           className={classNames.input}
           required
           {...allowedProps}>
-          {placeholder && <option>{placeholder}</option>}
-          {options.map(({ value, label, disabled }, index) => (
-            <option value={value} key={index} disabled={disabled}>{label}</option>
-          ))}
+          {placeholder && <option disabled value=''>{placeholder}</option>}
+          {renderOptions()}
         </select>
 
         <span className={classNames.field} />
@@ -89,9 +119,14 @@ InputSelect.propTypes = {
   value: PropTypes.string,
 
   /**
-  * The available options i.e. [{ value, label}, { value, label }]
+  * The available options i.e. [{ value, label }, { value, label }]
   */
   options: PropTypes.array.isRequired,
+
+  /**
+  * Group options by `group` param
+  */
+  groupOptions: PropTypes.bool,
 
   /**
   * The change handler that will receive the updated value as it's only param
