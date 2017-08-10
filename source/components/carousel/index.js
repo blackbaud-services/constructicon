@@ -72,7 +72,7 @@ Carousel.propTypes = {
   prevArrow: PropTypes.element,
   responsive: PropTypes.array,
   rtl: PropTypes.bool,
-  slickGoTo: PropTypes.number,
+  slickGoTo: PropTypes.func,
   slide: PropTypes.string,
   slidesToScroll: PropTypes.number,
   slidesToShow: PropTypes.number,

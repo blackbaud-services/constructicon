@@ -25,7 +25,7 @@ export default (props, traits) => {
     error: {
       margin: `${rhythm(1)} 0`,
       padding: `${rhythm(0.5)} ${rhythm(0.75)}`,
-      backgroundColor: colors.red,
+      backgroundColor: colors.danger,
       fontWeight: 'bold',
       color: colors.light,
       borderRadius: rhythm(radiuses.small),
