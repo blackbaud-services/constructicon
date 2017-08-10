@@ -51,6 +51,31 @@ describe('<InputSelect', () => {
     expect(input.prop('name')).to.eql('test-name')
   })
 
+  it('should render optgroups', () => {
+    const testGroupedOptions = [
+      { value: 'all', label: 'All' },
+      { value: 'val-1', label: 'Value 1', group: 'Group 1' },
+      { value: 'val-2', label: 'Value 2', group: 'Group 1' },
+      { value: 'val-3', label: 'Value 3', group: 'Group 2' }
+    ]
+
+    const wrapper = mount(
+      <InputSelect
+        label='Test Field'
+        name='test-name'
+        onChange={() => {}}
+        options={testGroupedOptions}
+        groupOptions
+      />
+    )
+    const input = wrapper.find('select')
+    const groups = wrapper.find('optgroup')
+    const options = wrapper.find('option')
+
+    expect(groups.length).to.eql(2)
+    expect(options.length).to.eql(4)
+  })
+
   it('should set the set custom attributes on the input', () => {
     const wrapper = mount(
       <InputSelect
