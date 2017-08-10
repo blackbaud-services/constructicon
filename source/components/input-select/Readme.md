@@ -24,14 +24,14 @@ initialState = { gender: '' };
 
 **Grouped Options**
 
-Support for `<optgroup>`
+Includes support for `<optgroup>`
 
 ```
 initialState = { event: '' };
 
 <div>
   <InputSelect
-    label='Gender'
+    label='Event'
     name='event'
     placeholder='Please Select Event'
     value={state.event}
