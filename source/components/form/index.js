@@ -4,49 +4,60 @@ import { withStyles } from '../../lib/css'
 import styles from './styles'
 
 import Button from '../button'
+import Icon from '../icon'
 
 const Form = ({
-  onSubmit,
-  errors = [],
-  submit = 'Submit',
-  isLoading = false,
-  isDisabled = false,
-  footer,
   children,
   classNames,
+  errors = [],
+  footer,
+  icon,
+  isLoading = false,
+  isDisabled = false,
+  noValidate,
   styles,
-  noValidate
-}) => (
-  <form
-    className={classNames.form}
-    method='POST'
-    onSubmit={onSubmit}
-    noValidate={noValidate}>
+  submit = 'Submit',
+  onSubmit
+}) => {
+  const renderIcon = () => {
+    return typeof icon === 'object'
+      ? <Icon styles={styles.icon} {...icon} />
+      : <Icon styles={styles.icon} name={icon} />
+  }
 
-    <div className={classNames.fields}>
-      {children}
-    </div>
+  return (
+    <form
+      className={classNames.form}
+      method='POST'
+      onSubmit={onSubmit}
+      noValidate={noValidate}>
 
-    {errors.map((error, i) => (
-      <div className={`${classNames.error} ${error.status && classNames[error.status]}`} key={i}>
-        {error.field ? `Field ${error.field} ` : ''}
-        {error.message}
+      <div className={classNames.fields}>
+        {children}
       </div>
-    ))}
 
-    {submit && (
-      <Button
-        block
-        styles={styles.submit}
-        disabled={isLoading || isDisabled}
-        type='submit'>
-        {submit}
-      </Button>
-    )}
+      {errors.map((error, i) => (
+        <div className={`${classNames.error} ${error.status && classNames[error.status]}`} key={i}>
+          {error.field ? `Field ${error.field} ` : ''}
+          {error.message}
+        </div>
+      ))}
 
-    {footer}
-  </form>
-)
+      {submit && (
+        <Button
+          block
+          styles={styles.submit}
+          disabled={isLoading || isDisabled}
+          type='submit'>
+          <span>{submit}</span>
+          {icon && renderIcon()}
+        </Button>
+      )}
+
+      {footer}
+    </form>
+  )
+}
 
 Form.propTypes = {
   /**
@@ -72,11 +83,21 @@ Form.propTypes = {
   /**
   * The label for the submit button
   */
-  submit: PropTypes.string
+  submit: PropTypes.string,
+
+  /**
+  * The name of the icon to add, an object of to pass to the Icon component, or false to hide
+  */
+  icon: PropTypes.oneOf([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.bool
+  ])
 }
 
 Form.defaultProps = {
-  submit: 'Submit'
+  submit: 'Submit',
+  icon: { name: 'chevron', size: 0.75 }
 }
 
 export default withStyles(styles)(Form)

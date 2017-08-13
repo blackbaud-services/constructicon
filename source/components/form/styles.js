@@ -83,6 +83,10 @@ export default (props, traits) => {
           }
         }
       }
+    },
+
+    icon: {
+      display: isLoading && 'none'
     }
   }
 
