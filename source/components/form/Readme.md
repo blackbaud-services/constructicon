@@ -32,7 +32,8 @@ handleSubmit = (e) => {
     isDisabled={!state.email || !state.password || !state.terms}
     isLoading={state.loading}
     submit={state.submitted ? 'Thanks!' : 'Sign Up'}
-    onSubmit={(e) => handleSubmit(e)}>
+    onSubmit={(e) => handleSubmit(e)}
+    icon={state.submitted || { name: 'chevron', size: 0.75 }}>
 
     <InputField
       type='email'
