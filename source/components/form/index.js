@@ -88,7 +88,7 @@ Form.propTypes = {
   /**
   * The name of the icon to add, an object of to pass to the Icon component, or false to hide
   */
-  icon: PropTypes.oneOf([
+  icon: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.bool
