@@ -85,7 +85,7 @@ export const lessThanOrEqualTo = (max = 0, msg) => {
       case 'undefined':
         return val
       case 'number':
-        return val < max && (msg || `Number must be less than or equal to ${max}`)
+        return val > max && (msg || `Number must be less than or equal to ${max}`)
       default:
         return !!val && val.length < max && (msg || `Must have a length less than or equal to ${max}`)
     }
