@@ -29,6 +29,7 @@ export const colors = {
   youtube: '#cd201f',
   linkedin: '#0084bf',
   google: '#dd4b39',
+  vimeo: '#1ab7ea',
   fitbit: '#00b0b9',
   mapmyfitness: '#004a8d',
   strava: '#fc4c02',
