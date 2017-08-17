@@ -37,6 +37,10 @@
 ```
 
 ```
+<Icon name='edit' />
+```
+
+```
 <Icon name='heart' />
 ```
 
@@ -45,7 +49,15 @@
 ```
 
 ```
+<Icon name='info' />
+```
+
+```
 <Icon name='loading' />
+```
+
+```
+<Icon name='lock' />
 ```
 
 ```
@@ -77,11 +89,19 @@
 ```
 
 ```
+<Icon name='share' />
+```
+
+```
 <Icon name='star' />
 ```
 
 ```
 <Icon name='target' />
+```
+
+```
+<Icon name='user' />
 ```
 
 ```
@@ -113,6 +133,10 @@
 
 ```
 <Icon name='google' color='google' />
+```
+
+```
+<Icon name='vimeo' color='vimeo' />
 ```
 
 ```
