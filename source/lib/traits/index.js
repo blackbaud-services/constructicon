@@ -46,7 +46,7 @@ export const fonts = {
 }
 
 export const measures = {
-  medium: 1.425
+  medium: 1.5
 }
 
 export const treatments = {
