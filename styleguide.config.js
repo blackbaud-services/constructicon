@@ -62,6 +62,12 @@ module.exports = {
       ])
     },
     {
+      name: 'Scripts',
+      components: () => ([
+        path.resolve(__dirname, 'source/components/typekit', 'index.js')
+      ])
+    },
+    {
       name: 'Theming',
       components: () => ([
         path.resolve(__dirname, 'source/components/traits-provider', 'index.js')
