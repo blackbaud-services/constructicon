@@ -6,7 +6,7 @@ const Typekit = ({ id }) => (
     dangerouslySetInnerHTML={{
       __html: `(function(d) {
         var config = {
-          kitId: ${id},
+          kitId: '${id}',
           scriptTimeout: 3000,
           async: true
         },
