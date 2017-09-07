@@ -17,4 +17,37 @@ describe('LeaderboardItem', () => {
     expect(image.length).to.eql(1)
     expect(image.prop('src')).to.eql('http://placehold.it/250x250')
   })
+
+  it('should use the supplied LinkTag', () => {
+    const MyLink = ({ children }) => (
+      <div>
+        <p>I'm special</p>
+        {children}
+      </div>
+    )
+
+    const wrapper = mount(
+      <LeaderboardItem
+        linkTag={MyLink}
+        title='Name'
+        amount='$2,500'
+      />
+    )
+
+    const customLink = wrapper.find('MyLink')
+    expect(customLink.length).to.eql(1)
+  })
+
+  it('should use the supplied link target', () => {
+    const wrapper = mount(
+      <LeaderboardItem
+        href='http://google.com'
+        title='Name'
+        target='_top'
+      />
+    )
+
+    const item = wrapper.find('a')
+    expect(item.prop('target')).to.eql('_top')
+  })
 })

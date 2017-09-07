@@ -14,6 +14,21 @@
 </Leaderboard>
 ```
 
+**Custom Link Component**
+
+```
+<Leaderboard>
+  <LeaderboardItem
+    href='http://google.com'
+    linkTag='div'
+    title='Name Here'
+    subtitle='Charity Name'
+    image='http://placehold.it/250x250'
+    amount='2,500km'
+  />
+</Leaderboard>
+```
+
 **Custom Styles**
 
 Apply custom styles to the leaderboard item
