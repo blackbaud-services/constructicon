@@ -4,30 +4,50 @@ import { withStyles } from '../../lib/css'
 import styles from './styles'
 
 const LeaderboardItem = ({
+  amount,
+  classNames,
   href,
   image,
-  title,
+  linkTag: LinkTag,
   subtitle,
-  amount,
-  classNames
-}) => (
-  <li className={classNames.root}>
-    <a href={href} target='_blank' className={classNames.link}>
-      {image && <img src={image} className={classNames.image} />}
-      <div className={classNames.info}>
-        <div className={classNames.title}>{title}</div>
-        {subtitle && <div className={classNames.subtitle}>{subtitle}</div>}
-      </div>
-      {amount && <div className={classNames.amount}>{amount}</div>}
-    </a>
-  </li>
-)
+  target,
+  title
+}) => {
+  return (
+    <li className={classNames.root}>
+      <LinkTag href={href} target={target}>
+        <div className={classNames.link}>
+          {image && <img src={image} className={classNames.image} />}
+          <div className={classNames.info}>
+            <div className={classNames.title}>{title}</div>
+            {subtitle && <div className={classNames.subtitle}>{subtitle}</div>}
+          </div>
+          {amount && <div className={classNames.amount}>{amount}</div>}
+        </div>
+      </LinkTag>
+    </li>
+  )
+}
 
 LeaderboardItem.propTypes = {
   /**
-  * The url of the leader's page
+  * The tag or component to be used as the link. e.g. `a`, React Router `Link`
+  */
+  linkTag: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
+
+  /**
+  * The url of the leader's page. Passed to linkTag as `href` prop
   */
   href: PropTypes.string,
+
+  /**
+  * The target for the link. e.g. `_blank`
+  */
+  target: PropTypes.string,
 
   /**
   * The avatar for the leader
@@ -61,6 +81,8 @@ LeaderboardItem.propTypes = {
 }
 
 LeaderboardItem.defaultProps = {
+  linkTag: 'a',
+  target: '_blank',
   href: '#',
   styles: {}
 }
