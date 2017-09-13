@@ -120,7 +120,7 @@ InputField.propTypes = {
   /**
   * The type of field
   */
-  type: PropTypes.oneOf(['checkbox', 'color', 'date', 'email', 'hidden', 'month', 'number', 'password', 'radio', 'range', 'search', 'tel', 'text', 'time', 'url', 'week']),
+  type: PropTypes.oneOf(['checkbox', 'color', 'date', 'email', 'hidden', 'month', 'number', 'password', 'radio', 'range', 'search', 'tel', 'text', 'textarea', 'time', 'url', 'week']),
 
   /**
   * The placeholder for the field
