@@ -15,6 +15,19 @@ describe('InputField', () => {
     expect(label.length).to.eql(1)
   })
 
+  it('should render a textarea when appropriate', () => {
+    const wrapper = mount(
+      <InputField
+        type='textarea'
+        label='Test Field'
+        name='test-name'
+        onChange={() => {}}
+      />
+    )
+    const textarea = wrapper.find('textarea')
+    expect(textarea.length).to.eql(1)
+  })
+
   it('should set the placeholder', () => {
     const wrapper = mount(
       <InputField
