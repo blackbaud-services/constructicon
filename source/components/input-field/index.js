@@ -24,39 +24,21 @@ const InputField = ({
 }) => {
   const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
   const allowedProps = omit(props, propsBlacklist)
+  const Tag = type === 'textarea' ? 'textarea' : 'input'
 
-  const renderField = () => {
-    switch (type) {
-      case 'textarea':
-        return (
-          <textarea
-            className={classNames.field}
-            type={type}
-            name={name}
-            id={id}
-            value={value}
-            onChange={(e) => onChange && onChange(e.target.value)}
-            onBlur={(e) => onBlur && onBlur(e.target.value)}
-            required={required}
-            {...allowedProps}
-          />
-        )
-      default:
-        return (
-          <input
-            className={classNames.field}
-            type={type}
-            name={name}
-            id={id}
-            value={value}
-            onChange={(e) => onChange && onChange(isBoolean(type) ? e.target.checked : e.target.value)}
-            onBlur={(e) => onBlur && onBlur(isBoolean(type) ? e.target.checked : e.target.value)}
-            required={required}
-            {...allowedProps}
-          />
-        )
-    }
-  }
+  const renderField = () => (
+    <Tag
+      className={classNames.field}
+      type={type}
+      name={name}
+      id={id}
+      value={value}
+      onChange={(e) => onChange && onChange(isBoolean(type) ? e.target.checked : e.target.value)}
+      onBlur={(e) => onBlur && onBlur(isBoolean(type) ? e.target.checked : e.target.value)}
+      required={required}
+      {...allowedProps}
+    />
+  )
 
   return (
     <div className={classNames.root}>
