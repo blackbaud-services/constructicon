@@ -99,3 +99,64 @@ handleSubmit = (e) => {
   )}
 </div>
 ```
+
+
+**With additional form actions**
+
+```
+initialState = {
+  email: '',
+  password: '',
+  loading: false,
+  submitted: false,
+  cancelled: false
+};
+
+handleSubmit = (e) => {
+  e.preventDefault()
+
+  setState({ loading: true })
+
+  setTimeout(() => {
+    setState({
+      loading: false,
+      submitted: true
+    })
+  }, 500)
+};
+
+{state.cancelled ? (
+  <div>
+    <Heading>You cancelled it!</Heading>
+    <Button onClick={() => setState({ cancelled: false })}>Start over?</Button>
+  </div>
+) : (
+  <Form
+    isLoading={state.loading}
+    actions={[{
+      label: 'Cancel',
+      onClick: (e) => setState({ cancelled: true })
+    }]}
+    submit='Login'
+    onSubmit={(e) => handleSubmit(e)}>
+
+    <InputField
+      type='email'
+      label='Email'
+      name='email'
+      value={state.email}
+      onChange={(v) => setState({ email: v })}
+      required
+    />
+
+    <InputField
+      type='password'
+      label='Password'
+      name='password'
+      value={state.password}
+      onChange={(v) => setState({ password: v })}
+      required
+    />
+  </Form>
+)}
+```

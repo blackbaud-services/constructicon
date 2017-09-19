@@ -4,6 +4,7 @@ import { withStyles } from '../../lib/css'
 import styles from './styles'
 
 import Button from '../button'
+import ButtonGroup from '../button-group'
 import Icon from '../icon'
 
 const Form = ({
@@ -17,9 +18,10 @@ const Form = ({
   noValidate,
   styles,
   submit = 'Submit',
+  actions = [],
   onSubmit
 }) => {
-  const renderIcon = () => {
+  const renderIcon = (icon) => {
     return typeof icon === 'object'
       ? <Icon styles={styles.icon} {...icon} />
       : <Icon styles={styles.icon} name={icon} />
@@ -43,7 +45,30 @@ const Form = ({
         </div>
       ))}
 
-      {submit && (
+      {actions.length ? (
+        <ButtonGroup styles={styles.actions}>
+          {submit && (
+            <Button
+              styles={styles.submit}
+              disabled={isLoading || isDisabled}
+              type='submit'>
+              <span>{submit}</span>
+              {icon && renderIcon(icon)}
+            </Button>
+          )}
+          {actions.map(({ label, icon, ...actionProps }, i) => (
+            <Button
+              key={i}
+              tag='a'
+              styles={styles.action}
+              disabled={isLoading || isDisabled}
+              {...actionProps}>
+              <span>{label}</span>
+              {icon && renderIcon(icon)}
+            </Button>
+          ))}
+        </ButtonGroup>
+      ) : submit ? (
         <Button
           block
           styles={styles.submit}
@@ -52,7 +77,7 @@ const Form = ({
           <span>{submit}</span>
           {icon && renderIcon()}
         </Button>
-      )}
+      ) : null}
 
       {footer}
     </form>
@@ -64,6 +89,16 @@ Form.propTypes = {
   * Errors to be displayed
   */
   errors: PropTypes.array,
+
+  /**
+  * The form inputs and content
+  */
+  children: PropTypes.any,
+
+  /**
+  * Additional form actions to be displayed
+  */
+  actions: PropTypes.array,
 
   /**
   * Disable form inputs
