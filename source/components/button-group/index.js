@@ -14,12 +14,9 @@ const ButtonGroup = ({
 
 ButtonGroup.propTypes = {
   /**
-  * The text for the button
+  * The buttons to appear within the group
   */
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element
-  ]).isRequired,
+  children: PropTypes.any,
 
   /**
   * The spacing to be applied

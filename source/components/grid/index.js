@@ -16,10 +16,7 @@ Grid.propTypes = {
   /**
   * Single or array of GridColumn children
   */
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element
-  ]).isRequired,
+  children: PropTypes.any,
 
   /**
   * Flexbox align option

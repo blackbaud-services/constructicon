@@ -44,9 +44,15 @@ export default (props, traits) => {
       fontWeight: 'normal'
     },
 
+    action: {
+      backgroundColor: colors.transparent,
+      color: colors.primary
+    },
+
     submit: {
-      margin: 'auto',
       opacity: isInactive ? '0.3 !important' : 0.85,
+      paddingLeft: rhythm(1.25),
+      paddingRight: rhythm(1.25),
       transition: 'all 250ms ease',
       ':focus': {
         opacity: isInactive ? '0.3 !important' : 1,

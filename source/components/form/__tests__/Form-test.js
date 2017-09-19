@@ -49,4 +49,15 @@ describe('Form', () => {
     form.simulate('submit', { target: { value: 'test' } })
     expect(called).to.eql(true)
   })
+
+  it('renders additional actions if supplied', () => {
+    const wrapper = mount(
+      <Form onSubmit={() => {}} actions={[{ label: 'Cancel' }]}>
+        <input type='text' name='test' />
+      </Form>
+    )
+    const action = wrapper.find('a')
+    expect(action.length).to.eql(1)
+    expect(action.text()).to.eql('Cancel')
+  })
 })
