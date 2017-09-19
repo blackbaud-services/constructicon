@@ -36,6 +36,11 @@ Modal.propTypes = {
   children: PropTypes.any.isRequired,
 
   /**
+  * Number indicating the milliseconds to wait before closing the modal.
+  */
+  closeTimeoutMS: PropTypes.number,
+
+  /**
   * A react-modal required prop for accessibility
   */
   contentLabel: PropTypes.string.isRequired,
@@ -51,9 +56,19 @@ Modal.propTypes = {
   isOpen: PropTypes.bool,
 
   /**
+  * Function that will be run after the modal has opened.
+  */
+  onAfterOpen: PropTypes.func,
+
+  /**
   * The callback to call when the modal should be closed
   */
   onRequestClose: PropTypes.func,
+
+  /**
+  * Specifies whether the modal closes on clicking overlay
+  */
+  shouldCloseOnOverlayClick: PropTypes.bool,
 
   /**
   * A spacing object to determine the padding within the modal
@@ -71,6 +86,7 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   closeIcon: <Icon name='close' />,
+  shouldCloseOnOverlayClick: true,
   spacing: 1,
   styles: {}
 }
