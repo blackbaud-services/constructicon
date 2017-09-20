@@ -75,7 +75,7 @@ const Form = ({
           disabled={isLoading || isDisabled}
           type='submit'>
           <span>{submit}</span>
-          {icon && renderIcon()}
+          {icon && renderIcon(icon)}
         </Button>
       ) : null}
 
