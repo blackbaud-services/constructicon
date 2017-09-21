@@ -51,6 +51,7 @@ const Form = ({
             <Button
               styles={styles.submit}
               disabled={isLoading || isDisabled}
+              aria-labelledby={submit}
               type='submit'>
               <span>{submit}</span>
               {icon && renderIcon(icon)}
@@ -62,6 +63,7 @@ const Form = ({
               tag='a'
               styles={styles.action}
               disabled={isLoading || isDisabled}
+              aria-labelledby={label}
               {...actionProps}>
               <span>{label}</span>
               {icon && renderIcon(icon)}
@@ -73,6 +75,7 @@ const Form = ({
           block
           styles={styles.submit}
           disabled={isLoading || isDisabled}
+          aria-labelledby={submit}
           type='submit'>
           <span>{submit}</span>
           {icon && renderIcon(icon)}
