@@ -66,12 +66,12 @@ class SearchForm extends Component {
     return (
       <div className={classNames.root}>
         <div className={classNames.form} onKeyDown={this.handleKeyDown}>
-          <label className={classNames.field}>
+          <label className={classNames.field} id='label-search-form'>
             <div className={classNames.label}>{title}</div>
             <input
               ref='field'
               type='text'
-              aria-label={title}
+              aria-labelledby='label-search-form'
               placeholder={placeholder}
               onFocus={this.showForm}
               onChange={this.onChange()}
@@ -82,7 +82,7 @@ class SearchForm extends Component {
             <Button
               onClick={expanded ? this.onChange() : toggled ? this.closeForm : this.showForm}
               children={expanded ? buttonText : toggled ? 'Close' : buttonText}
-              aria-labelledby={expanded ? buttonText : toggled ? 'Close' : buttonText}
+              aria-label={expanded ? buttonText : toggled ? 'Close' : buttonText}
               {...button}
             />
           </div>

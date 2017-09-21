@@ -11,6 +11,7 @@ import Icon from '../icon'
 const InputSelect = ({
   label,
   name,
+  id,
   value,
   options = [],
   groupOptions,
@@ -26,6 +27,8 @@ const InputSelect = ({
 }) => {
   const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
   const allowedProps = omit(props, propsBlacklist)
+  const inputId = id || name
+  const labelId = `label-${inputId}`
 
   const renderOptions = () => {
     if (groupOptions) {
@@ -59,7 +62,7 @@ const InputSelect = ({
   return (
     <div className={classNames.root}>
       {label && (
-        <label className={classNames.label}>
+        <label className={classNames.label} id={labelId} for={inputId}>
           {label}
           {required && <span className={classNames.required}>*</span>}
         </label>
@@ -68,13 +71,14 @@ const InputSelect = ({
       <div className={classNames.wrapper}>
         <select
           name={name}
+          id={inputId}
           value={value}
           placeholder={placeholder}
           onChange={(e) => onChange && onChange(e.target.value)}
           onBlur={(e) => onBlur && onBlur(e.target.value)}
           className={classNames.input}
           required
-          aria-label={name}
+          aria-labelledby={labelId}
           {...allowedProps}>
           {placeholder && <option disabled value=''>{placeholder}</option>}
           {renderOptions()}

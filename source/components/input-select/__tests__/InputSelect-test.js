@@ -51,19 +51,6 @@ describe('<InputSelect', () => {
     expect(input.prop('name')).to.eql('test-name')
   })
 
-  it('should apply an aria-label to improve accessibility', () => {
-    const wrapper = mount(
-      <InputSelect
-        label='Test Field'
-        name='test-name'
-        options={testOptions}
-        onChange={() => {}}
-      />
-    )
-    const input = wrapper.find('select')
-    expect(input.prop('aria-label')).to.eql('test-name')
-  })
-
   it('should render optgroups', () => {
     const testGroupedOptions = [
       { value: 'all', label: 'All' },

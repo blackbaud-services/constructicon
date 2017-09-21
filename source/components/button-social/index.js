@@ -22,6 +22,7 @@ const ButtonSocial = ({
     background={type}
     tag={share ? 'button' : 'a'}
     onClick={share && openShareDialog({ type, url, title, hashtags, caption })}
+    aria-label={type}
     {...props}>
     <Icon name={type} />
   </Button>
