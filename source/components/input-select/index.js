@@ -74,6 +74,7 @@ const InputSelect = ({
           onBlur={(e) => onBlur && onBlur(e.target.value)}
           className={classNames.input}
           required
+          aria-label={name}
           {...allowedProps}>
           {placeholder && <option disabled value=''>{placeholder}</option>}
           {renderOptions()}

@@ -66,6 +66,18 @@ describe('InputField', () => {
     expect(input.prop('disabled')).to.eql(true)
   })
 
+  it('should apply an aria-label to improve accessibility', () => {
+    const wrapper = mount(
+      <InputField
+        label='Test Field'
+        name='test-name'
+        onChange={() => {}}
+      />
+    )
+    const input = wrapper.find('input')
+    expect(input.prop('aria-label')).to.eql('test-name')
+  })
+
   it('should fire the onChange handler', (done) => {
     let called
     const wrapper = mount(

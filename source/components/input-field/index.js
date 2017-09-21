@@ -36,6 +36,7 @@ const InputField = ({
       onChange={(e) => onChange && onChange(isBoolean(type) ? e.target.checked : e.target.value)}
       onBlur={(e) => onBlur && onBlur(isBoolean(type) ? e.target.checked : e.target.value)}
       required={required}
+      aria-label={name}
       {...allowedProps}
     />
   )
