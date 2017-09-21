@@ -25,18 +25,20 @@ const InputField = ({
   const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
   const allowedProps = omit(props, propsBlacklist)
   const Tag = type === 'textarea' ? 'textarea' : 'input'
+  const inputId = id || name
+  const labelId = `label-${inputId}`
 
   const renderField = () => (
     <Tag
       className={classNames.field}
       type={type}
       name={name}
-      id={id}
+      id={inputId}
       value={value}
       onChange={(e) => onChange && onChange(isBoolean(type) ? e.target.checked : e.target.value)}
       onBlur={(e) => onBlur && onBlur(isBoolean(type) ? e.target.checked : e.target.value)}
       required={required}
-      aria-label={name}
+      aria-labelledby={labelId}
       {...allowedProps}
     />
   )
@@ -44,7 +46,7 @@ const InputField = ({
   return (
     <div className={classNames.root}>
       {label && (
-        <label className={classNames.label}>
+        <label className={classNames.label} id={labelId} for={inputId}>
           {label}
           {required && <span className={classNames.required}>*</span>}
         </label>

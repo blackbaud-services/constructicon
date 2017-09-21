@@ -13,7 +13,7 @@ describe('Form', () => {
     expect(form.length).to.eql(1)
     expect(submit.length).to.eql(1)
     expect(submit.text()).to.eql('Test Label')
-    expect(submit.prop('aria-labelledby')).to.eql('Test Label')
+    expect(submit.prop('aria-label')).to.eql('Test Label')
   })
 
   it('renders supplied form inputs', () => {
@@ -60,6 +60,6 @@ describe('Form', () => {
     const action = wrapper.find('a')
     expect(action.length).to.eql(1)
     expect(action.text()).to.eql('Cancel')
-    expect(action.prop('aria-labelledby')).to.eql('Cancel')
+    expect(action.prop('aria-label')).to.eql('Cancel')
   })
 })
