@@ -62,7 +62,7 @@ const InputSelect = ({
   return (
     <div className={classNames.root}>
       {label && (
-        <label className={classNames.label} id={labelId} for={inputId}>
+        <label className={classNames.label} id={labelId} htmlFor={inputId}>
           {label}
           {required && <span className={classNames.required}>*</span>}
         </label>
