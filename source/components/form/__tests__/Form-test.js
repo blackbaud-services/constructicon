@@ -13,6 +13,7 @@ describe('Form', () => {
     expect(form.length).to.eql(1)
     expect(submit.length).to.eql(1)
     expect(submit.text()).to.eql('Test Label')
+    expect(submit.prop('aria-label')).to.eql('Test Label')
   })
 
   it('renders supplied form inputs', () => {

@@ -71,6 +71,7 @@ class SearchForm extends Component {
             <input
               ref='field'
               type='text'
+              aria-label='title'
               placeholder={placeholder}
               onFocus={this.showForm}
               onChange={this.onChange()}
@@ -81,6 +82,7 @@ class SearchForm extends Component {
             <Button
               onClick={expanded ? this.onChange() : toggled ? this.closeForm : this.showForm}
               children={expanded ? buttonText : toggled ? 'Close' : buttonText}
+              aria-label='Search'
               {...button}
             />
           </div>
