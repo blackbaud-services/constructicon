@@ -35,8 +35,13 @@ ButtonSocial.propTypes = {
     'facebook',
     'twitter',
     'instagram',
+    'linkedin',
+    'youtube',
     'google',
-    'youtube'
+    'vimeo',
+    'strava',
+    'mapmyfitness',
+    'fitbit'
   ]).isRequired,
 
   /**
