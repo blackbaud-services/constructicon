@@ -60,7 +60,8 @@ class SearchForm extends Component {
       title,
       expanded,
       toggled,
-      classNames
+      classNames,
+      autofocus
     } = this.props
 
     return (
@@ -73,6 +74,7 @@ class SearchForm extends Component {
               type='text'
               aria-labelledby='label-search-form'
               placeholder={placeholder}
+              autoFocus={autofocus}
               onFocus={this.showForm}
               onChange={this.onChange()}
               className={classNames.input}
@@ -119,6 +121,11 @@ SearchForm.propTypes = {
   buttonText: PropTypes.string,
 
   /**
+  * Autofocus the search input on form load (best for modals)
+  */
+  autofocus: PropTypes.bool,
+
+  /**
   * Disable toggle functionality (best for modals)
   */
   expanded: PropTypes.bool,
@@ -148,6 +155,7 @@ SearchForm.defaultProps = {
   title: 'Looking for someone?',
   placeholder: 'Find a fundraiser',
   buttonText: 'Search',
+  autofocus: false,
   expanded: false,
   debounce: true,
   onChange: () => {}
