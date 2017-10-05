@@ -19,7 +19,8 @@ const Form = ({
   styles,
   submit = 'Submit',
   actions = [],
-  onSubmit
+  onSubmit,
+  ...props
 }) => {
   const renderIcon = (icon) => {
     return typeof icon === 'object'
@@ -32,7 +33,8 @@ const Form = ({
       className={classNames.form}
       method='POST'
       onSubmit={onSubmit}
-      noValidate={noValidate}>
+      noValidate={noValidate}
+      {...props}>
 
       <div className={classNames.fields}>
         {children}
