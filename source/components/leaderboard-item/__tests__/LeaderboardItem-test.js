@@ -50,4 +50,16 @@ describe('LeaderboardItem', () => {
     const item = wrapper.find('a')
     expect(item.prop('target')).to.eql('_top')
   })
+
+  it ('applies linkProps to the link', () => {
+    const wrapper = mount(
+      <LeaderboardItem
+        linkProps={{ foo: 'bar' }}
+        title='Name'
+      />
+    )
+
+    const item = wrapper.find('a')
+    expect(item.prop('foo')).to.eql('bar')
+  })
 })
