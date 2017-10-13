@@ -9,13 +9,14 @@ const LeaderboardItem = ({
   href,
   image,
   linkTag: LinkTag,
+  linkProps,
   subtitle,
   target,
   title
 }) => {
   return (
     <li className={classNames.root}>
-      <LinkTag href={href} target={target}>
+      <LinkTag href={href} target={target} {...linkProps}>
         <div className={classNames.link}>
           {image && <img src={image} className={classNames.image} />}
           <div className={classNames.info}>
@@ -38,6 +39,11 @@ LeaderboardItem.propTypes = {
     PropTypes.element,
     PropTypes.func
   ]),
+
+  /**
+  * Props to be applied to the linkTag
+  */
+  linkProps: PropTypes.object,
 
   /**
   * The url of the leader's page. Passed to linkTag as `href` prop
