@@ -11,6 +11,7 @@ export default (props, traits) => {
     borderColor,
     borderWidth,
     foreground,
+    margin,
     radius,
     spacing,
     styles
@@ -19,6 +20,7 @@ export default (props, traits) => {
   return {
     root: {
       ...calculateSpacing(spacing),
+      ...calculateSpacing(margin, 'margin'),
       backgroundColor: background && colors[background],
       color: foreground && colors[foreground],
       border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
