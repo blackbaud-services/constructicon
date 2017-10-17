@@ -67,15 +67,24 @@ Section.propTypes = {
   ]),
 
   /**
+  * The margin to be applied
+  */
+  margin: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number
+  ]),
+
+  /**
   * The custom styles to be applied to the section
   */
   styles: PropTypes.object
 }
 
 Section.defaultProps = {
-  tag: 'section',
+  tag: 'div',
   borderColor: 'shade',
   spacing: {x: 1, y: 1},
+  margin: 0,
   styles: {}
 }
 
