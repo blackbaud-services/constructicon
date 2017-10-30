@@ -50,6 +50,7 @@ export default (props, traits) => {
 
     close: {
       position: 'absolute',
+      zIndex: 100,
       top: rhythm(0.75),
       right: rhythm(0.75)
     }
