@@ -38,6 +38,7 @@ module.exports = {
         path.resolve(__dirname, 'source/components/form', 'index.js'),
         path.resolve(__dirname, 'source/components/input-field', 'index.js'),
         path.resolve(__dirname, 'source/components/input-select', 'index.js'),
+        path.resolve(__dirname, 'source/components/input-date', 'index.js'),
         path.resolve(__dirname, 'source/components/search-form', 'index.js')
       ])
     },
