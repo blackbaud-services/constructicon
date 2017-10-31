@@ -39,6 +39,7 @@
     "cxsync": "^1.0.9",
     "lodash": "^4.17.4",
     "minimal.css": "^1.0.1",
+    "moment": "^2.19.1",
     "prop-types": "^15.5.8",
     "react-helmet": "^5.1.3",
     "react-modal": "^1.9.4",
