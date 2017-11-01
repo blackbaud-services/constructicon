@@ -10,6 +10,7 @@ const LeaderboardItem = ({
   image,
   linkTag: LinkTag,
   linkProps,
+  rank,
   subtitle,
   target,
   title
@@ -18,6 +19,7 @@ const LeaderboardItem = ({
     <li className={classNames.root}>
       <LinkTag href={href} target={target} {...linkProps}>
         <div className={classNames.link}>
+          {rank && <div className={classNames.rank}>{rank}</div>}
           {image && <img src={image} className={classNames.image} />}
           <div className={classNames.info}>
             <div className={classNames.title}>{title}</div>

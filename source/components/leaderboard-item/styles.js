@@ -12,6 +12,15 @@ export default (props, traits) => {
     scale
   } = traits
 
+  const rankStyles = {
+    position: 'absolute',
+    top: '50%',
+    left: rhythm(0.5),
+    height: rhythm(2),
+    lineHeight: rhythm(2),
+    marginTop: rhythm(-1)
+  }
+
   const defaultStyles = {
     root: {
       position: 'relative',
@@ -21,16 +30,13 @@ export default (props, traits) => {
       fontSize: scale(-1),
       breakInside: 'avoid',
       ':after': {
-        content: rank ? `"${rank}."` : 'counter(board) "."',
+        content: !rank && 'counter(board) "."',
         counterIncrement: 'board',
-        position: 'absolute',
-        top: '50%',
-        left: rhythm(0.5),
-        height: rhythm(2),
-        lineHeight: rhythm(2),
-        marginTop: rhythm(-1)
+        ...rankStyles
       }
     },
+
+    rank: rankStyles,
 
     link: {
       display: 'flex',
