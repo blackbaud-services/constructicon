@@ -10,6 +10,9 @@ const services = {
   },
   google: ({ url }) => {
     return `https://plus.google.com/share?url=${url}`
+  },
+  linkedin: ({ url, title }) => {
+    return `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`
   }
 }
 

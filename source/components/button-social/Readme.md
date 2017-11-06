@@ -23,6 +23,7 @@ Share the current page on particular social networks
   <ButtonSocial type='facebook' share />
   <ButtonSocial type='twitter' share />
   <ButtonSocial type='google' share />
+  <ButtonSocial type='linkedin' share />
   <ButtonSocial type='twitter' url='https://everydayhero.com' title='Everydayhero' share />
 </ButtonGroup>
 ```
