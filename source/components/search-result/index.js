@@ -16,7 +16,7 @@ const SearchResult = ({
   <li className={classNames.root}>
     {image && (
       <div>
-        <img src={image} className={classNames.avatar} />
+        <img src={image} alt={title} className={classNames.avatar} />
       </div>
     )}
     <div className={classNames.titles}>
@@ -27,6 +27,7 @@ const SearchResult = ({
       <Button
         tag='a'
         href={url}
+        aria-label={cta}
         children={cta}
         target='_blank'
         {...button}

@@ -20,7 +20,7 @@ const LeaderboardItem = ({
       <LinkTag href={href} target={target} {...linkProps}>
         <div className={classNames.link}>
           {rank && <div className={classNames.rank}>{rank}</div>}
-          {image && <img src={image} className={classNames.image} />}
+          {image && <img src={image} alt={title} className={classNames.image} />}
           <div className={classNames.info}>
             <div className={classNames.title}>{title}</div>
             {subtitle && <div className={classNames.subtitle}>{subtitle}</div>}
