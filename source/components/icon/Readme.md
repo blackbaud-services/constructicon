@@ -41,6 +41,10 @@
 ```
 
 ```
+<Icon name='euro' />
+```
+
+```
 <Icon name='heart' />
 ```
 
@@ -85,6 +89,10 @@
 ```
 
 ```
+<Icon name='pound' />
+```
+
+```
 <Icon name='search' />
 ```
 
@@ -108,6 +116,9 @@
 <Icon name='warning' />
 ```
 
+```
+<Icon name='yen' />
+```
 
 **Social / Providers**
 
