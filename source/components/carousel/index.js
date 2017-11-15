@@ -6,7 +6,7 @@ import compose from '../../lib/compose'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
 
-import Icon from '../icon'
+import Arrow from './arrow'
 
 const Carousel = ({
   children,
@@ -27,8 +27,8 @@ const Carousel = ({
   return (
     <div className={classNames.carousel}>
       <Slider
-        nextArrow={<div><Icon name='chevron' /></div>}
-        prevArrow={<div><Icon name='chevron' rotate={180} /></div>}
+        prevArrow={<Arrow direction='prev' />}
+        nextArrow={<Arrow direction='next' />}
         {...allowedProps}>
         {children}
       </Slider>
