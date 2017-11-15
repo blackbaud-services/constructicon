@@ -6,7 +6,7 @@ import compose from '../../lib/compose'
 import { withStyles } from '../../lib/css'
 import styles from './styles'
 
-import Arrow from './arrow'
+import Arrow from '../carousel-arrow'
 
 const Carousel = ({
   children,
