@@ -1,4 +1,5 @@
 import Carousel from '..'
+import Arrow from '../arrow'
 
 describe('Carousel', () => {
   it('should render a simple carousel', () => {
@@ -22,5 +23,16 @@ describe('Carousel', () => {
 
     expect(wrapper.find('.slick-prev')).to.have.length(1)
     expect(wrapper.find('.slick-next')).to.have.length(1)
+  })
+})
+
+describe('Arrow', () => {
+  it('should render a simple carousel arrow', () => {
+    const wrapper = mount(
+      <Arrow direction='prev' />
+    )
+
+    expect(wrapper.find('button').prop('aria-label')).to.eql('Previous')
+    expect(wrapper.find('svg')).to.have.length(1)
   })
 })
