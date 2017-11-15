@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from '../../icon'
+import Icon from '../icon'
 
 const labels = {
   prev: 'Previous',
   next: 'Next'
 }
 
-const Arrow = ({
+const CarouselArrow = ({
   currentSlide,
   slideCount,
   direction,
@@ -18,7 +18,7 @@ const Arrow = ({
   </button>
 )
 
-Arrow.propTypes = {
+CarouselArrow.propTypes = {
   /**
   * The direction of the arrow
   */
@@ -28,8 +28,8 @@ Arrow.propTypes = {
   ]).isRequired
 }
 
-Arrow.defaultProps = {
+CarouselArrow.defaultProps = {
   direction: 'next'
 }
 
-export default Arrow
+export default CarouselArrow
