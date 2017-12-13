@@ -1,4 +1,5 @@
 import withForm from '..'
+import InputField from '../../input-field'
 import * as validators from '../../../lib/validators'
 
 describe('withForm', () => {
@@ -153,5 +154,32 @@ describe('withForm', () => {
       expect(values).to.eql({ name: 'John' })
       done()
     })
+  })
+
+  it ('fires an onFormChange handler on update', () => {
+    const Form = ({ form }) => (
+      <form>
+        <InputField {...form.fields.name} />
+      </form>
+    )
+
+    const ChildForm = withForm((props) => ({
+      onFormChange: props.onChange,
+      fields: {
+        name: {
+          label: 'Name',
+          initial: 'John'
+        }
+      }
+    }))(Form)
+
+    const onChangeFunc = sinon.spy()
+    const wrapper = mount(<ChildForm onChange={onChangeFunc} />)
+    const input = wrapper.find('input')
+
+    input.simulate('change', { target: { value: 'Dan' } })
+
+    expect(onChangeFunc.callCount).to.eql(1)
+    expect(onChangeFunc.firstCall.args[0].values.name).to.eql('Dan')
   })
 })
