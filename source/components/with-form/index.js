@@ -14,7 +14,8 @@ const withForm = (config) => (ComponentToWrap) => (
       const options = this.initOptions(config)
       const fields = this.initFields(options.fields)
       this.state = {
-        fields: this.validateFields(fields)
+        fields: this.validateFields(fields),
+        onFormChange: options.onFormChange
       }
     }
 
@@ -86,9 +87,14 @@ const withForm = (config) => (ComponentToWrap) => (
             dirty: value !== field.initial
           }
         }
-        this.setState({
-          fields: this.validateFields(updatedFields)
-        })
+
+        const fields = this.validateFields(updatedFields)
+
+        if (this.state.onFormChange) {
+          this.state.onFormChange(this.getForm(fields))
+        }
+
+        this.setState({ fields })
       }
     }
 
