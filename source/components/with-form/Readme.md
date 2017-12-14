@@ -2,7 +2,7 @@ _Example components can be found in source/components/with-form/examples_
 
 ---
 
-__withForm__ is a higher order component that allows you to pass in your form configuration, and it will then inject a __form__ prop into your component.
+__withForm__ is a higher order component (HOC) that allows you to pass in your form configuration, and it will then inject a __form__ prop into your component.
 
 You can then use this __form__ prop, and spread them across __InputField__ or other Constructicon form fields, and it will handle all the updating and validating of your form.
 
@@ -58,7 +58,32 @@ withForm({
 })(MyFormComponent)
 ```
 
+You can also specify an `onFormChange` listener in the configuration, which takes the form object as an argument
+
+For example:
+
+```javascript
+withForm({
+  onFormChange: (form) => console.log(form.values, form.invalid, ...),
+  fields: {
+    // ...
+  }
+})
+```
+
+If you wish to pass this in as a `prop` to your wrapped component, you can supply a function to the `withForm` HOC, which takes a `props` argument:
+
+```javascript
+withForm((props) => ({
+  onFormChange: props.onChange,
+  fields: {
+    // ...
+  }
+}))
+```
+
 <br/>
+
 # Form Props
 
 __withForm__ will pass a __form__ prop into your component.
@@ -92,6 +117,7 @@ componentWillReceiveProps (nextProps) {
 ```
 
 <br/>
+
 __form.submit__
 
 You can call form.submit() which will return a promise that will either:
