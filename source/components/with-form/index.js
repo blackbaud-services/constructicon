@@ -10,12 +10,14 @@ const withForm = (config) => (ComponentToWrap) => (
       super(props)
       this.handleChange = this.handleChange.bind(this)
       this.updateValues = this.updateValues.bind(this)
+      this.resetForm = this.resetForm.bind(this)
       this.submitForm = this.submitForm.bind(this)
+
       const options = this.initOptions(config)
       const fields = this.initFields(options.fields)
       this.state = {
         fields: this.validateFields(fields),
-        onFormChange: options.onFormChange
+        options
       }
     }
 
@@ -90,8 +92,8 @@ const withForm = (config) => (ComponentToWrap) => (
 
         const fields = this.validateFields(updatedFields)
 
-        if (this.state.onFormChange) {
-          this.state.onFormChange(this.getForm(fields))
+        if (this.state.options.onFormChange) {
+          this.state.options.onFormChange(this.getForm(fields))
         }
 
         this.setState({ fields })
@@ -122,6 +124,13 @@ const withForm = (config) => (ComponentToWrap) => (
       })
     }
 
+    resetForm () {
+      const fields = this.initFields(this.state.options.fields)
+      this.setState({
+        fields: this.validateFields(fields)
+      })
+    }
+
     submitForm () {
       const fields = this.touchFields(this.state.fields)
       this.setState({ fields })
@@ -137,6 +146,7 @@ const withForm = (config) => (ComponentToWrap) => (
         invalid: !this.checkIfValid(fields),
         validations: this.getValidations(fields),
         updateValues: this.updateValues,
+        resetForm: this.resetForm,
         submit: this.submitForm
       }
     }
