@@ -118,6 +118,18 @@ componentWillReceiveProps (nextProps) {
 
 <br/>
 
+__form.resetForm__
+
+You can call form.resetForm() which will reset all of the form values and validations to their initial state.
+
+```javascript
+handleCancel () {
+  this.props.form.resetForm()
+}
+```
+
+<br/>
+
 __form.submit__
 
 You can call form.submit() which will return a promise that will either:

@@ -121,6 +121,24 @@ describe('withForm', () => {
     expect(changedProps.fields.name.value).to.eql('Jane')
   })
 
+  it ('resets the form via resetForm', () => {
+    const Form = withForm({
+      fields: {
+        name: {
+          label: 'Name',
+          initial: 'Jane'
+        }
+      }
+    })(FormComponent)
+
+    const formEl = getForm(<Form />)
+    const form = formEl.prop('form')
+    form.fields.name.onChange('John')
+    form.resetForm()
+    const updatedForm = formEl.prop('form')
+    expect(updatedForm.fields.name.value).to.eql('Jane')
+  })
+
   it ('will not submit if invalid', (done) => {
     const Form = withForm({
       fields: {
