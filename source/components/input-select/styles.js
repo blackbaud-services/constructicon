@@ -1,19 +1,20 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    colors,
-    fonts,
-    measures,
-    radiuses,
-    rhythm,
-    scale,
-    treatments
-  } = traits
-
-  const { styles } = props
-
-  const invalid = props.touched && props.invalid
+export default ({
+  invalid,
+  touched,
+  readOnly,
+  styles
+}, {
+  colors,
+  fonts,
+  measures,
+  radiuses,
+  rhythm,
+  scale,
+  treatments
+}) => {
+  const isInvalid = touched && invalid
 
   const defaultStyles = {
     root: {
@@ -31,7 +32,8 @@ export default (props, traits) => {
       lineHeight: measures.medium,
       textAlign: 'left',
       marginBottom: rhythm(0.25),
-      'a': {
+
+      a: {
         color: colors.primary,
         textDecoration: 'underline'
       }
@@ -49,7 +51,7 @@ export default (props, traits) => {
       },
       'select::-ms-value': {
         background: 'none',
-        color: props.readOnly ? colors.lightGrey : colors.dark
+        color: readOnly ? colors.lightGrey : colors.dark
       },
       'select:-moz-focusring': {
         color: 'transparent',
@@ -67,7 +69,7 @@ export default (props, traits) => {
       lineHeight: rhythm(1.666),
       paddingLeft: rhythm(0.5),
       paddingRight: rhythm(1.25),
-      color: props.readOnly ? colors.lightGrey : colors.dark,
+      color: readOnly ? colors.lightGrey : colors.dark,
       border: 0,
       backgroundColor: 'transparent',
       backgroundImage: 'none',
@@ -83,8 +85,8 @@ export default (props, traits) => {
         outline: 0
       },
       ':focus + span': {
-        borderColor: invalid ? colors.danger : colors.secondary,
-        boxShadow: `0 0 5px ${invalid ? colors.danger : colors.secondary}`
+        borderColor: isInvalid ? colors.danger : colors.secondary,
+        boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
       }
     },
 
@@ -96,11 +98,10 @@ export default (props, traits) => {
       bottom: 0,
       zIndex: 0,
       backgroundColor: colors.light,
-      border: `thin solid ${invalid ? colors.danger : colors.lightGrey}`,
-      boxShadow: invalid && `0 0 5px ${colors.danger}`,
+      border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
+      boxShadow: isInvalid && `0 0 5px ${colors.danger}`,
       borderRadius: rhythm(radiuses.small),
-      ...treatments.input,
-      ...styles
+      ...treatments.input
     },
 
     icon: {
@@ -118,5 +119,5 @@ export default (props, traits) => {
     }
   }
 
-  return merge(defaultStyles, props.styles)
+  return merge(defaultStyles, styles)
 }

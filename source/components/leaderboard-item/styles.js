@@ -1,17 +1,13 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    rank,
-    styles
-  } = props
-
-  const {
-    measures,
-    rhythm,
-    scale
-  } = traits
-
+export default ({
+  rank,
+  styles
+}, {
+  measures,
+  rhythm,
+  scale
+}) => {
   const rankStyles = {
     position: 'absolute',
     top: '50%',

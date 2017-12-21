@@ -1,24 +1,23 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    colors,
-    fonts,
-    measures,
-    radiuses,
-    rhythm,
-    scale,
-    treatments
-  } = traits
-
-  const {
-    type,
-    styles
-  } = props
-
+export default ({
+  type,
+  touched,
+  invalid,
+  readOnly,
+  styles
+}, {
+  colors,
+  fonts,
+  measures,
+  radiuses,
+  rhythm,
+  scale,
+  treatments
+}) => {
   const checkbox = type === 'checkbox' || type === 'radio'
   const textarea = type === 'textarea'
-  const invalid = props.touched && props.invalid
+  const isInvalid = touched && invalid
 
   const defaultStyles = {
     root: {
@@ -37,7 +36,8 @@ export default (props, traits) => {
       lineHeight: measures.medium,
       textAlign: 'left',
       marginBottom: rhythm(0.25),
-      'a': {
+
+      a: {
         color: colors.primary,
         textDecoration: 'underline'
       }
@@ -57,20 +57,19 @@ export default (props, traits) => {
       width: '100%',
       textAlign: 'left',
       backgroundColor: colors.light,
-      color: props.readOnly ? colors.lightGrey : colors.dark,
+      color: readOnly ? colors.lightGrey : colors.dark,
       padding: `${rhythm(0.125)} ${rhythm(0.333)}`,
       height: textarea ? 'auto' : rhythm(1.666),
       minHeight: textarea && rhythm(4),
       maxHeight: textarea && rhythm(10),
-      border: `thin solid ${invalid ? colors.danger : colors.lightGrey}`,
-      boxShadow: invalid ? `0 0 5px ${colors.danger}` : 'none',
+      border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
+      boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
       borderRadius: rhythm(radiuses.small),
       ...treatments.input,
-      ...styles,
 
       ':focus': {
-        borderColor: invalid ? colors.danger : colors.secondary,
-        boxShadow: `0 0 5px ${invalid ? colors.danger : colors.secondary}`
+        borderColor: isInvalid ? colors.danger : colors.secondary,
+        boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
       }
     },
 
@@ -82,5 +81,5 @@ export default (props, traits) => {
     }
   }
 
-  return merge(defaultStyles, props.styles)
+  return merge(defaultStyles, styles)
 }

@@ -1,24 +1,20 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    scale,
-    rhythm
-  } = traits
-  const { styles } = props
-
+export default ({ styles }, {
+  rhythm,
+  scale,
+  justifyContent
+}) => {
   const defaultStyles = {
     loading: {
       textAlign: 'center',
       fontSize: scale(2)
     },
-    status: {
-      marginBottom: '0'
-    },
+
     state: {
       display: 'flex',
       alignItems: 'flex-start',
-      justifyContent: 'center',
+      ...justifyContent('center'),
       padding: rhythm(2),
       fontSize: scale(-1),
 

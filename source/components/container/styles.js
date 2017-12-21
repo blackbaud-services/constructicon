@@ -1,24 +1,22 @@
-export default (props, traits) => {
-  const {
-    calculateSpacing,
-    colors,
-    rhythm,
-    shadows,
-    treatments
-  } = traits
+import merge from 'lodash/merge'
 
-  const {
-    shadow,
-    background,
-    foreground,
-    outerColor,
-    styles,
-    width,
-    spacing,
-    fullHeight
-  } = props
-
-  return {
+export default ({
+  shadow,
+  background,
+  foreground,
+  outerColor,
+  width,
+  spacing,
+  fullHeight,
+  styles
+}, {
+  calculateSpacing,
+  colors,
+  rhythm,
+  shadows,
+  treatments
+}) => {
+  const defaultStyles = {
     root: {
       maxWidth: width ? rhythm(width) : treatments.container.maxWidth,
       minHeight: fullHeight && '100vh',
@@ -27,12 +25,13 @@ export default (props, traits) => {
       backgroundColor: background && colors[background],
       color: foreground && colors[foreground],
       ...treatments.body,
-      boxShadow: shadow && shadows[shadow],
-      ...styles
+      boxShadow: shadow && shadows[shadow]
     },
 
     outer: {
       backgroundColor: outerColor && colors[outerColor]
     }
   }
+
+  return merge(defaultStyles, styles)
 }

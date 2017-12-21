@@ -1,20 +1,16 @@
 import merge from 'lodash/merge'
 
-export default (props = {}, traits = {}) => {
-  const {
-    colors,
-    radiuses,
-    rhythm
-  } = traits
-
-  const {
-    background,
-    fill,
-    radius,
-    styles,
-    progress = 0
-  } = props
-
+export default ({
+  background,
+  fill,
+  radius,
+  progress = 0,
+  styles
+}, {
+  rhythm,
+  colors,
+  radiuses
+}) => {
   const defaultStyles = {
     root: {
       background: colors[background],
@@ -22,6 +18,7 @@ export default (props = {}, traits = {}) => {
       height: rhythm(1),
       position: 'relative'
     },
+
     fill: {
       background: colors[fill],
       borderRadius: rhythm(radiuses[radius]),
@@ -31,6 +28,7 @@ export default (props = {}, traits = {}) => {
       width: `${progress}%`,
       height: rhythm(1)
     },
+
     alt: {
       position: 'absolute',
       left: '-10000px',

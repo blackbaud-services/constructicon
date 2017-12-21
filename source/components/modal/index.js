@@ -16,7 +16,10 @@ const Modal = ({
   ...props
 }) => (
   <ReactModal
-    style={styles.wrapper}
+    style={{
+      overlay: styles.overlay,
+      content: styles.content
+    }}
     className={{
       base: 'c11n-modal',
       afterOpen: 'c11n-modal-after-open',

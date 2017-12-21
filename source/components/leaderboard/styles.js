@@ -1,20 +1,17 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    background,
-    foreground,
-    columns,
-    styles
-  } = props
-
-  const {
-    colors,
-    mediaQuery,
-    scale,
-    rhythm
-  } = traits
-
+export default ({
+  background,
+  foreground,
+  columns,
+  styles
+}, {
+  colors,
+  mediaQuery,
+  scale,
+  rhythm,
+  justifyContent
+}) => {
   const createColumns = () => {
     return Object.keys(columns).reduce((styles, breakpoint) => ({
       ...styles,
@@ -38,7 +35,7 @@ export default (props, traits) => {
     state: {
       display: 'flex',
       alignItems: 'flex-start',
-      justifyContent: 'center',
+      ...justifyContent('center'),
       padding: rhythm(2),
       fontSize: scale(-1),
 

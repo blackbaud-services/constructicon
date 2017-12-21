@@ -1,13 +1,15 @@
-export default (props, traits) => {
-  const {
-    calculateSpacing
-  } = traits
+import merge from 'lodash/merge'
 
-  const {
-    spacing,
-    styles
-  } = props
-
+export default ({
+  align,
+  direction,
+  justify,
+  spacing,
+  styles
+}, {
+  calculateSpacing,
+  justifyContent
+}) => {
   const flexPack = {
     'flex-start': 'start',
     'flex-end': 'end',
@@ -17,20 +19,18 @@ export default (props, traits) => {
   }
 
   return {
-    root: {
+    root: merge({
       display: 'flex',
       minWidth: '100%',
       flexWrap: 'wrap',
-      alignItems: props.align,
-      justifyContent: props.justify,
-      flexPack: flexPack[props.justify],
-      direction: props.direction,
+      alignItems: align,
+      direction: direction,
+      ...justifyContent(justify),
       ...calculateSpacing(spacing, 'margin', { multiplier: -1 }),
-      ...styles,
 
       '> *': {
         ...calculateSpacing(spacing, 'padding')
       }
-    }
+    }, styles)
   }
 }

@@ -1,25 +1,24 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    colors,
-    rhythm,
-    scale,
-    treatments
-  } = traits
-
-  const defaultStyles = {
+export default ({
+  color,
+  size,
+  styles
+}, {
+  colors,
+  rhythm,
+  scale,
+  treatments
+}) => ({
+  root: merge({
     ...treatments.head,
-    fontSize: scale(props.size),
+    fontSize: scale(size),
     marginTop: rhythm(1),
     marginBottom: rhythm(1),
-    color: props.color && colors[props.color],
+    color: color && colors[color],
+
     ':first-child': {
       marginTop: 0
     }
-  }
-
-  return {
-    root: merge(defaultStyles, props.styles)
-  }
-}
+  }, styles)
+})

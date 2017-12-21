@@ -1,16 +1,14 @@
-export default (props, traits) => {
-  const {
-    colors
-  } = traits
+import merge from 'lodash/merge'
 
-  const {
-    color,
-    rotate,
-    size,
-    spin,
-    styles
-  } = props
-
+export default ({
+  color,
+  rotate,
+  size,
+  spin,
+  styles
+}, {
+  colors
+}) => {
   const spinStyles = spin ? {
     animation: 'spin 1s linear infinite',
     '@keyframes spin': {
@@ -24,14 +22,13 @@ export default (props, traits) => {
   } : {}
 
   return {
-    root: {
+    root: merge({
       fill: colors[color] || color,
       display: 'inline-block',
       width: `${size}em`,
       height: `${size}em`,
       transform: `rotate(${rotate}deg)`,
-      ...spinStyles,
-      ...styles
-    }
+      ...spinStyles
+    }, styles)
   }
 }
