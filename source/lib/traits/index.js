@@ -159,6 +159,24 @@ export const effects = {
 }
 
 /**
+* Flexbox justifyContent style polyfill
+*/
+export const justifyContent = (value) => {
+  const flexPack = {
+    'flex-start': 'start',
+    'flex-end': 'end',
+    'space-between': 'justify',
+    'space-around': 'distribute',
+    'center': 'center'
+  }
+
+  return {
+    justifyContent: value,
+    flexPack: flexPack[value]
+  }
+}
+
+/**
 * Spacing - for handling spacing objects i.e. padding/margin props
 * e.g. { x: 1, y: 2 } or { l: 1, t: 2 } or 5 etc.
 */

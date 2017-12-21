@@ -1,24 +1,21 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    calculateSpacing,
-    colors,
-    rhythm,
-    scale,
-    treatments
-  } = traits
-
-  const {
-    background,
-    font,
-    foreground,
-    image,
-    size,
-    spacing,
-    styles
-  } = props
-
+export default ({
+  background,
+  font,
+  foreground,
+  image,
+  size,
+  spacing,
+  styles
+}, {
+  rhythm,
+  scale,
+  colors,
+  treatments,
+  calculateSpacing,
+  justifyContent
+}) => {
   const defaultStyles = {
     root: {
       display: 'block',
@@ -50,7 +47,7 @@ export default (props, traits) => {
       flexDirection: 'column',
       alignItems: 'center',
       alignContent: 'center',
-      justifyContent: 'center',
+      ...justifyContent('center'),
       textAlign: 'center',
       backgroundColor: colors[background],
       color: colors[foreground],

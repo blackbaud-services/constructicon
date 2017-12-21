@@ -1,17 +1,13 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    background,
-    foreground,
-    styles
-  } = props
-
-  const {
-    colors,
-    rhythm
-  } = traits
-
+export default ({
+  background,
+  foreground,
+  styles
+}, {
+  rhythm,
+  colors
+}) => {
   const defaultStyles = {
     root: {
       position: 'relative',

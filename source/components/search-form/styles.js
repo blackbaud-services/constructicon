@@ -1,19 +1,16 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    mediaQuery,
-    rhythm,
-    scale,
-    transitions
-  } = traits
-
-  const {
-    toggled,
-    expanded,
-    styles = {}
-  } = props
-
+export default ({
+  toggled,
+  expanded,
+  styles
+}, {
+  mediaQuery,
+  rhythm,
+  scale,
+  transitions,
+  justifyContent
+}) => {
   const open = expanded || toggled
 
   const defaultStyles = {
@@ -30,7 +27,7 @@ export default (props, traits) => {
         display: 'flex',
         alignItems: 'center',
         flexPack: 'center',
-        justifyContent: 'center'
+        ...justifyContent('center')
       }
     },
 

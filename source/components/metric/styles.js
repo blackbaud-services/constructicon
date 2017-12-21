@@ -1,16 +1,10 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    styles
-  } = props
-
-  const {
-    rhythm,
-    scale,
-    treatments
-  } = traits
-
+export default ({ styles }, {
+  rhythm,
+  scale,
+  treatments
+}) => {
   const defaultStyles = {
     root: {
       textAlign: 'center'

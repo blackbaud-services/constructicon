@@ -1,28 +1,26 @@
-export default (props, traits) => {
-  const {
-    colors,
-    mediaQuery,
-    radiuses,
-    rhythm
-  } = traits
+import merge from 'lodash/merge'
 
-  const {
-    xs,
-    sm,
-    md,
-    lg,
-    xsAlign,
-    smAlign,
-    mdAlign,
-    lgAlign,
-    background,
-    borderColor,
-    borderWidth,
-    foreground,
-    radius,
-    styles
-  } = props
-
+export default ({
+  xs,
+  sm,
+  md,
+  lg,
+  xsAlign,
+  smAlign,
+  mdAlign,
+  lgAlign,
+  background,
+  borderColor,
+  borderWidth,
+  foreground,
+  radius,
+  styles
+}, {
+  colors,
+  mediaQuery,
+  radiuses,
+  rhythm
+}) => {
   const calculateSize = (cols) => (
     cols ? {
       flex: `1 0 ${100 / 12 * cols}%`,
@@ -31,7 +29,7 @@ export default (props, traits) => {
   )
 
   return {
-    root: {
+    root: merge({
       backgroundColor: colors[background],
       color: colors[foreground],
       border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
@@ -49,8 +47,7 @@ export default (props, traits) => {
       [mediaQuery('lg')]: {
         textAlign: lgAlign,
         ...calculateSize(lg)
-      },
-      ...styles
-    }
+      }
+    }, styles)
   }
 }

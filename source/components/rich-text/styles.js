@@ -1,13 +1,11 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    measures,
-    rhythm,
-    scale,
-    treatments
-  } = traits
-
+export default ({ styles }, {
+  measures,
+  rhythm,
+  scale,
+  treatments
+}) => {
   const headingStyle = (size) => ({
     ...treatments.head,
     fontSize: scale(size),
@@ -96,6 +94,6 @@ export default (props, traits) => {
   }
 
   return {
-    root: merge(defaultStyles, props.styles)
+    root: merge(defaultStyles, styles)
   }
 }

@@ -1,6 +1,6 @@
 import merge from 'lodash/merge'
 
-export default (props, { rhythm }) => ({
+export default ({ styles }, { rhythm }) => ({
   root: merge({
     // Base
     '.slick-slider': {
@@ -168,5 +168,5 @@ export default (props, { rhythm }) => ({
         color: 'black'
       }
     }
-  }, props.styles)
+  }, styles)
 })
