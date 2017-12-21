@@ -1,3 +1,5 @@
+import merge from 'lodash/merge'
+
 export default (props = {}, traits = {}) => {
   const {
     colors,
@@ -13,13 +15,12 @@ export default (props = {}, traits = {}) => {
     progress = 0
   } = props
 
-  return {
-    background: {
+  const defaultStyles = {
+    root: {
       background: colors[background],
       borderRadius: rhythm(radiuses[radius]),
       height: rhythm(1),
-      position: 'relative',
-      ...styles.background
+      position: 'relative'
     },
     fill: {
       background: colors[fill],
@@ -28,8 +29,7 @@ export default (props = {}, traits = {}) => {
       top: 0,
       left: 0,
       width: `${progress}%`,
-      height: rhythm(1),
-      ...styles.fill
+      height: rhythm(1)
     },
     alt: {
       position: 'absolute',
@@ -40,4 +40,6 @@ export default (props = {}, traits = {}) => {
       overflow: 'hidden'
     }
   }
+
+  return merge(defaultStyles, styles)
 }

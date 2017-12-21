@@ -52,12 +52,12 @@ describe('ProgressBar', () => {
 
     const progressBar = wrapper.find('ProgressBar')
     const fill = utils.findRule(css.rules, progressBar.prop('classNames').fill)
-    const background = utils.findRule(css.rules, progressBar.prop('classNames').background)
+    const root = utils.findRule(css.rules, progressBar.prop('classNames').root)
 
     expect(fill.css).to.contain(`background:${colors['dark']}`)
     expect(fill.css).to.contain(`border-radius:${radiuses['none']}`)
-    expect(background.css).to.contain(`background:${colors['secondary']}`)
-    expect(background.css).to.contain(`border-radius:${radiuses['none']}`)
+    expect(root.css).to.contain(`background:${colors['secondary']}`)
+    expect(root.css).to.contain(`border-radius:${radiuses['none']}`)
   })
 
   it('should allow custom style specification', () => {

@@ -15,7 +15,19 @@ const Modal = ({
   styles,
   ...props
 }) => (
-  <ReactModal style={styles.wrapper} {...props}>
+  <ReactModal
+    style={styles.wrapper}
+    className={{
+      base: 'c11n-modal',
+      afterOpen: 'c11n-modal-after-open',
+      beforeClose: 'c11n-modal-before-close'
+    }}
+    overlayClassName={{
+      base: 'c11n-modal-overlay',
+      afterOpen: 'c11n-modal-overlay-after-open',
+      beforeClose: 'c11n-modal-overlay-before-close'
+    }}
+    {...props}>
     {closeIcon && (
       <button
         className={classNames.close}

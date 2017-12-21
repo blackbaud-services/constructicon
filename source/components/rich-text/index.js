@@ -13,7 +13,7 @@ const RichText = ({
   }
 
   return (
-    <Tag className={classNames.root}>
+    <Tag className={`c11n-rich-text ${classNames.root}`}>
       {
         typeof children === 'string'
           ? <span dangerouslySetInnerHTML={{ __html: children }} />

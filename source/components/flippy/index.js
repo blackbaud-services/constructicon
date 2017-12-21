@@ -9,7 +9,7 @@ const Flippy = ({
   color,
   classNames
 }) => (
-  <div className={classNames.root}>
+  <div className={`c11n-flippy ${classNames.root}`}>
     <div className={classNames.container}>
       <div className={`${classNames.wrapper} ${classNames.front}`}>
         {front}

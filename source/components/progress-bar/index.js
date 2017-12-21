@@ -14,7 +14,7 @@ const ProgressBar = ({
   alt,
   progress = 0
 }) => (
-  <div className={classNames.background}>
+  <div className={`c11n-progress-bar ${classNames.root}`}>
     <div className={classNames.fill} />
     <div className={classNames.alt}>
       {altTemplate(alt, progress)}

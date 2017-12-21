@@ -13,8 +13,8 @@ const Container = ({
   }
 
   return (
-    <div className={classNames.outer}>
-      <Tag className={classNames.root}>
+    <div className={`c11n-container-wrapper ${classNames.outer}`}>
+      <Tag className={`c11n-container ${classNames.root}`}>
         {children}
       </Tag>
     </div>

@@ -14,7 +14,7 @@ export default (props, traits) => {
     paddingBottom: rhythm(1)
   })
 
-  const baseStyles = {
+  const defaultStyles = {
     ...treatments.body,
 
     p: {
@@ -96,6 +96,6 @@ export default (props, traits) => {
   }
 
   return {
-    root: merge(baseStyles, props.styles)
+    root: merge(defaultStyles, props.styles)
   }
 }

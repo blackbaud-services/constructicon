@@ -16,7 +16,7 @@ const LeaderboardItem = ({
   title
 }) => {
   return (
-    <li className={classNames.root}>
+    <li className={`c11n-leaderboard-item ${classNames.root}`}>
       <LinkTag href={href} target={target} {...linkProps}>
         <div className={classNames.link}>
           {rank && <div className={classNames.rank}>{rank}</div>}

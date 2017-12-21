@@ -8,7 +8,7 @@ export default (props, traits) => {
     treatments
   } = traits
 
-  const baseStyles = {
+  const defaultStyles = {
     ...treatments.head,
     fontSize: scale(props.size),
     marginTop: rhythm(1),
@@ -20,6 +20,6 @@ export default (props, traits) => {
   }
 
   return {
-    root: merge(baseStyles, props.styles)
+    root: merge(defaultStyles, props.styles)
   }
 }

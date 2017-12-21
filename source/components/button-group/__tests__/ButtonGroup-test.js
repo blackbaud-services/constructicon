@@ -16,13 +16,14 @@ describe('Button Group', () => {
   })
 
   it('should allow us to pass in custom styles', () => {
-    const buttonGroup = getMountedElement(
+    const wrapper = mount(
       <ButtonGroup styles={{ opacity: 0.5 }}>
         <Button>Button 1</Button>
         <Button>Button 2</Button>
       </ButtonGroup>
     )
-    const rule = utils.findRule(css.rules, buttonGroup.props().className)
+    const container = wrapper.find('ButtonGroup')
+    const rule = utils.findRule(css.rules, container.prop('classNames').root)
     expect(rule.css).to.contain(`opacity:0.5`)
   })
 })

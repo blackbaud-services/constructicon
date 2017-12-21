@@ -7,7 +7,7 @@ const Grid = ({
   children,
   classNames
 }) => (
-  <div className={classNames.root}>
+  <div className={`c11n-grid ${classNames.root}`}>
     {children}
   </div>
 )

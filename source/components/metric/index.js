@@ -8,6 +8,7 @@ const Metric = ({
   label,
   amount,
   icon,
+  tag: Tag,
   classNames,
   styles
 }) => {
@@ -22,11 +23,11 @@ const Metric = ({
   }
 
   return (
-    <div className={classNames.root}>
+    <Tag className={`c11n-metric ${classNames.root}`}>
       {renderIcon()}
-      <div className={classNames.label}>{label}</div>
+      <label className={classNames.label}>{label}</label>
       <div className={classNames.amount}>{amount}</div>
-    </div>
+    </Tag>
   )
 }
 
@@ -53,6 +54,12 @@ Metric.propTypes = {
     PropTypes.element
   ]),
 
+  tag: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
+
   /**
   * Custom styles to be applied
   */
@@ -60,7 +67,8 @@ Metric.propTypes = {
 }
 
 Metric.defaultProps = {
-  styles: {}
+  styles: {},
+  tag: 'div'
 }
 
 export default withStyles(styles)(Metric)

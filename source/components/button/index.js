@@ -14,7 +14,7 @@ const Button = ({
   const allowedProps = omit(props, propsBlacklist)
 
   return (
-    <Tag className={classNames.root} {...allowedProps}>
+    <Tag className={`c11n-button ${classNames.root}`} {...allowedProps}>
       {children}
     </Tag>
   )

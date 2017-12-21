@@ -6,6 +6,7 @@ import styles from './styles'
 const Section = ({
   children,
   tag: Tag,
+  id,
   classNames
 }) => {
   if (!children) {
@@ -13,7 +14,7 @@ const Section = ({
   }
 
   return (
-    <Tag className={classNames.root}>
+    <Tag id={id} className={`c11n-section ${classNames.root}`}>
       {children}
     </Tag>
   )
@@ -81,7 +82,7 @@ Section.propTypes = {
 }
 
 Section.defaultProps = {
-  tag: 'div',
+  tag: 'section',
   borderColor: 'shade',
   spacing: {x: 1, y: 1},
   margin: 0,
