@@ -15,7 +15,7 @@ const Accordion = ({
   onToggle,
   classNames
 }) => (
-  <div className={classNames.root}>
+  <div className={`c11n-accordion ${classNames.root}`}>
     <div className={classNames.head} onClick={onToggle}>
       <div className={classNames.toggle}>
         {toggled ? opened : closed}

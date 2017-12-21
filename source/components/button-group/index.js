@@ -7,7 +7,7 @@ const ButtonGroup = ({
   children,
   classNames
 }) => (
-  <div className={classNames.root}>
+  <div className={`c11n-button-group ${classNames.root}`}>
     {children}
   </div>
 )

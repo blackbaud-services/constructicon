@@ -10,7 +10,7 @@ class Leaderboard extends Component {
     const { classNames } = this.props
 
     return (
-      <div className={classNames.root}>
+      <div className={`c11n-leaderboard ${classNames.root}`}>
         {this.renderLeaderboard()}
       </div>
     )

@@ -14,7 +14,7 @@ const Heading = ({
   }
 
   return (
-    <Tag id={id} className={classNames.root}>
+    <Tag id={id} className={`c11n-heading ${classNames.root}`}>
       {children}
     </Tag>
   )

@@ -30,7 +30,7 @@ const Form = ({
 
   return (
     <form
-      className={classNames.form}
+      className={`c11n-form ${classNames.root}`}
       method='POST'
       onSubmit={onSubmit}
       noValidate={noValidate}

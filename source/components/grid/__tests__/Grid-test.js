@@ -6,8 +6,8 @@ import { mediaQuery, rhythm } from '../../../lib/traits'
 describe('Grid', () => {
   it('should render a grid container', () => {
     const wrapper = mount(<Grid>Content here</Grid>)
-    const container = wrapper.find('div')
-    const rule = utils.findRule(css.rules, container.props().className)
+    const container = wrapper.find('Grid')
+    const rule = utils.findRule(css.rules, container.prop('classNames').root)
     expect(container.text()).to.eql('Content here')
     expect(rule.css).to.contain(`display:flex`)
   })

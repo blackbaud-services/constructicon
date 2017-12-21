@@ -25,7 +25,7 @@ const Carousel = ({
   const allowedProps = pick(props, propsWhitelist)
 
   return (
-    <div className={classNames.carousel}>
+    <div className={`c11n-carousel ${classNames.root}`}>
       <Slider
         prevArrow={<Arrow direction='prev' />}
         nextArrow={<Arrow direction='next' />}

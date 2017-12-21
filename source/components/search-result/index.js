@@ -13,7 +13,7 @@ const SearchResult = ({
   cta,
   classNames
 }) => (
-  <li className={classNames.root}>
+  <li className={`c11n-search-result ${classNames.root}`}>
     {image && (
       <div>
         <img src={image} alt={title} className={classNames.avatar} />

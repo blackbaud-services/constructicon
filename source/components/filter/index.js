@@ -46,7 +46,7 @@ class Filter extends Component {
     } = this.props
 
     return (
-      <form className={classNames.root}>
+      <form className={`c11n-filter ${classNames.root}`}>
         <Icon
           name='search'
           size={1.25}

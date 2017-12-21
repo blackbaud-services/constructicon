@@ -60,9 +60,9 @@ const InputSelect = ({
   }
 
   return (
-    <div className={classNames.root}>
+    <div className={`c11n-input-select ${classNames.root}`}>
       {label && (
-        <label className={classNames.label} id={labelId} htmlFor={inputId}>
+        <label className={`c11n-label ${classNames.label}`} id={labelId} htmlFor={inputId}>
           {label}
           {required && <span className={classNames.required}>*</span>}
         </label>

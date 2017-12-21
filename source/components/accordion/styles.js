@@ -1,3 +1,5 @@
+import merge from 'lodash/merge'
+
 export default (props, traits) => {
   const {
     border,
@@ -15,33 +17,24 @@ export default (props, traits) => {
     treatments
   } = traits
 
-  const {
-    root = {},
-    head = {},
-    title = {},
-    body = {}
-  } = styles
-
   const borderStyles =
     border ? {
       paddingLeft: rhythm(0.5),
       borderLeft: `2px solid ${toggled ? colors[color] : colors.shade}`
     } : {}
 
-  return {
+  const defaultStyles = {
     root: {
       paddingTop: rhythm(0.5),
       paddingBottom: rhythm(0.5),
-      ...borderStyles,
-      ...root
+      ...borderStyles
     },
 
     head: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'flex-start',
-      cursor: 'pointer',
-      ...head
+      cursor: 'pointer'
     },
 
     toggle: {
@@ -53,15 +46,15 @@ export default (props, traits) => {
     },
 
     title: {
-      ...treatments[font],
-      ...title
+      ...treatments[font]
     },
 
     body: {
       display: toggled ? 'block' : 'none',
       paddingTop: rhythm(0.5),
-      paddingLeft: rhythm(gutter),
-      ...body
+      paddingLeft: rhythm(gutter)
     }
   }
+
+  return merge(defaultStyles, styles)
 }

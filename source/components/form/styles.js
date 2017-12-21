@@ -10,8 +10,8 @@ export default (props, traits) => {
   const { isLoading, isDisabled } = props
   const isInactive = isDisabled || isLoading
 
-  const baseStyles = {
-    form: {
+  const defaultStyles = {
+    root: {
       display: 'block',
       margin: 'auto',
       paddingBottom: rhythm(1.5)
@@ -96,5 +96,5 @@ export default (props, traits) => {
     }
   }
 
-  return merge(baseStyles, props.styles)
+  return merge(defaultStyles, props.styles)
 }

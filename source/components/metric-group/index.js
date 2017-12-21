@@ -7,7 +7,7 @@ const MetricGroup = ({
   children,
   classNames
 }) => (
-  <div className={classNames.root}>
+  <div className={`c11n-metric-group ${classNames.root}`}>
     {children}
   </div>
 )

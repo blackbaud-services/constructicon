@@ -16,7 +16,8 @@ describe('ButtonSocial', () => {
   it('should allow us to override props', () => {
     const wrapper = mount(<ButtonSocial type='facebook' href='http://facebook.com' background='primary' />)
     const button = wrapper.find('a')
-    const rule = utils.findRule(css.rules, button.props().className)
+    const className = button.props().className.replace('c11n-button ', '')
+    const rule = utils.findRule(css.rules, className)
     expect(rule.css).to.contain(`background-color:${colors.primary}`)
   })
 

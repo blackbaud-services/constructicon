@@ -21,6 +21,7 @@ export default (props, traits) => {
     },
 
     label: {
+      display: 'block',
       marginBottom: rhythm(0.33),
       fontSize: scale(-1),
       ...treatments.button

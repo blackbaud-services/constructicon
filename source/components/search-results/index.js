@@ -10,7 +10,7 @@ class SearchResults extends Component {
     const { classNames } = this.props
 
     return (
-      <div className={classNames.root}>
+      <div className={`c11n-search-results ${classNames.root}`}>
         {this.renderSearchResults()}
       </div>
     )

@@ -15,7 +15,7 @@ export default (props, traits) => {
 
   const invalid = props.touched && props.invalid
 
-  const baseStyles = {
+  const defaultStyles = {
     root: {
       display: 'block',
       position: 'relative',
@@ -118,5 +118,5 @@ export default (props, traits) => {
     }
   }
 
-  return merge(baseStyles, props.styles)
+  return merge(defaultStyles, props.styles)
 }
