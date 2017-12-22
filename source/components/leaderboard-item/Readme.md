@@ -31,21 +31,15 @@
 
 **Custom Styles**
 
-Apply custom styles to the leaderboard item
+Apply a custom styles object to alter the look. Available elements are:
 
-**root** - the list item
-
-**link** - the anchor tag
-
-**image** - the avatar
-
-**info** - the title and subtitle container
-
-**title** - the main name or title
-
-**subtitle** - the subtitle or charity
-
-**amount** - the amount
+- `root` - the list item
+- `link` - the anchor tag
+- `image` - the avatar
+- `info` - the title and subtitle container
+- `title` - the main name or title
+- `subtitle` - the subtitle or charity
+- `amount` - the amount
 
 ```
 const styles = {

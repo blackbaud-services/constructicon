@@ -85,13 +85,36 @@ const leaders = [ leader, leader, leader, leader, leader, leader ];
 </Leaderboard>
 ```
 
+**Loading**
+
+Set the loading prop while your results are loading
+
+```
+<Leaderboard loading />
+```
+
+**Error**
+
+Set the error prop if there was an error loading the leaders
+
+```
+<Leaderboard error />
+```
+
+**Empty**
+
+If the no leaderboard items are passed in, an empty message will be shown
+
+```
+<Leaderboard />
+```
+
 **Custom Styles**
 
-Set custom styles
+Apply a custom styles object to alter the look. Available elements are:
 
-**root** - applied to the wrapper
-
-**leaders** - applied to the leaders listing
+- `root` - Containing element
+- `leaders` - Applied to the leaders listing
 
 ```
 const leader = {
@@ -120,29 +143,4 @@ const leaders = [ leader, leader, leader, leader, leader, leader ];
     />
   ))}
 </Leaderboard>
-```
-
-**Loading**
-
-Set the loading prop while your results are loading
-
-```
-<Leaderboard loading />
-```
-
-**Error**
-
-Set the error prop if there was an error loading the leaders
-
-```
-<Leaderboard error />
-```
-
-
-**Empty**
-
-If the no leaderboard items are passed in, an empty message will be shown
-
-```
-<Leaderboard />
 ```

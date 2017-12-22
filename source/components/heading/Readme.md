@@ -16,7 +16,7 @@ Provides a standard format for page/section headings
 
 **Custom Styles**
 
-You can pass through custom styles to be applied
+Pass in custom style rules to be applied to the heading
 
 ```
 <Heading styles={{ color: '#42AA4C' }}>Heading 1</Heading>

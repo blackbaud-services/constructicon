@@ -40,13 +40,6 @@ export default ({
       }
     },
 
-    notice: {
-      backgroundColor: colors.light,
-      color: colors.dark,
-      padding: `${rhythm(1)} ${rhythm(0.75)}`,
-      fontWeight: 'normal'
-    },
-
     action: {
       backgroundColor: colors.transparent,
       color: colors.primary

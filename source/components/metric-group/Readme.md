@@ -45,3 +45,17 @@ Set the background and/or foreground colors
   />
 </MetricGroup>
 ```
+
+**Custom Styles**
+
+Pass in custom style rules to be applied to the group
+
+```
+<MetricGroup styles={{ backgroundColor: '#ddd' }}>
+  <Metric
+    label='Target'
+    amount='$500,000'
+    icon='target'
+  />
+</MetricGroup>
+```

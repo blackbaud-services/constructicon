@@ -160,3 +160,15 @@ handleSubmit = (e) => {
   </Form>
 )}
 ```
+
+**Custom Styles**
+
+Apply a custom styles object to alter the look. Available elements are:
+
+- `root` - Form styles
+- `fields` - Form fields wrapper
+- `error` - Error message
+- `action` - Form actions group
+- `action` - Form action
+- `submit` - Submit button
+- `icon` - Submit button icon

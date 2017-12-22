@@ -27,7 +27,12 @@ Uses custom colors and radiuses as specified by traits
 
 **Custom styles**
 
-Using a gradient for the progress fill
+Apply a custom styles object to alter the look. Available elements are:
+
+- `root` - Container
+- `fill` - Progress fill
+
+For example, using a gradient for the progress fill:
 
 ```
 <ProgressBar

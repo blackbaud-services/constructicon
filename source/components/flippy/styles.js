@@ -25,10 +25,10 @@ export default ({
       textAlign: 'center',
       width: '100%',
       paddingBottom: '100%',
-      ':hover > div > div:first-child': {
+      ':hover > div:first-child': {
         transform: 'rotateY(180deg)'
       },
-      ':hover > div > div:last-child': {
+      ':hover > div:last-child': {
         transform: 'rotateY(0)'
       }
     },

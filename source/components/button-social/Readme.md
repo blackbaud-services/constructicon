@@ -27,3 +27,11 @@ Share the current page on particular social networks
   <ButtonSocial type='twitter' url='https://everydayhero.com' title='Everydayhero' share />
 </ButtonGroup>
 ```
+
+**Custom Styles**
+
+Takes styles the same as a `Button` component
+
+```
+<ButtonSocial type='facebook' share styles={{ backgroundColor: 'blue' }} />
+```
