@@ -32,11 +32,11 @@ This is useful for when the form is on a different color background already
 
 **Custom Styles**
 
-**root** - form styles
+Apply a custom styles object to alter the look. Available elements are:
 
-**icon** - search icon
-
-**input** - the search field
+- `root` - Form styles
+- `icon` - Search icon
+- `input` - The search field
 
 ```
 <Filter

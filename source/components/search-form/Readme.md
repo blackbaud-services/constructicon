@@ -31,3 +31,14 @@ var supporters = [1, 2, 3];
   </SearchResults>
 </SearchForm>
 ```
+
+**Custom styles**
+
+Apply a custom styles object to alter the look. Available elements are:
+
+- `root`
+- `form`
+- `field`
+- `input`
+- `label`
+- `results`

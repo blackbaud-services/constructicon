@@ -84,7 +84,15 @@ Remove the border from the accordion
 
 **Custom Styles**
 
-Apply a custom styles object to alter the look
+Apply a custom styles object to alter the look. Available elements are:
+
+- `root` - Containing element
+- `head` - Header container
+- `toggle` - Header icon
+- `title` - Header title text
+- `body` - Content body
+
+For example:
 
 ```
 const styles = {

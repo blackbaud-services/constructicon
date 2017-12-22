@@ -46,3 +46,17 @@ initialState = { event: '' };
   />
 </div>
 ```
+
+**Custom Styles**
+
+Apply a custom styles object to alter the look. Available elements are:
+
+- `root` - Containing element
+- `wrapper` - Wrapper around hidden select element and UI placeholder
+- `input` - Select field (UI hidden)
+- `field` - Field UI element (placeholder)
+- `label` - Label element
+- `required` - Required label (if present)
+- `icon` - dropdown icon
+- `errors` - Error messages container
+- `error` - Error message styles

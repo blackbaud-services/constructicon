@@ -110,7 +110,7 @@ Set the hover effect of the button
 
 **Custom Styles**
 
-Pass in an object of custom style rules to be applied
+Pass in custom style rules to be applied to the button
 
 ```
 <Button styles={{

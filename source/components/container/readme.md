@@ -35,3 +35,27 @@ Apply one of the theme's shadows to the container
   <Section>Footer</Section>
 </Container>
 ```
+
+**Custom Styles**
+
+Apply a custom styles object to alter the look. Available elements are:
+
+- `root`: Root content element
+- `outer`: Wrapper element
+
+```
+<Container styles={{
+  root: {
+    backgroundColor: 'whitesmoke',
+    maxWidth: '15rem',
+    padding: '0.75rem',
+    textAlign: 'center'
+  },
+  outer: {
+    padding: '0.75rem',
+    backgroundColor: 'grey'
+  }
+}}>
+  <span>Hello!</span>
+</Container>
+```

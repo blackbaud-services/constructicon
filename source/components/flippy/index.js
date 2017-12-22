@@ -10,13 +10,11 @@ const Flippy = ({
   classNames
 }) => (
   <div className={`c11n-flippy ${classNames.root}`}>
-    <div className={classNames.container}>
-      <div className={`${classNames.wrapper} ${classNames.front}`}>
-        {front}
-      </div>
-      <div className={`${classNames.wrapper} ${classNames.back}`}>
-        {back}
-      </div>
+    <div className={`${classNames.wrapper} ${classNames.front}`}>
+      {front}
+    </div>
+    <div className={`${classNames.wrapper} ${classNames.back}`}>
+      {back}
     </div>
   </div>
 )

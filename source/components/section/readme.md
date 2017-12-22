@@ -39,3 +39,13 @@ Set the border width, border color and/or border radius
   Content here
 </Section>
 ```
+
+**Custom styles**
+
+Pass in custom style rules to be applied to the section
+
+```
+<Section styles={{ backgroundColor: 'rebeccapurple', color: 'white' }}>
+  Content here
+</Section>
+```

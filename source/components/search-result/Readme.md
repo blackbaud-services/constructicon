@@ -14,3 +14,13 @@ Provides a list item suited for a search results listing.
   cta='Support'
 />
 ```
+
+**Custom styles**
+
+Apply a custom styles object to alter the look. Available elements are:
+
+- `root`
+- `avatar`
+- `titles`
+- `title`
+- `subtitle`

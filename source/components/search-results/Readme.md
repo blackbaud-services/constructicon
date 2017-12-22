@@ -47,3 +47,11 @@ Filled with SearchResults
   </SearchResult>
 </SearchResults>
 ```
+
+**Custom styles**
+
+Apply a custom styles object to alter the look. Available elements are:
+
+- `root`
+- `state`
+- `loading`

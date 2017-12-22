@@ -14,3 +14,7 @@ Simple main content and sidebar style grid that snaps into single column on smal
   </GridColumn>
 </Grid>
 ```
+
+**Custom Styles**
+
+Pass in custom style rules to be applied to the grid column
