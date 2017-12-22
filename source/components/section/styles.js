@@ -21,6 +21,6 @@ export default ({
     backgroundColor: background && colors[background],
     color: foreground && colors[foreground],
     border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
-    borderRadius: radius && rhythm(radiuses[radius]),
+    borderRadius: radius && rhythm(radiuses[radius])
   }, styles)
 })
