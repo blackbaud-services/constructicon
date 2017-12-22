@@ -32,7 +32,7 @@ describe('Container', () => {
   })
 
   it('should allow us to pass in custom styles', () => {
-    const wrapper = mount(<Container styles={{ opacity: 0.5 }}>Content here</Container>)
+    const wrapper = mount(<Container styles={{ root: { opacity: 0.5 } }}>Content here</Container>)
     const container = wrapper.find('Container')
     const rule = utils.findRule(css.rules, container.prop('classNames').root)
     expect(rule.css).to.contain(`opacity:0.5`)
