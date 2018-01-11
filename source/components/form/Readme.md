@@ -143,7 +143,7 @@ handleSubmit = (e) => {
     <InputField
       type='email'
       label='Email'
-      name='email'
+      name='email_alt'
       value={state.email}
       onChange={(v) => setState({ email: v })}
       required
@@ -152,7 +152,7 @@ handleSubmit = (e) => {
     <InputField
       type='password'
       label='Password'
-      name='password'
+      name='password_alt'
       value={state.password}
       onChange={(v) => setState({ password: v })}
       required
