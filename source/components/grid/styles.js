@@ -21,6 +21,10 @@ export default ({
 
     '> *': {
       ...calculateSpacing(spacing, 'padding')
+    },
+
+    '> *:empty': {
+      padding: 0
     }
   }, styles)
 })
