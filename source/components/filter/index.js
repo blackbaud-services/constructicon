@@ -42,11 +42,12 @@ class Filter extends Component {
     const {
       placeholder,
       classNames,
+      onSubmit,
       styles
     } = this.props
 
     return (
-      <form className={`c11n-filter ${classNames.root}`}>
+      <form onSubmit={onSubmit} className={`c11n-filter ${classNames.root}`}>
         <Icon
           name='search'
           size={1.25}
@@ -70,6 +71,11 @@ Filter.propTypes = {
   * The onChange event handler to be fired
   */
   onChange: PropTypes.func.isRequired,
+
+  /**
+  * The onSubmit event handler
+  */
+  onSubmit: PropTypes.func,
 
   /**
   * The placeholder for the input
@@ -100,7 +106,8 @@ Filter.propTypes = {
 Filter.defaultProps = {
   placeholder: 'Filter results',
   styles: {},
-  debounce: true
+  debounce: true,
+  onSubmit: (e) => e.preventDefault()
 }
 
 export default withStyles(styles)(Filter)
