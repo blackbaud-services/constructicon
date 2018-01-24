@@ -48,7 +48,7 @@ const InputField = ({
       {label && (
         <label className={`c11n-label ${classNames.label}`} id={labelId} htmlFor={inputId}>
           {label}
-          {required && <span className={classNames.required}>*</span>}
+          {required && <span className={classNames.required} title='Required field'>*</span>}
         </label>
       )}
 
