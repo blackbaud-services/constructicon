@@ -45,7 +45,8 @@ export default ({
 
     required: {
       display: 'inline-block',
-      color: colors.danger
+      color: colors.danger,
+      cursor: 'help'
     },
 
     field: checkbox ? {
