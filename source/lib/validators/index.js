@@ -1,5 +1,12 @@
 export const required = (msg = 'This field is required') => {
-  return (val) => !val && msg
+  return (val) => {
+    switch (typeof val) {
+      case 'string':
+        return !val.trim() && msg
+      default:
+        return !val && msg
+    }
+  }
 }
 
 export const email = (msg = 'A valid email is required') => {
