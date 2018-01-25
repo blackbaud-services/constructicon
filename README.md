@@ -22,7 +22,7 @@ The `TraitsProvider` component allows us to set our own themes and defaults.
 
 We can manage the look of most components via various props, and even have custom styles injected into them via the `styles` prop.
 
-### Updgrading from 0.* to v1.0
+### Upgrading from 0.* to v1.0
 
 A few breaking changes were introduced in `1.0.0` that need to be considered on the following components:
 
