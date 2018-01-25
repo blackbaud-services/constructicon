@@ -22,6 +22,56 @@ The `TraitsProvider` component allows us to set our own themes and defaults.
 
 We can manage the look of most components via various props, and even have custom styles injected into them via the `styles` prop.
 
+### Updgrading from 0.* to v1.0
+
+A few breaking changes were introduced in `1.0.0` that need to be considered on the following components:
+
+- [`Container`](https://everydayhero.github.io/constructicon/#Container)
+
+  Changes from `styles` object (e.g. `styles = { ... }`) to use nested keys, e.g.
+
+  ```
+  {
+    root: { ... },
+    outer: { ... }
+  }
+  ```
+
+- [`Modal`](https://everydayhero.github.io/constructicon/#Modal)
+
+  Removed nested `styles` object weirdness. So instead of:
+
+  ```
+  {
+    wrapper: {
+      content: { ... },
+      overlay: { ... }
+    },
+    container: { ... },
+    close: { ... }
+  }
+  ```
+
+  It is now:
+
+  ```
+  {
+    content: { ... },
+    overlay: { ... },
+    container: { ... },
+    close: { ... }
+  }
+  ```
+
+- [`Form`](https://everydayhero.github.io/constructicon/#Form)
+
+  Change `styles.form` to `styles.root` for consistency.
+
+- [`ProgressBar`](https://everydayhero.github.io/constructicon/#ProgressBar)
+
+  Change `styles.background` to `styles.root` for consistency.
+
+
 
 ## Development
 
