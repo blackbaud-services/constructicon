@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty'
 import Icon from '../icon'
-import { withStyles } from '../../lib/css'
+import withStyles from '../with-styles'
 import styles from './styles'
 
 class SearchResults extends Component {

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 import Icon from '../icon'
-import { withStyles } from '../../lib/css'
+import withStyles from '../with-styles'
 import styles from './styles'
 
 /**
