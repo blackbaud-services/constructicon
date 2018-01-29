@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import omit from 'lodash/omit'
 import mapKeys from 'lodash/mapKeys'
 import groupBy from 'lodash/groupBy'
-import { withStyles } from '../../lib/css'
+import withStyles from '../with-styles'
 import styles from './styles'
 
 import Icon from '../icon'

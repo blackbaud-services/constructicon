@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import pick from 'lodash/pick'
 import Slider from 'react-slick'
 import compose from '../../lib/compose'
-import { withStyles } from '../../lib/css'
+import withStyles from '../with-styles'
 import styles from './styles'
 
 import Arrow from '../carousel-arrow'

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from '../icon'
 import compose from '../../lib/compose'
-import { withStyles } from '../../lib/css'
+import withStyles from '../with-styles'
 import withToggle from '../with-toggle'
 import styles from './styles'
 
