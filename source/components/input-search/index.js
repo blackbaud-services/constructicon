@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import compose from '../../lib/compose'
+import onClickOutside from 'react-onclickoutside'
 import isEmpty from 'lodash/isEmpty'
 import withStyles from '../with-styles'
 import styles from './styles'
@@ -40,6 +42,10 @@ class InputSearch extends Component {
       default:
         return null
     }
+  }
+
+  handleClickOutside () {
+    this.clearSelection()
   }
 
   scrollToTop (ref = {}) {
@@ -235,4 +241,7 @@ InputSearch.defaultProps = {
   results: []
 }
 
-export default withStyles(styles)(InputSearch)
+export default compose(
+  withStyles(styles),
+  onClickOutside
+)(InputSearch)
