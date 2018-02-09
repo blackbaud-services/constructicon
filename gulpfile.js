@@ -9,6 +9,10 @@ var componentsFiles = [
   '!./dist/components/**/__tests__/*.js'
 ]
 
+var libFiles = [
+  './dist/lib/**/*.js'
+]
+
 var rootFiles = [
   './dist/*.js'
 ]
@@ -16,6 +20,7 @@ var rootFiles = [
 var otherFiles = [
   './dist/**/*.js',
   '!./dist/components/**/*.js',
+  '!./dist/lib/**/*.js',
   '!./dist/*.js'
 ]
 
@@ -26,6 +31,15 @@ gulp.task('npm-prep-components', function() {
   return gulp.src(componentsFiles)
     .pipe(replace('../..', '..'))
     .pipe(gulp.dest(npmDir))
+})
+
+/**
+* Update references in libs to new components location
+*/
+gulp.task('npm-prep-lib', function() {
+  return gulp.src(libFiles)
+    .pipe(replace('../../components', '../..'))
+    .pipe(gulp.dest([npmDir, 'lib'].join('/')))
 })
 
 /**
@@ -58,6 +72,7 @@ gulp.task('npm-prep-meta', function() {
 
 gulp.task('npm-prepare', [
   'npm-prep-components',
+  'npm-prep-lib',
   'npm-prep-root',
   'npm-prep-other',
   'npm-prep-meta'
