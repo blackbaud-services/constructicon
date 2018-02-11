@@ -24,21 +24,31 @@ class InputSearch extends Component {
   }
 
   handleChange (query) {
-    this.scrollToTop(this.refs.results)
+    if (this.refs.results) this.refs.results.scrollTop = 0
     this.setState({ query }, this.sendQuery)
   }
 
   handleKeyDown (e) {
     switch (e.key) {
       case 'ArrowUp':
+        e.preventDefault()
         return this.setSelectedItem(this.state.selected - 1)
       case 'ArrowDown':
+        e.preventDefault()
         return this.setSelectedItem(this.state.selected + 1)
       case 'Enter':
+        e.preventDefault()
         return this.confirmSelection()
       case 'Escape':
-      case 'Backspace':
+        e.preventDefault()
         return this.clearSelection()
+      case 'Backspace':
+        if (this.state.selected !== -1) {
+          e.preventDefault()
+          return this.clearSelection()
+        } else {
+          return null
+        }
       default:
         return null
     }
@@ -46,10 +56,6 @@ class InputSearch extends Component {
 
   handleClickOutside () {
     this.clearSelection()
-  }
-
-  scrollToTop (ref = {}) {
-    ref.scrollTop = 0
   }
 
   sendQuery (query) {
