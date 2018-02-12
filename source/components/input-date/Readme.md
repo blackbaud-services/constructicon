@@ -6,6 +6,7 @@ Pass an onChange callback to be notified of changes
 
 ```
 initialState = { date: '' };
+styles = { padding: '1rem', textAlign: 'center', backgroundColor: 'whitesmoke' };
 
 <div>
   <InputDate
@@ -15,6 +16,9 @@ initialState = { date: '' };
     onChange={(v) => setState({ date: v })}
     required
   />
+  <div style={styles}>
+    {state.date || 'No date selected'}
+  </div>
 </div>
 ```
 
@@ -22,6 +26,7 @@ initialState = { date: '' };
 
 ```
 initialState = { date: '' };
+styles = { padding: '1rem', textAlign: 'center', backgroundColor: 'whitesmoke' };
 
 <div>
   <InputDate
@@ -31,5 +36,8 @@ initialState = { date: '' };
     onChange={(v) => setState({ date: v })}
     showSelects
   />
+  <div style={styles}>
+    {state.date || 'No date selected'}
+  </div>
 </div>
 ```
