@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import range from 'lodash/range'
-import { withStyles } from '../../lib/css'
+import pick from 'lodash/pick'
+import withStyles from '../with-styles'
 import styles from './styles'
 
 import InputField from '../input-field'
@@ -69,6 +70,7 @@ class InputDate extends Component {
       date = moment()
     } = this.state
 
+    const allowedProps = pick(this.props, ['disabled', 'placeholder', 'required'])
     const months = [{ label: 'January', value: 0 }, { label: 'February', value: 1 }, { label: 'March', value: 2 }, { label: 'April', value: 3 }, { label: 'May', value: 4 }, { label: 'June', value: 5 }, { label: 'July', value: 6 }, { label: 'August', value: 7 }, { label: 'September', value: 8 }, { label: 'October', value: 9 }, { label: 'November', value: 10 }, { label: 'December', value: 11 }]
     const daysInMonth = date.daysInMonth() || 31
 
@@ -81,9 +83,36 @@ class InputDate extends Component {
           {required && <span className={classNames.required}>*</span>}
         </label>
         <div className={classNames.wrapper}>
-          <InputSelect styles={styles.input} value={date.date().toString()} onChange={this.updateDay} label='Day' name={`${name}-day`} options={mapValues(range(1, daysInMonth + 1))} />
-          <InputSelect styles={styles.input} value={date.month().toString()} onChange={this.updateMonth} label='Month' name={`${name}-month`} options={months} />
-          <InputSelect styles={styles.input} value={date.year().toString()} onChange={this.updateYear} label='Year' name={`${name}-year`} options={mapValues(range(1900, parseInt(moment().year() + 1)))} />
+          <InputSelect
+            {...allowedProps}
+            styles={styles.input}
+            value={date.date().toString()}
+            onChange={this.updateDay}
+            onBlur={this.updateDay}
+            label='Day'
+            name={`${name}-day`}
+            options={mapValues(range(1, daysInMonth + 1))}
+          />
+          <InputSelect
+            {...allowedProps}
+            styles={styles.input}
+            value={date.month().toString()}
+            onChange={this.updateMonth}
+            onBlur={this.updateMonth}
+            label='Month'
+            name={`${name}-month`}
+            options={months}
+          />
+          <InputSelect
+            {...allowedProps}
+            styles={styles.input}
+            value={date.year().toString()}
+            onChange={this.updateYear}
+            onBlur={this.updateYear}
+            label='Year'
+            name={`${name}-year`}
+            options={mapValues(range(1900, parseInt(moment().year() + 1)))}
+          />
         </div>
         {error && (
           <div className={classNames.errors}>

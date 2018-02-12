@@ -1,22 +1,15 @@
 import merge from 'lodash/merge'
 
-export default (props, traits) => {
-  const {
-    colors,
-    fonts,
-    measures,
-    radiuses,
-    rhythm,
-    scale
-  } = traits
-
-  const {
-    type,
-    spacing = 0.5
-  } = props
-
-  const invalid = props.touched && props.invalid
-
+export default ({
+  spacing = 0.5,
+  styles
+}, {
+  rhythm,
+  scale,
+  colors,
+  fonts,
+  measures
+}) => {
   const baseStyles = {
     root: {
       display: 'block',
@@ -59,8 +52,12 @@ export default (props, traits) => {
 
     input: {
       root: {
+        flex: 'auto',
         marginBottom: 0,
         marginLeft: rhythm(spacing)
+      },
+      field: {
+        textAlign: 'center'
       },
       label: {
         display: 'none'
@@ -68,5 +65,5 @@ export default (props, traits) => {
     }
   }
 
-  return merge(baseStyles, props.styles)
+  return merge(baseStyles, styles)
 }
