@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
     <link rel="shortcut icon" href="https://d8i1a0qhidbs8.cloudfront.net/image/favicon.png" type="image/vnd.microsoft.icon">
-		<title>Constructicon | 1.3.0</title>
-	</head>
-	<body>
-
+    <title>Constructicon | 1.4.0</title>
+  </head>
+  <body>
     <div class="ReactStyleguidist-StyleGuide__content ReactStyleguidist-common__font">
       <h1 class="page_heading ReactStyleguidist-Section__heading">Constructicon <a href="https://www.npmjs.com/package/constructicon"><img src="https://img.shields.io/npm/v/constructicon.svg?style=flat-square&colorB=43aa4c" alt="npm version"></a></h1>
       <p class='large'>A collection of common patterns used across many Professional Services projects.</p>
@@ -29,11 +29,6 @@
         font-family: "proxima-nova", sans-serif;
       }
 
-      .ReactStyleguidist-StyleGuide__content {
-        max-width: 50rem;
-        padding: 2rem;
-      }
-
       .ReactStyleguidist-Markdown__ul .ReactStyleguidist-Markdown__code,
       .ReactStyleguidist-Markdown__ol .ReactStyleguidist-Markdown__code,
       .ReactStyleguidist-Markdown__p .ReactStyleguidist-Markdown__code {
@@ -49,12 +44,6 @@
       .ReactStyleguidist-Markdown__ul li {
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
-      }
-
-      @media (max-width: 600px) {
-        .ReactStyleguidist-StyleGuide__content {
-          padding: 1.5rem;
-        }
       }
 
       .ReactStyleguidist-Section__root:not(:first-child) {
@@ -112,6 +101,10 @@
         margin: 1rem 0;
       }
 
+      .ReactStyleguidist-Markdown__pre {
+        overflow: auto;
+      }
+
       .ReactStyleguidist-ReactComponent__props {
         padding: 1.5em;
         background: whitesmoke;
@@ -144,9 +137,24 @@
         color: #389040;
       }
 
-      /* Sidebar */
+      /* Layout */
+
+      .ReactStyleguidist-StyleGuide__root.ReactStyleguidist-StyleGuide__hasSidebar {
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ReactStyleguidist-StyleGuide__content {
+        max-width: 100vw;
+        padding: 1.5rem;
+        order: 2;
+      }
 
       .ReactStyleguidist-StyleGuide__sidebar {
+        position: static;
+        width: auto;
+        margin-top: 2rem;
         overflow: hidden;
         border: 0;
       }
@@ -154,49 +162,6 @@
       .ReactStyleguidist-StyleGuide__sidebar > div {
         overflow: auto;
         max-height: calc(100vh - 115px);
-      }
-
-      @media (min-width: 600px) {
-        .ReactStyleguidist-StyleGuide__sidebar {
-          background: #43aa4c;
-          color: white;
-          width: 230px;
-          padding-bottom: 60px;
-        }
-
-        body {
-          padding-left: 230px;
-        }
-
-        .ReactStyleguidist-StyleGuide__root.ReactStyleguidist-StyleGuide__hasSidebar {
-          padding-left: 0;
-        }
-
-
-        .ReactStyleguidist-StyleGuide__sidebar .ReactStyleguidist-colors__link {
-          color: white;
-        }
-
-        .ReactStyleguidist-StyleGuide__sidebar .ReactStyleguidist-colors__link:hover {
-          color: whitesmoke;
-        }
-
-        .ReactStyleguidist-StyleGuide__heading {
-          background: #389040;
-          color: white;
-          border: 0;
-        }
-
-        .ReactStyleguidist-StyleGuide__sidebar:before {
-          content: '';
-          position: absolute;
-          bottom: 18px;
-          left: 20px;
-          right: 20px;
-          height: 30px;
-          background: url("https://assets.everydayhero.do/edh-logos/edh-logo-white.svg") no-repeat center;
-          background-size: contain;
-        }
       }
 
       .ReactStyleguidist-StyleGuide__heading small {
@@ -208,14 +173,6 @@
       .ReactStyleguidist-StyleGuide__heading {
         font-weight: 900;
       }
-
-      @media (max-width: 600px) {
-        .ReactStyleguidist-StyleGuide__sidebar {
-          position: relative;
-          margin-top: 2rem;
-        }
-      }
-
 
       /* Hacks */
 
@@ -268,8 +225,7 @@
       }
 
       a.github-link {
-        position: fixed;
-        width: 230px;
+        position: absolute;
         padding: 0 20px;
         top: 0;
         left: 0;
@@ -277,26 +233,6 @@
         height: 52px;
         line-height: 52px;
         opacity: 0;
-      }
-
-      @media (max-width: 600px) {
-        a.github-link {
-          position: absolute;
-          width: 100%;
-        }
-      }
-
-      @media (min-width: 600px) {
-        body:before {
-          content: "";
-          position: fixed;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          width: 230px;
-          background: #43aa4c;
-          background-image: linear-gradient(#389040 52px, #43aa4c 52px);
-        }
       }
 
       /* Icon section */
@@ -354,6 +290,105 @@
         width: 3em;
         font-size: 12px;
         right: 0.25em;
+      }
+
+      /* Isolation mode */
+
+      .ReactStyleguidist-StyleGuide__components > div > .ReactStyleguidist-ReactComponent__root {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        background: white;
+        z-index: 100;
+        max-width: 50rem;
+        margin: auto;
+      }
+
+      .ReactStyleguidist-StyleGuide__components > div > .ReactStyleguidist-ReactComponent__root > * {
+        position: relative;
+      }
+
+      .ReactStyleguidist-StyleGuide__components > div > .ReactStyleguidist-ReactComponent__root:before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: white;
+      }
+
+      /* Desktop styles */
+
+      @media (min-width: 750px) {
+        body {
+          padding-left: 230px;
+        }
+
+        body:before {
+          content: "";
+          position: fixed;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 230px;
+          background: #43aa4c;
+          background-image: linear-gradient(#389040 52px, #43aa4c 52px);
+        }
+
+        .ReactStyleguidist-StyleGuide__root.ReactStyleguidist-StyleGuide__hasSidebar {
+          display: block;
+        }
+
+        .ReactStyleguidist-StyleGuide__content {
+          max-width: 50rem;
+          padding: 2rem;
+        }
+
+        .ReactStyleguidist-StyleGuide__sidebar {
+          position: fixed;
+          margin: 0;
+          background: #43aa4c;
+          color: white;
+          width: 230px;
+          padding-bottom: 60px;
+        }
+
+        .ReactStyleguidist-StyleGuide__sidebar .ReactStyleguidist-colors__link {
+          color: white;
+        }
+
+        .ReactStyleguidist-StyleGuide__sidebar .ReactStyleguidist-colors__link:hover {
+          color: whitesmoke;
+        }
+
+        .ReactStyleguidist-StyleGuide__heading {
+          background: #389040;
+          color: white;
+          border: 0;
+        }
+
+        .ReactStyleguidist-StyleGuide__sidebar:before {
+          content: '';
+          position: absolute;
+          bottom: 18px;
+          left: 20px;
+          right: 20px;
+          height: 30px;
+          background: url("https://assets.everydayhero.do/edh-logos/edh-logo-white.svg") no-repeat center;
+          background-size: contain;
+        }
+
+        a.github-link {
+          position: fixed;
+          width: 230px;
+        }
+      }
+
+      .ReactStyleguidist-StyleGuide__components > div > .ReactStyleguidist-ReactComponent__root {
+        padding: 2rem;
       }
 		</style>
 
