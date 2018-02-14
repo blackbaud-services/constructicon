@@ -7,6 +7,7 @@ import styles from './styles'
 
 import InputField from '../input-field'
 import InputSelect from '../input-select'
+import Label from '../label'
 
 class InputDate extends Component {
   constructor (props) {
@@ -56,13 +57,13 @@ class InputDate extends Component {
   render () {
     const {
       required = false,
+      classNames,
+      error,
       id,
       label,
       name,
-      error,
-      validations,
-      classNames,
-      styles
+      styles = {},
+      validations
     } = this.props
 
     const {
@@ -78,10 +79,16 @@ class InputDate extends Component {
 
     return showSelects ? (
       <div className={classNames.root} id={id}>
-        <label className={classNames.label}>
-          {label}
-          {required && <span className={classNames.required}>*</span>}
-        </label>
+        {label && (
+          <Label
+            required={required}
+            styles={{
+              root: styles.label,
+              required: styles.required
+            }}>
+            {label}
+          </Label>
+        )}
         <div className={classNames.wrapper}>
           <InputSelect
             {...allowedProps}

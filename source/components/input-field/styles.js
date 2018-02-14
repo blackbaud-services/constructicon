@@ -29,26 +29,6 @@ export default ({
       marginBottom: rhythm(1)
     },
 
-    label: {
-      display: 'block',
-      fontWeight: 700,
-      fontSize: scale(-0.5),
-      lineHeight: measures.medium,
-      textAlign: 'left',
-      marginBottom: rhythm(0.25),
-
-      a: {
-        color: colors.primary,
-        textDecoration: 'underline'
-      }
-    },
-
-    required: {
-      display: 'inline-block',
-      color: colors.danger,
-      cursor: 'help'
-    },
-
     field: checkbox ? {
       position: 'absolute',
       top: rhythm(0.125),

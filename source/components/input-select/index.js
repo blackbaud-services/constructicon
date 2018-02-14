@@ -7,22 +7,23 @@ import withStyles from '../with-styles'
 import styles from './styles'
 
 import Icon from '../icon'
+import Label from '../label'
 
 const InputSelect = ({
+  classNames,
+  error,
+  groupOptions,
+  id,
   label,
   name,
-  id,
-  value,
   options = [],
-  groupOptions,
-  placeholder,
-  onChange,
   onBlur,
+  onChange,
+  placeholder,
   required,
-  error,
+  styles = {},
   validations,
-  classNames,
-  styles,
+  value,
   ...props
 }) => {
   const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
@@ -62,10 +63,16 @@ const InputSelect = ({
   return (
     <div className={`c11n-input-select ${classNames.root}`}>
       {label && (
-        <label className={`c11n-label ${classNames.label}`} id={labelId} htmlFor={inputId}>
+        <Label
+          id={labelId}
+          inputId={inputId}
+          required={required}
+          styles={{
+            root: styles.label,
+            required: styles.required
+          }}>
           {label}
-          {required && <span className={classNames.required} title='Required field'>*</span>}
-        </label>
+        </Label>
       )}
 
       <div className={classNames.wrapper}>
