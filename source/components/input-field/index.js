@@ -4,22 +4,25 @@ import omit from 'lodash/omit'
 import withStyles from '../with-styles'
 import styles from './styles'
 
+import Label from '../label'
+
 const isBoolean = (type) => {
   return ['radio', 'checkbox'].indexOf(type) > -1
 }
 
 const InputField = ({
-  type = 'text',
-  required,
-  label,
-  id,
-  name,
-  value,
-  onChange,
-  onBlur,
   classNames,
   error,
+  id,
+  label,
+  name,
+  required,
+  type = 'text',
+  onBlur,
+  onChange,
+  styles = {},
   validations,
+  value,
   ...props
 }) => {
   const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
@@ -46,10 +49,16 @@ const InputField = ({
   return (
     <div className={`c11n-input-field ${classNames.root}`}>
       {label && (
-        <label className={`c11n-label ${classNames.label}`} id={labelId} htmlFor={inputId}>
+        <Label
+          id={labelId}
+          inputId={inputId}
+          required={required}
+          styles={{
+            root: styles.label,
+            required: styles.required
+          }}>
           {label}
-          {required && <span className={classNames.required} title='Required field'>*</span>}
-        </label>
+        </Label>
       )}
 
       {renderField()}
