@@ -8,7 +8,7 @@ export default ({
   rhythm,
   scale
 }) => {
-  const defaultStyles= {
+  const defaultStyles = {
     root: {
       display: 'block',
       fontWeight: 700,
