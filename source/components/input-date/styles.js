@@ -19,13 +19,6 @@ export default ({
       marginBottom: rhythm(1)
     },
 
-    error: {
-      fontSize: scale(-0.75),
-      fontWeight: 700,
-      marginTop: rhythm(0.5),
-      color: colors.danger
-    },
-
     wrapper: {
       display: 'flex',
       flexWrap: 'nowrap',

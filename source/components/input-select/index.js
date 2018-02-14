@@ -7,6 +7,7 @@ import withStyles from '../with-styles'
 import styles from './styles'
 
 import Icon from '../icon'
+import InputValidations from '../input-validations'
 import Label from '../label'
 
 const InputSelect = ({
@@ -97,13 +98,10 @@ const InputSelect = ({
       </div>
 
       {error && (
-        <div className={classNames.errors}>
-          {validations.map((error, i) => (
-            <div className={classNames.error} key={i}>
-              {error}
-            </div>
-          ))}
-        </div>
+        <InputValidations
+          styles={{ root: styles.error }}
+          validations={validations}
+        />
       )}
     </div>
   )

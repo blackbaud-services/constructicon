@@ -90,13 +90,6 @@ export default ({
       top: '50%',
       right: rhythm(0.333),
       transform: 'translateY(-50%)'
-    },
-
-    error: {
-      fontSize: scale(-0.75),
-      fontWeight: 700,
-      marginTop: rhythm(0.5),
-      color: colors.danger
     }
   }
 
