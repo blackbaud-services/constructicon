@@ -4,6 +4,7 @@ import omit from 'lodash/omit'
 import withStyles from '../with-styles'
 import styles from './styles'
 
+import InputValidations from '../input-validations'
 import Label from '../label'
 
 const isBoolean = (type) => {
@@ -64,13 +65,10 @@ const InputField = ({
       {renderField()}
 
       {error && (
-        <div className={classNames.errors}>
-          {validations.map((error, i) => (
-            <div className={classNames.error} key={i}>
-              {error}
-            </div>
-          ))}
-        </div>
+        <InputValidations
+          styles={{ root: styles.error }}
+          validations={validations}
+        />
       )}
     </div>
   )

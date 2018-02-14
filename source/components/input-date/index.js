@@ -7,6 +7,7 @@ import styles from './styles'
 
 import InputField from '../input-field'
 import InputSelect from '../input-select'
+import InputValidations from '../input-validations'
 import Label from '../label'
 
 class InputDate extends Component {
@@ -122,13 +123,10 @@ class InputDate extends Component {
           />
         </div>
         {error && (
-          <div className={classNames.errors}>
-            {validations.map((error, i) => (
-              <div className={classNames.error} key={i}>
-                {error}
-              </div>
-            ))}
-          </div>
+          <InputValidations
+            styles={{ root: styles.error }}
+            validations={validations}
+          />
         )}
       </div>
     ) : <InputField type='date' {...this.props} />

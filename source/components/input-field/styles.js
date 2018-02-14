@@ -52,13 +52,6 @@ export default ({
         borderColor: isInvalid ? colors.danger : colors.secondary,
         boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
       }
-    },
-
-    error: {
-      fontSize: scale(-0.75),
-      fontWeight: 700,
-      marginTop: rhythm(0.5),
-      color: colors.danger
     }
   }
 
