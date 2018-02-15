@@ -7,6 +7,7 @@ const Section = ({
   children,
   tag: Tag,
   id,
+  role,
   classNames
 }) => {
   if (!children) {
@@ -14,7 +15,7 @@ const Section = ({
   }
 
   return (
-    <Tag id={id} className={`c11n-section ${classNames.root}`}>
+    <Tag id={id} role={role} className={`c11n-section ${classNames.root}`}>
       {children}
     </Tag>
   )
@@ -35,12 +36,22 @@ Section.propTypes = {
   ]),
 
   /**
-  * The background color of the section -
+  * The id of the section
+  */
+  id: PropTypes.string,
+
+  /**
+  * The role of the section
+  */
+  role: PropTypes.string,
+
+  /**
+  * The background color of the section
   */
   background: PropTypes.string,
 
   /**
-  * The color of the text -
+  * The color of the text
   */
   foreground: PropTypes.string,
 
@@ -55,7 +66,7 @@ Section.propTypes = {
   borderWidth: PropTypes.number,
 
   /**
-  * The radius of the section -
+  * The radius of the section
   */
   radius: PropTypes.string,
 

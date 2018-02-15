@@ -72,6 +72,7 @@ class InputDate extends Component {
       date = moment()
     } = this.state
 
+    const labelId = `label-${id || name}`
     const allowedProps = pick(this.props, ['disabled', 'placeholder', 'required'])
     const months = [{ label: 'January', value: 0 }, { label: 'February', value: 1 }, { label: 'March', value: 2 }, { label: 'April', value: 3 }, { label: 'May', value: 4 }, { label: 'June', value: 5 }, { label: 'July', value: 6 }, { label: 'August', value: 7 }, { label: 'September', value: 8 }, { label: 'October', value: 9 }, { label: 'November', value: 10 }, { label: 'December', value: 11 }]
     const daysInMonth = date.daysInMonth() || 31
@@ -82,6 +83,7 @@ class InputDate extends Component {
       <div className={classNames.root} id={id}>
         {label && (
           <Label
+            id={labelId}
             required={required}
             styles={{
               root: styles.label,
@@ -99,6 +101,7 @@ class InputDate extends Component {
             onBlur={this.updateDay}
             label='Day'
             name={`${name}-day`}
+            aria-labelledby={labelId}
             options={mapValues(range(1, daysInMonth + 1))}
           />
           <InputSelect
@@ -109,6 +112,7 @@ class InputDate extends Component {
             onBlur={this.updateMonth}
             label='Month'
             name={`${name}-month`}
+            aria-labelledby={labelId}
             options={months}
           />
           <InputSelect
@@ -119,6 +123,7 @@ class InputDate extends Component {
             onBlur={this.updateYear}
             label='Year'
             name={`${name}-year`}
+            aria-labelledby={labelId}
             options={mapValues(range(1900, parseInt(moment().year() + 1)))}
           />
         </div>

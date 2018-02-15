@@ -68,10 +68,10 @@ class SearchForm extends Component {
       <div className={`c11n-search-form ${classNames.root}`}>
         <div className={classNames.form} onKeyDown={this.handleKeyDown}>
           <label className={classNames.field} id='label-search-form'>
-            <div className={classNames.label}>{title}</div>
+            <span className={classNames.label}>{title}</span>
             <input
               ref='field'
-              type='text'
+              type='search'
               aria-labelledby='label-search-form'
               placeholder={placeholder}
               autoFocus={autofocus}
