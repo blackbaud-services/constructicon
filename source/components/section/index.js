@@ -4,18 +4,24 @@ import withStyles from '../with-styles'
 import styles from './styles'
 
 const Section = ({
+  background,
+  borderColor,
+  borderWidth,
   children,
+  classNames,
+  foreground,
+  margin,
+  spacing,
+  styles,
   tag: Tag,
-  id,
-  role,
-  classNames
+  ...props
 }) => {
   if (!children) {
     return null
   }
 
   return (
-    <Tag id={id} role={role} className={`c11n-section ${classNames.root}`}>
+    <Tag className={`c11n-section ${classNames.root}`} {...props}>
       {children}
     </Tag>
   )
@@ -34,16 +40,6 @@ Section.propTypes = {
     PropTypes.string,
     PropTypes.element
   ]),
-
-  /**
-  * The id of the section
-  */
-  id: PropTypes.string,
-
-  /**
-  * The role of the section
-  */
-  role: PropTypes.string,
 
   /**
   * The background color of the section
