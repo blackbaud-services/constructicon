@@ -6,7 +6,7 @@ import compose from '../../lib/compose'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-import Arrow from '../carousel-arrow'
+import Arrow from '../pagination-link'
 
 const Carousel = ({
   children,
