@@ -1,35 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Icon from '../icon'
+import PaginationLink from '../pagination-link'
 
-const labels = {
-  prev: 'Previous',
-  next: 'Next'
+export default (props) => {
+  console.log('The CarouselArrow component has been moved to the more reusable PaginationLink component. Support for importing from `constructicon/carousel-arrow` will be removed in version 2')
+  return <PaginationLink {...props} />
 }
-
-const CarouselArrow = ({
-  currentSlide,
-  slideCount,
-  direction,
-  ...props
-}) => (
-  <button aria-label={labels[direction]} type='button' role='button' {...props}>
-    <Icon name='chevron' rotate={direction === 'prev' ? 180 : 0} />
-  </button>
-)
-
-CarouselArrow.propTypes = {
-  /**
-  * The direction of the arrow
-  */
-  direction: PropTypes.oneOf([
-    'prev',
-    'next'
-  ]).isRequired
-}
-
-CarouselArrow.defaultProps = {
-  direction: 'next'
-}
-
-export default CarouselArrow
