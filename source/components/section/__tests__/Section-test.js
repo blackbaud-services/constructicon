@@ -52,4 +52,11 @@ describe('Section', () => {
     expect(rule.css).to.contain('margin-top:0')
     expect(rule.css).to.contain('margin-bottom:0')
   })
+
+  it('allows us to set other attributes', () => {
+    const wrapper = mount(<Section id='content' aria-label='Section'>Content here</Section>)
+    const section = wrapper.find('section')
+    expect(section.prop('id')).to.eql('content')
+    expect(section.prop('aria-label')).to.eql('Section')
+  })
 })
