@@ -92,7 +92,7 @@ const InputSelect = ({
           {renderOptions()}
         </select>
 
-        <span className={classNames.field} />
+        <span className={classNames.field} aria-hidden />
 
         <Icon name='dropdown' size={0.75} styles={styles.icon} />
       </div>

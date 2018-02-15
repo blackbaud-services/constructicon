@@ -47,7 +47,7 @@ class Filter extends Component {
     } = this.props
 
     return (
-      <form onSubmit={onSubmit} className={`c11n-filter ${classNames.root}`}>
+      <form action='/' onSubmit={onSubmit} className={`c11n-filter ${classNames.root}`}>
         <Icon
           name='search'
           size={1.25}
@@ -56,6 +56,7 @@ class Filter extends Component {
         <input
           ref='field'
           type='search'
+          aria-label={placeholder}
           placeholder={placeholder}
           onChange={this.onChange()}
           autoComplete='off'

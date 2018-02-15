@@ -51,6 +51,7 @@ export default ({
     },
 
     label: {
+      display: 'block',
       transform: `translateY(${rhythm(1)})`,
       fontSize: scale(2),
       whiteSpace: 'nowrap',

@@ -13,7 +13,7 @@ const CarouselArrow = ({
   direction,
   ...props
 }) => (
-  <button aria-label={labels[direction]} {...props}>
+  <button aria-label={labels[direction]} type='button' role='button' {...props}>
     <Icon name='chevron' rotate={direction === 'prev' ? 180 : 0} />
   </button>
 )

@@ -7,6 +7,7 @@ import styles from './styles'
 const Button = ({
   children,
   tag: Tag,
+  type,
   classNames,
   ...props
 }) => {
@@ -14,7 +15,11 @@ const Button = ({
   const allowedProps = omit(props, propsBlacklist)
 
   return (
-    <Tag className={`c11n-button ${classNames.root}`} {...allowedProps}>
+    <Tag
+      className={`c11n-button ${classNames.root}`}
+      type={Tag === 'button' && type}
+      aria-label={typeof children === 'string' ? children : 'button'}
+      {...allowedProps}>
       {children}
     </Tag>
   )
@@ -36,12 +41,17 @@ Button.propTypes = {
   ]),
 
   /**
-  * The background color of the button -
+  * The type the button
+  */
+  type: PropTypes.string,
+
+  /**
+  * The background color of the button
   */
   background: PropTypes.string,
 
   /**
-  * The color of the text -
+  * The color of the text
   */
   foreground: PropTypes.string,
 
@@ -56,7 +66,7 @@ Button.propTypes = {
   borderWidth: PropTypes.number,
 
   /**
-  * The font for the text -
+  * The font for the text
   */
   font: PropTypes.string,
 
@@ -74,7 +84,7 @@ Button.propTypes = {
   ]),
 
   /**
-  * The radius of the button -
+  * The radius of the button
   */
   radius: PropTypes.string,
 
@@ -101,6 +111,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   tag: 'button',
+  type: 'button',
   background: 'primary',
   foreground: 'light',
   borderColor: 'shade',

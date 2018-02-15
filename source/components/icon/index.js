@@ -8,12 +8,16 @@ const Icon = ({
   name,
   paths,
   viewBox,
+  ariaHidden = true,
   classNames
 }) => {
   const iconPaths = name ? icons[name] : paths
 
   return (
-    <svg className={`c11n-icon ${classNames.root}`} viewBox={`0 0 ${viewBox} ${viewBox}`}>
+    <svg
+      className={`c11n-icon ${classNames.root}`}
+      viewBox={`0 0 ${viewBox} ${viewBox}`}
+      aria-hidden={ariaHidden}>
       {iconPaths && iconPaths.map((pathProps, i) => (
         <path {...pathProps} key={i} />
       ))}
@@ -56,6 +60,11 @@ Icon.propTypes = {
   * Custom viewbox sizing
   */
   viewBox: PropTypes.number,
+
+  /**
+  * Override the default to hide icon from screen readers
+  */
+  ariaHidden: PropTypes.string,
 
   /**
   * Add custom styles to the icon

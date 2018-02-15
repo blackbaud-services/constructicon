@@ -25,7 +25,7 @@ const Metric = ({
   return (
     <Tag className={`c11n-metric ${classNames.root}`}>
       {renderIcon()}
-      <label className={classNames.label}>{label}</label>
+      <div className={classNames.label}>{label}</div>
       <div className={classNames.amount}>{amount}</div>
     </Tag>
   )
