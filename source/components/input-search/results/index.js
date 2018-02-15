@@ -49,7 +49,7 @@ const Results = ({
             isActive={index === active}
             result={result}
           />
-      </li>
+        </li>
       ))}
       {children}
     </ol>

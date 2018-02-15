@@ -6,7 +6,6 @@ import debounce from 'lodash/debounce'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-import Icon from '../icon'
 import InputValidations from '../input-validations'
 import Label from '../label'
 import Results from './results'
@@ -132,7 +131,6 @@ class InputSearch extends Component {
       id,
       label,
       name,
-      onChange,
       placeholder,
       readOnly,
       ResultComponent,
