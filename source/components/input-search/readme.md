@@ -170,16 +170,13 @@ const form = {
 
 const MyForm = withForm(form)(
   ({ form }) => (
-    <div>
+    <form>
       <CitySearch {...form.fields.city} />
-      <div style={{
-        marginTop: '2rem',
-        padding: '1rem',
-        backgroundColor: '#f6f6f6'
-      }}>
+
+      <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#f6f6f6' }}>
         Form Values: {JSON.stringify(form.values)}
       </div>
-    </div>
+    </form>
   )
 );
 
