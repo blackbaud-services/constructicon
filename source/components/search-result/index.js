@@ -30,6 +30,7 @@ const SearchResult = ({
         aria-label={cta}
         children={cta}
         target='_blank'
+        rel='noopener'
         {...button}
       />
     </div>
