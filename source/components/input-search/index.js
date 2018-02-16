@@ -6,10 +6,10 @@ import debounce from 'lodash/debounce'
 import withStyles from '../with-styles'
 import styles from './styles'
 
+import Icon from '../icon'
 import InputValidations from '../input-validations'
 import Label from '../label'
 import Results from './results'
-import SelectedValue from './selected-value'
 import ShowMore from './show-more'
 
 class InputSearch extends Component {
@@ -128,6 +128,7 @@ class InputSearch extends Component {
       emptyMessage,
       error,
       errorMessage,
+      icon,
       id,
       label,
       name,
@@ -186,12 +187,19 @@ class InputSearch extends Component {
               this.handleChange(e)
             }}
           />
-          {value && (
-            <SelectedValue
-              classNames={classNames}
-              label={valueFormatter(value)}
-              onClick={this.clearSelection}
-            />
+          {value ? (
+            <div onClick={this.clearSelection}>
+              <div className={classNames.selected}>{valueFormatter(value)}</div>
+              <div className={classNames.icon}>
+                <Icon name='close' />
+              </div>
+            </div>
+          ) : (
+            icon && (
+              <div className={classNames.icon}>
+                <Icon name={icon} />
+              </div>
+            )
           )}
         </div>
         {query && (
@@ -250,6 +258,11 @@ InputSearch.propTypes = {
   * If the field is in an error state
   */
   error: PropTypes.bool,
+
+  /**
+  * The icon to display on the right of the field (false to hide)
+  */
+  icon: PropTypes.oneOfType([ PropTypes.string, PropTypes.bool ]),
 
   /**
   * The ID of the input field
@@ -331,6 +344,7 @@ InputSearch.defaultProps = {
   debounce: 500,
   emptyMessage: 'No results found',
   errorMessage: 'There was an unexpected error',
+  icon: 'search',
   limit: 5,
   name: 'search',
   results: [],

@@ -4,7 +4,8 @@ export default ({
   invalid,
   readOnly,
   styles,
-  touched
+  touched,
+  value
 }, {
   colors,
   radiuses,
@@ -28,13 +29,16 @@ export default ({
       display: 'block',
       width: '100%',
       textAlign: 'left',
+      overflow: 'hidden',
       backgroundColor: colors.light,
       color: readOnly ? colors.lightGrey : colors.dark,
       padding: `${rhythm(0.125)} ${rhythm(0.333)}`,
+      paddingRight: rhythm(1.5),
       height: rhythm(1.666),
       border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
       boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
       borderRadius: rhythm(radiuses.small),
+      textIndent: value && -99999,
       ...treatments.input,
 
       ':focus': {
@@ -42,37 +46,21 @@ export default ({
       }
     },
 
+    icon: {
+      position: 'absolute',
+      right: rhythm(0.5),
+      top: '50%',
+      transform: 'translateY(-50%)',
+      cursor: value && 'pointer'
+    },
+
     selected: {
       position: 'absolute',
-      display: 'flex',
-      alignItems: 'stretch',
-      left: rhythm(0.175),
-      top: rhythm(0.175),
-      bottom: rhythm(0.175),
-      maxWidth: `calc(100% - ${rhythm(0.35)})`,
-      backgroundColor: colors.primary,
-      color: colors.light,
-      borderRadius: rhythm(radiuses.small),
-      fontSize: scale(-1),
-      overflow: 'hidden'
-    },
-
-    selectedLabel: {
-      display: 'flex',
-      alignItems: 'center',
-      padding: `${rhythm(0.25)} ${rhythm(0.5)}`,
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis'
-    },
-
-    selectedClose: {
-      flex: `0 0 ${rhythm(0.75)}`,
-      display: 'flex',
-      alignItems: 'center',
-      cursor: 'pointer',
-      padding: rhythm(0.25),
-      backgroundColor: colors.shade
+      left: rhythm(0.5),
+      right: rhythm(1.5),
+      top: '50%',
+      transform: 'translateY(-50%)',
+      cursor: 'pointer'
     },
 
     results: {
