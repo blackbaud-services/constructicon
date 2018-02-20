@@ -13,45 +13,45 @@ describe('Icon', () => {
 
   it('should set the size of the icon', () => {
     const wrapper = mount(<Icon name='facebook' size={2} />)
-    const rule = utils.findRule(css.rules, wrapper.find('Icon').prop('classNames').root)
-    expect(rule.css).to.contain('width:2em')
-    expect(rule.css).to.contain('height:2em')
+    const styles = wrapper.find('Icon').prop('styles')
+    expect(styles.root.width).to.eql('2em')
+    expect(styles.root.height).to.eql('2em')
   })
 
   it('should set the default color of the icon', () => {
     const wrapper = mount(<Icon name='facebook' />)
-    const rule = utils.findRule(css.rules, wrapper.find('Icon').prop('classNames').root)
-    expect(rule.css).to.contain('fill:currentColor')
+    const styles = wrapper.find('Icon').prop('styles')
+    expect(styles.root.fill).to.eql('currentColor')
   })
 
   it('should set the color of the icon to a theme color', () => {
     const wrapper = mount(<Icon name='facebook' color='primary' />)
-    const rule = utils.findRule(css.rules, wrapper.find('Icon').prop('classNames').root)
-    expect(rule.css).to.contain(`fill:${colors.primary}`)
+    const styles = wrapper.find('Icon').prop('styles')
+    expect(styles.root.fill).to.eql(colors.primary)
   })
 
   it('should set the color of the icon to a custom color', () => {
     const wrapper = mount(<Icon name='facebook' color='#777' />)
-    const rule = utils.findRule(css.rules, wrapper.find('Icon').prop('classNames').root)
-    expect(rule.css).to.contain(`fill:#777`)
+    const styles = wrapper.find('Icon').prop('styles')
+    expect(styles.root.fill).to.eql('#777')
   })
 
   it('should spin the icon if set', () => {
     const wrapper = mount(<Icon name='loading' spin />)
-    const rule = utils.findRule(css.rules, wrapper.find('Icon').prop('classNames').root)
-    expect(rule.css).to.contain(`animation:spin`)
+    const styles = wrapper.find('Icon').prop('styles')
+    expect(styles.root.animation).to.eql('k1 1s linear infinite')
   })
 
   it('should rotate the icon if set', () => {
     const wrapper = mount(<Icon name='loading' rotate={90} />)
-    const rule = utils.findRule(css.rules, wrapper.find('Icon').prop('classNames').root)
-    expect(rule.css).to.contain('transform:rotate(90deg)')
+    const styles = wrapper.find('Icon').prop('styles')
+    expect(styles.root.transform).to.eql('rotate(90deg)')
   })
 
   it('should apply custom styles', () => {
     const wrapper = mount(<Icon name='loading' styles={{ opacity: 0.5 }} />)
-    const rule = utils.findRule(css.rules, wrapper.find('Icon').prop('classNames').root)
-    expect(rule.css).to.contain('opacity:0.5')
+    const styles = wrapper.find('Icon').prop('styles')
+    expect(styles.root.opacity).to.eql(0.5)
   })
 
   it('should apply a custom icon', () => {

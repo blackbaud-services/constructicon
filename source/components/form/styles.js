@@ -1,14 +1,17 @@
 import merge from 'lodash/merge'
 
-export default ({
-  isDisabled,
-  isLoading,
-  styles
-}, {
-  colors,
-  radiuses,
-  rhythm
-}) => {
+export default (props, traits, keyframes) => {
+  const {
+    isDisabled,
+    isLoading,
+    styles
+  } = props
+
+  const {
+    colors,
+    radiuses,
+    rhythm
+  } = traits
   const isInactive = isDisabled || isLoading
 
   const defaultStyles = {
@@ -31,11 +34,11 @@ export default ({
       color: colors.light,
       borderRadius: rhythm(radiuses.small),
 
-      'p + p': {
+      '& p + p': {
         marginTop: rhythm(0.666)
       },
 
-      a: {
+      '& a': {
         color: colors.tertiary
       }
     },
@@ -51,23 +54,23 @@ export default ({
       paddingRight: rhythm(1.25),
       transition: 'all 250ms ease',
 
-      ':focus': {
+      '&:focus': {
         opacity: isInactive ? '0.3 !important' : 1,
         boxShadow: `0 0 15px 1px rgba(0, 0, 0, 0.25)`
       },
 
-      ':active': {
+      '&:active': {
         opacity: isInactive ? '0.3 !important' : 1,
         boxShadow: `inset 0 0 15px 1px rgba(0, 0, 0, 0.25)`
       },
 
-      ':hover': {
+      '&:hover': {
         opacity: isInactive ? '0.3 !important' : 1,
         cursor: isInactive ? 'default' : 'pointer',
         pointerEvents: isInactive ? 'none' : 'all'
       },
 
-      ':after': {
+      '&:after': {
         content: isLoading && '""',
         display: isLoading ? 'inline-block' : 'none',
         width: rhythm(0.75),
@@ -79,16 +82,7 @@ export default ({
         borderRightColor: colors.light,
         textIndent: '-9999px',
         overflow: 'hidden',
-        animation: 'spin 1s linear infinite',
-
-        '@keyframes spin': {
-          '0%': {
-            transform: 'rotate(0deg)'
-          },
-          '100%': {
-            transform: 'rotate(360deg)'
-          }
-        }
+        animation: `${keyframes.spin} 1s linear infinite`
       }
     },
 
@@ -98,4 +92,15 @@ export default ({
   }
 
   return merge(defaultStyles, styles)
+}
+
+export const keyframes = {
+  spin: {
+    '0%': {
+      transform: 'rotate(0deg)'
+    },
+    '100%': {
+      transform: 'rotate(360deg)'
+    }
+  }
 }
