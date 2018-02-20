@@ -61,11 +61,11 @@ export default ({
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
       ...treatments.input,
-      ':focus': {
+      '&:focus': {
         border: 0,
         outline: 0
       },
-      ':focus + span': {
+      '&:focus + span': {
         borderColor: isInvalid ? colors.danger : colors.secondary,
         boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
       }

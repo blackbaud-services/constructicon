@@ -48,7 +48,7 @@ export default ({
       borderRadius: rhythm(radiuses.small),
       ...treatments.input,
 
-      ':focus': {
+      '&:focus': {
         borderColor: isInvalid ? colors.danger : colors.secondary,
         boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
       }
