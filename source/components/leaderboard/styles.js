@@ -39,7 +39,7 @@ export default ({
       padding: rhythm(2),
       fontSize: scale(-1),
 
-      '> *': {
+      '& > *': {
         margin: `0 ${rhythm(0.25)}`
       }
     }
