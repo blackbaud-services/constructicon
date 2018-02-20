@@ -6,12 +6,12 @@ describe('Section', () => {
   it('should render a section', () => {
     const wrapper = mount(<Section>Content here</Section>)
     const section = wrapper.find('Section')
-    const rule = utils.findRule(css.rules, section.prop('classNames').root)
+    const styles = section.prop('styles')
     expect(section.text()).to.eql('Content here')
-    expect(rule.css).to.contain('padding-left:1.5rem')
-    expect(rule.css).to.contain('padding-right:1.5rem')
-    expect(rule.css).to.contain('padding-top:1.5rem')
-    expect(rule.css).to.contain('padding-bottom:1.5rem')
+    expect(styles.root.paddingLeft).to.contain('1.5rem')
+    expect(styles.root.paddingRight).to.contain('1.5rem')
+    expect(styles.root.paddingTop).to.contain('1.5rem')
+    expect(styles.root.paddingBottom).to.contain('1.5rem')
   })
 
   it('should allow us to specify the tag', () => {
@@ -23,34 +23,34 @@ describe('Section', () => {
   it('should allow us to alter the color', () => {
     const wrapper = mount(<Section background='primary' foreground='light'>Content here</Section>)
     const section = wrapper.find('Section')
-    const rule = utils.findRule(css.rules, section.prop('classNames').root)
-    expect(rule.css).to.contain(`background-color:${colors.primary}`)
-    expect(rule.css).to.contain(`color:${colors.light}`)
+    const styles = section.prop('styles')
+    expect(styles.root.backgroundColor).to.eql(colors.primary)
+    expect(styles.root.color).to.eql(colors.light)
   })
 
   it('should allow us to set the border', () => {
     const wrapper = mount(<Section borderWidth={3} radius='medium'>Content here</Section>)
     const section = wrapper.find('Section')
-    const rule = utils.findRule(css.rules, section.prop('classNames').root)
-    expect(rule.css).to.contain(`border:3px solid ${colors.shade}`)
-    expect(rule.css).to.contain(`border-radius:${rhythm(radiuses.medium)}`)
+    const styles = section.prop('styles')
+    expect(styles.root.border).to.eql(`3px solid ${colors.shade}`)
+    expect(styles.root.borderRadius).to.eql(rhythm(radiuses.medium))
   })
 
   it('should allow us to pass in custom styles', () => {
     const wrapper = mount(<Section styles={{ opacity: 0.5 }}>Content here</Section>)
     const section = wrapper.find('Section')
-    const rule = utils.findRule(css.rules, section.prop('classNames').root)
-    expect(rule.css).to.contain(`opacity:0.5`)
+    const styles = section.prop('styles')
+    expect(styles.root.opacity).to.eql(0.5)
   })
 
   it('applies custom margins to the element', () => {
     const wrapper = mount(<Section margin={{ x: 2, y: 0 }}>Content Here</Section>)
     const section = wrapper.find('Section')
-    const rule = utils.findRule(css.rules, section.prop('classNames').root)
-    expect(rule.css).to.contain('margin-left:3rem')
-    expect(rule.css).to.contain('margin-right:3rem')
-    expect(rule.css).to.contain('margin-top:0')
-    expect(rule.css).to.contain('margin-bottom:0')
+    const styles = section.prop('styles')
+    expect(styles.root.marginLeft).to.eql('3rem')
+    expect(styles.root.marginRight).to.eql('3rem')
+    expect(styles.root.marginTop).to.eql('0rem')
+    expect(styles.root.marginBottom).to.eql('0rem')
   })
 
   it('allows us to set other attributes', () => {

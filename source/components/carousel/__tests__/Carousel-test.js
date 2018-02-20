@@ -34,7 +34,7 @@ describe('Carousel', () => {
     )
 
     const container = wrapper.find('Carousel')
-    const rule = utils.findRule(css.rules, container.prop('classNames').root)
-    expect(rule.css).to.contain(`opacity:0.5`)
+    const styles = container.prop('styles')
+    expect(styles.root.opacity).to.eql(0.5)
   })
 })
