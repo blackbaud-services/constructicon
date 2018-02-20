@@ -16,9 +16,8 @@ describe('PaginationLink', () => {
       <PaginationLink direction='prev' />
     )
 
-    const rule = utils.findRule(css.rules, wrapper.find('Icon').prop('classNames').root)
-
+    const styles = wrapper.find('Icon').prop('styles').root
     expect(wrapper.find('button').prop('aria-label')).to.eql('Previous')
-    expect(rule.css).to.contain('transform:rotate(180deg)')
+    expect(styles.transform).to.eql('rotate(180deg)')
   })
 })
