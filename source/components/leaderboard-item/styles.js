@@ -21,11 +21,10 @@ export default ({
     root: {
       position: 'relative',
       minHeight: rhythm(2),
-      padding: rhythm(0.33),
-      paddingLeft: rhythm(2),
+      padding: `${rhythm(0.33)} ${rhythm(0.33)} ${rhythm(0.33)} ${rhythm(2)}`,
       fontSize: scale(-1),
       breakInside: 'avoid',
-      ':after': {
+      '&:after': {
         content: !rank && 'counter(board) "."',
         counterIncrement: 'board',
         ...rankStyles
@@ -38,7 +37,7 @@ export default ({
       display: 'flex',
       alignItems: 'center',
       transition: 'opacity 200ms ease',
-      ':hover': {
+      '&:hover': {
         opacity: 0.75
       }
     },
