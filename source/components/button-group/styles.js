@@ -11,7 +11,7 @@ export default ({
     textAlign: align,
     ...calculateSpacing(spacing, 'margin', { multiplier: -1 }),
 
-    '> *': {
+    '& > *': {
       display: 'inline-block',
       ...calculateSpacing(spacing, 'margin')
     }
