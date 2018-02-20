@@ -12,7 +12,7 @@ __withToggle__ will inject a few useful props into your component:
 
 ### Example
 
-```javascript
+```javascript static
 const MyComponent = ({
   toggled,
   onToggleOn,
