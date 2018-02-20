@@ -27,14 +27,14 @@ export default ({
 
     wrapper: {
       position: 'relative',
-      'select::-ms-expand': {
+      '& select::-ms-expand': {
         display: 'none'
       },
-      'select::-ms-value': {
+      '& select::-ms-value': {
         background: 'none',
         color: readOnly ? colors.lightGrey : colors.dark
       },
-      'select:-moz-focusring': {
+      '& select:-moz-focusring': {
         color: 'transparent',
         textShadow: '0 0 0 #000'
       }
@@ -61,11 +61,11 @@ export default ({
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
       ...treatments.input,
-      ':focus': {
+      '&:focus': {
         border: 0,
         outline: 0
       },
-      ':focus + span': {
+      '&:focus + span': {
         borderColor: isInvalid ? colors.danger : colors.secondary,
         boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
       }

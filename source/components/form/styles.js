@@ -34,11 +34,11 @@ export default (props, traits, keyframes) => {
       color: colors.light,
       borderRadius: rhythm(radiuses.small),
 
-      'p + p': {
+      '& p + p': {
         marginTop: rhythm(0.666)
       },
 
-      a: {
+      '& a': {
         color: colors.tertiary
       }
     },

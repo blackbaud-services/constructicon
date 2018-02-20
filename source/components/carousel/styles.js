@@ -20,13 +20,13 @@ export default ({ styles }, { rhythm }) => ({
       height: '100%',
       margin: 0,
       padding: 0,
-      transform: 'translate3d(0, 0, 0)',
-      ':focus': {
-        outline: 'none'
-      },
-      '.dragging': {
-        cursor: 'grab'
-      }
+      transform: 'translate3d(0, 0, 0)'
+    },
+    '& .slick-list :focus': {
+      outline: 'none'
+    },
+    '& .slick-list .dragging': {
+      cursor: 'grab'
     },
     '& .slick-track': {
       display: 'block',
@@ -34,12 +34,12 @@ export default ({ styles }, { rhythm }) => ({
       top: 0,
       left: 0,
       height: '100%',
-      transform: 'translate3d(0, 0, 0)',
-      ':after': {
-        content: '""',
-        display: 'table',
-        clear: 'both'
-      }
+      transform: 'translate3d(0, 0, 0)'
+    },
+    '& .slick-track:after': {
+      content: '""',
+      display: 'table',
+      clear: 'both'
     },
     '& .slick-loading .slick-track': {
       visibility: 'hidden'
@@ -49,10 +49,10 @@ export default ({ styles }, { rhythm }) => ({
       float: 'left',
       height: '100%',
       minHeight: '1px',
-      textAlign: 'center',
-      'img': {
-        display: 'block'
-      }
+      textAlign: 'center'
+    },
+    '& .slick-slide img': {
+      display: 'block'
     },
     '&[dir="rtl"] .slick-slide': {
       float: 'right'
@@ -94,15 +94,15 @@ export default ({ styles }, { rhythm }) => ({
       background: 'transparent',
       cursor: 'pointer',
       opacity: 0.5,
-      zIndex: 2,
-      ':hover': {
-        outline: 'none',
-        opacity: 1
-      },
-      ':focus': {
-        outline: 'none',
-        opacity: 1
-      }
+      zIndex: 2
+    },
+    '& .slick-arrow:hover': {
+      outline: 'none',
+      opacity: 1
+    },
+    '& .slick-arrow:focus': {
+      outline: 'none',
+      opacity: 1
     },
     '& .slick-prev': {
       left: '1rem'
