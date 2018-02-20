@@ -14,7 +14,7 @@ export default ({ styles }, { rhythm, scale, justifyContent }) => {
       padding: rhythm(2),
       fontSize: scale(-1),
 
-      '> *': {
+      '& > *': {
         margin: rhythm([0, 0.25])
       }
     }

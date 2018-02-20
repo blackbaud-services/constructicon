@@ -14,10 +14,8 @@ export default (
       color: foreground && colors[foreground],
       backgroundColor: background && colors[background],
 
-      '> *': {
-        margin: rhythm(1)
-      }
-    },
-    styles
-  )
+    '& > *': {
+      margin: rhythm(1)
+    }
+  }, styles)
 })

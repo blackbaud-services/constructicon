@@ -1,5 +1,6 @@
+import React from 'react'
 import { createRenderer } from 'fela'
-import { render, renderToMarkup } from 'fela-dom'
+import { render, renderToSheetList } from 'fela-dom'
 import rawWithStyles from '../../components/with-styles'
 
 const renderer = createRenderer()
@@ -27,6 +28,16 @@ export const withStyles = styles => {
   return rawWithStyles(styles)
 }
 
-export const renderServerCSS = () => renderToMarkup(renderer)
+export const renderServerCSS = () => (
+  renderToSheetList(renderer).map((sheet) => console.log(sheet) || (
+    <style
+      type='text/css'
+      data-fela-rehydration={sheet.rehydration}
+      data-fela-type={sheet.type}
+      media={sheet.media}
+      dangerouslySetInnerHTML={{ __html: sheet.css }}
+    />
+  ))
+)
 
-export const renderClientCSS = () => render(renderer)
+// typeof window !== 'undefined' && render(renderer)

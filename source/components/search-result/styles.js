@@ -7,11 +7,11 @@ export default ({ styles }, { rhythm, scale, justifyContent }) => {
       alignItems: 'center',
       ...justifyContent('space-between'),
 
-      '> div': {
+      '& > div': {
         padding: rhythm(0.5)
       },
 
-      '> div + div': {
+      '& > div + div': {
         paddingLeft: rhythm(0.1)
       }
     },
