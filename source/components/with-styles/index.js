@@ -19,22 +19,21 @@ const withStyles = (styles, keyframes = {}) => (ComponentToWrap) => {
         ...this.props
       }
 
-      // if styles is a function, call it and pass through our props and traits
-      const stylesIsFunction = typeof styles === 'function'
-      const stylesObj = stylesIsFunction
-        ? styles(combinedProps, traits)
-        : styles
-
       // add any keyframes
       const keyframesIsFunction = typeof keyframes === 'function'
-      const keyframesObj = keyframesIsFunction ? keyframes(combinedProps, traits) : keyframes
-      addKeyframes(keyframesObj)
+      const keyframesObject = keyframesIsFunction ? keyframes(combinedProps, traits) : keyframes
+      const keyframeNames = addKeyframes(keyframesObject)
+
+      // if styles is a function, call it and pass through our props and traits
+      const stylesIsFunction = typeof styles === 'function'
+      const stylesObject = stylesIsFunction ? styles(combinedProps, traits, keyframeNames) : styles
+      const classNames = stylesToClasses(stylesObject)
 
       // build out our final props to be passed down to the original component
       const newProps = {
         ...combinedProps,
-        styles: stylesObj,
-        classNames: stylesToClasses(stylesObj),
+        styles: stylesObject,
+        classNames
       }
 
       return <ComponentToWrap {...newProps} />

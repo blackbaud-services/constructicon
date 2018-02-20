@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
-import styles from './styles'
+import styles, { keyframes } from './styles'
 import * as icons from './icons'
 
 const Icon = ({ name, paths, viewBox, ariaHidden = true, classNames }) => {
@@ -76,4 +76,4 @@ Icon.defaultProps = {
   viewBox: 32
 }
 
-export default withStyles(styles)(Icon)
+export default withStyles(styles, keyframes)(Icon)

@@ -1,6 +1,14 @@
 import merge from 'lodash/merge'
 
-export default ({ color, size, duration, styles }, { colors, rhythm }) => {
+export default ({
+  color,
+  size,
+  duration,
+  styles
+}, {
+  colors,
+  rhythm
+}, keyframes) => {
   const dotSize = size / 2
 
   const defaultStyles = {
@@ -21,19 +29,8 @@ export default ({ color, size, duration, styles }, { colors, rhythm }) => {
       lineHeight: 0,
       borderRadius: '50%',
       transformOrigin: 'bottom',
-      animation: 'dots infinite alternate',
+      animation: `${keyframes.dots} infinite alternate`,
       animationDuration: `${duration}ms`,
-
-      '@keyframes dots': {
-        '0%': {
-          opacity: 0.1,
-          transform: 'scale(0.75)'
-        },
-        '100%': {
-          opacity: 0.9,
-          transform: 'scale(1)'
-        }
-      },
 
       ':nth-of-type(2)': {
         animationDelay: '200ms'
@@ -46,4 +43,17 @@ export default ({ color, size, duration, styles }, { colors, rhythm }) => {
   }
 
   return merge(defaultStyles, styles)
+}
+
+export const keyframes = {
+  dots: {
+    '0%': {
+      opacity: 0.1,
+      transform: 'scale(0.75)'
+    },
+    '100%': {
+      opacity: 0.9,
+      transform: 'scale(1)'
+    }
+  }
 }

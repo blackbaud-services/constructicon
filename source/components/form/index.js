@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
-import styles from './styles'
+import styles, { keyframes } from './styles'
 
 import Button from '../button'
 import ButtonGroup from '../button-group'
@@ -151,4 +151,4 @@ Form.defaultProps = {
   icon: { name: 'chevron', size: 0.75 }
 }
 
-export default withStyles(styles)(Form)
+export default withStyles(styles, keyframes)(Form)

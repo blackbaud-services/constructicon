@@ -17,7 +17,8 @@ export default (
     speed,
     styles
   },
-  { colors, rhythm, treatments }
+  { colors, rhythm, treatments },
+  keyframes
 ) =>
   merge(
     {
@@ -49,20 +50,9 @@ export default (
         position: 'absolute',
         top: '50%',
         left: 0,
-        animation: `banner 25s linear infinite`,
+        animation: `${keyframes.banner} 25s linear infinite`,
         whiteSpace: 'nowrap',
-        animationDuration: `${8 + items.length * speeds[speed]}s`,
-
-        '@keyframes banner': {
-          '0%': {
-            // from off the right of the viewport i.e. move 100vw along the X axis
-            transform: 'translate(100vw, -50%)'
-          },
-          '100%': {
-            // to off the left of the viewport i.e. -100% of the width of the content along the X axis
-            transform: 'translate(-100%, -50%)'
-          }
-        }
+        animationDuration: `${8 + items.length * speeds[speed]}s`
       },
 
       item: {
@@ -72,3 +62,14 @@ export default (
     },
     styles
   )
+
+export const keyframes = {
+  banner: {
+    '0%': {
+      transform: 'translate(100vw, -50%)'
+    },
+    '100%': {
+      transform: 'translate(-100%, -50%)'
+    }
+  }
+}

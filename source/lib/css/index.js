@@ -14,7 +14,10 @@ export const stylesToClasses = (styles = {}) => (
 )
 
 export const addKeyframes = (keyframes = {}) => (
-  Object.keys(keyframes).map((keyframe) => renderer.renderKeyframe(() => keyframe))
+  Object.keys(keyframes).reduce((keyframeNames, keyframeKey) => ({
+    ...keyframeNames,
+    [keyframeKey]: renderer.renderKeyframe(() => keyframes[keyframeKey])
+  }), {})
 )
 
 export const withStyles = styles => {

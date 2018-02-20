@@ -19,8 +19,8 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').body)
-    expect(rule.css).to.contain(`display:none`)
+    const styles = accordion.prop('styles')
+    expect(styles.body.display).to.eql('none')
   })
 
   it('should render a simple open accordion', () => {
@@ -30,8 +30,8 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').body)
-    expect(rule.css).to.contain(`display:block`)
+    const styles = accordion.prop('styles')
+    expect(styles.body.display).to.eql('block')
   })
 
   it('should allow us to open accordions', () => {
@@ -41,15 +41,12 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const headerClass = accordion.prop('classNames').head
-    wrapper.find(`.${headerClass}`).simulate('click')
+    accordion.prop('onToggle')()
 
     wrapper.update()
-    const rule = utils.findRule(
-      css.rules,
-      wrapper.find('Accordion').prop('classNames').body
-    )
-    expect(rule.css).to.contain(`display:block`)
+    const updatedAccordion = wrapper.find('Accordion')
+    const styles = updatedAccordion.prop('styles')
+    expect(styles.body.display).to.eql('block')
   })
 
   it('should allow us to close accordions', () => {
@@ -59,15 +56,12 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const headerClass = accordion.prop('classNames').head
-    wrapper.find(`.${headerClass}`).simulate('click')
+    accordion.prop('onToggle')()
 
     wrapper.update()
-    const rule = utils.findRule(
-      css.rules,
-      wrapper.find('Accordion').prop('classNames').body
-    )
-    expect(rule.css).to.contain(`display:none`)
+    const updatedAccordion = wrapper.find('Accordion')
+    const styles = updatedAccordion.prop('styles')
+    expect(styles.body.display).to.eql('none')
   })
 
   it('should allow us to set the active color of accordions', () => {
@@ -77,8 +71,8 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').root)
-    expect(rule.css).to.contain(`border-left:2px solid ${colors.secondary}`)
+    const styles = accordion.prop('styles')
+    expect(styles.root.borderLeft).to.eql(`2px solid ${colors.secondary}`)
   })
 
   it('should allow us to remove the border', () => {
@@ -88,7 +82,7 @@ describe('Accordion', () => {
       </Accordion>
     )
     const accordion = wrapper.find('Accordion')
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').root)
-    expect(rule.css).to.not.contain('border-left')
+    const styles = accordion.prop('styles')
+    expect(styles.root.borderLeft).to.eql(undefined)
   })
 })

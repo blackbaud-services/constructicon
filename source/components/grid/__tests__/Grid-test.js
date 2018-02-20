@@ -7,9 +7,9 @@ describe('Grid', () => {
   it('should render a grid container', () => {
     const wrapper = mount(<Grid>Content here</Grid>)
     const container = wrapper.find('Grid')
-    const rule = utils.findRule(css.rules, container.prop('classNames').root)
+    const styles = container.prop('styles')
     expect(container.text()).to.eql('Content here')
-    expect(rule.css).to.contain(`display:flex`)
+    expect(styles.root.display).to.eql('flex')
   })
 
   it('should render grid columns within the grid', () => {
@@ -32,11 +32,11 @@ describe('Grid', () => {
       </Grid>
     )
     const container = wrapper.find('Grid')
-    const rule = utils.findRule(css.rules, container.prop('classNames').root)
-    expect(rule.css).to.contain(`margin-left:${rhythm(-2)}`)
-    expect(rule.css).to.contain(`margin-right:${rhythm(-2)}`)
-    expect(rule.css).to.contain(`margin-top:${rhythm(-4)}`)
-    expect(rule.css).to.contain(`margin-bottom:${rhythm(-4)}`)
+    const styles = container.prop('styles')
+    expect(styles.root.marginLeft).to.eql(rhythm(-2))
+    expect(styles.root.marginRight).to.eql(rhythm(-2))
+    expect(styles.root.marginTop).to.eql(rhythm(-4))
+    expect(styles.root.marginBottom).to.eql(rhythm(-4))
   })
 
   it('should allow us to set breakpoints on a column', () => {
@@ -46,17 +46,11 @@ describe('Grid', () => {
       </GridColumn>
     )
     const column = wrapper.find('GridColumn')
-    const rule = utils.findRule(css.rules, column.prop('classNames').root)
-    const ruleSm = utils.findRule(
-      css.rules,
-      `${column.prop('classNames').root}${mediaQuery('sm')}`
-    )
-    const ruleMd = utils.findRule(
-      css.rules,
-      `${column.prop('classNames').root}${mediaQuery('md')}`
-    )
-    expect(rule.css).to.contain('flex:1 0 100%')
-    expect(ruleSm.css).to.contain('flex:1 0 50%')
-    expect(ruleMd.css).to.contain('flex:1 0 33')
+    const styles = column.prop('styles')
+    expect(styles.root.flex).to.eql('1 0 100%')
+    expect(styles.root[mediaQuery('sm')].flex).to.eql('1 0 50%')
+    expect(styles.root[mediaQuery('md')].flex.split(' ')[0]).to.eql('1')
+    expect(styles.root[mediaQuery('md')].flex.split(' ')[1]).to.eql('0')
+    expect(styles.root[mediaQuery('md')].flex.split(' ')[2]).to.contain('33.3333')
   })
 })

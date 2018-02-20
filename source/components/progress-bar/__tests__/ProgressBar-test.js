@@ -20,20 +20,20 @@ describe('ProgressBar', () => {
 
   it('should render alt text off screen', () => {
     const progressBar = minimalComponent.find('ProgressBar')
-    const alt = utils.findRule(css.rules, progressBar.prop('classNames').alt)
+    const styles = progressBar.prop('styles')
 
-    expect(alt.css).to.contain('position:absolute')
-    expect(alt.css).to.contain('left:-10000px')
-    expect(alt.css).to.contain('top:auto')
-    expect(alt.css).to.contain('width:1px')
-    expect(alt.css).to.contain('height:1px')
-    expect(alt.css).to.contain('overflow:hidden')
+    expect(styles.alt.position).to.contain('absolute')
+    expect(styles.alt.left).to.contain(-1000)
+    expect(styles.alt.top).to.contain('auto')
+    expect(styles.alt.width).to.contain(1)
+    expect(styles.alt.height).to.contain(1)
+    expect(styles.alt.overflow).to.contain('hidden')
   })
 
   it('should render the fill to the progress width', () => {
     const progressBar = minimalComponent.find('ProgressBar')
-    const rule = utils.findRule(css.rules, progressBar.prop('classNames').fill)
-    expect(rule.css).to.contain('width:50%')
+    const styles = progressBar.prop('styles')
+    expect(styles.fill.width).to.eql('50%')
   })
 
   it('should allow styling via traits', () => {
@@ -48,13 +48,12 @@ describe('ProgressBar', () => {
     )
 
     const progressBar = wrapper.find('ProgressBar')
-    const fill = utils.findRule(css.rules, progressBar.prop('classNames').fill)
-    const root = utils.findRule(css.rules, progressBar.prop('classNames').root)
+    const styles = progressBar.prop('styles')
 
-    expect(fill.css).to.contain(`background:${colors['dark']}`)
-    expect(fill.css).to.contain(`border-radius:${radiuses['none']}`)
-    expect(root.css).to.contain(`background:${colors['secondary']}`)
-    expect(root.css).to.contain(`border-radius:${radiuses['none']}`)
+    expect(styles.fill.background).to.contain(colors.dark)
+    expect(styles.fill.borderRadius).to.contain(radiuses.none)
+    expect(styles.root.background).to.contain(colors.secondary)
+    expect(styles.root.borderRadius).to.contain(radiuses.none)
   })
 
   it('should allow custom style specification', () => {
@@ -74,13 +73,8 @@ describe('ProgressBar', () => {
     )
 
     const progressBar = wrapper.find('ProgressBar')
-    const fill = utils.findRule(css.rules, progressBar.prop('classNames').fill)
-    const background = utils.findRule(
-      css.rules,
-      progressBar.prop('classNames').background
-    )
-
-    expect(fill.css).to.contain('background:#123456')
-    expect(background.css).to.contain('background:#654321')
+    const styles = progressBar.prop('styles')
+    expect(styles.fill.background).to.eql('#123456')
+    expect(styles.background.background).to.eql('#654321')
   })
 })

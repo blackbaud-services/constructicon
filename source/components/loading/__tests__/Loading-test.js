@@ -14,29 +14,29 @@ describe('Loading', () => {
   it('allows us to set the dots color', () => {
     const wrapper = mount(<Loading color='secondary' />)
     const component = wrapper.find('Loading')
-    const rule = utils.findRule(css.rules, component.prop('classNames').dot)
-    expect(rule.css).to.contain(`background-color:${colors.secondary}`)
+    const styles = component.prop('styles').dot
+    expect(styles.backgroundColor).to.eql(colors.secondary)
   })
 
   it('allows us to set the dots size', () => {
     const wrapper = mount(<Loading size={3} />)
     const component = wrapper.find('Loading')
-    const rule = utils.findRule(css.rules, component.prop('classNames').dot)
-    expect(rule.css).to.contain(`width:${rhythm(1.5)}`)
-    expect(rule.css).to.contain(`height:${rhythm(1.5)}`)
+    const styles = component.prop('styles').dot
+    expect(styles.width).to.eql(rhythm(1.5))
+    expect(styles.height).to.eql(rhythm(1.5))
   })
 
   it('allows us to set the animation duration', () => {
     const wrapper = mount(<Loading duration={400} />)
     const component = wrapper.find('Loading')
-    const rule = utils.findRule(css.rules, component.prop('classNames').dot)
-    expect(rule.css).to.contain(`animation-duration:400ms`)
+    const styles = component.prop('styles').dot
+    expect(styles.animationDuration).to.eql('400ms')
   })
 
   it('allows us to set custom styles', () => {
     const wrapper = mount(<Loading styles={{ root: { height: '100px' } }} />)
     const component = wrapper.find('Loading')
-    const rule = utils.findRule(css.rules, component.prop('classNames').root)
-    expect(rule.css).to.contain(`height:100px`)
+    const styles = component.prop('styles').root
+    expect(styles.height).to.eql('100px')
   })
 })
