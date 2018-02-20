@@ -45,13 +45,15 @@ export default ({ styles }, {
       textAlign: 'center',
       lineHeight: measures.medium,
       fontWeight: 700,
-      fontSize: scale(1),
-      ':before': {
-        content: 'open-quote'
-      },
-      ':after': {
-        content: 'close-quote'
-      }
+      fontSize: scale(1)
+    },
+
+    '& blockquote:before': {
+      content: '"open-quote"'
+    },
+
+    '& blockquote:after': {
+      content: '"close-quote"'
     },
 
     '& img': {
