@@ -23,7 +23,7 @@ describe('Button Group', () => {
       </ButtonGroup>
     )
     const container = wrapper.find('ButtonGroup')
-    const rule = utils.findRule(css.rules, container.prop('classNames').root)
-    expect(rule.css).to.contain(`opacity:0.5`)
+    const styles = container.prop('styles')
+    expect(styles.root.opacity).to.eql(0.5)
   })
 })
