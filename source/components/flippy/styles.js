@@ -13,10 +13,10 @@ export default (
       textAlign: 'center',
       width: '100%',
       paddingBottom: '100%',
-      ':hover > div:first-child': {
+      '&:hover > div:first-child': {
         transform: 'rotateY(180deg)'
       },
-      ':hover > div:last-child': {
+      '&:hover > div:last-child': {
         transform: 'rotateY(0)'
       }
     },
@@ -48,7 +48,7 @@ export default (
       transform: 'rotateY(0)',
       visibility: 'visible',
       zIndex: 1,
-      ':before': {
+      '&:before': {
         content: '""',
         position: 'absolute',
         top: 0,

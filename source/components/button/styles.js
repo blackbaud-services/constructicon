@@ -46,22 +46,20 @@ export default (
       ...treatments[font],
       ...effects[effect],
 
-      '> *': {
-        margin: rhythm([0, 0.125])
-      },
-
-      '> *:first-child': {
-        marginLeft: 0
-      },
-
-      '> *:last-child': {
-        marginRight: 0
-      },
-
-      '> *:first-child:last-child': {
-        display: 'block' // removes awkward spacing around single child e.g. share icon
-      }
+    '& > *': {
+      margin: rhythm([0, 0.125])
     },
-    styles
-  )
+
+    '& > *:first-child': {
+      marginLeft: 0
+    },
+
+    '& > *:last-child': {
+      marginRight: 0
+    },
+
+    '& > *:first-child:last-child': {
+      display: 'block' // removes awkward spacing around single child e.g. share icon
+    }
+  }, styles)
 })
