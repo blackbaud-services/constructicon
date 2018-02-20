@@ -13,8 +13,8 @@ describe('Metric', () => {
     const metric = wrapper.find('Metric')
     const labelClass = metric.prop('classNames').label
     const amountClass = metric.prop('classNames').amount
-    expect(wrapper.find(`.${labelClass}`).text()).to.eql('Supporters')
-    expect(wrapper.find(`.${amountClass}`).text()).to.eql('100')
+    expect(wrapper.find(`.${labelClass.split(' ').join('.')}`).text()).to.eql('Supporters')
+    expect(wrapper.find(`.${amountClass.split(' ').join('.')}`).text()).to.eql('100')
   })
 
   it('should allow us to set the icon', () => {

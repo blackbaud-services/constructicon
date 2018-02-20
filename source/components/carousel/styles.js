@@ -3,7 +3,7 @@ import merge from 'lodash/merge'
 export default ({ styles }, { rhythm }) => ({
   root: merge({
     // Base
-    '.slick-slider': {
+    '& .slick-slider': {
       position: 'relative',
       display: 'block',
       height: '100%',
@@ -13,7 +13,7 @@ export default ({ styles }, { rhythm }) => ({
       paddingTop: rhythm(2),
       paddingBottom: rhythm(2)
     },
-    '.slick-list': {
+    '& .slick-list': {
       position: 'relative',
       display: 'block',
       overflow: 'hidden',
@@ -28,7 +28,7 @@ export default ({ styles }, { rhythm }) => ({
         cursor: 'grab'
       }
     },
-    '.slick-track': {
+    '& .slick-track': {
       display: 'block',
       position: 'relative',
       top: 0,
@@ -41,10 +41,10 @@ export default ({ styles }, { rhythm }) => ({
         clear: 'both'
       }
     },
-    '.slick-loading .slick-track': {
+    '& .slick-loading .slick-track': {
       visibility: 'hidden'
     },
-    '.slick-slide': {
+    '& .slick-slide': {
       display: 'none',
       float: 'left',
       height: '100%',
@@ -54,32 +54,32 @@ export default ({ styles }, { rhythm }) => ({
         display: 'block'
       }
     },
-    '[dir="rtl"] .slick-slide': {
+    '&[dir="rtl"] .slick-slide': {
       float: 'right'
     },
-    '.slick-slide.slick-loading img': {
+    '& .slick-slide.slick-loading img': {
       display: 'none'
     },
-    '.slick-slide.dragging img': {
+    '& .slick-slide.dragging img': {
       pointerEvents: 'none'
     },
-    '.slick-initialized .slick-slide': {
+    '& .slick-initialized .slick-slide': {
       display: 'block'
     },
-    '.slick-loading .slick-slide': {
+    '& .slick-loading .slick-slide': {
       visibility: 'hidden'
     },
-    '.slick-vertical .slick-slide': {
+    '& .slick-vertical .slick-slide': {
       display: 'block',
       height: 'auto',
       border: '1px solid transparent'
     },
-    '.slick-arrow.slick-hidden': {
+    '& .slick-arrow.slick-hidden': {
       display: 'none'
     },
 
     // Arrows
-    '.slick-arrow': {
+    '& .slick-arrow': {
       position: 'absolute',
       top: '50%',
       padding: 0,
@@ -104,15 +104,15 @@ export default ({ styles }, { rhythm }) => ({
         opacity: 1
       }
     },
-    '.slick-prev': {
+    '& .slick-prev': {
       left: '1rem'
     },
-    '.slick-next': {
+    '& .slick-next': {
       right: '1rem'
     },
 
     // Dots
-    '.slick-dots': {
+    '& .slick-dots': {
       display: 'block',
       position: 'absolute',
       bottom: 0,
@@ -120,53 +120,61 @@ export default ({ styles }, { rhythm }) => ({
       margin: 0,
       padding: 0,
       listStyle: 'none',
-      textAlign: 'center',
-      'li': {
-        position: 'relative',
-        display: 'inline-block',
-        width: '20px',
-        height: '20px',
-        padding: 0,
-        cursor: 'pointer',
-        'button': {
-          display: 'block',
-          width: '20px',
-          height: '20px',
-          cursor: 'pointer',
-          color: 'transparent',
-          border: 0,
-          outline: 'none',
-          background: 'transparent',
-          ':before': {
-            content: '""',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            width: '8px',
-            height: '8px',
-            margin: '-4px',
-            opacity: 0.25,
-            borderRadius: '50%',
-            background: 'black'
-          },
-          ':hover': {
-            outline: 'none',
-            ':before': {
-              opacity: '1'
-            }
-          },
-          ':focus': {
-            outline: 'none',
-            ':before': {
-              opacity: '1'
-            }
-          }
-        }
-      },
-      'li.slick-active button:before': {
-        opacity: 0.75,
-        color: 'black'
-      }
+      textAlign: 'center'
+    },
+
+    '& .slick-dots li': {
+      position: 'relative',
+      display: 'inline-block',
+      width: '20px',
+      height: '20px',
+      padding: 0,
+      cursor: 'pointer'
+    },
+
+    '& .slick-dots button': {
+      display: 'block',
+      width: '20px',
+      height: '20px',
+      cursor: 'pointer',
+      color: 'transparent',
+      border: 0,
+      outline: 'none',
+      background: 'transparent'
+    },
+
+    '& .slick-dots button:before': {
+      content: '""',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      width: '8px',
+      height: '8px',
+      margin: '-4px',
+      opacity: 0.25,
+      borderRadius: '50%',
+      background: 'black'
+    },
+
+    '& .slick-dots button:hover': {
+      outline: 'none'
+    },
+
+    '& .slick-dots button:hover:before': {
+      opacity: 1
+    },
+
+    '& .slick-dots button:focus': {
+      outline: 'none'
+    },
+
+    '& .slick-dots button:focus:before': {
+      opacity: 1
+    },
+
+    '& .slick-dots li.slick-active button:before': {
+      opacity: 0.75,
+      color: 'black'
     }
   }, styles)
 })
