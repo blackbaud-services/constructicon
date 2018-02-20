@@ -19,11 +19,11 @@ export default ({
     ...justifyContent(justify),
     ...calculateSpacing(spacing, 'margin', { multiplier: -1 }),
 
-    '> *': {
+    '& > *': {
       ...calculateSpacing(spacing, 'padding')
     },
 
-    '> *:empty': {
+    '& > *:empty': {
       padding: 0
     }
   }, styles)
