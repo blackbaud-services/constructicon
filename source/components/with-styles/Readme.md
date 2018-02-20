@@ -20,7 +20,7 @@ __withStyles__ will inject 2 props into our component that we can use
 
 ### Example
 
-```javascript
+```javascript static
 const MyComponent = ({
   classNames,
   copy,

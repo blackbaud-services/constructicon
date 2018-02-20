@@ -6,6 +6,22 @@ const { version } = require('./package.json')
 module.exports = {
   title: `Constructicon | ${version}`,
   template: './styleguide.template.html',
+  theme: {
+    color: {
+      base: '#333',
+    	light: '#999',
+    	lightest: '#ccc',
+    	link: '#fff',
+    	linkHover: '#fff',
+    	border: 'rgba(0,0,0,0.1)',
+    	name: '#7f9a44',
+    	type: '#b77daa',
+    	error: '#c00',
+    	baseBackground: '#fff',
+    	codeBackground: '#f5f5f5',
+    	sidebarBackground: '#1bab6b'
+    }
+  },
   getComponentPathLine: (componentPath) => {
     const dirname = path.dirname(componentPath, '.js')
     const name = dirname.split('/').slice(-1)[0]
@@ -92,21 +108,25 @@ module.exports = {
       ]
     }
   ],
-  updateWebpackConfig: (webpackConfig) => {
-    webpackConfig.module.loaders.push(
-      {
-        test: /\.jsx?$/,
-        include: path.join(__dirname, 'source'),
-        loader: 'babel'
-      }, {
-        test: /\.css$/,
-        include: path.join(__dirname, 'node_modules', 'minimal.css'),
-        loader: 'style!css?modules&importLoaders=1'
-      }
-    )
-
-    webpackConfig.entry.push(path.join(__dirname, 'node_modules/minimal.css/minimal.css'))
-
-    return webpackConfig
+  webpackConfig: {
+    module: {
+      loaders: [
+        {
+          test: /\.jsx?$/,
+          include: path.join(__dirname, 'source'),
+          loader: 'babel'
+        }, {
+          test: /\.css$/,
+          include: path.join(__dirname, 'node_modules', 'minimal.css'),
+          loader: 'style!css?modules&importLoaders=1'
+        }
+      ]
+    },
+    resolveLoader: {
+      moduleExtensions: ['-loader']
+    },
+    entry: [
+      path.join(__dirname, 'node_modules/minimal.css/minimal.css')
+    ]
   }
 }

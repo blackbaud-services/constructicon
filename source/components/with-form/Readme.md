@@ -37,9 +37,10 @@ These functions should return a falsy value if valid, and an error message if in
 There are some predefined validators you can use in _constructicon/lib/validators_
 
 <br/>
+
 ## Example Configuration
 
-```javascript
+```javascript static
 withForm({
   fields: {
     email: {
@@ -62,7 +63,7 @@ You can also specify an `onFormChange` listener in the configuration, which take
 
 For example:
 
-```javascript
+```javascript static
 withForm({
   onFormChange: (form) => console.log(form.values, form.invalid, ...),
   fields: {
@@ -73,7 +74,7 @@ withForm({
 
 If you wish to pass this in as a `prop` to your wrapped component, you can supply a function to the `withForm` HOC, which takes a `props` argument:
 
-```javascript
+```javascript static
 withForm((props) => ({
   onFormChange: props.onChange,
   fields: {
@@ -93,7 +94,7 @@ __form.fields__
 
 You can spread the individual fields across Constructicon form components. This will pass through all the needed props to that form component, such as onChange handlers.
 
-```javascript
+```javascript static
 <InputField {...form.fields.username} />
 ```
 
@@ -105,7 +106,7 @@ You can call form.updateValues() which can update the values of fields from outs
 
 Values can be updated in the format below:
 
-```javascript
+```javascript static
 componentWillReceiveProps (nextProps) {
   const { testValue } = nextProps
   if (testValue !=== this.props.testValue)
@@ -122,7 +123,7 @@ __form.resetForm__
 
 You can call form.resetForm() which will reset all of the form values and validations to their initial state.
 
-```javascript
+```javascript static
 handleCancel () {
   this.props.form.resetForm()
 }
@@ -138,7 +139,7 @@ Resolve to the field values if valid, or...
 
 Reject with the invalid fields and there error messages.
 
-```javascript
+```javascript static
 handleSubmit (e) {
   e.preventDefault()
   this.props.form.submit()

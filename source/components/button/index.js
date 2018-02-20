@@ -17,7 +17,7 @@ const Button = ({
   return (
     <Tag
       className={`c11n-button ${classNames.root}`}
-      type={Tag === 'button' && type}
+      type={Tag === 'button' ? type : undefined}
       aria-label={typeof children === 'string' ? children : 'button'}
       {...allowedProps}>
       {children}
