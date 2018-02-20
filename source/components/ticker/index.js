@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
-import styles from './styles'
+import styles, { keyframes } from './styles'
 
 const Ticker = ({ classNames, label, items = [] }) => (
   <div className={`c11n-ticker ${classNames.root}`}>
@@ -67,4 +67,4 @@ Ticker.defaultProps = {
   styles: {}
 }
 
-export default withStyles(styles)(Ticker)
+export default withStyles(styles, keyframes)(Ticker)

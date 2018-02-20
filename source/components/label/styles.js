@@ -14,7 +14,7 @@ export default (
       marginBottom: rhythm(0.25),
       ...treatments.label,
 
-      a: {
+      '& a': {
         color: colors.primary,
         textDecoration: 'underline'
       }

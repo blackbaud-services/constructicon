@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
-import styles from './styles'
+import styles, { keyframes } from './styles'
 
 const Loading = ({ classNames }) => (
   <div className={`c11n-loading ${classNames.root}`}>
@@ -40,4 +40,4 @@ Loading.defaultProps = {
   styles: {}
 }
 
-export default withStyles(styles)(Loading)
+export default withStyles(styles, keyframes)(Loading)

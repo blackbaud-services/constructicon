@@ -16,17 +16,10 @@ describe('ButtonSocial', () => {
   })
 
   it('should allow us to override props', () => {
-    const wrapper = mount(
-      <ButtonSocial
-        type='facebook'
-        href='http://facebook.com'
-        background='primary'
-      />
-    )
-    const button = wrapper.find('a')
-    const className = button.props().className.replace('c11n-button ', '')
-    const rule = utils.findRule(css.rules, className)
-    expect(rule.css).to.contain(`background-color:${colors.primary}`)
+    const wrapper = mount(<ButtonSocial type='facebook' href='http://facebook.com' background='primary' />)
+    const button = wrapper.find('Button')
+    const styles = button.prop('styles')
+    expect(styles.root.backgroundColor).to.eql(colors.primary)
   })
 
   it('should show a share button', () => {

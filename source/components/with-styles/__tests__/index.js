@@ -11,17 +11,13 @@ describe('withStyles', () => {
 
   it('provides a classNames prop as an object with generated class names', () => {
     const StyledComponent = withStyles(styles)(Component)
-    const props = mount(<StyledComponent />)
-      .find('Component')
-      .props()
-    expect(props.classNames.title).to.contain('cxsync-')
+    const props = mount(<StyledComponent />).find('Component').props()
+    expect(props.classNames.title).to.exist
   })
 
   it('provides a styles prop as an object with related style objects', () => {
     const StyledComponent = withStyles(styles)(Component)
-    const props = mount(<StyledComponent />)
-      .find('Component')
-      .props()
-    expect(props.styles.title.fontSize).to.contain('3rem')
+    const props = mount(<StyledComponent />).find('Component').props()
+    expect(props.styles.title.fontSize).to.eql('3rem')
   })
 })

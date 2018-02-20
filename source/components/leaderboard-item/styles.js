@@ -15,12 +15,11 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
       display: 'block',
       position: 'relative',
       minHeight: rhythm(2),
-      padding: rhythm(0.33),
-      paddingLeft: rhythm(2),
+      padding: `${rhythm(0.33)} ${rhythm(0.33)} ${rhythm(0.33)} ${rhythm(2)}`,
       fontSize: scale(-1),
       breakInside: 'avoid',
       listStyle: 'none',
-      ':after': {
+      '&:after': {
         content: !rank && 'counter(board) "."',
         counterIncrement: 'board',
         ...rankStyles
@@ -34,7 +33,7 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
       alignItems: 'center',
       transition: 'opacity 200ms ease',
       minHeight: rhythm(1.33),
-      ':hover': {
+      '&:hover': {
         opacity: 0.75
       }
     },

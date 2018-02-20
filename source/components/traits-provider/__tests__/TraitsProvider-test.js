@@ -19,7 +19,7 @@ describe('TraitsProvider', () => {
     )
 
     const button = wrapper.find('Button')
-    const rule = utils.findRule(css.rules, button.prop('classNames').root)
-    expect(rule.css).to.contain(`background-color:${traits.colors.tertiary}`)
+    const styles = button.prop('styles')
+    expect(styles.root.backgroundColor).to.eql(traits.colors.tertiary)
   })
 })

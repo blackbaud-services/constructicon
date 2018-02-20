@@ -8,8 +8,8 @@ describe('Flippy', () => {
     const flippy = wrapper.find('Flippy')
     const frontClass = flippy.prop('classNames').front
     const backClass = flippy.prop('classNames').back
-    expect(wrapper.find(`.${frontClass}`).text()).to.eql('Front')
-    expect(wrapper.find(`.${backClass}`).text()).to.eql('Back')
+    expect(wrapper.find(`.${frontClass.split(' ').join('.')}`).text()).to.eql('Front')
+    expect(wrapper.find(`.${backClass.split(' ').join('.')}`).text()).to.eql('Back')
   })
 
   it('allows us to set the background color', () => {
@@ -17,7 +17,7 @@ describe('Flippy', () => {
       <Flippy front='Front' back='Back' background='secondary' />
     )
     const flippy = wrapper.find('Flippy')
-    const rule = utils.findRule(css.rules, flippy.prop('classNames').wrapper)
-    expect(rule.css).to.contain(`background-color:${colors.secondary}`)
+    const styles = flippy.prop('styles')
+    expect(styles.wrapper.backgroundColor).to.eql(colors.secondary)
   })
 })
