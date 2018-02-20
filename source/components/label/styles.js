@@ -17,7 +17,7 @@ export default ({
       textAlign: 'left',
       marginBottom: rhythm(0.25),
 
-      a: {
+      '& a': {
         color: colors.primary,
         textDecoration: 'underline'
       }

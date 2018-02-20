@@ -27,14 +27,14 @@ export default ({
 
     wrapper: {
       position: 'relative',
-      'select::-ms-expand': {
+      '& select::-ms-expand': {
         display: 'none'
       },
-      'select::-ms-value': {
+      '& select::-ms-value': {
         background: 'none',
         color: readOnly ? colors.lightGrey : colors.dark
       },
-      'select:-moz-focusring': {
+      '& select:-moz-focusring': {
         color: 'transparent',
         textShadow: '0 0 0 #000'
       }
