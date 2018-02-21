@@ -1,9 +1,13 @@
 import React from 'react'
 import { createRenderer } from 'fela'
-import { render, renderToSheetList } from 'fela-dom'
-import rawWithStyles from '../../components/with-styles'
+import { rehydrate, renderToSheetList } from 'fela-dom'
+import prefixer from 'fela-plugin-prefixer'
+import perf from 'fela-perf'
+import beautifier from 'fela-beautifier'
 
-const renderer = createRenderer()
+const plugins = [ prefixer() ]
+const enhancers = process.env.NODE_ENV === 'production' ? [] : [ perf(), beautifier() ]
+const renderer = createRenderer({ plugins, enhancers })
 
 export const createRule = (styles) => renderer.renderRule(() => styles)
 
@@ -21,13 +25,6 @@ export const addKeyframes = (keyframes = {}) => (
   }), {})
 )
 
-export const withStyles = styles => {
-  console.log(
-    'Development warning: withStyles should now be imported the same way as other higher order components i.e. import withStyles from `construction/with-styles`. Support for importing from `constructicon/lib/css` will be removed in version 2'
-  )
-  return rawWithStyles(styles)
-}
-
 export const renderServerCSS = () => (
   renderToSheetList(renderer).map((sheet) => console.log(sheet) || (
     <style
@@ -40,4 +37,6 @@ export const renderServerCSS = () => (
   ))
 )
 
-// typeof window !== 'undefined' && render(renderer)
+if (typeof window !== 'undefined') {
+  rehydrate(renderer)
+}
