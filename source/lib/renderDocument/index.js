@@ -1,6 +1,6 @@
 import React, { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { rendererServerCSS } from '../css'
+import { renderServerCSS } from '../css'
 
 import Helmet from 'react-helmet'
 
