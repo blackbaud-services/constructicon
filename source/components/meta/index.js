@@ -17,6 +17,17 @@ const Meta = ({
   favicon,
   appleTouchIcon
 }) => {
+  const getURL = (value) => {
+    switch (typeof value) {
+      case 'object':
+        return value.url
+      case 'string':
+        return value
+      default:
+        return undefined
+    }
+  }
+
   const meta = [
     { 'name': 'description', 'content': description },
     { 'name': 'keywords', 'content': keywords },
@@ -24,14 +35,14 @@ const Meta = ({
     { 'property': 'og:type', 'content': ogType },
     { 'property': 'og:title', 'content': ogTitle },
     { 'property': 'og:description', 'content': ogDescription },
-    { 'property': 'og:image', 'content': ogImage },
-    { 'property': 'og:url', 'content': ogUrl || url }
+    { 'property': 'og:image', 'content': getURL(ogImage) },
+    { 'property': 'og:url', 'content': getURL(ogUrl) || getURL(url) }
   ]
 
   const links = [
-    { 'rel': 'canonical', 'href': url },
-    { 'rel': 'shortcut icon', 'href': favicon },
-    { 'rel': 'apple-touch-icon', 'href': appleTouchIcon }
+    { 'rel': 'canonical', 'href': getURL(url) },
+    { 'rel': 'shortcut icon', 'href': getURL(favicon) },
+    { 'rel': 'apple-touch-icon', 'href': getURL(appleTouchIcon) }
   ]
 
   return (
@@ -52,11 +63,11 @@ Meta.propTypes = {
   ogType: PropTypes.string,
   ogTitle: PropTypes.string,
   ogDescription: PropTypes.string,
-  ogImage: PropTypes.string,
-  ogUrl: PropTypes.string,
-  url: PropTypes.string,
-  favicon: PropTypes.string,
-  appleTouchIcon: PropTypes.string
+  ogImage: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
+  ogUrl: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
+  url: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
+  favicon: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
+  appleTouchIcon: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ])
 }
 
 export default Meta
