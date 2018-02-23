@@ -1,6 +1,6 @@
 import InputSearch from '..'
 
-describe.only('InputSearch', () => {
+describe('InputSearch', () => {
   it('fires the onSearch callback when values are user searches', (done) => {
     const onSearch = sinon.spy()
     const wrapper = mount(
