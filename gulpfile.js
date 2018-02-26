@@ -29,7 +29,7 @@ var otherFiles = [
 */
 gulp.task('npm-prep-components', function() {
   return gulp.src(componentsFiles)
-    .pipe(replace('../..', '..'))
+    .pipe(replace('../../lib', '../lib'))
     .pipe(gulp.dest(npmDir))
 })
 
