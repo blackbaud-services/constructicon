@@ -9,18 +9,22 @@ export const required = (msg = 'This field is required') => {
   }
 }
 
-export const email = (msg = 'A valid email is required') => {
+export const email = (msg = 'Please enter a valid email') => {
   return (val) => !!val && !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(val) && msg
 }
 
-export const phone = (msg = 'A valid phone number is required') => {
+export const phone = (msg = 'Please enter a valid phone number') => {
   const phoneRegex = /^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{1}( |-){0,1}[0-9]{3}$/
   return (val) => !!val && !phoneRegex.test(val.replace(/\s/g, '')) && msg
 }
 
-export const url = (msg = 'A valid URL is requred') => {
+export const url = (msg = 'Please enter a valid URL') => {
   const urlRegex = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
   return (val) => !!val && !urlRegex.test(val) && msg
+}
+
+export const slug = (msg = 'Please enter a valid URL using only letters, numbers or hyphens (-)') => {
+  return (val) => !!val && !/^[A-Za-z0-9-]+$/i.test(val) && msg
 }
 
 export const number = (msg = 'Must be a number') => {
