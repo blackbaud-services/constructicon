@@ -2,7 +2,8 @@ import merge from 'lodash/merge'
 
 export default ({
   rank,
-  styles
+  styles,
+  subtitle
 }, {
   measures,
   rhythm,
@@ -38,6 +39,7 @@ export default ({
       display: 'flex',
       alignItems: 'center',
       transition: 'opacity 200ms ease',
+      minHeight: rhythm(1.33),
       ':hover': {
         opacity: 0.75
       }
@@ -59,7 +61,7 @@ export default ({
     },
 
     title: {
-      marginBottom: rhythm(0.125),
+      marginBottom: subtitle && rhythm(0.125),
       fontWeight: 700,
       whiteSpace: 'nowrap',
       overflow: 'hidden',
