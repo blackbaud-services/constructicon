@@ -25,6 +25,7 @@ module.exports = {
         path.resolve(__dirname, 'source/components/flippy', 'index.js'),
         path.resolve(__dirname, 'source/components/heading', 'index.js'),
         path.resolve(__dirname, 'source/components/icon', 'index.js'),
+        path.resolve(__dirname, 'source/components/loading', 'index.js'),
         path.resolve(__dirname, 'source/components/meta', 'index.js'),
         path.resolve(__dirname, 'source/components/modal', 'index.js'),
         path.resolve(__dirname, 'source/components/progress-bar', 'index.js'),
