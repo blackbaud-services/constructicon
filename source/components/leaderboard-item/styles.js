@@ -20,12 +20,14 @@ export default ({
 
   const defaultStyles = {
     root: {
+      display: 'block',
       position: 'relative',
       minHeight: rhythm(2),
       padding: rhythm(0.33),
       paddingLeft: rhythm(2),
       fontSize: scale(-1),
       breakInside: 'avoid',
+      listStyle: 'none',
       ':after': {
         content: !rank && 'counter(board) "."',
         counterIncrement: 'board',

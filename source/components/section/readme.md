@@ -15,7 +15,7 @@ Used to apply consistent padding to sections of content
 Adjust the spacing by passing in a spacing object or a number
 
 ```
-<Section padding={{ x: 3, y: 1 }}>
+<Section spacing={{ x: 3, y: 1 }}>
   Content here
 </Section>
 ```
