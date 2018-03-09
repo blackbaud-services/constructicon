@@ -2,7 +2,7 @@ import Loading from '..'
 import { css } from '../../../lib/css'
 import { rhythm, colors } from '../../../lib/traits'
 
-describe.only('Loading', () => {
+describe('Loading', () => {
   it('renders a simple loading animation', () => {
     const wrapper = mount(<Loading />)
     const component = wrapper.find('Loading')

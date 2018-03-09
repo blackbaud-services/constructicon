@@ -13,6 +13,7 @@ export default ({
 
   const defaultStyles = {
     root: {
+      display: 'inline-block',
       height: rhythm(dotSize),
       textAlign: 'center'
     },
