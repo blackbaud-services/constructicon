@@ -1,27 +1,16 @@
 const path = require('path')
 const camelCase = require('lodash/camelCase')
 const upperFirst = require('lodash/upperFirst')
+const { styles, theme } = require('./styleguide.styles')
 const { version } = require('./package.json')
 
 module.exports = {
   title: `Constructicon | ${version}`,
   template: './styleguide.template.html',
-  theme: {
-    color: {
-      base: '#333',
-    	light: '#999',
-    	lightest: '#ccc',
-    	link: '#fff',
-    	linkHover: '#fff',
-    	border: 'rgba(0,0,0,0.1)',
-    	name: '#7f9a44',
-    	type: '#b77daa',
-    	error: '#c00',
-    	baseBackground: '#fff',
-    	codeBackground: '#f5f5f5',
-    	sidebarBackground: '#1bab6b'
-    }
-  },
+  serverPort: 3000,
+  showUsage: true,
+  styles,
+  theme,
   getComponentPathLine: (componentPath) => {
     const dirname = path.dirname(componentPath, '.js')
     const name = dirname.split('/').slice(-1)[0]
@@ -30,6 +19,10 @@ module.exports = {
     return 'import ' + componentName + ' from \'constructicon/' + name + '\''
   },
   sections: [
+    {
+      name: '',
+      content: 'source/components/readme.md'
+    },
     {
       name: 'Components',
       components: () => ([
@@ -108,25 +101,23 @@ module.exports = {
       ]
     }
   ],
+  require: [
+    path.join(__dirname, 'node_modules/minimal.css/minimal.css')
+  ],
   webpackConfig: {
     module: {
       loaders: [
         {
           test: /\.jsx?$/,
-          include: path.join(__dirname, 'source'),
-          loader: 'babel'
-        }, {
+          exclude: /node_modules/,
+          loader: 'babel-loader'
+        },
+        {
           test: /\.css$/,
           include: path.join(__dirname, 'node_modules', 'minimal.css'),
-          loader: 'style!css?modules&importLoaders=1'
+          loader: 'style-loader!css-loader?modules'
         }
       ]
-    },
-    resolveLoader: {
-      moduleExtensions: ['-loader']
-    },
-    entry: [
-      path.join(__dirname, 'node_modules/minimal.css/minimal.css')
-    ]
+    }
   }
 }
