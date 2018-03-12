@@ -44,7 +44,8 @@ describe('Accordion', () => {
     const headerClass = accordion.prop('classNames').head
     wrapper.find(`.${headerClass}`).simulate('click')
 
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').body)
+    wrapper.update()
+    const rule = utils.findRule(css.rules, wrapper.find('Accordion').prop('classNames').body)
     expect(rule.css).to.contain(`display:block`)
   })
 
@@ -58,7 +59,8 @@ describe('Accordion', () => {
     const headerClass = accordion.prop('classNames').head
     wrapper.find(`.${headerClass}`).simulate('click')
 
-    const rule = utils.findRule(css.rules, accordion.prop('classNames').body)
+    wrapper.update()
+    const rule = utils.findRule(css.rules, wrapper.find('Accordion').prop('classNames').body)
     expect(rule.css).to.contain(`display:none`)
   })
 
