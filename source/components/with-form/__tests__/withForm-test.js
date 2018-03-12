@@ -58,13 +58,17 @@ describe('withForm', () => {
       }
     })(FormComponent)
 
-    const form = getForm(<Form />)
+    const wrapper = mount(<Form />)
+    const form = wrapper.find('form')
     const initialProps = form.prop('form')
     expect(initialProps.fields.name.error).to.be.undefined
 
     initialProps.fields.name.onChange('')
     initialProps.fields.name.onBlur('')
-    const changedProps = form.prop('form')
+
+    wrapper.update()
+    const updatedForm = wrapper.find('form')
+    const changedProps = updatedForm.prop('form')
     expect(changedProps.fields.name.error).to.be.true
   })
 
@@ -95,10 +99,15 @@ describe('withForm', () => {
       }
     })(FormComponent)
 
-    const form = getForm(<Form />)
+    const wrapper = mount(<Form />)
+    const form = wrapper.find('form')
     const initialProps = form.prop('form')
+
     initialProps.fields.name.onChange('John')
-    const changedProps = form.prop('form')
+
+    wrapper.update()
+    const updatedForm = wrapper.find('form')
+    const changedProps = updatedForm.prop('form')
     expect(changedProps.fields.name.value).to.eql('John')
   })
 
@@ -112,12 +121,17 @@ describe('withForm', () => {
       }
     })(FormComponent)
 
-    const form = getForm(<Form />)
+    const wrapper = mount(<Form />)
+
+    const form = wrapper.find('form')
     const initialProps = form.prop('form')
     expect(initialProps.fields.name.value).to.eql('John')
 
     initialProps.updateValues({ name: 'Jane' })
-    const changedProps = form.prop('form')
+
+    wrapper.update()
+    const updatedForm = wrapper.find('form')
+    const changedProps = updatedForm.prop('form')
     expect(changedProps.fields.name.value).to.eql('Jane')
   })
 

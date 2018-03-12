@@ -27,7 +27,7 @@ describe('Metric', () => {
     )
     const starPath = icons.star[0].d
     expect(wrapper.find('svg')).to.exist
-    expect(wrapper.find('path').node.getAttribute('d')).to.eql(starPath)
+    expect(wrapper.find('path').instance().getAttribute('d')).to.eql(starPath)
   })
 
   it('should allow us to specify an icon path', () => {
@@ -40,6 +40,6 @@ describe('Metric', () => {
       />
     )
     expect(wrapper.find('svg')).to.exist
-    expect(wrapper.find('path').node.getAttribute('d')).to.eql(iconPath)
+    expect(wrapper.find('path').instance().getAttribute('d')).to.eql(iconPath)
   })
 })

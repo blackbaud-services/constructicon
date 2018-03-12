@@ -5,6 +5,6 @@ describe('Meta', () => {
     const wrapper = mount(
       <Meta title='Page title' />
     )
-    expect(wrapper.nodes[0].props.title).to.eql('Page title')
+    expect(wrapper.getElements()[0].props.title).to.eql('Page title')
   })
 })

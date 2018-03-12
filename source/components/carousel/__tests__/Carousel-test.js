@@ -9,7 +9,7 @@ describe('Carousel', () => {
         <div>Slide 2</div>
       </Carousel>
     )
-    expect(wrapper.find('.slick-slide').nodes[1].innerHTML).to.equal('Slide 1')
+    expect(wrapper.find('.slick-slide').first().prop('children')).to.eql('Slide 2')
     expect(wrapper.find('.slick-track')).to.have.length(1)
   })
 
@@ -21,8 +21,8 @@ describe('Carousel', () => {
       </Carousel>
     )
 
-    expect(wrapper.find('.slick-prev')).to.have.length(1)
-    expect(wrapper.find('.slick-next')).to.have.length(1)
+    expect(wrapper.find('.slick-prev')).to.exist
+    expect(wrapper.find('.slick-next')).to.exist
   })
 
   it('should allow us to pass in custom styles', () => {

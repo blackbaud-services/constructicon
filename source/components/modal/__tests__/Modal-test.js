@@ -15,7 +15,7 @@ describe('Modal', () => {
         <div className='my-content'>My modal content</div>
       </Modal>
     )
-    const reactModal = wrapper.find('Modal').nodes[1]
+    const reactModal = wrapper.find('Modal').getElements()[1]
     expect(reactModal.props.isOpen).to.eql(true)
     expect(reactModal.props.contentLabel).to.eql('Modal')
     expect(reactModal.props.children.length).to.eql(2)
@@ -29,7 +29,7 @@ describe('Modal', () => {
         <div className='my-content'>My modal content</div>
       </Modal>
     )
-    const reactModal = wrapper.find('Modal').nodes[1]
+    const reactModal = wrapper.find('Modal').getElements()[1]
     const closeButton = reactModal.props.children[0]
     expect(closeButton.props.children).to.eql('Close')
   })
@@ -40,7 +40,7 @@ describe('Modal', () => {
         <div className='my-content'>My modal content</div>
       </Modal>
     )
-    const reactModal = wrapper.find('Modal').nodes[1]
+    const reactModal = wrapper.find('Modal').getElements()[1]
     expect(reactModal.props.isOpen).to.eql(false)
   })
 })

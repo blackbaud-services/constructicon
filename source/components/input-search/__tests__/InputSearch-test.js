@@ -50,6 +50,7 @@ describe('InputSearch', () => {
 
     // need to wait for callback to debounce
     setTimeout(() => {
+      wrapper.update()
       const results = wrapper.find('Result')
       expect(results.length).to.eql(3)
       done()
@@ -71,6 +72,7 @@ describe('InputSearch', () => {
     input.simulate('change', { target: { value: 'test' } })
 
     setTimeout(() => {
+      wrapper.update()
       const icon = wrapper.find('Icon').last()
       expect(icon.prop('name')).to.eql('loading')
       done()
