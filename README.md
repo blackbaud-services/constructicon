@@ -1,10 +1,9 @@
 
-# Constructicon &nbsp; [![Build status](https://badge.buildkite.com/670ae004c2a2a3b10f5d875b5093edcb90c18c6a1e7855939e.svg?branch=master&style=flat-square)](https://buildkite.com/everyday-hero/constructicon) &nbsp; [![npm](https://img.shields.io/npm/v/constructicon.svg?style=flat-square)](https://www.npmjs.com/package/constructicon)
+# Constructicon [![Build status](https://badge.buildkite.com/670ae004c2a2a3b10f5d875b5093edcb90c18c6a1e7855939e.svg?branch=master&style=flat-square)](https://buildkite.com/everyday-hero/constructicon) [![npm](https://img.shields.io/npm/v/constructicon.svg?style=flat-square)](https://www.npmjs.com/package/constructicon)
 
 #### A collection of common patterns used across many Professional Services projects.
 
-The aim of this library is to provide a toolbelt of components, that will allow us to compose
-sites together more quickly and consistently.
+The aim of this library is to provide a toolbelt of components, that will allow us to compose sites together more quickly and consistently.
 
 ### Style Guide
 
