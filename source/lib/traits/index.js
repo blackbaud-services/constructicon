@@ -1,18 +1,18 @@
 /**
 * Sizing and Rhythm
 */
-export const rhythm = (value = 1, unit = 'rem', basis = 1.5) => (
+const rhythm = (value = 1, unit = 'rem', basis = 1.5) => (
   `${basis * value}${unit}`
 )
 
-export const scale = (exponent = 0, scale = 1.2) => (
+const scale = (exponent = 0, scale = 1.2) => (
   `${Math.pow(scale, exponent)}rem`
 )
 
 /**
 * Colors
 */
-export const colors = {
+const colors = {
   light: '#fff',
   dark: '#000',
   grey: '#7a898f',
@@ -41,16 +41,16 @@ export const colors = {
 /**
 * Fonts
 */
-export const fonts = {
+const fonts = {
   head: '"Open Sans", sans-serif',
   body: '"Open Sans", sans-serif'
 }
 
-export const measures = {
+const measures = {
   medium: 1.5
 }
 
-export const treatments = {
+const treatments = {
   head: {
     fontFamily: fonts.head,
     fontWeight: 700
@@ -74,12 +74,12 @@ export const treatments = {
 /**
 * Borders and Edges
 */
-export const shadows = {
+const shadows = {
   none: 'none',
   light: '0 0 15px rgba(0, 0, 0, 0.125)'
 }
 
-export const radiuses = {
+const radiuses = {
   none: 0,
   small: 0.25,
   medium: 0.5,
@@ -89,24 +89,24 @@ export const radiuses = {
 /**
 * Media Queries
 */
-export const breakpoints = {
+const breakpoints = {
   sm: '32.5em',
   md: '45em',
   lg: '57.5em'
 }
 
-export const mediaQuery = (size = 'sm', query = 'min-width') => (
+const mediaQuery = (size = 'sm', query = 'min-width') => (
   `@media (${query}: ${breakpoints[size]})`
 )
 
 /**
 * Effects, Animations, Transitions, Utils
 */
-export const transitions = {
+const transitions = {
   easeOut: 'ease-out .25s'
 }
 
-export const utils = {
+const utils = {
   fullSize: {
     position: 'absolute',
     content: '',
@@ -117,7 +117,7 @@ export const utils = {
   }
 }
 
-export const effects = {
+const effects = {
   none: {},
   shade: {
     position: 'relative',
@@ -162,7 +162,7 @@ export const effects = {
 /**
 * Flexbox justifyContent style polyfill
 */
-export const justifyContent = (value) => {
+const justifyContent = (value) => {
   const flexPack = {
     'flex-start': 'start',
     'flex-end': 'end',
@@ -182,7 +182,7 @@ export const justifyContent = (value) => {
 * e.g. { x: 1, y: 2 } or { l: 1, t: 2 } or 5 etc.
 */
 
-export const calculateSpacing = (spacing, type = 'padding', args = {}) => {
+const calculateSpacing = (spacing, type = 'padding', args = {}) => {
   const defaultOptions = {
     multiplier: 1
   }
@@ -225,4 +225,22 @@ const spacingDirection = (direction, space, type, options) => {
   }), {})
 
   return styles
+}
+
+module.exports = {
+  breakpoints,
+  calculateSpacing,
+  colors,
+  effects,
+  fonts,
+  justifyContent,
+  measures,
+  mediaQuery,
+  radiuses,
+  rhythm,
+  scale,
+  shadows,
+  transitions,
+  treatments,
+  utils
 }

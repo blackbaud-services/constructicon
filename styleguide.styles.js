@@ -1,32 +1,4 @@
-const rhythm = (value = 1, unit = 'rem', basis = 1.5) => (
-  `${basis * value}${unit}`
-)
-
-const colors = {
-  light: '#fff',
-  dark: '#000',
-  grey: '#7a898f',
-  lightGrey: '#aec0c6',
-  paleGrey: '#ebf1f3',
-  primary: '#1bab6b',
-  secondary: '#ad29b6',
-  tertiary: '#203a44',
-  shade: 'rgba(0, 0, 0, 0.125)',
-  tint: 'rgba(255, 255, 255, 0.25)',
-  transparent: 'transparent',
-  facebook: '#3b5999',
-  twitter: '#55acee',
-  instagram: '#e4405f',
-  youtube: '#cd201f',
-  linkedin: '#0084bf',
-  google: '#dd4b39',
-  vimeo: '#1ab7ea',
-  fitbit: '#00b0b9',
-  mapmyfitness: '#004a8d',
-  strava: '#fc4c02',
-  danger: '#d9534f',
-  success: '#5cb85c'
-}
+const { rhythm, colors } = require('./source/lib/traits')
 
 const theme = {
   color: {
