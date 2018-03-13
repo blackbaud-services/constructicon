@@ -2,7 +2,7 @@ Provides a consistent API wrapper around [React Helmet](https://github.com/nfl/r
 
 **Standard Use**
 
-```javascript
+```
 <Meta
   title='Page title'
   description='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'

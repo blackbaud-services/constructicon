@@ -38,7 +38,7 @@ There are some predefined validators you can use in _constructicon/lib/validator
 
 <br/>
 
-## Example Configuration
+### Example Configuration
 
 ```javascript static
 withForm({
