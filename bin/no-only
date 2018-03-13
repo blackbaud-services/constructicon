@@ -1,0 +1,16 @@
+#!/bin/bash
+
+failed=0
+
+files=$(find . -not -regex '.*node_modules.*' | grep __tests__/.*-test.js)
+
+echo "-- Testing if .only is found amongst tests"
+
+for f in $files; do
+  egrep -n "(describe\.|it\.)only" $f
+  if [ $? -eq 0 ]; then
+    failed=1
+  fi
+done
+
+exit $failed
