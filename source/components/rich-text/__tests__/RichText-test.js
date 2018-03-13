@@ -42,7 +42,7 @@ describe('RichText', () => {
 
   it('should apply custom styles', () => {
     const styles = {
-      h1: {
+      '& h1': {
         fontSize: 100
       }
     }
