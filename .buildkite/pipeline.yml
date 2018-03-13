@@ -2,6 +2,11 @@
 steps:
   - type: "waiter"
 
+  - name: ":mag: :fist:"
+    command: "docker-compose run --rm build bin/no-only"
+
+  - wait
+
   - name: ":nodejs: Test It"
     command: "docker-compose run --rm build bin/test"
 
