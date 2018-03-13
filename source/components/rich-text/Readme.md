@@ -55,7 +55,7 @@ You can pass through custom styles to be applied
 
 ```
 <RichText styles={{
-  h1: {
+  '& h1': {
     color: '#42AA4C'
   }
 }}>

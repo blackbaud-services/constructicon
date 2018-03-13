@@ -2,8 +2,13 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 import merge from 'lodash/merge'
 import * as defaultTraits from '../../lib/traits'
+import { renderClientCSS } from '../../lib/css'
 
 class TraitsProvider extends Component {
+  componentDidMount () {
+    renderClientCSS()
+  }
+
   getChildContext () {
     return {
       traits: merge(defaultTraits, this.props.traits)

@@ -23,80 +23,80 @@ export default (
       lineClamp
     }),
 
-    p: {
+    '& p': {
       marginBottom: rhythm(1)
     },
 
-    ul: {
+    '& ul': {
       listStyleType: 'disc',
       listStylePosition: 'outside',
       marginBottom: rhythm(1)
     },
 
-    ol: {
+    '& ol': {
       listStyleType: 'decimal',
       listStylePosition: 'outside',
       marginBottom: rhythm(1)
     },
 
-    li: {
+    '& li': {
       marginLeft: rhythm(1)
     },
 
-    blockquote: {
+    '& blockquote': {
       maxWidth: rhythm(25),
       marginBottom: rhythm(1),
       margin: '0 auto',
       textAlign: 'center',
       fontWeight: 700,
-      fontSize: scale(size + 1),
-      ':before': {
-        content: 'open-quote'
-      },
-      ':after': {
-        content: 'close-quote'
-      }
+      fontSize: scale(size + 1)
+    },
+    '& blockquote:before': {
+      content: 'open-quote'
+    },
+    '& blockquote:after': {
+      content: 'close-quote'
     },
 
-    img: {
+    '& img': {
       display: 'block',
       margin: '0 auto',
       width: 'auto',
       maxWidth: '100%'
     },
 
-    iframe: {
+    '& iframe': {
       marginBottom: rhythm(2)
     },
 
-    strong: {
+    '& strong': {
       fontWeight: 700
     },
 
-    em: {
+    '& em': {
       fontStyle: 'italic'
     },
 
-    h1: {
+    '& h1': {
       ...headingStyle(size + 4)
     },
-    h2: {
+    '& h2': {
       ...headingStyle(size + 3)
     },
-    h3: {
+    '& h3': {
       ...headingStyle(size + 2)
     },
-    h4: {
+    '& h4': {
       ...headingStyle(size + 1)
     },
-    h5: {
+    '& h5': {
       ...headingStyle(size)
     },
-    h6: {
+    '& h6': {
       ...headingStyle(size - 1)
     },
 
-    '> *:last-child': {
+    '& > *:last-child': {
       marginBottom: 0
     }
   }
