@@ -1,6 +1,6 @@
 import React, { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import cxsync from 'cxsync'
+import { rendererServerCSS } from '../css'
 
 import Helmet from 'react-helmet'
 
@@ -25,7 +25,7 @@ export const Document = ({
       {head.script.toComponent()}
       {head.style.toComponent()}
       {styles.map((style, index) => <link key={index} rel='stylesheet' href={style} />)}
-      <style dangerouslySetInnerHTML={{ __html: cxsync.css || '' }} />
+      {renderServerCSS()}
       <script dangerouslySetInnerHTML={{
         __html: `
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
