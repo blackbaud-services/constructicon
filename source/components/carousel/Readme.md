@@ -2,7 +2,7 @@ Depends on [react-slick](https://github.com/akiran/react-slick). See [README](ht
 
 <br>
 
-# Examples
+### Examples
 
 **Standard Use**
 

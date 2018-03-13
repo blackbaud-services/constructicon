@@ -2,7 +2,7 @@ __withStyles__ is a higher order component (HOC) that allows you to style your c
 
 It works by taking your styles as an argument, and then passing in a couple of useful props to your component.
 
-# Usage
+### Usage
 
 The styles function you pass as an argument to __withStyles__, will receive two arguments.
 
