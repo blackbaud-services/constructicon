@@ -80,7 +80,7 @@ class InputDate extends Component {
     const mapValues = (array) => array.map((value) => ({ label: value, value: value }))
 
     return showSelects ? (
-      <div className={classNames.root} id={id}>
+      <div className={`c11n-input-date ${classNames.root}`} id={id}>
         {label && (
           <Label
             id={labelId}

@@ -5,8 +5,9 @@ const { styles, theme } = require('./styleguide.styles')
 const { version } = require('./package.json')
 
 module.exports = {
-  title: `Constructicon | ${version}`,
+  title: `Constructicon ${version}`,
   template: './styleguide.template.html',
+  editorConfig: { theme: 'cobalt' },
   serverPort: 3000,
   showUsage: true,
   styles,

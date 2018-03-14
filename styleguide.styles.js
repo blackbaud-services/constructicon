@@ -9,7 +9,7 @@ const theme = {
     light: colors.grey,
     lightest: colors.lightGrey,
     name: colors.primary,
-    type: colors.seconday,
+    type: colors.secondary,
     base: colors.dark,
     link: colors.primary,
     linkHover: colors.tertiary,

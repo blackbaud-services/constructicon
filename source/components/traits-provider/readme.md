@@ -28,7 +28,7 @@ light
 
 shade, tint, grow, shrink
 
-```
+```javascript static
 const fonts = {
   head: 'Roboto',
   body: 'Roboto'

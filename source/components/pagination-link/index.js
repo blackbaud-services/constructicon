@@ -29,7 +29,7 @@ const PaginationLink = ({
     disabled={disabled}
     onClick={onClick}
     onKeyDown={onClick}
-    className={classNames.root}
+    className={`c11n-pagination-link ${classNames.root}`}
     {...props}>
     <Icon name={icon} rotate={direction === 'prev' ? 180 : 0} size={size} />
   </button>
