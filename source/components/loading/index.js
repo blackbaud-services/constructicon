@@ -4,7 +4,7 @@ import withStyles from '../with-styles'
 import styles from './styles'
 
 const Loading = ({ classNames }) => (
-  <div className={classNames.root}>
+  <div className={`c11n-loading ${classNames.root}`}>
     <span className={classNames.dot} />
     <span className={classNames.dot} />
     <span className={classNames.dot} />

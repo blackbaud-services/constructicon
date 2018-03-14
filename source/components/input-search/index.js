@@ -132,11 +132,12 @@ class InputSearch extends Component {
       id,
       label,
       name,
+      onBlur,
       placeholder,
       readOnly,
+      required,
       ResultComponent,
       results,
-      required,
       showMore,
       status,
       styles,
@@ -156,7 +157,7 @@ class InputSearch extends Component {
     const labelId = `label-${inputId}`
 
     return (
-      <div className={classNames.root} onKeyDown={this.handleKeyDown}>
+      <div className={`c11n-input-search ${classNames.root}`} onKeyDown={this.handleKeyDown}>
         {label && (
           <Label
             id={labelId}
@@ -186,6 +187,7 @@ class InputSearch extends Component {
               e.persist && e.persist()
               this.handleChange(e)
             }}
+            onBlur={(e) => onBlur && onBlur(e.target.value)}
           />
           {value ? (
             <div onClick={this.clearSelection}>
@@ -288,6 +290,11 @@ InputSearch.propTypes = {
   * The function to call when a user selects an item
   */
   onChange: PropTypes.func,
+
+  /**
+  * The function to call when a user blurs the input
+  */
+  onBlur: PropTypes.func,
 
   /**
   * The function to call when the search is altered

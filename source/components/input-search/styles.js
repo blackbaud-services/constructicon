@@ -8,6 +8,7 @@ export default ({
   value
 }, {
   colors,
+  fonts,
   radiuses,
   rhythm,
   scale,
@@ -18,7 +19,11 @@ export default ({
 
   const baseStyles = {
     root: {
-      position: 'relative'
+      display: 'block',
+      position: 'relative',
+      fontFamily: fonts.body,
+      textAlign: 'left',
+      marginBottom: rhythm(1)
     },
 
     fieldWrapper: {
@@ -42,7 +47,8 @@ export default ({
       ...treatments.input,
 
       ':focus': {
-        borderColor: isInvalid ? colors.danger : colors.secondary
+        borderColor: isInvalid ? colors.danger : colors.secondary,
+        boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
       }
     },
 
