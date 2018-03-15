@@ -19,6 +19,7 @@ class InputSearch extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.showMore = this.showMore.bind(this)
     this.clearSelection = this.clearSelection.bind(this)
+    this.setActiveItem = this.setActiveItem.bind(this)
 
     if (props.debounce) {
       this.handleChange = debounce(this.handleChange, props.debounce)
