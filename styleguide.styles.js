@@ -1,4 +1,19 @@
-const { rhythm, colors } = require('./source/lib/traits')
+
+const rhythm = (value = 1, unit = 'rem', basis = 1.5) => (
+  `${basis * value}${unit}`
+)
+
+const colors = {
+  light: '#fff',
+  dark: '#000',
+  grey: '#7a898f',
+  lightGrey: '#aec0c6',
+  paleGrey: '#ebf1f3',
+  primary: '#1bab6b',
+  secondary: '#ad29b6',
+  tertiary: '#203a44',
+  danger: '#d9534f'
+}
 
 const theme = {
   color: {
