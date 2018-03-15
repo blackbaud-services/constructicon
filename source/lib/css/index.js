@@ -1,11 +1,12 @@
 import React from 'react'
 import { createRenderer } from 'fela'
-import { rehydrate, renderToSheetList } from 'fela-dom'
-import prefixer from 'fela-plugin-prefixer'
-import perf from 'fela-perf'
+import { rehydrate, render, renderToSheetList } from 'fela-dom'
 import beautifier from 'fela-beautifier'
+import fallback from 'fela-plugin-fallback-value'
+import perf from 'fela-perf'
+import prefixer from 'fela-plugin-prefixer'
 
-const plugins = [ prefixer() ]
+const plugins = [ prefixer(), fallback() ]
 const enhancers = process.env.NODE_ENV === 'production' ? [] : [ perf(), beautifier() ]
 const renderer = createRenderer({ plugins, enhancers })
 
@@ -26,7 +27,7 @@ export const addKeyframes = (keyframes = {}) => (
 )
 
 export const renderServerCSS = () => (
-  renderToSheetList(renderer).map((sheet) => console.log(sheet) || (
+  renderToSheetList(renderer).map((sheet) => (
     <style
       type='text/css'
       data-fela-rehydration={sheet.rehydration}
@@ -38,5 +39,9 @@ export const renderServerCSS = () => (
 )
 
 if (typeof window !== 'undefined') {
-  rehydrate(renderer)
+  const serverRenderedCSS = document.querySelectorAll('script[data-fela-rehydration]')
+
+  serverRenderedCSS.length
+    ? rehydrate(renderer)
+    : render(renderer)
 }
