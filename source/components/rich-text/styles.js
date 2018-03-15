@@ -44,11 +44,11 @@ export default ({ styles }, { measures, rhythm, scale, treatments }) => {
     },
 
     '& blockquote:before': {
-      content: '"open-quote"'
+      content: 'open-quote'
     },
 
     '& blockquote:after': {
-      content: '"close-quote"'
+      content: 'close-quote'
     },
 
     '& img': {
