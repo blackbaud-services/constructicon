@@ -31,7 +31,7 @@ styles = { padding: '1rem', textAlign: 'center', backgroundColor: 'whitesmoke' }
 <div>
   <InputDate
     label='Date of Birth'
-    name='birthday'
+    name='dob'
     value={state.date}
     onChange={(v) => setState({ date: v })}
     showSelects
@@ -40,4 +40,16 @@ styles = { padding: '1rem', textAlign: 'center', backgroundColor: 'whitesmoke' }
     {state.date || 'No date selected'}
   </div>
 </div>
+```
+
+**Predefined date**
+
+```
+<InputDate
+  label='Select a date'
+  name='date'
+  value='1970-01-01'
+  onChange={(v) => console.log(v)}
+  showSelects
+/>
 ```

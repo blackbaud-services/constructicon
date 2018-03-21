@@ -19,6 +19,7 @@ class InputDate extends Component {
     this.updateDate = this.updateDate.bind(this)
 
     this.state = {
+      touched: !!props.value,
       showSelects: props.showSelects,
       value: props.value,
       date: props.value ? moment(props.value) : moment()
@@ -51,7 +52,7 @@ class InputDate extends Component {
   }
 
   updateDate (moment) {
-    this.setState({ date: moment })
+    this.setState({ date: moment, touched: true })
     this.props.onChange(moment.format('YYYY-MM-DD'))
   }
 
@@ -69,6 +70,7 @@ class InputDate extends Component {
 
     const {
       showSelects,
+      touched,
       date = moment()
     } = this.state
 
@@ -96,35 +98,44 @@ class InputDate extends Component {
           <InputSelect
             {...allowedProps}
             styles={styles.input}
-            value={date.date().toString()}
+            value={touched ? date.date().toString() : ''}
             onChange={this.updateDay}
             onBlur={this.updateDay}
             label='Day'
             name={`${name}-day`}
             aria-labelledby={labelId}
-            options={mapValues(range(1, daysInMonth + 1))}
+            options={[
+              { label: 'Day', value: '', disabled: true },
+              ...mapValues(range(1, daysInMonth + 1))
+            ]}
           />
           <InputSelect
             {...allowedProps}
             styles={styles.input}
-            value={date.month().toString()}
+            value={touched ? date.month().toString() : ''}
             onChange={this.updateMonth}
             onBlur={this.updateMonth}
             label='Month'
             name={`${name}-month`}
             aria-labelledby={labelId}
-            options={months}
+            options={[
+              { label: 'Month', value: '', disabled: true },
+              ...months
+            ]}
           />
           <InputSelect
             {...allowedProps}
             styles={styles.input}
-            value={date.year().toString()}
+            value={touched ? date.year().toString() : ''}
             onChange={this.updateYear}
             onBlur={this.updateYear}
             label='Year'
             name={`${name}-year`}
             aria-labelledby={labelId}
-            options={mapValues(range(1900, parseInt(moment().year() + 1)))}
+            options={[
+              { label: 'Year', value: '', disabled: true },
+              ...mapValues(range(1900, parseInt(moment().year() + 1)))
+            ]}
           />
         </div>
         {error && (
