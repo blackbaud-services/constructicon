@@ -27,7 +27,11 @@ class ModalExample extends React.Component {
       return (
         <div>
           <Button onClick={this.openModal}>Open Modal</Button>
-          <Modal isOpen={this.state.open} onRequestClose={this.closeModal} contentLabel='Label'>
+          <Modal
+            isOpen={this.state.open}
+            onRequestClose={this.closeModal}
+            contentLabel='Label'
+            appElement='#app'>
             <RichText>
               <h1>Everydayhero</h1>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus.</p>
@@ -51,7 +55,11 @@ const withToggle = require('../with-toggle').default;
 const ModalExample = withToggle((props) => (
   <div>
     <Button onClick={props.onToggleOn}>Open Modal</Button>
-    <Modal isOpen={props.toggled} onRequestClose={props.onToggleOff} contentLabel='Label'>
+    <Modal
+      isOpen={props.toggled}
+      onRequestClose={props.onToggleOff}
+      contentLabel='Label'
+      appElement='#app'>
       <RichText>
         <h1>Everydayhero</h1>
         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus.</p>
@@ -85,7 +93,8 @@ const ModalExample = withToggle((props) => (
       spacing={0}
       closeIcon={false}
       styles={styles}
-      contentLabel='Modal'>
+      contentLabel='Modal'
+      appElement='#app'>
       <div>
         <Section background='primary' foreground='light'>
           <h1>Everydayhero</h1>

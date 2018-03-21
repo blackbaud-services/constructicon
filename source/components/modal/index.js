@@ -9,6 +9,7 @@ import styles from './styles'
 * Uses React Modal - https://github.com/reactjs/react-modal
 */
 const Modal = ({
+  appElement,
   children,
   closeIcon,
   classNames,
@@ -16,6 +17,7 @@ const Modal = ({
   ...props
 }) => (
   <ReactModal
+    appElement={document && document.querySelector(appElement)}
     style={{
       overlay: styles.overlay,
       content: styles.content
@@ -46,6 +48,11 @@ const Modal = ({
 )
 
 Modal.propTypes = {
+  /**
+  * A valid query selector for the element your React app is mounted to
+  */
+  appElement: PropTypes.string,
+
   /**
   * The content of the modal
   */
@@ -101,6 +108,7 @@ Modal.propTypes = {
 }
 
 Modal.defaultProps = {
+  appElement: '#mount',
   closeIcon: <Icon name='close' />,
   shouldCloseOnOverlayClick: true,
   spacing: 1,
