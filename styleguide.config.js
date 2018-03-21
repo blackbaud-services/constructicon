@@ -19,6 +19,9 @@ module.exports = {
 
     return 'import ' + componentName + ' from \'constructicon/' + name + '\''
   },
+  styleguideComponents: {
+    Logo: path.join(__dirname, 'lib/components/logo')
+  },
   sections: [
     {
       name: '',
