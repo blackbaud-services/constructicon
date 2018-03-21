@@ -21,6 +21,9 @@ export const Document = ({
       <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       {head.title.toComponent()}
       {head.meta.toComponent()}
+      {head.link.toComponent()}
+      {head.script.toComponent()}
+      {head.style.toComponent()}
       {styles.map((style, index) => <link key={index} rel='stylesheet' href={style} />)}
       <style dangerouslySetInnerHTML={{ __html: cxsync.css || '' }} />
       <script dangerouslySetInnerHTML={{
