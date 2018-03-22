@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 import Icon from '../icon'
@@ -8,44 +8,57 @@ import styles from './styles'
 /**
 * Uses React Modal - https://github.com/reactjs/react-modal
 */
-const Modal = ({
-  appElement,
-  children,
-  closeIcon,
-  classNames,
-  styles,
-  ...props
-}) => (
-  <ReactModal
-    appElement={document && document.querySelector(appElement)}
-    style={{
-      overlay: styles.overlay,
-      content: styles.content
-    }}
-    className={{
-      base: 'c11n-modal',
-      afterOpen: 'c11n-modal-after-open',
-      beforeClose: 'c11n-modal-before-close'
-    }}
-    overlayClassName={{
-      base: 'c11n-modal-overlay',
-      afterOpen: 'c11n-modal-overlay-after-open',
-      beforeClose: 'c11n-modal-overlay-before-close'
-    }}
-    {...props}>
-    {closeIcon && (
-      <button
-        className={classNames.close}
-        onClick={props.onRequestClose}
-        aria-label='Close'
-        children={closeIcon}
-      />
-    )}
-    <div className={classNames.container}>
-      {children}
-    </div>
-  </ReactModal>
-)
+class Modal extends Component {
+  componentDidMount () {
+    const { appElement } = this.props
+
+    if (appElement) {
+      ReactModal.setAppElement(appElement)
+    }
+  }
+
+  render () {
+    const {
+      appElement,
+      children,
+      closeIcon,
+      classNames,
+      styles,
+      ...props
+    } = this.props
+
+    return (
+      <ReactModal
+        style={{
+          overlay: styles.overlay,
+          content: styles.content
+        }}
+        className={{
+          base: 'c11n-modal',
+          afterOpen: 'c11n-modal-after-open',
+          beforeClose: 'c11n-modal-before-close'
+        }}
+        overlayClassName={{
+          base: 'c11n-modal-overlay',
+          afterOpen: 'c11n-modal-overlay-after-open',
+          beforeClose: 'c11n-modal-overlay-before-close'
+        }}
+        {...props}>
+        {closeIcon && (
+          <button
+            className={classNames.close}
+            onClick={props.onRequestClose}
+            aria-label='Close'
+            children={closeIcon}
+            />
+        )}
+        <div className={classNames.container}>
+          {children}
+        </div>
+      </ReactModal>
+    )
+  }
+}
 
 Modal.propTypes = {
   /**
