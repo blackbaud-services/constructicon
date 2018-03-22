@@ -8,6 +8,7 @@ const Button = ({
   children,
   tag: Tag,
   type,
+  target,
   classNames,
   ...props
 }) => {
@@ -19,6 +20,8 @@ const Button = ({
       className={`c11n-button ${classNames.root}`}
       type={Tag === 'button' ? type : undefined}
       aria-label={typeof children === 'string' ? children : 'button'}
+      target={['a', 'form'].indexOf(Tag) > -1 ? target : undefined}
+      formTarget={Tag === 'button' ? target : undefined}
       {...allowedProps}>
       {children}
     </Tag>
@@ -38,6 +41,16 @@ Button.propTypes = {
     PropTypes.string,
     PropTypes.element,
     PropTypes.func
+  ]),
+
+  /**
+  * The target for the button
+  */
+  target: PropTypes.oneOf([
+    '_self',
+    '_blank',
+    '_parent',
+    '_top'
   ]),
 
   /**
@@ -111,6 +124,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   tag: 'button',
+  target: '_top',
   type: 'button',
   background: 'primary',
   foreground: 'light',
