@@ -5,9 +5,15 @@
 ```
 <Icon name='calendar' />
 ```
+
+```
+<Icon name='camera' />
+```
+
 ```
 <Icon name='chat' />
 ```
+
 ```
 <Icon name='check' />
 ```
@@ -57,6 +63,10 @@
 ```
 
 ```
+<Icon name='like' />
+```
+
+```
 <Icon name='loading' />
 ```
 
@@ -74,6 +84,10 @@
 
 ```
 <Icon name='minus' />
+```
+
+```
+<Icon name='mobile' />
 ```
 
 ```
@@ -106,6 +120,10 @@
 
 ```
 <Icon name='target' />
+```
+
+```
+<Icon name='upload' />
 ```
 
 ```
