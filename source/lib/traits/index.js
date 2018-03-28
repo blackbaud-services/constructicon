@@ -81,8 +81,8 @@ export const shadows = {
 
 export const radiuses = {
   none: 0,
-  small: 0.25,
-  medium: 0.5,
+  small: 0.1,
+  medium: 0.25,
   large: 50
 }
 
