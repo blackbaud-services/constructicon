@@ -24,11 +24,7 @@ Heading.propTypes = {
   /**
   * The html to be structured
   */
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element
-  ]),
+  children: PropTypes.any,
 
   /**
   * The tag to be used for the containing element
