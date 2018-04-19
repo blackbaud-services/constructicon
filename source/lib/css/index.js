@@ -39,7 +39,7 @@ export const renderServerCSS = () => (
 )
 
 if (typeof window !== 'undefined') {
-  const serverRenderedCSS = document.querySelectorAll('script[data-fela-rehydration]')
+  const serverRenderedCSS = document.querySelectorAll('style[data-fela-rehydration]')
 
   serverRenderedCSS.length
     ? rehydrate(renderer)
