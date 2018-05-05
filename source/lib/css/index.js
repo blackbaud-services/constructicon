@@ -1,14 +1,14 @@
 import React from 'react'
+import reverse from 'lodash/reverse'
 import { createRenderer } from 'fela'
+import { mediaQuery } from '../traits'
 import { rehydrate, render, renderToSheetList } from 'fela-dom'
-import beautifier from 'fela-beautifier'
 import fallback from 'fela-plugin-fallback-value'
-import perf from 'fela-perf'
 import prefixer from 'fela-plugin-prefixer'
+import stripNested from './fela-strip-nested'
 
-const plugins = [ prefixer(), fallback() ]
-const enhancers = process.env.NODE_ENV === 'production' ? [] : [ perf(), beautifier() ]
-const renderer = createRenderer({ plugins, enhancers })
+const plugins = [ stripNested(), prefixer(), fallback() ]
+const renderer = createRenderer({ plugins })
 
 export const createRule = (styles) => renderer.renderRule(() => styles)
 
@@ -37,6 +37,12 @@ export const renderServerCSS = () => (
     />
   ))
 )
+
+export const configureMediaQueries = (breakpoints = []) => {
+  createRule({ display: 'block' })
+  breakpoints.map((breakpoint) => createRule({ [mediaQuery(breakpoint) ]: { display: 'block'} }))
+  reverse(breakpoints).map((breakpoint) => createRule({ [mediaQuery(breakpoint, 'max-width') ]: { display: 'block'} }))
+}
 
 if (typeof window !== 'undefined') {
   const serverRenderedCSS = document.querySelectorAll('style[data-fela-rehydration]')
