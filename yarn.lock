@@ -2031,10 +2031,6 @@ css-what@2.1:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-2.1.0.tgz#9467d032c38cfaefb9f2d79501253062f87fa1bd"
 
-cssbeautify@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/cssbeautify/-/cssbeautify-0.3.1.tgz#12dd1f734035c2e6faca67dcbdcef74e42811397"
-
 cssesc@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-0.1.0.tgz#c814903e45623371a0477b40109aaafbeeaddbb4"
@@ -2635,11 +2631,11 @@ escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
 
-escape-string-regexp@1.0.2:
+escape-string-regexp@1.0.2, escape-string-regexp@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.2.tgz#4dbc2fe674e71949caf3fb2695ce7f2dc1d9a8d1"
 
-escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.3, escape-string-regexp@^1.0.5:
+escape-string-regexp@1.0.5, escape-string-regexp@^1.0.3, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
@@ -3013,13 +3009,6 @@ fbjs@^0.8.16, fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
-fela-beautifier@^5.0.15:
-  version "5.0.15"
-  resolved "https://registry.yarnpkg.com/fela-beautifier/-/fela-beautifier-5.0.15.tgz#7a069351393c373103aff36dfbe8c2c862a57696"
-  dependencies:
-    cssbeautify "^0.3.1"
-    fast-loops "^1.0.0"
-
 fela-dom@^7.0.4:
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/fela-dom/-/fela-dom-7.0.6.tgz#10e84a8cf65c6ffc4b2449820799d214b74f191f"
@@ -3027,10 +3016,6 @@ fela-dom@^7.0.4:
     css-in-js-utils "^2.0.0"
     fast-loops "^1.0.0"
     fela-utils "^8.0.5"
-
-fela-perf@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/fela-perf/-/fela-perf-5.0.3.tgz#8795057c99b8bd4464d86d2bf02e7f4eee4f0020"
 
 fela-plugin-fallback-value@^5.0.17:
   version "5.0.17"
