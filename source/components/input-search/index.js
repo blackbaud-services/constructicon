@@ -125,6 +125,7 @@ class InputSearch extends Component {
 
   render () {
     const {
+      autoComplete,
       classNames,
       emptyMessage,
       error,
@@ -176,6 +177,7 @@ class InputSearch extends Component {
         <div className={classNames.fieldWrapper}>
           <input
             aria-labelledby={labelId}
+            autoComplete={autoComplete}
             className={classNames.field}
             type={type}
             id={inputId}
