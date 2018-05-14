@@ -43,7 +43,7 @@ export default ({
     ...effects[effect],
 
     '> *': {
-      margin: `0 ${rhythm(0.125)}`
+      margin: rhythm([0, 0.125])
     },
 
     '> *:first-child': {
