@@ -1,6 +1,8 @@
 
 const rhythm = (value = 1, unit = 'rem', basis = 1.5) => (
-  `${basis * value}${unit}`
+  Array.isArray(value)
+    ? value.map(v => `${basis * v}${unit}`).join(' ')
+    : `${basis * value}${unit}`
 )
 
 const colors = {
@@ -90,7 +92,7 @@ const styles = {
   ReactComponent: {
     tabs: {
       backgroundColor: colors.paleGrey,
-      padding: `${rhythm(0.5)} ${rhythm(1)}`,
+      padding: rhythm([0.5, 1]),
       overflow: 'auto'
     },
     tabButtons: {

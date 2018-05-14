@@ -37,7 +37,7 @@ export default ({
       overflow: 'hidden',
       backgroundColor: colors.light,
       color: readOnly ? colors.lightGrey : colors.dark,
-      padding: `${rhythm(0.125)} ${rhythm(0.333)}`,
+      padding: rhythm([0.125, 0.333]),
       paddingRight: rhythm(1.5),
       height: rhythm(1.666),
       border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,

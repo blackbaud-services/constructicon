@@ -2,7 +2,9 @@
 * Sizing and Rhythm
 */
 export const rhythm = (value = 1, unit = 'rem', basis = 1.5) => (
-  `${basis * value}${unit}`
+  Array.isArray(value)
+    ? value.map(v => `${basis * v}${unit}`).join(' ')
+    : `${basis * value}${unit}`
 )
 
 export const scale = (exponent = 0, scale = 1.2) => (

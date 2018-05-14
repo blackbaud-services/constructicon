@@ -24,8 +24,8 @@ export default ({
     },
 
     error: {
-      margin: `${rhythm(1)} 0`,
-      padding: `${rhythm(0.5)} ${rhythm(0.75)}`,
+      margin: rhythm([1, 0]),
+      padding: rhythm([0.5, 0.75]),
       backgroundColor: colors.danger,
       fontWeight: 'bold',
       color: colors.light,

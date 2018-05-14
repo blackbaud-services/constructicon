@@ -39,7 +39,7 @@ export default ({
       textAlign: 'left',
       backgroundColor: colors.light,
       color: readOnly ? colors.lightGrey : colors.dark,
-      padding: `${rhythm(0.125)} ${rhythm(0.333)}`,
+      padding: rhythm([0.125, 0.333]),
       height: textarea ? 'auto' : rhythm(1.666),
       minHeight: textarea && rhythm(4),
       maxHeight: textarea && rhythm(10),

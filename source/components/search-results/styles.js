@@ -19,7 +19,7 @@ export default ({ styles }, {
       fontSize: scale(-1),
 
       '> *': {
-        margin: `0 ${rhythm(0.25)}`
+        margin: rhythm([0, 0.25])
       }
     }
   }
