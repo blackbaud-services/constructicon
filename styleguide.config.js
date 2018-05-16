@@ -72,6 +72,7 @@ module.exports = {
     {
       name: 'Pages',
       components: () => ([
+        path.resolve(__dirname, 'source/components/pagination', 'index.js'),
         path.resolve(__dirname, 'source/components/leaderboard', 'index.js'),
         path.resolve(__dirname, 'source/components/leaderboard-item', 'index.js'),
         path.resolve(__dirname, 'source/components/metric', 'index.js'),
