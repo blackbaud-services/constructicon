@@ -51,4 +51,15 @@ describe('Form', () => {
     expect(action.text()).to.eql('Cancel')
     expect(action.prop('aria-label')).to.eql('Cancel')
   })
+
+  it.only('adds specified props to submit button', () => {
+    const wrapper = mount(
+      <Form onSubmit={() => {}} submitProps={{ id: 'foo' }}>
+        <input type='text' name='test' />
+      </Form>
+    )
+    const action = wrapper.find('button')
+    expect(action.length).to.eql(1)
+    expect(action.prop('id')).to.eql('foo')
+  })
 })
