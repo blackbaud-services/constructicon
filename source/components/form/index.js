@@ -20,6 +20,7 @@ const Form = ({
   submit = 'Submit',
   actions = [],
   onSubmit,
+  submitProps,
   ...props
 }) => {
   const renderIcon = (icon) => {
@@ -82,7 +83,8 @@ const Form = ({
           disabled={isLoading || isDisabled}
           aria-label={submit}
           title={submit}
-          type='submit'>
+          type='submit'
+          {...submitProps}>
           <span>{submit}</span>
           {icon && renderIcon(icon)}
         </Button>
@@ -136,7 +138,12 @@ Form.propTypes = {
     PropTypes.string,
     PropTypes.object,
     PropTypes.bool
-  ])
+  ]),
+
+  /**
+  * Props to spread over the submit Button
+  */
+  submitProps: PropTypes.object
 }
 
 Form.defaultProps = {
