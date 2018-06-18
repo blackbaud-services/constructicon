@@ -16,9 +16,16 @@ export default class Pagination extends Component {
   }
 
   componentWillReceiveProps ({ toPaginate }) {
-    this.setState({
-      allPages: this.paginate(toPaginate)
-    })
+    if (this.props.persistPage) {
+      this.setState({
+        allPages: this.paginate(toPaginate)
+      })
+    } else {
+      this.setState({
+        pageNumber: 0,
+        allPages: this.paginate(toPaginate)
+      })
+    }
   }
 
   paginate (toPaginate) {
@@ -85,5 +92,10 @@ Pagination.propTypes = {
   /**
   * A render prop that gets called with the paginated data and methods to control it.
   */
-  children: PropTypes.func.isRequired
+  children: PropTypes.func.isRequired,
+
+  /**
+  * Prevents the page number being reset when toPaginate changes
+  */
+  persistPage: PropTypes.bool
 }
