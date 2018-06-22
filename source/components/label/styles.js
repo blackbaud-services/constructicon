@@ -6,7 +6,8 @@ export default ({
   colors,
   measures,
   rhythm,
-  scale
+  scale,
+  treatments
 }) => {
   const defaultStyles = {
     root: {
@@ -16,6 +17,7 @@ export default ({
       lineHeight: measures.medium,
       textAlign: 'left',
       marginBottom: rhythm(0.25),
+      ...treatments.label,
 
       a: {
         color: colors.primary,
