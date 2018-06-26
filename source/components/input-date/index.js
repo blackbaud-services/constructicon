@@ -27,9 +27,13 @@ class InputDate extends Component {
   }
 
   testDateInput () {
-    const test = document.createElement('input')
-    test.type = 'date'
-    return test.type === 'text'
+    try {
+      const test = document.createElement('input')
+      test.type = 'date'
+      return test.type === 'text'
+    } catch (error) {
+      return true
+    }
   }
 
   componentDidMount () {
