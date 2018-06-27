@@ -43,7 +43,7 @@ export default ({
       border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
       boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
       borderRadius: rhythm(radiuses.small),
-      textIndent: value && -99999,
+      textIndent: value && '-99999px',
       ...treatments.input,
 
       ':focus': {
