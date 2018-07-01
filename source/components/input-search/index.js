@@ -176,6 +176,7 @@ class InputSearch extends Component {
         <div className={classNames.fieldWrapper}>
           <input
             aria-labelledby={labelId}
+            autoComplete='off'
             className={classNames.field}
             type={type}
             id={inputId}
