@@ -205,29 +205,29 @@ class InputSearch extends Component {
               </div>
             )
           )}
+          {query && (
+            <div className={classNames.results} ref='results'>
+              <Results
+                active={active}
+                classNames={classNames}
+                emptyMessage={emptyMessage}
+                errorMessage={errorMessage}
+                ResultComponent={ResultComponent}
+                results={results}
+                showMore={showMore}
+                selectItem={this.setActiveItem}
+                status={status}
+                toShow={toShow}>
+                {showMore && results.length > toShow && (
+                  <ShowMore
+                    className={classNames.showMore}
+                    onClick={this.showMore}
+                  />
+                )}
+              </Results>
+            </div>
+          )}
         </div>
-        {query && (
-          <div className={classNames.results} ref='results'>
-            <Results
-              active={active}
-              classNames={classNames}
-              emptyMessage={emptyMessage}
-              errorMessage={errorMessage}
-              ResultComponent={ResultComponent}
-              results={results}
-              showMore={showMore}
-              selectItem={this.setActiveItem}
-              status={status}
-              toShow={toShow}>
-              {showMore && results.length > toShow && (
-                <ShowMore
-                  className={classNames.showMore}
-                  onClick={this.showMore}
-                />
-              )}
-            </Results>
-          </div>
-        )}
         {error && (
           <InputValidations
             styles={{ root: styles.error }}
