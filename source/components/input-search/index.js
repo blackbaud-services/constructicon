@@ -125,6 +125,7 @@ class InputSearch extends Component {
 
   render () {
     const {
+      autoComplete,
       classNames,
       emptyMessage,
       error,
@@ -176,7 +177,7 @@ class InputSearch extends Component {
         <div className={classNames.fieldWrapper}>
           <input
             aria-labelledby={labelId}
-            autoComplete='off'
+            autoComplete={autoComplete}
             className={classNames.field}
             type={type}
             id={inputId}
@@ -346,10 +347,16 @@ InputSearch.propTypes = {
   /**
   * An array of validation messages to display
   */
-  validations: PropTypes.array
+  validations: PropTypes.array,
+
+  /**
+  * The autocomplete value for the field
+  */
+  autoComplete: PropTypes.string
 }
 
 InputSearch.defaultProps = {
+  autoComplete: 'nope',
   debounce: 500,
   emptyMessage: 'No results found',
   errorMessage: 'There was an unexpected error',
