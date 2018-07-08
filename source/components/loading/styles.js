@@ -32,11 +32,11 @@ export default ({
       animation: `${keyframes.dots} infinite alternate`,
       animationDuration: `${duration}ms`,
 
-      ':nth-of-type(2)': {
+      '&:nth-of-type(2)': {
         animationDelay: '200ms'
       },
 
-      ':nth-of-type(3)': {
+      '&:nth-of-type(3)': {
         animationDelay: '400ms'
       }
     }
