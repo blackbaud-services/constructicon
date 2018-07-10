@@ -137,39 +137,39 @@ export const effects = {
   none: {},
   shade: {
     position: 'relative',
-    ':before': {
+    '&:before': {
       transition: transitions.easeOut,
       ...utils.fullSize,
       backgroundColor: colors.shade,
       opacity: 0
     },
-    ':hover:before': {
+    '&:hover:before': {
       opacity: 1
     }
   },
   tint: {
     position: 'relative',
-    ':before': {
+    '&:before': {
       transition: transitions.easeOut,
       ...utils.fullSize,
       backgroundColor: colors.tint,
       opacity: 0
     },
-    ':hover:before': {
+    '&:hover:before': {
       opacity: 1
     }
   },
   grow: {
     transition: transitions.easeOut,
     backfaceVisibility: 'hidden',
-    ':hover': {
+    '&:hover': {
       transform: 'scale(1.1)'
     }
   },
   shrink: {
     transition: transitions.easeOut,
     backfaceVisibility: 'hidden',
-    ':hover': {
+    '&:hover': {
       transform: 'scale(0.925)'
     }
   }
