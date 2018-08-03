@@ -50,7 +50,7 @@ class Modal extends Component {
             onClick={props.onRequestClose}
             aria-label='Close'
             children={closeIcon}
-            />
+          />
         )}
         <div className={classNames.container}>
           {children}
