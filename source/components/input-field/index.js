@@ -3,13 +3,10 @@ import PropTypes from 'prop-types'
 import omit from 'lodash/omit'
 import withStyles from '../with-styles'
 import styles from './styles'
+import { isBoolean } from '../../lib/form'
 
 import InputValidations from '../input-validations'
 import Label from '../label'
-
-const isBoolean = (type) => {
-  return ['radio', 'checkbox'].indexOf(type) > -1
-}
 
 const InputField = ({
   classNames,

@@ -1,4 +1,5 @@
 import merge from 'lodash/merge'
+import { isBoolean } from '../../lib/form'
 
 export default ({
   type,
@@ -15,7 +16,7 @@ export default ({
   scale,
   treatments
 }) => {
-  const checkbox = type === 'checkbox' || type === 'radio'
+  const checkbox = isBoolean(type)
   const textarea = type === 'textarea'
   const isInvalid = touched && invalid
 

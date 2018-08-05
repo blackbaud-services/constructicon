@@ -3,6 +3,7 @@ import filter from 'lodash/filter'
 import isEmpty from 'lodash/isEmpty'
 import merge from 'lodash/merge'
 import mapValues from 'lodash/mapValues'
+import { isBoolean } from '../../lib/form'
 
 const withForm = (config) => (ComponentToWrap) => (
   class extends Component {
@@ -27,11 +28,15 @@ const withForm = (config) => (ComponentToWrap) => (
       return merge(defaults, supplied)
     }
 
+    initialValue (field) {
+      return isBoolean(field.type) ? false : ''
+    }
+
     initFields (fields) {
       return mapValues(fields, (field, key) => ({
         ...field,
-        value: field.initial || '',
         name: key,
+        value: field.initial || this.initialValue(field),
         onChange: this.handleChange(key),
         onBlur: this.handleChange(key, true)
       }))
