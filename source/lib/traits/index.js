@@ -92,9 +92,11 @@ export const radiuses = {
 * Media Queries
 */
 export const breakpoints = {
-  sm: '32.5em',
-  md: '45em',
-  lg: '57.5em'
+  xs: '24rem',
+  sm: '36rem',
+  md: '48rem',
+  lg: '60rem',
+  xl: '72rem'
 }
 
 export const mediaQuery = (size = 'sm', query = 'min-width') => (
