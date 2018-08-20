@@ -25,8 +25,8 @@ const Metric = ({
   return (
     <Tag className={`c11n-metric ${classNames.root}`}>
       {renderIcon()}
-      <div className={classNames.label}>{label}</div>
-      <div className={classNames.amount}>{amount}</div>
+      {label && <div className={classNames.label}>{label}</div>}
+      {amount && <div className={classNames.amount}>{amount}</div>}
     </Tag>
   )
 }
@@ -67,6 +67,7 @@ Metric.propTypes = {
 }
 
 Metric.defaultProps = {
+  align: 'center',
   styles: {},
   tag: 'div'
 }
