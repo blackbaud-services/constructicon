@@ -1,13 +1,16 @@
 import merge from 'lodash/merge'
 
-export default ({ styles }, {
+export default ({
+  align,
+  styles
+}, {
   rhythm,
   scale,
   treatments
 }) => {
   const defaultStyles = {
     root: {
-      textAlign: 'center'
+      textAlign: align
     },
 
     icon: {
@@ -16,6 +19,7 @@ export default ({ styles }, {
 
     label: {
       display: 'block',
+      opacity: 0.5,
       marginBottom: rhythm(0.33),
       fontSize: scale(-1),
       ...treatments.button
@@ -23,7 +27,7 @@ export default ({ styles }, {
 
     amount: {
       fontSize: scale(3),
-      ...treatments.heading
+      ...treatments.head
     }
   }
 
