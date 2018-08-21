@@ -56,7 +56,7 @@ ProgressBar.propTypes = {
 
 ProgressBar.defaultProps = {
   fill: 'primary',
-  background: 'lightGrey',
+  background: 'shade',
   radius: 'small',
   styles: {}
 }
