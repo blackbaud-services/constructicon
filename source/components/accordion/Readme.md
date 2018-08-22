@@ -9,12 +9,12 @@
       <p>Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
     </RichText>
   </Accordion>
-  <Accordion title='Lorem ipsum dolor sit amet, consectetur adipiscing elit?'>
+  <Accordion title='Purus Lorem Nullam?'>
     <RichText>
       <p>Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
     </RichText>
   </Accordion>
-  <Accordion title='Lorem ipsum dolor sit amet, consectetur adipiscing elit?'>
+  <Accordion title='Morbi leo risus, porta ac consectetur ac, vestibulum at eros, fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.?'>
     <RichText>
       <p>Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
     </RichText>

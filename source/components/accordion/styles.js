@@ -37,6 +37,7 @@ export default ({
       flexBasis: rhythm(gutter),
       display: 'flex',
       alignItems: 'flex-start',
+      flex: `0 0 ${rhythm(1)}`,
       fontSize: scale(-2),
       color: toggled ? colors[color] : colors.lightGrey
     },
