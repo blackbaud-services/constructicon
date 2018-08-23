@@ -2,5 +2,6 @@
 
 set -eu pipefail
 
+npm install yarn -g
 yarn
 yarn lint
