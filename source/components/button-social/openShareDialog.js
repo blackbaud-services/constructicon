@@ -2,8 +2,8 @@ import defaults from 'lodash/defaults'
 import map from 'lodash/map'
 
 const services = {
-  facebook: ({ url, caption = '' }) => {
-    return `http://www.facebook.com/sharer.php?u=${url}&caption=${caption}`
+  facebook: ({ url }) => {
+    return `http://www.facebook.com/sharer.php?u=${url}`
   },
   twitter: ({ url, title, hashtags = '' }) => {
     return `https://twitter.com/share?url=${url}&text=${title}&hashtags=${hashtags}`
