@@ -3,16 +3,16 @@ import map from 'lodash/map'
 
 const services = {
   facebook: ({ url }) => {
-    return `http://www.facebook.com/sharer.php?u=${url}`
+    return `http://www.facebook.com/sharer.php?u=${encodeURIComponent(url)}`
   },
   twitter: ({ url, title, hashtags = '' }) => {
-    return `https://twitter.com/share?url=${url}&text=${title}&hashtags=${hashtags}`
+    return `https://twitter.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}&hashtags=${encodeURIComponent(hashtags)}`
   },
   google: ({ url }) => {
-    return `https://plus.google.com/share?url=${url}`
+    return `https://plus.google.com/share?url=${encodeURIComponent(url)}`
   },
   linkedin: ({ url, title }) => {
-    return `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`
+    return `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`
   }
 }
 
