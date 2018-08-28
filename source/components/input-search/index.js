@@ -277,7 +277,10 @@ InputSearch.propTypes = {
   /**
   * The label of the input field
   */
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]),
 
   /**
   * The number of results to show

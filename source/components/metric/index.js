@@ -35,7 +35,10 @@ Metric.propTypes = {
   /**
   * The label to be displayed
   */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]),
 
   /**
   * The actual amount

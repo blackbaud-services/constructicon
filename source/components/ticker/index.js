@@ -34,10 +34,7 @@ Ticker.propTypes = {
   /**
   * Items to display in animated scroll
   */
-  items: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.arrayOf(PropTypes.element)
-  ]).isRequired,
+  items: PropTypes.array.isRequired,
 
   /**
   * The label text
