@@ -45,6 +45,7 @@ Metric.propTypes = {
   */
   amount: PropTypes.oneOfType([
     PropTypes.string,
+    PropTypes.number,
     PropTypes.element
   ]).isRequired,
 
