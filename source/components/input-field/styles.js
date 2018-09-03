@@ -2,6 +2,7 @@ import merge from 'lodash/merge'
 import { isBoolean } from '../../lib/form'
 
 export default ({
+  label,
   type,
   touched,
   invalid,
@@ -53,6 +54,13 @@ export default ({
         borderColor: isInvalid ? colors.danger : colors.secondary,
         boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
       }
+    },
+
+    status: {
+      position: 'absolute',
+      top: label ? rhythm(1.633) : rhythm(0.5),
+      right: rhythm(0.5),
+      pointerEvents: 'none'
     }
   }
 

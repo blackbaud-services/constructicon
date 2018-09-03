@@ -26,6 +26,35 @@ initialState = { fn: '', ln: '' };
 </div>
 ```
 
+
+**Status indicator**
+
+```
+initialState = { search: '', validations: [] };
+
+handleChange = (search) => {
+  setState({ search, status: 'fetching', validations: [] })
+
+  if (search) {
+    setTimeout(() => setState({ status: 'fetched' }), 1000)
+  } else {
+    setTimeout(() => setState({ status: 'failed', validations: ['Not found'] }), 1000)
+  }
+}
+
+<InputField
+  type='search'
+  name='status'
+  placeholder='Start typing to search...'
+  value={state.search}
+  status={state.status}
+  onChange={handleChange}
+  error={!!state.validations.length}
+  validations={state.validations}
+/>
+```
+
+
 **Custom Styles**
 
 Apply a custom styles object to alter the look. Available elements are:
@@ -36,6 +65,7 @@ Apply a custom styles object to alter the look. Available elements are:
 - `required` - Required label (if present)
 - `errors` - Error messages container
 - `error` - Error message styles
+- `status` - Status indicator styles
 
 For example:
 

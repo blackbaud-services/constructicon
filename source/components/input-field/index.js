@@ -5,6 +5,7 @@ import withStyles from '../with-styles'
 import styles from './styles'
 import { isBoolean } from '../../lib/form'
 
+import Icon from '../icon'
 import InputValidations from '../input-validations'
 import Label from '../label'
 
@@ -19,6 +20,7 @@ const InputField = ({
   onBlur,
   onChange,
   styles = {},
+  status,
   validations,
   value,
   ...props
@@ -44,6 +46,19 @@ const InputField = ({
     />
   )
 
+  const renderStatus = () => {
+    switch (status) {
+      case 'fetching':
+        return <Icon styles={styles.status} name='loading' spin color='grey' />
+      case 'fetched':
+        return <Icon styles={styles.status} name='check' color='success' />
+      case 'failed':
+        return <Icon styles={styles.status} name='warning' color='danger' />
+      default:
+        return null
+    }
+  }
+
   return (
     <div className={`c11n-input-field ${classNames.root}`}>
       {label && (
@@ -60,6 +75,8 @@ const InputField = ({
       )}
 
       {renderField()}
+
+      {status && renderStatus()}
 
       {error && (
         <InputValidations
@@ -79,6 +96,11 @@ InputField.propTypes = {
     PropTypes.string,
     PropTypes.element
   ]),
+
+  /**
+  * Whether to display validation errors
+  */
+  error: PropTypes.bool,
 
   /**
   * The name of the field
@@ -127,7 +149,14 @@ InputField.propTypes = {
   /**
   * Mark the field as required and displays an asterisk next to the label
   */
-  required: PropTypes.bool
+  required: PropTypes.bool,
+
+  /**
+  * Validation errors
+  */
+  validations: PropTypes.array,
+
+  styles: PropTypes.object
 }
 
 InputField.defaultProps = {
