@@ -36,6 +36,7 @@ export const colors = {
   fitbit: '#00b0b9',
   mapmyfitness: '#004a8d',
   strava: '#fc4c02',
+  twitch: '#6701B3',
   danger: '#d9534f',
   success: '#5cb85c'
 }
