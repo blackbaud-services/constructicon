@@ -7,8 +7,10 @@
     "start": "styleguidist server",
     "lint": "standard",
     "test": "mocha source/**/**/__tests__/*.js",
+    "format": "prettier-standard 'source/**/*.js'",
+    "precommit": "lint-staged",
     "build": "babel source -d dist",
-    "build:styleguide": "styleguidist build",
+    "build:styleguide": "styleguidist buipbld",
     "deploy:styleguide": "npm run build:styleguide && gh-pages -d styleguide",
     "deploy:prepare": "gulp npm-prepare"
   },
@@ -21,20 +23,6 @@
   },
   "author": "Dan Henderson <dan.henderson@everydayhero.com>",
   "license": "MIT",
-  "standard": {
-    "ignore": [
-      "source/**/**/__tests__/*.js",
-      "test",
-      "gulpfile.js"
-    ],
-    "globals": [
-      "it",
-      "describe",
-      "mount",
-      "expect",
-      "utils"
-    ]
-  },
   "dependencies": {
     "cxsync": "^1.0.9",
     "lodash": "^4.17.4",
@@ -57,12 +45,17 @@
     "chai": "^3.5.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^5.6.0",
     "gh-pages": "^0.12.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
+    "husky": "^0.14.3",
     "jsdom": "^9.9.1",
+    "lint-staged": "^7.2.2",
     "mocha": "^2.5.3",
+    "prettier": "^1.14.3",
+    "prettier-standard": "^8.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-styleguidist": "^6.2.6",
@@ -73,5 +66,27 @@
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
+  },
+  "standard": {
+    "ignore": [
+      "source/**/**/__tests__/*.js",
+      "test",
+      "gulpfile.js"
+    ],
+    "globals": [
+      "it",
+      "describe",
+      "mount",
+      "expect",
+      "utils"
+    ]
+  },
+  "lint-staged": {
+    "linters": {
+      "source/**/*.js": [
+        "prettier-standard",
+        "git add"
+      ]
+    }
   }
 }
