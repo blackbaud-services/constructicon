@@ -24,22 +24,23 @@ export const Document = ({
       {head.link.toComponent()}
       {head.script.toComponent()}
       {head.style.toComponent()}
-      {styles.map((style, index) => <link key={index} rel='stylesheet' href={style} />)}
+      {styles.map((style, index) => (
+        <link key={index} rel='stylesheet' href={style} />
+      ))}
       <style dangerouslySetInnerHTML={{ __html: cxsync.css || '' }} />
-      <script dangerouslySetInnerHTML={{
-        __html: `
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','${gtmId}');`
-      }} />
+        }}
+      />
     </head>
     <body>
-      <main
-        id='mount'
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <main id='mount' dangerouslySetInnerHTML={{ __html: content }} />
 
       <script
         id='initial-state'
@@ -47,10 +48,18 @@ export const Document = ({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(state) }}
       />
 
-      {scripts.map((script, index) => <script key={index} src={script} />)}
+      {scripts.map((script, index) => (
+        <script key={index} src={script} />
+      ))}
 
-      <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-        height='0' width='0' style={{display: 'none', visibility: 'hidden'}} /></noscript>
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+          height='0'
+          width='0'
+          style={{ display: 'none', visibility: 'hidden' }}
+        />
+      </noscript>
     </body>
   </html>
 )
@@ -61,16 +70,19 @@ export const renderDocument = ({
   state = {},
   DocumentComponent = Document
 }) => {
-  const styles = assets.filter((asset) => asset.match(/\.css$/))
-  const scripts = assets.filter((asset) => asset.match(/\.js$/))
-  return '<!doctype html>' + renderToStaticMarkup(
-    createElement(DocumentComponent, {
-      head: Helmet.rewind(),
-      styles,
-      scripts,
-      content,
-      state
-    })
+  const styles = assets.filter(asset => asset.match(/\.css$/))
+  const scripts = assets.filter(asset => asset.match(/\.js$/))
+  return (
+    '<!doctype html>' +
+    renderToStaticMarkup(
+      createElement(DocumentComponent, {
+        head: Helmet.rewind(),
+        styles,
+        scripts,
+        content,
+        state
+      })
+    )
   )
 }
 

@@ -8,7 +8,7 @@ import Loading from '../loading'
  * Render a colored square with a loading spinner in place of an image whilst it's being loaded.
  *
  * Useful to prevent a layout from breaking, flickering or changing size during a page load.
-*/
+ */
 
 class LazyImage extends React.Component {
   constructor () {
@@ -55,10 +55,7 @@ class LazyImage extends React.Component {
 
   shouldLoadImage () {
     if (this.props.url) {
-      if (
-        this.state.status !== 'fetching' &&
-        this.state.status !== 'fetched'
-      ) {
+      if (this.state.status !== 'fetching' && this.state.status !== 'fetched') {
         if (this.props.lazy) {
           return this.isImageInViewport()
         } else {
@@ -86,19 +83,16 @@ class LazyImage extends React.Component {
     if (!this.image) return false
     var rect = this.image.getBoundingClientRect()
 
-    return rect.bottom > 0 &&
+    return (
+      rect.bottom > 0 &&
       rect.right > 0 &&
       rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
       rect.top < (window.innerHeight || document.documentElement.clientHeight)
+    )
   }
 
   render () {
-    const {
-      classNames,
-      url,
-      children,
-      loadingProps
-    } = this.props
+    const { classNames, url, children, loadingProps } = this.props
 
     const { status } = this.state
 
@@ -108,14 +102,13 @@ class LazyImage extends React.Component {
 
     return (
       <div
-        ref={ref => { this.image = ref }}
-        style={{backgroundImage: loaded ? `url('${url}')` : ''}}
+        ref={ref => {
+          this.image = ref
+        }}
+        style={{ backgroundImage: loaded ? `url('${url}')` : '' }}
         className={`c11n-lazy-image ${classNames.root}`}
       >
-        <div
-          className={classNames.overlay}
-          style={{ opacity: loaded ? 0 : 1 }}
-        >
+        <div className={classNames.overlay} style={{ opacity: loaded ? 0 : 1 }}>
           {!loaded && spinner}
         </div>
       </div>
@@ -125,43 +118,43 @@ class LazyImage extends React.Component {
 
 LazyImage.propTypes = {
   /**
-  * Url of the image to be loaded and displayed
-  */
+   * Url of the image to be loaded and displayed
+   */
   url: PropTypes.string,
 
   /**
-  * If image loading should be delayed until image has entered the viewport
-  */
+   * If image loading should be delayed until image has entered the viewport
+   */
   lazy: PropTypes.bool,
 
   /**
-  * Background color while image is loading
-  */
+   * Background color while image is loading
+   */
   color: PropTypes.string,
 
   /**
-  * Props to be spread onto the constructicon loading dots
-  */
+   * Props to be spread onto the constructicon loading dots
+   */
   loadingProps: PropTypes.object,
 
   /**
-  * Optional callback that fires when image has been loaded
-  */
+   * Optional callback that fires when image has been loaded
+   */
   onLoad: PropTypes.func,
 
   /**
-  * Styles to be merged with the image wrapper. This is where you should set a custom height and width
-  */
+   * Styles to be merged with the image wrapper. This is where you should set a custom height and width
+   */
   styles: PropTypes.object,
 
   /**
-  * transition to be used to fade out the overlay
-  */
+   * transition to be used to fade out the overlay
+   */
   transition: PropTypes.string,
 
   /**
-  * Optional children that will be rendered when loading, instead of the constructicon loading dots
-  * */
+   * Optional children that will be rendered when loading, instead of the constructicon loading dots
+   * */
   children: PropTypes.any
 }
 

@@ -31,7 +31,8 @@ const numbers = [
   },
   {
     number: 1993624,
-    sentence: 'one million nine hundred and ninety-three thousand six hundred and twenty-four'
+    sentence:
+      'one million nine hundred and ninety-three thousand six hundred and twenty-four'
   },
   {
     number: 14000072,
@@ -39,7 +40,8 @@ const numbers = [
   },
   {
     number: 434500583,
-    sentence: 'four hundred and thirty-four million five hundred thousand five hundred and eighty-three'
+    sentence:
+      'four hundred and thirty-four million five hundred thousand five hundred and eighty-three'
   },
   {
     number: 1000000000,
@@ -67,9 +69,7 @@ describe('NumberToWords', () => {
   })
 
   it('renders number in a custom tag when one is provided', () => {
-    const wrapper = mount(
-      <NumberToWords tag='a' number={9} />
-    )
+    const wrapper = mount(<NumberToWords tag='a' number={9} />)
     expect(wrapper.find('a')).to.have.length(1)
   })
 })

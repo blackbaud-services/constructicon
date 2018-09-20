@@ -3,11 +3,7 @@ import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-const Ticker = ({
-  classNames,
-  label,
-  items = []
-}) => (
+const Ticker = ({ classNames, label, items = [] }) => (
   <div className={`c11n-ticker ${classNames.root}`}>
     <ul className={classNames.items}>
       {items.map((item, index) => (
@@ -22,43 +18,43 @@ const Ticker = ({
 
 Ticker.propTypes = {
   /**
-  * The background color
-  */
+   * The background color
+   */
   background: PropTypes.string,
 
   /**
-  * The color of the text
-  */
+   * The color of the text
+   */
   foreground: PropTypes.string,
 
   /**
-  * Items to display in animated scroll
-  */
+   * Items to display in animated scroll
+   */
   items: PropTypes.array.isRequired,
 
   /**
-  * The label text
-  */
+   * The label text
+   */
   label: PropTypes.string,
 
   /**
-  * The label background color
-  */
+   * The label background color
+   */
   labelBackground: PropTypes.string,
 
   /**
-  * The color of the label text
-  */
+   * The color of the label text
+   */
   labelForeground: PropTypes.string,
 
   /**
-  * Animation speed
-  */
-  speed: PropTypes.oneOf([ 'slow', 'medium', 'fast' ]),
+   * Animation speed
+   */
+  speed: PropTypes.oneOf(['slow', 'medium', 'fast']),
 
   /**
-  * Custom styles to be applied
-  */
+   * Custom styles to be applied
+   */
   styles: PropTypes.object
 }
 

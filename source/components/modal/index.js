@@ -6,8 +6,8 @@ import withStyles from '../with-styles'
 import styles from './styles'
 
 /**
-* Uses React Modal - https://github.com/reactjs/react-modal
-*/
+ * Uses React Modal - https://github.com/reactjs/react-modal
+ */
 class Modal extends Component {
   componentDidMount () {
     const { appElement } = this.props
@@ -43,7 +43,8 @@ class Modal extends Component {
           afterOpen: 'c11n-modal-overlay-after-open',
           beforeClose: 'c11n-modal-overlay-before-close'
         }}
-        {...props}>
+        {...props}
+      >
         {closeIcon && (
           <button
             className={classNames.close}
@@ -52,9 +53,7 @@ class Modal extends Component {
             children={closeIcon}
           />
         )}
-        <div className={classNames.container}>
-          {children}
-        </div>
+        <div className={classNames.container}>{children}</div>
       </ReactModal>
     )
   }
@@ -62,61 +61,58 @@ class Modal extends Component {
 
 Modal.propTypes = {
   /**
-  * A valid query selector for the element your React app is mounted to
-  */
+   * A valid query selector for the element your React app is mounted to
+   */
   appElement: PropTypes.string,
 
   /**
-  * The content of the modal
-  */
+   * The content of the modal
+   */
   children: PropTypes.any.isRequired,
 
   /**
-  * Number indicating the milliseconds to wait before closing the modal.
-  */
+   * Number indicating the milliseconds to wait before closing the modal.
+   */
   closeTimeoutMS: PropTypes.number,
 
   /**
-  * A react-modal required prop for accessibility
-  */
+   * A react-modal required prop for accessibility
+   */
   contentLabel: PropTypes.string.isRequired,
 
   /**
-  * The close icon (set to false to hide)
-  */
+   * The close icon (set to false to hide)
+   */
   closeIcon: PropTypes.any,
 
   /**
-  * Specifies whether the modal is open or not
-  */
+   * Specifies whether the modal is open or not
+   */
   isOpen: PropTypes.bool,
 
   /**
-  * Function that will be run after the modal has opened.
-  */
+   * Function that will be run after the modal has opened.
+   */
   onAfterOpen: PropTypes.func,
 
   /**
-  * The callback to call when the modal should be closed
-  */
+   * The callback to call when the modal should be closed
+   */
   onRequestClose: PropTypes.func,
 
   /**
-  * Specifies whether the modal closes on clicking overlay
-  */
+   * Specifies whether the modal closes on clicking overlay
+   */
   shouldCloseOnOverlayClick: PropTypes.bool,
 
   /**
-  * A spacing object to determine the padding within the modal
-  */
-  spacing: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number
-  ]),
+   * A spacing object to determine the padding within the modal
+   */
+  spacing: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
 
   /**
-  * Custom styles for the overlay, content, container or close
-  */
+   * Custom styles for the overlay, content, container or close
+   */
   styles: PropTypes.object
 }
 

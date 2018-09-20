@@ -1,15 +1,9 @@
 import merge from 'lodash/merge'
 
-export default ({
-  spacing = 0.5,
-  styles
-}, {
-  rhythm,
-  scale,
-  colors,
-  fonts,
-  measures
-}) => {
+export default (
+  { spacing = 0.5, styles },
+  { rhythm, scale, colors, fonts, measures }
+) => {
   const baseStyles = {
     root: {
       display: 'block',

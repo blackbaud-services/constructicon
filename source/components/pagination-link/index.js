@@ -30,48 +30,46 @@ const PaginationLink = ({
     onClick={onClick}
     onKeyDown={onClick}
     className={`c11n-pagination-link ${classNames.root}`}
-    {...props}>
+    {...props}
+  >
     <Icon name={icon} rotate={direction === 'prev' ? 180 : 0} size={size} />
   </button>
 )
 
 PaginationLink.propTypes = {
   /**
-  * The current slide if in a Carousel
-  */
+   * The current slide if in a Carousel
+   */
   currentSlide: PropTypes.number,
 
   /**
-  * The direction of the arrow
-  */
-  direction: PropTypes.oneOf([
-    'prev',
-    'next'
-  ]).isRequired,
+   * The direction of the arrow
+   */
+  direction: PropTypes.oneOf(['prev', 'next']).isRequired,
 
   /**
-  * Whether or not the link is disabled
-  */
+   * Whether or not the link is disabled
+   */
   disabled: PropTypes.bool,
 
   /**
-  * The name of the icon e.g. chevron, heart etc.
-  */
+   * The name of the icon e.g. chevron, heart etc.
+   */
   icon: PropTypes.string,
 
   /**
-  * onClick handler
-  */
+   * onClick handler
+   */
   onClick: PropTypes.func,
 
   /**
-  * The icon size
-  */
+   * The icon size
+   */
   size: PropTypes.number,
 
   /**
-  * The total number of slides if in a Carousel
-  */
+   * The total number of slides if in a Carousel
+   */
   slideCount: PropTypes.number
 }
 

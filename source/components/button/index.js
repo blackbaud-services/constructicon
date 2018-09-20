@@ -4,15 +4,22 @@ import omit from 'lodash/omit'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-const Button = ({
-  children,
-  tag: Tag,
-  type,
-  target,
-  classNames,
-  ...props
-}) => {
-  const propsBlacklist = ['children', 'background', 'foreground', 'borderColor', 'borderWidth', 'font', 'size', 'spacing', 'radius', 'shadow', 'effect', 'block', 'styles']
+const Button = ({ children, tag: Tag, type, target, classNames, ...props }) => {
+  const propsBlacklist = [
+    'children',
+    'background',
+    'foreground',
+    'borderColor',
+    'borderWidth',
+    'font',
+    'size',
+    'spacing',
+    'radius',
+    'shadow',
+    'effect',
+    'block',
+    'styles'
+  ]
   const allowedProps = omit(props, propsBlacklist)
 
   return (
@@ -22,7 +29,8 @@ const Button = ({
       aria-label={typeof children === 'string' ? children : 'button'}
       target={['a', 'form'].indexOf(Tag) > -1 ? target : undefined}
       formTarget={Tag === 'button' ? target : undefined}
-      {...allowedProps}>
+      {...allowedProps}
+    >
       {children}
     </Tag>
   )
@@ -30,13 +38,13 @@ const Button = ({
 
 Button.propTypes = {
   /**
-  * The text for the button
-  */
+   * The text for the button
+   */
   children: PropTypes.any.isRequired,
 
   /**
-  * The tag or component to be used e.g. button, a, Link
-  */
+   * The tag or component to be used e.g. button, a, Link
+   */
   tag: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
@@ -44,81 +52,73 @@ Button.propTypes = {
   ]),
 
   /**
-  * The target for the button
-  */
-  target: PropTypes.oneOf([
-    '_self',
-    '_blank',
-    '_parent',
-    '_top'
-  ]),
+   * The target for the button
+   */
+  target: PropTypes.oneOf(['_self', '_blank', '_parent', '_top']),
 
   /**
-  * The type the button
-  */
+   * The type the button
+   */
   type: PropTypes.string,
 
   /**
-  * The background color of the button
-  */
+   * The background color of the button
+   */
   background: PropTypes.string,
 
   /**
-  * The color of the text
-  */
+   * The color of the text
+   */
   foreground: PropTypes.string,
 
   /**
-  * The color of the border
-  */
+   * The color of the border
+   */
   borderColor: PropTypes.string,
 
   /**
-  * The width of the border
-  */
+   * The width of the border
+   */
   borderWidth: PropTypes.number,
 
   /**
-  * The font for the text
-  */
+   * The font for the text
+   */
   font: PropTypes.string,
 
   /**
-  * The scale to be used for the font size
-  */
+   * The scale to be used for the font size
+   */
   size: PropTypes.number,
 
   /**
-  * The spacing to be applied
-  */
-  spacing: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number
-  ]),
+   * The spacing to be applied
+   */
+  spacing: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
 
   /**
-  * The radius of the button
-  */
+   * The radius of the button
+   */
   radius: PropTypes.string,
 
   /**
-  * The shadow to be placed on the button
-  */
+   * The shadow to be placed on the button
+   */
   shadow: PropTypes.string,
 
   /**
-  * The effect to be used on the button
-  */
+   * The effect to be used on the button
+   */
   effect: PropTypes.string,
 
   /**
-  * Makes the button full width
-  */
+   * Makes the button full width
+   */
   block: PropTypes.bool,
 
   /**
-  * Custom styles to be applied to the button
-  */
+   * Custom styles to be applied to the button
+   */
   styles: PropTypes.object
 }
 
@@ -132,7 +132,7 @@ Button.defaultProps = {
   borderWidth: 0,
   font: 'button',
   size: 0,
-  spacing: {x: 0.75, y: 0.5},
+  spacing: { x: 0.75, y: 0.5 },
   radius: 'small',
   effect: 'tint',
   styles: {}

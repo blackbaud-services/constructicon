@@ -3,11 +3,7 @@ import InputField from '..'
 describe('InputField', () => {
   it('should render a simple input field', () => {
     const wrapper = mount(
-      <InputField
-        label='Test Field'
-        name='test-name'
-        onChange={() => {}}
-      />
+      <InputField label='Test Field' name='test-name' onChange={() => {}} />
     )
     const input = wrapper.find('input')
     const label = wrapper.find('label')
@@ -43,11 +39,7 @@ describe('InputField', () => {
 
   it('should set the name', () => {
     const wrapper = mount(
-      <InputField
-        label='Test Field'
-        name='test-name'
-        onChange={() => {}}
-      />
+      <InputField label='Test Field' name='test-name' onChange={() => {}} />
     )
     const input = wrapper.find('input')
     expect(input.prop('name')).to.eql('test-name')
@@ -66,13 +58,13 @@ describe('InputField', () => {
     expect(input.prop('disabled')).to.eql(true)
   })
 
-  it('should fire the onChange handler', (done) => {
+  it('should fire the onChange handler', done => {
     let called
     const wrapper = mount(
       <InputField
         label='Test Field'
         name='test-name'
-        onChange={() => called = true}
+        onChange={() => (called = true)}
       />
     )
     const input = wrapper.find('input')

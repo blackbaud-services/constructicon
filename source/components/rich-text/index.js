@@ -3,30 +3,26 @@ import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-const RichText = ({
-  children,
-  tag: Tag,
-  classNames
-}) => {
+const RichText = ({ children, tag: Tag, classNames }) => {
   if (!children) {
     return null
   }
 
   return (
     <Tag className={`c11n-rich-text ${classNames.root}`}>
-      {
-        typeof children === 'string'
-          ? <span dangerouslySetInnerHTML={{ __html: children }} />
-          : children
-      }
+      {typeof children === 'string' ? (
+        <span dangerouslySetInnerHTML={{ __html: children }} />
+      ) : (
+        children
+      )}
     </Tag>
   )
 }
 
 RichText.propTypes = {
   /**
-  * The html to be structured
-  */
+   * The html to be structured
+   */
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.element),
@@ -34,13 +30,13 @@ RichText.propTypes = {
   ]),
 
   /**
-  * The tag to be used for the containing element
-  */
+   * The tag to be used for the containing element
+   */
   tag: PropTypes.string,
 
   /**
-  * Custom styles to be added to the element
-  */
+   * Custom styles to be added to the element
+   */
   styles: PropTypes.object
 }
 

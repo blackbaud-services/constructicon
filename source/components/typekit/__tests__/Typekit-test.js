@@ -1,7 +1,7 @@
 import Typekit from '..'
 
 describe('Typekit', () => {
-  const getMountedElement = (el) => utils.getMountedElement(el, 'script')
+  const getMountedElement = el => utils.getMountedElement(el, 'script')
 
   it('should render a Typekit script', () => {
     const typekit = getMountedElement(<Typekit id='abc123' />)

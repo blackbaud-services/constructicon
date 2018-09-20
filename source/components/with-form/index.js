@@ -5,7 +5,7 @@ import merge from 'lodash/merge'
 import mapValues from 'lodash/mapValues'
 import { isBoolean } from '../../lib/form'
 
-const withForm = (config) => (ComponentToWrap) => (
+const withForm = config => ComponentToWrap =>
   class extends Component {
     constructor (props) {
       super(props)
@@ -24,7 +24,8 @@ const withForm = (config) => (ComponentToWrap) => (
 
     initOptions (config) {
       const defaults = { fields: {} }
-      const supplied = typeof config === 'function' ? config(this.props) : config
+      const supplied =
+        typeof config === 'function' ? config(this.props) : config
       return merge(defaults, supplied)
     }
 
@@ -43,7 +44,7 @@ const withForm = (config) => (ComponentToWrap) => (
     }
 
     validateFields (fields) {
-      return mapValues(fields, (field) => {
+      return mapValues(fields, field => {
         const validations = this.validateField(
           field.validators,
           field.value,
@@ -64,26 +65,30 @@ const withForm = (config) => (ComponentToWrap) => (
         case 'function':
           return validators(value, values)
         case 'object':
-          const validations = validators.map((validator) => this.validateField(validator, value, values))
-          return validations.filter((v) => v)
+          const validations = validators.map(validator =>
+            this.validateField(validator, value, values)
+          )
+          return validations.filter(v => v)
         default:
           return validators
       }
     }
 
     checkIfValid (fields) {
-      return filter(fields, (filter) => filter.invalid).length === 0
+      return filter(fields, filter => filter.invalid).length === 0
     }
 
     touchFields (fields) {
-      return mapValues(fields, (field) => merge({}, field, {
-        touched: true,
-        error: !isEmpty(field.validations)
-      }))
+      return mapValues(fields, field =>
+        merge({}, field, {
+          touched: true,
+          error: !isEmpty(field.validations)
+        })
+      )
     }
 
     handleChange (key, touched) {
-      return (value) => {
+      return value => {
         const field = this.state.fields[key]
         const updatedFields = {
           ...this.state.fields,
@@ -139,9 +144,12 @@ const withForm = (config) => (ComponentToWrap) => (
     submitForm () {
       const fields = this.touchFields(this.state.fields)
       this.setState({ fields })
-      return new Promise((resolve, reject) => (
-        this.checkIfValid(fields) ? resolve(this.getValues(fields)) : reject(this.getValidations(fields))
-      ))
+      return new Promise(
+        (resolve, reject) =>
+          this.checkIfValid(fields)
+            ? resolve(this.getValues(fields))
+            : reject(this.getValidations(fields))
+      )
     }
 
     getForm (fields) {
@@ -165,6 +173,5 @@ const withForm = (config) => (ComponentToWrap) => (
       )
     }
   }
-)
 
 export default withForm

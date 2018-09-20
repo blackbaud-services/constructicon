@@ -3,11 +3,7 @@ import InputFile from '..'
 describe('InputFile', () => {
   it('should render a simple input field', () => {
     const wrapper = mount(
-      <InputFile
-        label='Test Field'
-        name='test-name'
-        onChange={() => {}}
-      />
+      <InputFile label='Test Field' name='test-name' onChange={() => {}} />
     )
     const label = wrapper.find('label')
     const input = wrapper.find('input')
@@ -32,11 +28,7 @@ describe('InputFile', () => {
 
   it('should set the name', () => {
     const wrapper = mount(
-      <InputFile
-        label='Test Field'
-        name='test-name'
-        onChange={() => {}}
-      />
+      <InputFile label='Test Field' name='test-name' onChange={() => {}} />
     )
     const input = wrapper.find('input')
     expect(input.prop('name')).to.eql('test-name')
@@ -55,13 +47,13 @@ describe('InputFile', () => {
     expect(input.prop('disabled')).to.eql(true)
   })
 
-  it('should fire the onChange handler', (done) => {
+  it('should fire the onChange handler', done => {
     let called
     const wrapper = mount(
       <InputFile
         label='Test Field'
         name='test-name'
-        onChange={() => called = true}
+        onChange={() => (called = true)}
       />
     )
     const input = wrapper.find('input')

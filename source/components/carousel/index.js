@@ -8,18 +8,44 @@ import styles from './styles'
 
 import Arrow from '../pagination-link'
 
-const Carousel = ({
-  children,
-  classNames,
-  ...props
-}) => {
+const Carousel = ({ children, classNames, ...props }) => {
   const propsWhitelist = [
-    'children', 'styles', 'accessibility', 'adaptiveHeight', 'afterChange',
-    'arrows', 'autoplay', 'autoplaySpeed', 'beforeChange', 'centerMode', 'dots',
-    'dotsClass', 'draggable', 'easing', 'fade', 'focusOnSelect', 'infinite',
-    'initialSlide', 'lazyLoad', 'nextArrow', 'pauseOnHover', 'prevArrow', 'responsive',
-    'rtl', 'slickGoTo', 'slide', 'slidesToScroll', 'slidesToShow', 'speed', 'swipe',
-    'swipeToSlide', 'touchMove', 'touchThreshold', 'useCSS', 'variableWidth', 'vertical'
+    'children',
+    'styles',
+    'accessibility',
+    'adaptiveHeight',
+    'afterChange',
+    'arrows',
+    'autoplay',
+    'autoplaySpeed',
+    'beforeChange',
+    'centerMode',
+    'dots',
+    'dotsClass',
+    'draggable',
+    'easing',
+    'fade',
+    'focusOnSelect',
+    'infinite',
+    'initialSlide',
+    'lazyLoad',
+    'nextArrow',
+    'pauseOnHover',
+    'prevArrow',
+    'responsive',
+    'rtl',
+    'slickGoTo',
+    'slide',
+    'slidesToScroll',
+    'slidesToShow',
+    'speed',
+    'swipe',
+    'swipeToSlide',
+    'touchMove',
+    'touchThreshold',
+    'useCSS',
+    'variableWidth',
+    'vertical'
   ]
 
   const allowedProps = pick(props, propsWhitelist)
@@ -29,7 +55,8 @@ const Carousel = ({
       <Slider
         prevArrow={<Arrow direction='prev' />}
         nextArrow={<Arrow direction='next' />}
-        {...allowedProps}>
+        {...allowedProps}
+      >
         {children}
       </Slider>
     </div>
@@ -38,18 +65,18 @@ const Carousel = ({
 
 Carousel.propTypes = {
   /**
-  * The content of the Carousel
-  */
+   * The content of the Carousel
+   */
   children: PropTypes.any.isRequired,
 
   /**
-  * Custom styles be applied { carousel }
-  */
+   * Custom styles be applied { carousel }
+   */
   styles: PropTypes.object,
 
   /**
-  * Slick slider settings
-  */
+   * Slick slider settings
+   */
   accessibility: PropTypes.bool,
   adaptiveHeight: PropTypes.bool,
   afterChange: PropTypes.func,
@@ -93,6 +120,4 @@ Carousel.defaultProps = {
   styles: {}
 }
 
-export default compose(
-  withStyles(styles)
-)(Carousel)
+export default compose(withStyles(styles))(Carousel)

@@ -10,10 +10,7 @@ import {
 } from '../../../lib/traits'
 
 const minimalComponent = mount(
-  <ProgressBar
-    progress={50}
-    alt='<%= progress %>% raised'
-  />
+  <ProgressBar progress={50} alt='<%= progress %>% raised' />
 )
 
 describe('ProgressBar', () => {
@@ -78,7 +75,10 @@ describe('ProgressBar', () => {
 
     const progressBar = wrapper.find('ProgressBar')
     const fill = utils.findRule(css.rules, progressBar.prop('classNames').fill)
-    const background = utils.findRule(css.rules, progressBar.prop('classNames').background)
+    const background = utils.findRule(
+      css.rules,
+      progressBar.prop('classNames').background
+    )
 
     expect(fill.css).to.contain('background:#123456')
     expect(background.css).to.contain('background:#654321')

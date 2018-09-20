@@ -1,12 +1,6 @@
 import merge from 'lodash/merge'
 
-export default ({
-  styles
-}, {
-  colors,
-  scale,
-  rhythm
-}) => {
+export default ({ styles }, { colors, scale, rhythm }) => {
   const defaultStyles = {
     root: {
       fontSize: scale(-0.75),

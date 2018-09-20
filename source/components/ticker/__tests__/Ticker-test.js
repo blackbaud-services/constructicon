@@ -4,12 +4,7 @@ import { colors } from '../../../lib/traits'
 
 describe('Ticker', () => {
   it('renders a simple ticker', () => {
-    const wrapper = mount(
-      <Ticker
-        label='Label'
-        items={['Example item']}
-      />
-    )
+    const wrapper = mount(<Ticker label='Label' items={['Example item']} />)
     const ticker = wrapper.find('Ticker')
     const labelClass = ticker.prop('classNames').label
     const itemsClass = ticker.prop('classNames').items
@@ -18,23 +13,14 @@ describe('Ticker', () => {
   })
 
   it('renders items containing elements', () => {
-    const wrapper = mount(
-      <Ticker
-        items={[<div>Hello</div>]}
-      />
-    )
+    const wrapper = mount(<Ticker items={[<div>Hello</div>]} />)
     const ticker = wrapper.find('Ticker')
     const itemsClass = ticker.prop('classNames').items
     expect(wrapper.find(`.${itemsClass}`).text()).to.contain('Hello')
   })
 
   it('allows us to set the background color', () => {
-    const wrapper = mount(
-      <Ticker
-        background='secondary'
-        items={['Test']}
-      />
-    )
+    const wrapper = mount(<Ticker background='secondary' items={['Test']} />)
     const ticker = wrapper.find('Ticker')
     const rule = utils.findRule(css.rules, ticker.prop('classNames').root)
     expect(rule.css).to.contain(`background-color:${colors.secondary}`)

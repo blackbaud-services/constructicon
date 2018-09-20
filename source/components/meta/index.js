@@ -17,7 +17,7 @@ const Meta = ({
   favicon,
   appleTouchIcon
 }) => {
-  const getURL = (value) => {
+  const getURL = value => {
     switch (typeof value) {
       case 'object':
         return value.url
@@ -29,27 +29,27 @@ const Meta = ({
   }
 
   const meta = [
-    { 'name': 'description', 'content': description },
-    { 'name': 'keywords', 'content': keywords },
-    { 'name': 'author', 'content': author },
-    { 'property': 'og:type', 'content': ogType },
-    { 'property': 'og:title', 'content': ogTitle },
-    { 'property': 'og:description', 'content': ogDescription },
-    { 'property': 'og:image', 'content': getURL(ogImage) },
-    { 'property': 'og:url', 'content': getURL(ogUrl) || getURL(url) }
+    { name: 'description', content: description },
+    { name: 'keywords', content: keywords },
+    { name: 'author', content: author },
+    { property: 'og:type', content: ogType },
+    { property: 'og:title', content: ogTitle },
+    { property: 'og:description', content: ogDescription },
+    { property: 'og:image', content: getURL(ogImage) },
+    { property: 'og:url', content: getURL(ogUrl) || getURL(url) }
   ]
 
   const links = [
-    { 'rel': 'canonical', 'href': getURL(url) },
-    { 'rel': 'shortcut icon', 'href': getURL(favicon) },
-    { 'rel': 'apple-touch-icon', 'href': getURL(appleTouchIcon) }
+    { rel: 'canonical', href: getURL(url) },
+    { rel: 'shortcut icon', href: getURL(favicon) },
+    { rel: 'apple-touch-icon', href: getURL(appleTouchIcon) }
   ]
 
   return (
     <Helmet
       title={title}
-      meta={reject(meta, (prop) => !prop.content)}
-      link={reject(links, (prop) => !prop.href)}
+      meta={reject(meta, prop => !prop.content)}
+      link={reject(links, prop => !prop.href)}
     />
   )
 }
@@ -63,11 +63,11 @@ Meta.propTypes = {
   ogType: PropTypes.string,
   ogTitle: PropTypes.string,
   ogDescription: PropTypes.string,
-  ogImage: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
-  ogUrl: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
-  url: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
-  favicon: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
-  appleTouchIcon: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ])
+  ogImage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  ogUrl: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  url: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  favicon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  appleTouchIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 }
 
 export default Meta

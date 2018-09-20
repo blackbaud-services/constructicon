@@ -3,34 +3,24 @@ import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-const Grid = ({
-  children,
-  classNames
-}) => (
-  <div className={`c11n-grid ${classNames.root}`}>
-    {children}
-  </div>
+const Grid = ({ children, classNames }) => (
+  <div className={`c11n-grid ${classNames.root}`}>{children}</div>
 )
 
 Grid.propTypes = {
   /**
-  * Single or array of GridColumn children
-  */
+   * Single or array of GridColumn children
+   */
   children: PropTypes.any,
 
   /**
-  * Flexbox align option
-  */
-  align: PropTypes.oneOf([
-    'flex-start',
-    'flex-end',
-    'center',
-    'stretch'
-  ]),
+   * Flexbox align option
+   */
+  align: PropTypes.oneOf(['flex-start', 'flex-end', 'center', 'stretch']),
 
   /**
-  * Flexbox justify content options
-  */
+   * Flexbox justify content options
+   */
   justify: PropTypes.oneOf([
     'flex-start',
     'flex-end',
@@ -40,8 +30,8 @@ Grid.propTypes = {
   ]),
 
   /**
-  * Direction of the columns
-  */
+   * Direction of the columns
+   */
   direction: PropTypes.oneOf([
     'row',
     'row-reverse',
@@ -50,16 +40,13 @@ Grid.propTypes = {
   ]),
 
   /**
-  * The spacing to be applied
-  */
-  spacing: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number
-  ]),
+   * The spacing to be applied
+   */
+  spacing: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
 
   /**
-  * Custom styles to apply
-  */
+   * Custom styles to apply
+   */
   styles: PropTypes.object
 }
 

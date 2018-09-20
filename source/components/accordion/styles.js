@@ -1,23 +1,15 @@
 import merge from 'lodash/merge'
 
-export default ({
-  border,
-  color,
-  font,
-  gutter,
-  toggled,
-  styles
-}, {
-  colors,
-  scale,
-  rhythm,
-  treatments,
-  justifyContent
-}) => {
-  const borderStyles = border ? {
-    paddingLeft: rhythm(0.5),
-    borderLeft: `2px solid ${toggled ? colors[color] : colors.shade}`
-  } : {}
+export default (
+  { border, color, font, gutter, toggled, styles },
+  { colors, scale, rhythm, treatments, justifyContent }
+) => {
+  const borderStyles = border
+    ? {
+      paddingLeft: rhythm(0.5),
+      borderLeft: `2px solid ${toggled ? colors[color] : colors.shade}`
+    }
+    : {}
 
   const defaultStyles = {
     root: {

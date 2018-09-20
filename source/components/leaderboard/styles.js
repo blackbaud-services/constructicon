@@ -1,24 +1,19 @@
 import merge from 'lodash/merge'
 
-export default ({
-  background,
-  foreground,
-  columns,
-  styles
-}, {
-  colors,
-  mediaQuery,
-  scale,
-  rhythm,
-  justifyContent
-}) => {
+export default (
+  { background, foreground, columns, styles },
+  { colors, mediaQuery, scale, rhythm, justifyContent }
+) => {
   const createColumns = () => {
-    return Object.keys(columns).reduce((styles, breakpoint) => ({
-      ...styles,
-      [mediaQuery(breakpoint)]: {
-        columnCount: columns[breakpoint]
-      }
-    }), {})
+    return Object.keys(columns).reduce(
+      (styles, breakpoint) => ({
+        ...styles,
+        [mediaQuery(breakpoint)]: {
+          columnCount: columns[breakpoint]
+        }
+      }),
+      {}
+    )
   }
 
   const defaultStyles = {

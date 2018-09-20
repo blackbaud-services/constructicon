@@ -1,7 +1,7 @@
 import InputSearch from '..'
 
 describe('InputSearch', () => {
-  it('fires the onSearch callback when values are user searches', (done) => {
+  it('fires the onSearch callback when values are user searches', done => {
     const onSearch = sinon.spy()
     const wrapper = mount(
       <InputSearch
@@ -27,7 +27,7 @@ describe('InputSearch', () => {
       <InputSearch
         onSearch={() => {}}
         ResultComponent={Result}
-        results={[ 'one', 'two', 'three' ]}
+        results={['one', 'two', 'three']}
       />
     )
 
@@ -35,13 +35,13 @@ describe('InputSearch', () => {
     expect(results.length).to.eql(0)
   })
 
-  it('renders results when search is active', (done) => {
+  it('renders results when search is active', done => {
     const Result = () => <div>Result</div>
     const wrapper = mount(
       <InputSearch
         onSearch={() => {}}
         ResultComponent={Result}
-        results={[ 'one', 'two', 'three' ]}
+        results={['one', 'two', 'three']}
       />
     )
 
@@ -57,13 +57,13 @@ describe('InputSearch', () => {
     }, 500)
   })
 
-  it('renders loading spinner if status is fetching', (done) => {
+  it('renders loading spinner if status is fetching', done => {
     const Result = () => <div>Result</div>
     const wrapper = mount(
       <InputSearch
         onSearch={() => {}}
         ResultComponent={Result}
-        results={[ 'one', 'two', 'three' ]}
+        results={['one', 'two', 'three']}
         status='fetching'
       />
     )

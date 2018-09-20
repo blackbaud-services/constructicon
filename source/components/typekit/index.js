@@ -18,8 +18,8 @@ const Typekit = ({ id }) => (
 
 Typekit.propTypes = {
   /**
-  * The Typekit kit ID
-  */
+   * The Typekit kit ID
+   */
   id: PropTypes.string.isRequired
 }
 

@@ -21,7 +21,11 @@ describe('Section', () => {
   })
 
   it('should allow us to alter the color', () => {
-    const wrapper = mount(<Section background='primary' foreground='light'>Content here</Section>)
+    const wrapper = mount(
+      <Section background='primary' foreground='light'>
+        Content here
+      </Section>
+    )
     const section = wrapper.find('Section')
     const rule = utils.findRule(css.rules, section.prop('classNames').root)
     expect(rule.css).to.contain(`background-color:${colors.primary}`)
@@ -29,7 +33,11 @@ describe('Section', () => {
   })
 
   it('should allow us to set the border', () => {
-    const wrapper = mount(<Section borderWidth={3} radius='medium'>Content here</Section>)
+    const wrapper = mount(
+      <Section borderWidth={3} radius='medium'>
+        Content here
+      </Section>
+    )
     const section = wrapper.find('Section')
     const rule = utils.findRule(css.rules, section.prop('classNames').root)
     expect(rule.css).to.contain(`border:3px solid ${colors.shade}`)
@@ -37,14 +45,18 @@ describe('Section', () => {
   })
 
   it('should allow us to pass in custom styles', () => {
-    const wrapper = mount(<Section styles={{ opacity: 0.5 }}>Content here</Section>)
+    const wrapper = mount(
+      <Section styles={{ opacity: 0.5 }}>Content here</Section>
+    )
     const section = wrapper.find('Section')
     const rule = utils.findRule(css.rules, section.prop('classNames').root)
     expect(rule.css).to.contain(`opacity:0.5`)
   })
 
   it('applies custom margins to the element', () => {
-    const wrapper = mount(<Section margin={{ x: 2, y: 0 }}>Content Here</Section>)
+    const wrapper = mount(
+      <Section margin={{ x: 2, y: 0 }}>Content Here</Section>
+    )
     const section = wrapper.find('Section')
     const rule = utils.findRule(css.rules, section.prop('classNames').root)
     expect(rule.css).to.contain('margin-left:3rem')
@@ -54,7 +66,11 @@ describe('Section', () => {
   })
 
   it('allows us to set other attributes', () => {
-    const wrapper = mount(<Section id='content' aria-label='Section'>Content here</Section>)
+    const wrapper = mount(
+      <Section id='content' aria-label='Section'>
+        Content here
+      </Section>
+    )
     const section = wrapper.find('section')
     expect(section.prop('id')).to.eql('content')
     expect(section.prop('aria-label')).to.eql('Section')

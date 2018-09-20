@@ -25,7 +25,15 @@ const InputField = ({
   value,
   ...props
 }) => {
-  const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
+  const propsBlacklist = [
+    'children',
+    'dirty',
+    'initial',
+    'invalid',
+    'styles',
+    'touched',
+    'validators'
+  ]
   const allowedProps = omit(props, propsBlacklist)
   const Tag = type === 'textarea' ? 'textarea' : 'input'
   const inputId = id || name
@@ -38,8 +46,13 @@ const InputField = ({
       name={name}
       id={inputId}
       value={value}
-      onChange={(e) => onChange && onChange(isBoolean(type) ? e.target.checked : e.target.value)}
-      onBlur={(e) => onBlur && onBlur(isBoolean(type) ? e.target.checked : e.target.value)}
+      onChange={e =>
+        onChange &&
+        onChange(isBoolean(type) ? e.target.checked : e.target.value)
+      }
+      onBlur={e =>
+        onBlur && onBlur(isBoolean(type) ? e.target.checked : e.target.value)
+      }
       required={required}
       aria-labelledby={labelId}
       {...allowedProps}
@@ -69,7 +82,8 @@ const InputField = ({
           styles={{
             root: styles.label,
             required: styles.required
-          }}>
+          }}
+        >
           {label}
         </Label>
       )}
@@ -90,26 +104,23 @@ const InputField = ({
 
 InputField.propTypes = {
   /**
-  * The label for the field
-  */
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element
-  ]),
+   * The label for the field
+   */
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
   /**
-  * Whether to display validation errors
-  */
+   * Whether to display validation errors
+   */
   error: PropTypes.bool,
 
   /**
-  * The name of the field
-  */
+   * The name of the field
+   */
   name: PropTypes.string.isRequired,
 
   /**
-  * The current value
-  */
+   * The current value
+   */
   value: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.bool,
@@ -119,41 +130,56 @@ InputField.propTypes = {
   ]),
 
   /**
-  * The change handler that will receive the updated value as it's only param
-  */
+   * The change handler that will receive the updated value as it's only param
+   */
   onChange: PropTypes.func.isRequired,
 
   /**
-  * The blur handler that will receive the updated value as it's only param
-  */
+   * The blur handler that will receive the updated value as it's only param
+   */
   onBlur: PropTypes.func,
 
   /**
-  * The type of field
-  */
-  type: PropTypes.oneOf(['checkbox', 'color', 'date', 'email', 'hidden', 'month', 'number', 'password', 'radio', 'range', 'search', 'tel', 'text', 'textarea', 'time', 'url', 'week']),
-
-  /**
-  * The placeholder for the field
-  */
-  placeholder: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
+   * The type of field
+   */
+  type: PropTypes.oneOf([
+    'checkbox',
+    'color',
+    'date',
+    'email',
+    'hidden',
+    'month',
+    'number',
+    'password',
+    'radio',
+    'range',
+    'search',
+    'tel',
+    'text',
+    'textarea',
+    'time',
+    'url',
+    'week'
   ]),
 
   /**
-  * The ID for the field
-  */
+   * The placeholder for the field
+   */
+  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * The ID for the field
+   */
   id: PropTypes.string,
 
   /**
-  * Mark the field as required and displays an asterisk next to the label
-  */
+   * Mark the field as required and displays an asterisk next to the label
+   */
   required: PropTypes.bool,
 
   /**
-  * Validation errors
-  */
+   * Validation errors
+   */
   validations: PropTypes.array,
 
   styles: PropTypes.object

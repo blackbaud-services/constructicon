@@ -17,13 +17,13 @@ class TraitsProvider extends Component {
 
 TraitsProvider.propTypes = {
   /**
-  * The children who will be provided these traits
-  */
+   * The children who will be provided these traits
+   */
   children: PropTypes.any.isRequired,
 
   /**
-  * The traits to be added - colors, fonts, treatments, radiuses, shadows etc.
-  */
+   * The traits to be added - colors, fonts, treatments, radiuses, shadows etc.
+   */
   traits: PropTypes.object
 }
 

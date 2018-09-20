@@ -1,14 +1,6 @@
 import merge from 'lodash/merge'
 
-export default ({
-  rank,
-  styles,
-  subtitle
-}, {
-  measures,
-  rhythm,
-  scale
-}) => {
+export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
   const rankStyles = {
     position: 'absolute',
     top: '50%',

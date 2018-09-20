@@ -13,23 +13,23 @@ const Loading = ({ classNames }) => (
 
 Loading.propTypes = {
   /**
-  * The color of the dots
-  */
+   * The color of the dots
+   */
   color: PropTypes.string,
 
   /**
-  * The duration of the animation
-  */
+   * The duration of the animation
+   */
   duration: PropTypes.number,
 
   /**
-  * The size of the dots
-  */
+   * The size of the dots
+   */
   size: PropTypes.number,
 
   /**
-  * Custom styles to be applied to the loading dots
-  */
+   * Custom styles to be applied to the loading dots
+   */
   styles: PropTypes.object
 }
 

@@ -3,89 +3,84 @@ import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-const GridColumn = ({
-  children,
-  classNames
-}) => (
-  <div className={`c11n-grid-column ${classNames.root}`}>
-    {children}
-  </div>
+const GridColumn = ({ children, classNames }) => (
+  <div className={`c11n-grid-column ${classNames.root}`}>{children}</div>
 )
 
 GridColumn.propTypes = {
   /**
-  * The content for the column
-  */
+   * The content for the column
+   */
   children: PropTypes.any,
 
   /**
-  * The default size of the column in a 12 column grid
-  */
+   * The default size of the column in a 12 column grid
+   */
   xs: PropTypes.number,
 
   /**
-  * The size of the column in a 12 column grid at the `sm` breakpoint
-  */
+   * The size of the column in a 12 column grid at the `sm` breakpoint
+   */
   sm: PropTypes.number,
 
   /**
-  * The size of the column in a 12 column grid at the `md` breakpoint
-  */
+   * The size of the column in a 12 column grid at the `md` breakpoint
+   */
   md: PropTypes.number,
 
   /**
-  * The size of the column in a 12 column grid at the `lg` breakpoint
-  */
+   * The size of the column in a 12 column grid at the `lg` breakpoint
+   */
   lg: PropTypes.number,
 
   /**
-  * The default alignment
-  */
-  xsAlign: PropTypes.oneOf([ 'left', 'center', 'right' ]),
+   * The default alignment
+   */
+  xsAlign: PropTypes.oneOf(['left', 'center', 'right']),
 
   /**
-  * The alignment at the `sm` breakpoint
-  */
-  smAlign: PropTypes.oneOf([ 'left', 'center', 'right' ]),
+   * The alignment at the `sm` breakpoint
+   */
+  smAlign: PropTypes.oneOf(['left', 'center', 'right']),
 
   /**
-  * The alignment at the `md` breakpoint
-  */
-  mdAlign: PropTypes.oneOf([ 'left', 'center', 'right' ]),
+   * The alignment at the `md` breakpoint
+   */
+  mdAlign: PropTypes.oneOf(['left', 'center', 'right']),
 
   /**
-  * The alignment at the `lg` breakpoint
-  */
-  lgAlign: PropTypes.oneOf([ 'left', 'center', 'right' ]),
+   * The alignment at the `lg` breakpoint
+   */
+  lgAlign: PropTypes.oneOf(['left', 'center', 'right']),
 
   /**
-  * The background color of the section -
-  */
+   * The background color of the section -
+   */
   background: PropTypes.string,
 
   /**
-  * The color of the text -
-  */
+   * The color of the text -
+   */
   foreground: PropTypes.string,
 
   /**
-  * The color of the border
-  */
+   * The color of the border
+   */
   borderColor: PropTypes.string,
 
   /**
-  * The width of the border
-  */
+   * The width of the border
+   */
   borderWidth: PropTypes.number,
 
   /**
-  * The radius of the section -
-  */
+   * The radius of the section -
+   */
   radius: PropTypes.string,
 
   /**
-  * The custom styles to be applied
-  */
+   * The custom styles to be applied
+   */
   styles: PropTypes.object
 }
 

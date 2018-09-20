@@ -45,10 +45,7 @@ const Results = ({
     <ol>
       {results.slice(0, toShow).map((result, index) => (
         <li key={index} onClick={() => selectItem(index, true)}>
-          <ResultComponent
-            isActive={index === active}
-            result={result}
-          />
+          <ResultComponent isActive={index === active} result={result} />
         </li>
       ))}
       {children}
@@ -56,13 +53,8 @@ const Results = ({
   )
 }
 
-const DefaultResultComponent = ({
-  isActive,
-  result
-}) => (
-  <Section
-    background={isActive ? 'shade' : 'light'}
-    spacing={{ x: 1, y: 0.5 }}>
+const DefaultResultComponent = ({ isActive, result }) => (
+  <Section background={isActive ? 'shade' : 'light'} spacing={{ x: 1, y: 0.5 }}>
     {result.label}
   </Section>
 )

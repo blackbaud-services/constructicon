@@ -1,14 +1,9 @@
 import merge from 'lodash/merge'
 
-export default ({
-  styles
-}, {
-  colors,
-  measures,
-  rhythm,
-  scale,
-  treatments
-}) => {
+export default (
+  { styles },
+  { colors, measures, rhythm, scale, treatments }
+) => {
   const defaultStyles = {
     root: {
       display: 'block',

@@ -1,21 +1,18 @@
 import merge from 'lodash/merge'
 
-export default ({
-  shadow,
-  background,
-  foreground,
-  outerColor,
-  width,
-  spacing,
-  fullHeight,
-  styles
-}, {
-  calculateSpacing,
-  colors,
-  rhythm,
-  shadows,
-  treatments
-}) => {
+export default (
+  {
+    shadow,
+    background,
+    foreground,
+    outerColor,
+    width,
+    spacing,
+    fullHeight,
+    styles
+  },
+  { calculateSpacing, colors, rhythm, shadows, treatments }
+) => {
   const defaultStyles = {
     root: {
       maxWidth: width ? rhythm(width) : treatments.container.maxWidth,

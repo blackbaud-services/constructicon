@@ -33,12 +33,11 @@ class SearchForm extends Component {
   }
 
   onChange () {
-    const {
-      debounce,
-      onChange
-    } = this.props
+    const { debounce, onChange } = this.props
 
-    return debounce ? this.debounce(onChange) : () => onChange(this.refs.field.value)
+    return debounce
+      ? this.debounce(onChange)
+      : () => onChange(this.refs.field.value)
   }
 
   debounce (callback, delay = 500) {
@@ -82,18 +81,22 @@ class SearchForm extends Component {
           </label>
           <div className={classNames.cta}>
             <Button
-              onClick={expanded ? this.onChange() : toggled ? this.closeForm : this.showForm}
+              onClick={
+                expanded
+                  ? this.onChange()
+                  : toggled
+                    ? this.closeForm
+                    : this.showForm
+              }
               children={expanded ? buttonText : toggled ? 'Close' : buttonText}
-              aria-label={expanded ? buttonText : toggled ? 'Close' : buttonText}
+              aria-label={
+                expanded ? buttonText : toggled ? 'Close' : buttonText
+              }
               {...button}
             />
           </div>
         </div>
-        {children && (
-          <div className={classNames.results}>
-            {children}
-          </div>
-        )}
+        {children && <div className={classNames.results}>{children}</div>}
       </div>
     )
   }
@@ -101,53 +104,53 @@ class SearchForm extends Component {
 
 SearchForm.propTypes = {
   /**
-  * The onChange event handler to be fired
-  */
+   * The onChange event handler to be fired
+   */
   onChange: PropTypes.func.isRequired,
 
   /**
-  * The title for the section
-  */
+   * The title for the section
+   */
   title: PropTypes.string,
 
   /**
-  * The placeholder for the input
-  */
+   * The placeholder for the input
+   */
   placeholder: PropTypes.string,
 
   /**
-  * The button text
-  */
+   * The button text
+   */
   buttonText: PropTypes.string,
 
   /**
-  * Autofocus the search input on form load (best for modals)
-  */
+   * Autofocus the search input on form load (best for modals)
+   */
   autofocus: PropTypes.bool,
 
   /**
-  * Disable toggle functionality (best for modals)
-  */
+   * Disable toggle functionality (best for modals)
+   */
   expanded: PropTypes.bool,
 
   /**
-  * Whether or note to debounce the onChange callback
-  */
+   * Whether or note to debounce the onChange callback
+   */
   debounce: PropTypes.bool,
 
   /**
-  * Custom styles for the component
-  */
+   * Custom styles for the component
+   */
   styles: PropTypes.object,
 
   /**
-  * Props to be passed to the Button component
-  */
+   * Props to be passed to the Button component
+   */
   button: PropTypes.object,
 
   /**
-  * To be displayed under the field, usually SearchResult(s)
-  */
+   * To be displayed under the field, usually SearchResult(s)
+   */
   children: PropTypes.any
 }
 

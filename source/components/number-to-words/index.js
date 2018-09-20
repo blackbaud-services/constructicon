@@ -2,14 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import numberToWords from '../../lib/numberToWords'
 
-const NumberToWords = ({
-  number,
-  tag: Tag,
-  ...props
-}) => (
-  <Tag {...props}>
-    {numberToWords(number)}
-  </Tag>
+const NumberToWords = ({ number, tag: Tag, ...props }) => (
+  <Tag {...props}>{numberToWords(number)}</Tag>
 )
 
 NumberToWords.defaultProps = {
@@ -19,13 +13,13 @@ NumberToWords.defaultProps = {
 
 NumberToWords.propTypes = {
   /**
-  * the number to be converted
-  */
+   * the number to be converted
+   */
   number: PropTypes.number.isRequired,
 
   /**
-  * The tag or component to be used e.g. span, div
-  */
+   * The tag or component to be used e.g. span, div
+   */
   tag: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,

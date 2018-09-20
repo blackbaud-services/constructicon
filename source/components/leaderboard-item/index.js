@@ -17,10 +17,17 @@ const LeaderboardItem = ({
 }) => {
   return (
     <li className={`c11n-leaderboard-item ${classNames.root}`}>
-      <LinkTag href={href} target={target} rel={target === '_blank' && 'noopener'} {...linkProps}>
+      <LinkTag
+        href={href}
+        target={target}
+        rel={target === '_blank' && 'noopener'}
+        {...linkProps}
+      >
         <div className={classNames.link}>
           {rank && <div className={classNames.rank}>{rank}</div>}
-          {image && <img src={image} alt={title} className={classNames.image} />}
+          {image && (
+            <img src={image} alt={title} className={classNames.image} />
+          )}
           <div className={classNames.info}>
             <div className={classNames.title}>{title}</div>
             {subtitle && <div className={classNames.subtitle}>{subtitle}</div>}
@@ -34,8 +41,8 @@ const LeaderboardItem = ({
 
 LeaderboardItem.propTypes = {
   /**
-  * The tag or component to be used as the link. e.g. `a`, React Router `Link`
-  */
+   * The tag or component to be used as the link. e.g. `a`, React Router `Link`
+   */
   linkTag: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
@@ -43,48 +50,48 @@ LeaderboardItem.propTypes = {
   ]),
 
   /**
-  * Props to be applied to the linkTag
-  */
+   * Props to be applied to the linkTag
+   */
   linkProps: PropTypes.object,
 
   /**
-  * The url of the leader's page. Passed to linkTag as `href` prop
-  */
+   * The url of the leader's page. Passed to linkTag as `href` prop
+   */
   href: PropTypes.string,
 
   /**
-  * The target for the link. e.g. `_blank`
-  */
+   * The target for the link. e.g. `_blank`
+   */
   target: PropTypes.string,
 
   /**
-  * The avatar for the leader
-  */
+   * The avatar for the leader
+   */
   image: PropTypes.string,
 
   /**
-  * The name or title of the leader
-  */
+   * The name or title of the leader
+   */
   title: PropTypes.string.isRequired,
 
   /**
-  * The charity or subtitle of the leader
-  */
+   * The charity or subtitle of the leader
+   */
   subtitle: PropTypes.string,
 
   /**
-  * The rank of the leader (optional)
-  */
+   * The rank of the leader (optional)
+   */
   rank: PropTypes.number,
 
   /**
-  * The amount being ranked by
-  */
+   * The amount being ranked by
+   */
   amount: PropTypes.string,
 
   /**
-  * The custom styles to be applied
-  */
+   * The custom styles to be applied
+   */
   styles: PropTypes.object
 }
 

@@ -1,13 +1,6 @@
 import merge from 'lodash/merge'
 
-export default ({
-  background,
-  foreground,
-  styles
-}, {
-  rhythm,
-  colors
-}) => {
+export default ({ background, foreground, styles }, { rhythm, colors }) => {
   const defaultStyles = {
     root: {
       position: 'relative',

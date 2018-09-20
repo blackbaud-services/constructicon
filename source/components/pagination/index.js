@@ -38,9 +38,10 @@ export default class Pagination extends Component {
     const canNext = pageNumber + 1 < allPages.length
     const canPrev = pageNumber > 0
 
-    const changePage = () => this.setState({
-      pageNumber: pageNumber + val
-    })
+    const changePage = () =>
+      this.setState({
+        pageNumber: pageNumber + val
+      })
 
     if (val > 0) {
       return canNext ? changePage : null
@@ -80,22 +81,22 @@ Pagination.defaultProps = {
 
 Pagination.propTypes = {
   /**
-  * The array to be paginated
-  */
+   * The array to be paginated
+   */
   toPaginate: PropTypes.array.isRequired,
 
   /**
-  * The max amount of items per page
-  */
+   * The max amount of items per page
+   */
   max: PropTypes.number,
 
   /**
-  * A render prop that gets called with the paginated data and methods to control it.
-  */
+   * A render prop that gets called with the paginated data and methods to control it.
+   */
   children: PropTypes.func.isRequired,
 
   /**
-  * Prevents the page number being reset when toPaginate changes
-  */
+   * Prevents the page number being reset when toPaginate changes
+   */
   persistPage: PropTypes.bool
 }

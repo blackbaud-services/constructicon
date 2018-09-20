@@ -45,7 +45,10 @@ describe('Accordion', () => {
     wrapper.find(`.${headerClass}`).simulate('click')
 
     wrapper.update()
-    const rule = utils.findRule(css.rules, wrapper.find('Accordion').prop('classNames').body)
+    const rule = utils.findRule(
+      css.rules,
+      wrapper.find('Accordion').prop('classNames').body
+    )
     expect(rule.css).to.contain(`display:block`)
   })
 
@@ -60,7 +63,10 @@ describe('Accordion', () => {
     wrapper.find(`.${headerClass}`).simulate('click')
 
     wrapper.update()
-    const rule = utils.findRule(css.rules, wrapper.find('Accordion').prop('classNames').body)
+    const rule = utils.findRule(
+      css.rules,
+      wrapper.find('Accordion').prop('classNames').body
+    )
     expect(rule.css).to.contain(`display:none`)
   })
 

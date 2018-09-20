@@ -40,11 +40,21 @@ describe('Grid', () => {
   })
 
   it('should allow us to set breakpoints on a column', () => {
-    const wrapper = mount(<GridColumn xs={12} sm={6} md={4}>Column</GridColumn>)
+    const wrapper = mount(
+      <GridColumn xs={12} sm={6} md={4}>
+        Column
+      </GridColumn>
+    )
     const column = wrapper.find('GridColumn')
     const rule = utils.findRule(css.rules, column.prop('classNames').root)
-    const ruleSm = utils.findRule(css.rules, `${column.prop('classNames').root}${mediaQuery('sm')}`)
-    const ruleMd = utils.findRule(css.rules, `${column.prop('classNames').root}${mediaQuery('md')}`)
+    const ruleSm = utils.findRule(
+      css.rules,
+      `${column.prop('classNames').root}${mediaQuery('sm')}`
+    )
+    const ruleMd = utils.findRule(
+      css.rules,
+      `${column.prop('classNames').root}${mediaQuery('md')}`
+    )
     expect(rule.css).to.contain('flex:1 0 100%')
     expect(ruleSm.css).to.contain('flex:1 0 50%')
     expect(ruleMd.css).to.contain('flex:1 0 33')

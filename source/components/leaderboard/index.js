@@ -17,11 +17,7 @@ class Leaderboard extends Component {
   }
 
   renderLeaderboard () {
-    const {
-      children,
-      loading,
-      error
-    } = this.props
+    const { children, loading, error } = this.props
 
     if (loading) {
       return this.renderLoading()
@@ -65,69 +61,59 @@ class Leaderboard extends Component {
   }
 
   renderLeaders () {
-    const {
-      children,
-      classNames
-    } = this.props
+    const { children, classNames } = this.props
 
-    return (
-      <ol className={classNames.leaders}>
-        {children}
-      </ol>
-    )
+    return <ol className={classNames.leaders}>{children}</ol>
   }
 }
 
 Leaderboard.propTypes = {
   /**
-  * An an array of leaderboard items for each leader
-  */
+   * An an array of leaderboard items for each leader
+   */
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)
   ]),
 
   /**
-  * If the results are currently loading
-  */
+   * If the results are currently loading
+   */
   loading: PropTypes.bool,
 
   /**
-  * Set the error message or set to true to show default message
-  */
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string
-  ]),
+   * Set the error message or set to true to show default message
+   */
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
   /**
-  * Set the message to display if there are no results
-  */
+   * Set the message to display if there are no results
+   */
   emptyLabel: PropTypes.string,
 
   /**
-  * Set the message to display if there is an error
-  */
+   * Set the message to display if there is an error
+   */
   errorLabel: PropTypes.string,
 
   /**
-  * An object to specify how many columns to use at which breakpoints (e.g. { xs: 1, sm: 2, md: 3 })
-  */
+   * An object to specify how many columns to use at which breakpoints (e.g. { xs: 1, sm: 2, md: 3 })
+   */
   columns: PropTypes.object,
 
   /**
-  * The background color for the leaderboard
-  */
+   * The background color for the leaderboard
+   */
   background: PropTypes.string,
 
   /**
-  * The foreground color for the leaderboard
-  */
+   * The foreground color for the leaderboard
+   */
   foreground: PropTypes.string,
 
   /**
-  * Custom styles to be applied to root, leaders
-  */
+   * Custom styles to be applied to root, leaders
+   */
   styles: PropTypes.object
 }
 

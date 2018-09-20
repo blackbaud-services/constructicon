@@ -39,17 +39,23 @@ describe('Pagination', () => {
 
     const wrapper = mount(
       <Pagination toPaginate={toPaginate} max={5}>
-        {props => <ChildComponent {...props} /> }
+        {props => <ChildComponent {...props} />}
       </Pagination>
     )
 
     expect(wrapper.find(ChildComponent).props().pageIndex).to.eq(0)
-    wrapper.find(ChildComponent).props().next()
-    wrapper.update();
+    wrapper
+      .find(ChildComponent)
+      .props()
+      .next()
+    wrapper.update()
 
     expect(wrapper.find(ChildComponent).props().pageIndex).to.eq(1)
-    wrapper.find(ChildComponent).props().prev()
-    wrapper.update();
+    wrapper
+      .find(ChildComponent)
+      .props()
+      .prev()
+    wrapper.update()
 
     expect(wrapper.find(ChildComponent).props().pageIndex).to.eq(0)
   })

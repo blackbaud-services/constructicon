@@ -22,10 +22,12 @@ const Form = ({
   onSubmit,
   ...props
 }) => {
-  const renderIcon = (icon) => {
-    return typeof icon === 'object'
-      ? <Icon styles={styles.icon} {...icon} />
-      : <Icon styles={styles.icon} name={icon} />
+  const renderIcon = icon => {
+    return typeof icon === 'object' ? (
+      <Icon styles={styles.icon} {...icon} />
+    ) : (
+      <Icon styles={styles.icon} name={icon} />
+    )
   }
 
   return (
@@ -35,14 +37,16 @@ const Form = ({
       method='POST'
       onSubmit={onSubmit}
       noValidate={noValidate}
-      {...props}>
-
-      <div className={classNames.fields}>
-        {children}
-      </div>
+      {...props}
+    >
+      <div className={classNames.fields}>{children}</div>
 
       {errors.map((error, i) => (
-        <div className={`${classNames.error} ${error.status && classNames[error.status]}`} key={i}>
+        <div
+          className={`${classNames.error} ${error.status &&
+            classNames[error.status]}`}
+          key={i}
+        >
           {error.field ? `Field ${error.field} ` : ''}
           {error.message}
         </div>
@@ -56,7 +60,8 @@ const Form = ({
               disabled={isLoading || isDisabled}
               aria-label={submit}
               title={submit}
-              type='submit'>
+              type='submit'
+            >
               <span>{submit}</span>
               {icon && renderIcon(icon)}
             </Button>
@@ -69,7 +74,8 @@ const Form = ({
               disabled={isLoading || isDisabled}
               aria-label={label}
               title={submit}
-              {...actionProps}>
+              {...actionProps}
+            >
               <span>{label}</span>
               {icon && renderIcon(icon)}
             </Button>
@@ -82,7 +88,8 @@ const Form = ({
           disabled={isLoading || isDisabled}
           aria-label={submit}
           title={submit}
-          type='submit'>
+          type='submit'
+        >
           <span>{submit}</span>
           {icon && renderIcon(icon)}
         </Button>
@@ -95,43 +102,43 @@ const Form = ({
 
 Form.propTypes = {
   /**
-  * Errors to be displayed
-  */
+   * Errors to be displayed
+   */
   errors: PropTypes.array,
 
   /**
-  * The form inputs and content
-  */
+   * The form inputs and content
+   */
   children: PropTypes.any,
 
   /**
-  * Additional form actions to be displayed
-  */
+   * Additional form actions to be displayed
+   */
   actions: PropTypes.array,
 
   /**
-  * Disable form inputs
-  */
+   * Disable form inputs
+   */
   isDisabled: PropTypes.bool,
 
   /**
-  * Show loading animation / disable form inputs
-  */
+   * Show loading animation / disable form inputs
+   */
   isLoading: PropTypes.bool,
 
   /**
-  * The submit handler that will fire once the form is submitted
-  */
+   * The submit handler that will fire once the form is submitted
+   */
   onSubmit: PropTypes.func.isRequired,
 
   /**
-  * The label for the submit button
-  */
+   * The label for the submit button
+   */
   submit: PropTypes.string,
 
   /**
-  * The name of the icon to add, an object of to pass to the Icon component, or false to hide
-  */
+   * The name of the icon to add, an object of to pass to the Icon component, or false to hide
+   */
   icon: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,

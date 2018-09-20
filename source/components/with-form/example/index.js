@@ -5,11 +5,16 @@ import InputField from '../../input-field'
 import validators from '../../../lib/validators'
 
 const Login = ({ form }) => {
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
-    form.submit()
-      .then((values) => { console.log('do something') })
-      .catch((errors) => { console.log('invalid fields') })
+    form
+      .submit()
+      .then(values => {
+        console.log('do something')
+      })
+      .catch(errors => {
+        console.log('invalid fields')
+      })
   }
 
   return (
@@ -17,7 +22,8 @@ const Login = ({ form }) => {
       submit='Submit'
       isDisabled={form.invalid}
       onSubmit={handleSubmit}
-      noValidate>
+      noValidate
+    >
       <InputField {...form.fields.email} />
       <InputField {...form.fields.password} />
     </Form>

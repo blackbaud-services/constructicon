@@ -50,7 +50,16 @@ class InputFile extends Component {
     const { files } = this.state
     const filesCount = files.length
 
-    const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators', 'value']
+    const propsBlacklist = [
+      'children',
+      'dirty',
+      'initial',
+      'invalid',
+      'styles',
+      'touched',
+      'validators',
+      'value'
+    ]
     const allowedProps = omit(props, propsBlacklist)
     const inputId = id || name
     const labelId = `label-${inputId}`
@@ -62,18 +71,20 @@ class InputFile extends Component {
           type='file'
           name={name}
           id={inputId}
-          onChange={(e) => this.handleUpdate(e, onChange)}
-          onBlur={(e) => this.handleUpdate(e, onBlur)}
+          onChange={e => this.handleUpdate(e, onChange)}
+          onBlur={e => this.handleUpdate(e, onBlur)}
           required={required}
           aria-labelledby={labelId}
           {...allowedProps}
         />
         <Button styles={styles.field} {...button}>
-          {icon && (<Icon name={icon} />)}
-          {filesCount ? filesCount > 1 ? (
-            <span>{filesCount} files selected</span>
-          ) : (
-            <span>{files[0].name}</span>
+          {icon && <Icon name={icon} />}
+          {filesCount ? (
+            filesCount > 1 ? (
+              <span>{filesCount} files selected</span>
+            ) : (
+              <span>{files[0].name}</span>
+            )
           ) : (
             <span>{placeholder}</span>
           )}
@@ -91,7 +102,8 @@ class InputFile extends Component {
             styles={{
               root: styles.label,
               required: styles.required
-            }}>
+            }}
+          >
             {label}
           </Label>
         )}
@@ -111,54 +123,48 @@ class InputFile extends Component {
 
 InputFile.propTypes = {
   /**
-  * Props to be passed to the Button component
-  */
+   * Props to be passed to the Button component
+   */
   button: PropTypes.object,
 
   /**
-  * The label for the field
-  */
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element
-  ]),
+   * The label for the field
+   */
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
   /**
-  * The name of the field
-  */
+   * The name of the field
+   */
   name: PropTypes.string.isRequired,
 
   /**
-  * The change handler that will receive the updated value as it's only param
-  */
+   * The change handler that will receive the updated value as it's only param
+   */
   onChange: PropTypes.func.isRequired,
 
   /**
-  * The blur handler that will receive the updated value as it's only param
-  */
+   * The blur handler that will receive the updated value as it's only param
+   */
   onBlur: PropTypes.func,
 
   /**
-  * The placeholder for the field
-  */
-  placeholder: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+   * The placeholder for the field
+   */
+  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-  * The ID for the field
-  */
+   * The ID for the field
+   */
   id: PropTypes.string,
 
   /**
-  * The name of the icon. No icon is displayed if set to false
-  */
+   * The name of the icon. No icon is displayed if set to false
+   */
   icon: PropTypes.string,
 
   /**
-  * Mark the field as required and displays an asterisk next to the label
-  */
+   * Mark the field as required and displays an asterisk next to the label
+   */
   required: PropTypes.bool
 }
 

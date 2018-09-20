@@ -1,19 +1,17 @@
 /**
-* Sizing and Rhythm
-*/
-export const rhythm = (value = 1, unit = 'rem', basis = 1.5) => (
+ * Sizing and Rhythm
+ */
+export const rhythm = (value = 1, unit = 'rem', basis = 1.5) =>
   Array.isArray(value)
     ? value.map(v => `${basis * v}${unit}`).join(' ')
     : `${basis * value}${unit}`
-)
 
-export const scale = (exponent = 0, scale = 1.2) => (
+export const scale = (exponent = 0, scale = 1.2) =>
   `${Math.pow(scale, exponent)}rem`
-)
 
 /**
-* Colors
-*/
+ * Colors
+ */
 export const colors = {
   light: '#fff',
   dark: '#000',
@@ -42,8 +40,8 @@ export const colors = {
 }
 
 /**
-* Fonts
-*/
+ * Fonts
+ */
 export const fonts = {
   head: '"Open Sans", sans-serif',
   body: '"Open Sans", sans-serif'
@@ -75,8 +73,8 @@ export const treatments = {
 }
 
 /**
-* Borders and Edges
-*/
+ * Borders and Edges
+ */
 export const shadows = {
   none: 'none',
   light: '0 0 15px rgba(0, 0, 0, 0.125)'
@@ -90,8 +88,8 @@ export const radiuses = {
 }
 
 /**
-* Media Queries
-*/
+ * Media Queries
+ */
 export const breakpoints = {
   xs: '24rem',
   sm: '36rem',
@@ -100,13 +98,12 @@ export const breakpoints = {
   xl: '72rem'
 }
 
-export const mediaQuery = (size = 'sm', query = 'min-width') => (
+export const mediaQuery = (size = 'sm', query = 'min-width') =>
   `@media (${query}: ${breakpoints[size]})`
-)
 
 /**
-* Effects, Animations, Transitions, Utils
-*/
+ * Effects, Animations, Transitions, Utils
+ */
 export const transitions = {
   easeOut: 'ease-out .25s'
 }
@@ -165,15 +162,15 @@ export const effects = {
 }
 
 /**
-* Flexbox justifyContent style polyfill
-*/
-export const justifyContent = (value) => {
+ * Flexbox justifyContent style polyfill
+ */
+export const justifyContent = value => {
   const flexPack = {
     'flex-start': 'start',
     'flex-end': 'end',
     'space-between': 'justify',
     'space-around': 'distribute',
-    'center': 'center'
+    center: 'center'
   }
 
   return {
@@ -183,9 +180,9 @@ export const justifyContent = (value) => {
 }
 
 /**
-* Spacing - for handling spacing objects i.e. padding/margin props
-* e.g. { x: 1, y: 2 } or { l: 1, t: 2 } or 5 etc.
-*/
+ * Spacing - for handling spacing objects i.e. padding/margin props
+ * e.g. { x: 1, y: 2 } or { l: 1, t: 2 } or 5 etc.
+ */
 
 export const calculateSpacing = (spacing, type = 'padding', args = {}) => {
   const defaultOptions = {
@@ -200,13 +197,20 @@ export const calculateSpacing = (spacing, type = 'padding', args = {}) => {
   switch (typeof spacing) {
     case 'number':
       return {
-        [type]: rhythm(spacing * options.multiplier, options.unit, options.basis)
+        [type]: rhythm(
+          spacing * options.multiplier,
+          options.unit,
+          options.basis
+        )
       }
     case 'object':
-      return Object.keys(spacing).reduce((styles, direction) => ({
-        ...styles,
-        ...spacingDirection(direction, spacing[direction], type, options)
-      }), {})
+      return Object.keys(spacing).reduce(
+        (styles, direction) => ({
+          ...styles,
+          ...spacingDirection(direction, spacing[direction], type, options)
+        }),
+        {}
+      )
     default:
       return {}
   }
@@ -214,20 +218,27 @@ export const calculateSpacing = (spacing, type = 'padding', args = {}) => {
 
 const spacingDirection = (direction, space, type, options) => {
   const map = {
-    t: [ 'Top' ],
-    r: [ 'Right' ],
-    b: [ 'Bottom' ],
-    l: [ 'Left' ],
-    x: [ 'Left', 'Right' ],
-    y: [ 'Top', 'Bottom' ]
+    t: ['Top'],
+    r: ['Right'],
+    b: ['Bottom'],
+    l: ['Left'],
+    x: ['Left', 'Right'],
+    y: ['Top', 'Bottom']
   }
 
   const fields = map[direction] || []
 
-  const styles = fields.reduce((styles, property) => ({
-    ...styles,
-    [`${type}${property}`]: rhythm(space * options.multiplier, options.unit, options.basis)
-  }), {})
+  const styles = fields.reduce(
+    (styles, property) => ({
+      ...styles,
+      [`${type}${property}`]: rhythm(
+        space * options.multiplier,
+        options.unit,
+        options.basis
+      )
+    }),
+    {}
+  )
 
   return styles
 }

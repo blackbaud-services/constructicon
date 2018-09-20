@@ -3,10 +3,12 @@ import { css } from '../../../lib/css'
 import { colors } from '../../../lib/traits'
 
 describe('ButtonSocial', () => {
-  const getMountedElement = (el) => utils.getMountedElement(el, 'a')
+  const getMountedElement = el => utils.getMountedElement(el, 'a')
 
   it('should render a button', () => {
-    const wrapper = mount(<ButtonSocial type='facebook' href='http://facebook.com' />)
+    const wrapper = mount(
+      <ButtonSocial type='facebook' href='http://facebook.com' />
+    )
     const icon = wrapper.find('Icon')
     const button = wrapper.find('a')
     expect(icon.prop('name')).to.eql('facebook')
@@ -14,7 +16,13 @@ describe('ButtonSocial', () => {
   })
 
   it('should allow us to override props', () => {
-    const wrapper = mount(<ButtonSocial type='facebook' href='http://facebook.com' background='primary' />)
+    const wrapper = mount(
+      <ButtonSocial
+        type='facebook'
+        href='http://facebook.com'
+        background='primary'
+      />
+    )
     const button = wrapper.find('a')
     const className = button.props().className.replace('c11n-button ', '')
     const rule = utils.findRule(css.rules, className)

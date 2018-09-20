@@ -8,7 +8,12 @@ describe('SearchForm', () => {
   })
 
   it('sets the placeholder', () => {
-    const wrapper = mount(<SearchForm placeholder='My test placeholder' onChange={() => console.log('test')} />)
+    const wrapper = mount(
+      <SearchForm
+        placeholder='My test placeholder'
+        onChange={() => console.log('test')}
+      />
+    )
     const input = wrapper.find('input')
     expect(input.prop('placeholder')).to.eql('My test placeholder')
   })
@@ -17,9 +22,9 @@ describe('SearchForm', () => {
     // const wrapper = mount(<SearchForm expanded />)
   })
 
-  it('fires the onChange handler', (done) => {
+  it('fires the onChange handler', done => {
     let called
-    const wrapper = mount(<SearchForm onChange={() => called = true} />)
+    const wrapper = mount(<SearchForm onChange={() => (called = true)} />)
     const input = wrapper.find('input')
     input.simulate('change', { target: { value: 'test' } })
 

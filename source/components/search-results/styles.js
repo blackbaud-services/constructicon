@@ -1,10 +1,6 @@
 import merge from 'lodash/merge'
 
-export default ({ styles }, {
-  rhythm,
-  scale,
-  justifyContent
-}) => {
+export default ({ styles }, { rhythm, scale, justifyContent }) => {
   const defaultStyles = {
     loading: {
       textAlign: 'center',

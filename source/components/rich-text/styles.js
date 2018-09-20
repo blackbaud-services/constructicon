@@ -1,12 +1,7 @@
 import merge from 'lodash/merge'
 
-export default ({ styles }, {
-  measures,
-  rhythm,
-  scale,
-  treatments
-}) => {
-  const headingStyle = (size) => ({
+export default ({ styles }, { measures, rhythm, scale, treatments }) => {
+  const headingStyle = size => ({
     ...treatments.head,
     fontSize: scale(size),
     paddingBottom: rhythm(1)

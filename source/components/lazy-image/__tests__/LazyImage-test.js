@@ -1,8 +1,9 @@
 import LazyImage from '..'
 
-const timeout = (len) => new Promise((resolve, reject) => {
-  setTimeout(() => resolve(), len)
-})
+const timeout = len =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => resolve(), len)
+  })
 
 describe('LazyImage', () => {
   it('intially rendered without a background image and with correct state', () => {
@@ -19,9 +20,12 @@ describe('LazyImage', () => {
       .then(() => timeout(100))
       .then(() => wrapper.update())
       .then(() => {
-        const style = wrapper.dive().find('.c11n-lazy-image').get(0).props.style
+        const style = wrapper
+          .dive()
+          .find('.c11n-lazy-image')
+          .get(0).props.style
         expect(wrapper.dive().instance().state.status).to.eql('fetched')
-        expect(style).to.have.property('backgroundImage', 'url(\'IMAGE_URL\')')
+        expect(style).to.have.property('backgroundImage', "url('IMAGE_URL')")
       })
   })
 
@@ -42,7 +46,10 @@ describe('LazyImage', () => {
       .then(() => timeout(100))
       .then(() => wrapper.update())
       .then(() => {
-        const style = wrapper.dive().find('.c11n-lazy-image').get(0).props.style
+        const style = wrapper
+          .dive()
+          .find('.c11n-lazy-image')
+          .get(0).props.style
         expect(wrapper.dive().instance().state.status).to.eql('waiting')
         expect(style).to.have.property('backgroundImage', '')
       })

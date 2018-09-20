@@ -3,11 +3,7 @@ import InputDate from '..'
 describe('InputDate', () => {
   it('should render a simple input field', () => {
     const wrapper = mount(
-      <InputDate
-        label='Test Field'
-        name='test-name'
-        onChange={() => {}}
-      />
+      <InputDate label='Test Field' name='test-name' onChange={() => {}} />
     )
 
     const label = wrapper.find('label')
@@ -27,13 +23,13 @@ describe('InputDate', () => {
     expect(input.prop('placeholder')).to.eql('My test placeholder')
   })
 
-  it('should fire the onChange handler', (done) => {
+  it('should fire the onChange handler', done => {
     let called
     const wrapper = mount(
       <InputDate
         label='Test Field'
         name='test-name'
-        onChange={() => called = true}
+        onChange={() => (called = true)}
       />
     )
     const input = wrapper.find('input')
@@ -70,10 +66,15 @@ describe('InputDate', () => {
       />
     )
 
-    expect(wrapper.find('select').at(0).prop('disabled')).to.eql(true)
+    expect(
+      wrapper
+        .find('select')
+        .at(0)
+        .prop('disabled')
+    ).to.eql(true)
   })
 
-  it('should handle dates correctly', (done) => {
+  it('should handle dates correctly', done => {
     let dateValue = '2018-12-31'
 
     const wrapper = mount(
@@ -82,7 +83,7 @@ describe('InputDate', () => {
         name='test-name'
         value={dateValue}
         showSelects
-        onChange={(value) => dateValue = value}
+        onChange={value => (dateValue = value)}
       />
     )
     const input = wrapper.find('select').at(1)

@@ -6,10 +6,7 @@ import styles from './styles'
 
 class Filter extends Component {
   onChange () {
-    const {
-      onChange,
-      debounce
-    } = this.props
+    const { onChange, debounce } = this.props
 
     if (onChange) {
       if (debounce) {
@@ -39,20 +36,15 @@ class Filter extends Component {
   }
 
   render () {
-    const {
-      placeholder,
-      classNames,
-      onSubmit,
-      styles
-    } = this.props
+    const { placeholder, classNames, onSubmit, styles } = this.props
 
     return (
-      <form action='/' onSubmit={onSubmit} className={`c11n-filter ${classNames.root}`}>
-        <Icon
-          name='search'
-          size={1.25}
-          styles={styles.icon}
-        />
+      <form
+        action='/'
+        onSubmit={onSubmit}
+        className={`c11n-filter ${classNames.root}`}
+      >
+        <Icon name='search' size={1.25} styles={styles.icon} />
         <input
           ref='field'
           type='search'
@@ -69,38 +61,38 @@ class Filter extends Component {
 
 Filter.propTypes = {
   /**
-  * The onChange event handler to be fired
-  */
+   * The onChange event handler to be fired
+   */
   onChange: PropTypes.func.isRequired,
 
   /**
-  * The onSubmit event handler
-  */
+   * The onSubmit event handler
+   */
   onSubmit: PropTypes.func,
 
   /**
-  * The placeholder for the input
-  */
+   * The placeholder for the input
+   */
   placeholder: PropTypes.string,
 
   /**
-  * The background color for the leaderboard
-  */
+   * The background color for the leaderboard
+   */
   background: PropTypes.string,
 
   /**
-  * The foreground color for the leaderboard
-  */
+   * The foreground color for the leaderboard
+   */
   foreground: PropTypes.string,
 
   /**
-  * Custom styles for the component
-  */
+   * Custom styles for the component
+   */
   styles: PropTypes.object,
 
   /**
-  * Whether or not to debounce the onChange callback
-  */
+   * Whether or not to debounce the onChange callback
+   */
   debounce: PropTypes.bool
 }
 
@@ -108,7 +100,7 @@ Filter.defaultProps = {
   placeholder: 'Filter results',
   styles: {},
   debounce: true,
-  onSubmit: (e) => e.preventDefault()
+  onSubmit: e => e.preventDefault()
 }
 
 export default withStyles(styles)(Filter)

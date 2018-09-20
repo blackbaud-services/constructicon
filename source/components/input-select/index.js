@@ -27,7 +27,15 @@ const InputSelect = ({
   value,
   ...props
 }) => {
-  const propsBlacklist = ['children', 'dirty', 'initial', 'invalid', 'styles', 'touched', 'validators']
+  const propsBlacklist = [
+    'children',
+    'dirty',
+    'initial',
+    'invalid',
+    'styles',
+    'touched',
+    'validators'
+  ]
   const allowedProps = omit(props, propsBlacklist)
   const inputId = id || name
   const labelId = `label-${inputId}`
@@ -42,21 +50,29 @@ const InputSelect = ({
           resultOptions.push(
             <optgroup key={groupLabel} label={groupLabel}>
               {opts.map(({ value, label, disabled }, index) => (
-                <option value={value} key={index} disabled={disabled}>{label}</option>
+                <option value={value} key={index} disabled={disabled}>
+                  {label}
+                </option>
               ))}
             </optgroup>
           )
         } else {
-          resultOptions.push(opts.map(({ value, label, disabled }, index) => (
-            <option value={value} key={index} disabled={disabled}>{label}</option>
-          )))
+          resultOptions.push(
+            opts.map(({ value, label, disabled }, index) => (
+              <option value={value} key={index} disabled={disabled}>
+                {label}
+              </option>
+            ))
+          )
         }
       })
 
       return resultOptions
     } else {
       return options.map(({ value, label, disabled }, index) => (
-        <option value={value} key={index} disabled={disabled}>{label}</option>
+        <option value={value} key={index} disabled={disabled}>
+          {label}
+        </option>
       ))
     }
   }
@@ -71,7 +87,8 @@ const InputSelect = ({
           styles={{
             root: styles.label,
             required: styles.required
-          }}>
+          }}
+        >
           {label}
         </Label>
       )}
@@ -82,13 +99,18 @@ const InputSelect = ({
           id={inputId}
           value={value}
           placeholder={placeholder}
-          onChange={(e) => onChange && onChange(e.target.value)}
-          onBlur={(e) => onBlur && onBlur(e.target.value)}
+          onChange={e => onChange && onChange(e.target.value)}
+          onBlur={e => onBlur && onBlur(e.target.value)}
           className={classNames.input}
           required
           aria-labelledby={labelId}
-          {...allowedProps}>
-          {placeholder && <option disabled value=''>{placeholder}</option>}
+          {...allowedProps}
+        >
+          {placeholder && (
+            <option disabled value=''>
+              {placeholder}
+            </option>
+          )}
           {renderOptions()}
         </select>
 
@@ -109,53 +131,53 @@ const InputSelect = ({
 
 InputSelect.propTypes = {
   /**
-  * The label for the field
-  */
+   * The label for the field
+   */
   label: PropTypes.string.isRequired,
 
   /**
-  * The name of the field
-  */
+   * The name of the field
+   */
   name: PropTypes.string.isRequired,
 
   /**
-  * The ID of the field
-  */
+   * The ID of the field
+   */
   id: PropTypes.string,
 
   /**
-  * The current value
-  */
+   * The current value
+   */
   value: PropTypes.string,
 
   /**
-  * The available options i.e. [{ value, label }, { value, label }]
-  */
+   * The available options i.e. [{ value, label }, { value, label }]
+   */
   options: PropTypes.array.isRequired,
 
   /**
-  * Group options by `group` param
-  */
+   * Group options by `group` param
+   */
   groupOptions: PropTypes.bool,
 
   /**
-  * The change handler that will receive the updated value as it's only param
-  */
+   * The change handler that will receive the updated value as it's only param
+   */
   onChange: PropTypes.func.isRequired,
 
   /**
-  * The blur handler that will receive the updated value as it's only param
-  */
+   * The blur handler that will receive the updated value as it's only param
+   */
   onBlur: PropTypes.func,
 
   /**
-  * The placeholder for the field
-  */
+   * The placeholder for the field
+   */
   placeholder: PropTypes.string,
 
   /**
-  * Mark the field as required and displays an asterisk next to the label
-  */
+   * Mark the field as required and displays an asterisk next to the label
+   */
   required: PropTypes.bool
 }
 

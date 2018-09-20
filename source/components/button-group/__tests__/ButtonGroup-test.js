@@ -3,7 +3,7 @@ import Button from '../../button'
 import { css } from '../../../lib/css'
 
 describe('Button Group', () => {
-  const getMountedElement = (el) => utils.getMountedElement(el, 'div')
+  const getMountedElement = el => utils.getMountedElement(el, 'div')
 
   it('should render a button group', () => {
     const wrapper = mount(

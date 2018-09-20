@@ -5,32 +5,26 @@ import Icon from '../icon'
 import openShareDialog from './openShareDialog'
 
 /**
-* Uses the Button component to create a social icon
-*
-* Will accept any props that the Button accepts
-*/
-const ButtonSocial = ({
-  share,
-  type,
-  url,
-  title,
-  hashtags,
-  ...props
-}) => (
+ * Uses the Button component to create a social icon
+ *
+ * Will accept any props that the Button accepts
+ */
+const ButtonSocial = ({ share, type, url, title, hashtags, ...props }) => (
   <Button
     background={type}
     tag={share ? 'button' : 'a'}
     onClick={share && openShareDialog({ type, url, title, hashtags })}
     aria-label={type}
-    {...props}>
+    {...props}
+  >
     <Icon name={type} />
   </Button>
 )
 
 ButtonSocial.propTypes = {
   /**
-  * The social network
-  */
+   * The social network
+   */
   type: PropTypes.oneOf([
     'facebook',
     'twitter',
@@ -45,18 +39,18 @@ ButtonSocial.propTypes = {
   ]).isRequired,
 
   /**
-  * Makes the button a share button (only available for twitter, facebook and google)
-  */
+   * Makes the button a share button (only available for twitter, facebook and google)
+   */
   share: PropTypes.bool,
 
   /**
-  * Hashtags to be added to a Twitter share
-  */
+   * Hashtags to be added to a Twitter share
+   */
   hashtags: PropTypes.string,
 
   /**
-  * The text for a Twitter or Linkedin share
-  */
+   * The text for a Twitter or Linkedin share
+   */
   text: PropTypes.string
 }
 

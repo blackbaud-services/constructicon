@@ -3,11 +3,11 @@ import InputField from '../../input-field'
 import * as validators from '../../../lib/validators'
 
 describe('withForm', () => {
-  const FormComponent = (props) => <form {...props} />
-  const getForm = (el) => utils.getMountedElement(el, 'form')
-  const getFormProps = (el) => getForm(el).prop('form')
+  const FormComponent = props => <form {...props} />
+  const getForm = el => utils.getMountedElement(el, 'form')
+  const getFormProps = el => getForm(el).prop('form')
 
-  it ('provides a form prop as an object with our form details', () => {
+  it('provides a form prop as an object with our form details', () => {
     const Form = withForm({
       fields: {
         name: { label: 'Name' },
@@ -20,7 +20,7 @@ describe('withForm', () => {
     expect(form.fields.password.label).to.eql('Password')
   })
 
-  it ('sets the initial value of a field', () => {
+  it('sets the initial value of a field', () => {
     const Form = withForm({
       fields: {
         name: {
@@ -34,7 +34,7 @@ describe('withForm', () => {
     expect(form.fields.name.value).to.eql('John')
   })
 
-  it ('applies a validation to a field', () => {
+  it('applies a validation to a field', () => {
     const Form = withForm({
       fields: {
         name: {
@@ -48,7 +48,7 @@ describe('withForm', () => {
     expect(form.fields.name.invalid).to.be.true
   })
 
-  it ('will set error only if the field is touched', () => {
+  it('will set error only if the field is touched', () => {
     const Form = withForm({
       fields: {
         name: {
@@ -72,7 +72,7 @@ describe('withForm', () => {
     expect(changedProps.fields.name.error).to.be.true
   })
 
-  it ('applies multiple validations', () => {
+  it('applies multiple validations', () => {
     const Form = withForm({
       fields: {
         name: {
@@ -90,7 +90,7 @@ describe('withForm', () => {
     expect(initialProps.fields.name.invalid).to.be.true
   })
 
-  it ('updates a fields value', () => {
+  it('updates a fields value', () => {
     const Form = withForm({
       fields: {
         name: {
@@ -111,7 +111,7 @@ describe('withForm', () => {
     expect(changedProps.fields.name.value).to.eql('John')
   })
 
-  it ('updates a fields value via updateValues func', () => {
+  it('updates a fields value via updateValues func', () => {
     const Form = withForm({
       fields: {
         name: {
@@ -135,7 +135,7 @@ describe('withForm', () => {
     expect(changedProps.fields.name.value).to.eql('Jane')
   })
 
-  it ('resets the form via resetForm', () => {
+  it('resets the form via resetForm', () => {
     const Form = withForm({
       fields: {
         name: {
@@ -153,7 +153,7 @@ describe('withForm', () => {
     expect(updatedForm.fields.name.value).to.eql('Jane')
   })
 
-  it ('will not submit if invalid', (done) => {
+  it('will not submit if invalid', done => {
     const Form = withForm({
       fields: {
         name: {
@@ -164,13 +164,13 @@ describe('withForm', () => {
     })(FormComponent)
 
     const form = getFormProps(<Form />)
-    form.submit().catch((fields) => {
+    form.submit().catch(fields => {
       expect(fields).to.eql({ name: 'Required field' })
       done()
     })
   })
 
-  it ('will submit if valid', (done) => {
+  it('will submit if valid', done => {
     const Form = withForm({
       fields: {
         name: {
@@ -182,20 +182,20 @@ describe('withForm', () => {
     })(FormComponent)
 
     const form = getFormProps(<Form />)
-    form.submit().then((values) => {
+    form.submit().then(values => {
       expect(values).to.eql({ name: 'John' })
       done()
     })
   })
 
-  it ('fires an onFormChange handler on update', () => {
+  it('fires an onFormChange handler on update', () => {
     const Form = ({ form }) => (
       <form>
         <InputField {...form.fields.name} />
       </form>
     )
 
-    const ChildForm = withForm((props) => ({
+    const ChildForm = withForm(props => ({
       onFormChange: props.onChange,
       fields: {
         name: {

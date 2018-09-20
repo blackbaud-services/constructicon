@@ -6,7 +6,7 @@ export const setLocalStorageItem = (key, val) => {
   } catch (err) {}
 }
 
-export const getLocalStorageItem = (key) => {
+export const getLocalStorageItem = key => {
   try {
     const { localStorage } = window
     const serializedValue = localStorage.getItem(key)

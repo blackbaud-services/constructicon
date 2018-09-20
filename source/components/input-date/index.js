@@ -72,18 +72,32 @@ class InputDate extends Component {
       validations
     } = this.props
 
-    const {
-      showSelects,
-      touched,
-      date = moment()
-    } = this.state
+    const { showSelects, touched, date = moment() } = this.state
 
     const labelId = `label-${id || name}`
-    const allowedProps = pick(this.props, ['disabled', 'placeholder', 'required'])
-    const months = [{ label: 'January', value: 0 }, { label: 'February', value: 1 }, { label: 'March', value: 2 }, { label: 'April', value: 3 }, { label: 'May', value: 4 }, { label: 'June', value: 5 }, { label: 'July', value: 6 }, { label: 'August', value: 7 }, { label: 'September', value: 8 }, { label: 'October', value: 9 }, { label: 'November', value: 10 }, { label: 'December', value: 11 }]
+    const allowedProps = pick(this.props, [
+      'disabled',
+      'placeholder',
+      'required'
+    ])
+    const months = [
+      { label: 'January', value: 0 },
+      { label: 'February', value: 1 },
+      { label: 'March', value: 2 },
+      { label: 'April', value: 3 },
+      { label: 'May', value: 4 },
+      { label: 'June', value: 5 },
+      { label: 'July', value: 6 },
+      { label: 'August', value: 7 },
+      { label: 'September', value: 8 },
+      { label: 'October', value: 9 },
+      { label: 'November', value: 10 },
+      { label: 'December', value: 11 }
+    ]
     const daysInMonth = date.daysInMonth() || 31
 
-    const mapValues = (array) => array.map((value) => ({ label: value, value: value }))
+    const mapValues = array =>
+      array.map(value => ({ label: value, value: value }))
 
     return showSelects ? (
       <div className={`c11n-input-date ${classNames.root}`} id={id}>
@@ -94,7 +108,8 @@ class InputDate extends Component {
             styles={{
               root: styles.label,
               required: styles.required
-            }}>
+            }}
+          >
             {label}
           </Label>
         )}
@@ -122,10 +137,7 @@ class InputDate extends Component {
             label='Month'
             name={`${name}-month`}
             aria-labelledby={labelId}
-            options={[
-              { label: 'Month', value: '', disabled: true },
-              ...months
-            ]}
+            options={[{ label: 'Month', value: '', disabled: true }, ...months]}
           />
           <InputSelect
             {...allowedProps}
@@ -149,7 +161,9 @@ class InputDate extends Component {
           />
         )}
       </div>
-    ) : <InputField type='date' {...this.props} />
+    ) : (
+      <InputField type='date' {...this.props} />
+    )
   }
 }
 

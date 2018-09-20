@@ -39,38 +39,38 @@ const SearchResult = ({
 
 SearchResult.propTypes = {
   /**
-  * Image URL
-  */
+   * Image URL
+   */
   image: PropTypes.string,
 
   /**
-  * Name of the result to display
-  */
+   * Name of the result to display
+   */
   title: PropTypes.string.isRequired,
 
   /**
-  * Additional text to display below the title
-  */
+   * Additional text to display below the title
+   */
   subtitle: PropTypes.string,
 
   /**
-  * The URL for the page
-  */
+   * The URL for the page
+   */
   url: PropTypes.string,
 
   /**
-  * Props to be passed into the button
-  */
+   * Props to be passed into the button
+   */
   button: PropTypes.object,
 
   /**
-  * The button text
-  */
+   * The button text
+   */
   cta: PropTypes.string,
 
   /**
-  * Custom styles to be applied
-  */
+   * Custom styles to be applied
+   */
   styles: PropTypes.object
 }
 

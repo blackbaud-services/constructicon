@@ -1,7 +1,7 @@
 import withStyles from '..'
 
 describe('withStyles', () => {
-  const Component = (props) => <div />
+  const Component = props => <div />
 
   const styles = (props, traits) => ({
     title: {
@@ -9,15 +9,19 @@ describe('withStyles', () => {
     }
   })
 
-  it ('provides a classNames prop as an object with generated class names', () => {
+  it('provides a classNames prop as an object with generated class names', () => {
     const StyledComponent = withStyles(styles)(Component)
-    const props = mount(<StyledComponent />).find('Component').props()
+    const props = mount(<StyledComponent />)
+      .find('Component')
+      .props()
     expect(props.classNames.title).to.contain('cxsync-')
   })
 
-  it ('provides a styles prop as an object with related style objects', () => {
+  it('provides a styles prop as an object with related style objects', () => {
     const StyledComponent = withStyles(styles)(Component)
-    const props = mount(<StyledComponent />).find('Component').props()
+    const props = mount(<StyledComponent />)
+      .find('Component')
+      .props()
     expect(props.styles.title.fontSize).to.contain('3rem')
   })
 })

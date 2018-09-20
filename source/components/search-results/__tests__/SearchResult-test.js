@@ -12,21 +12,13 @@ describe('SearchResult', () => {
   )
 
   it('should render simple search results', () => {
-    const wrapper = mount(
-      <SearchResults>
-        {defaultItem}
-      </SearchResults>
-    )
+    const wrapper = mount(<SearchResults>{defaultItem}</SearchResults>)
     const item = wrapper.find('SearchResult')
     expect(item.length).to.eql(1)
   })
 
   it('should show a loading icon if results loading', () => {
-    const wrapper = mount(
-      <SearchResults loading>
-        {defaultItem}
-      </SearchResults>
-    )
+    const wrapper = mount(<SearchResults loading>{defaultItem}</SearchResults>)
     const item = wrapper.find('SearchResult')
     const icon = wrapper.find('Icon')
     expect(item.length).to.eql(0)
@@ -34,11 +26,7 @@ describe('SearchResult', () => {
   })
 
   it('should show an error message if error specified', () => {
-    const wrapper = mount(
-      <SearchResults error>
-        {defaultItem}
-      </SearchResults>
-    )
+    const wrapper = mount(<SearchResults error>{defaultItem}</SearchResults>)
     const item = wrapper.find('SearchResult')
     const icon = wrapper.find('Icon')
     expect(item.length).to.eql(0)

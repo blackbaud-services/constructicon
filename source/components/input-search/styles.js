@@ -1,20 +1,9 @@
 import merge from 'lodash/merge'
 
-export default ({
-  invalid,
-  readOnly,
-  styles,
-  touched,
-  value
-}, {
-  colors,
-  fonts,
-  radiuses,
-  rhythm,
-  scale,
-  shadows,
-  treatments
-}) => {
+export default (
+  { invalid, readOnly, styles, touched, value },
+  { colors, fonts, radiuses, rhythm, scale, shadows, treatments }
+) => {
   const isInvalid = touched && invalid
 
   const baseStyles = {

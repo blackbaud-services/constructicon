@@ -4,14 +4,7 @@ import Icon from '../icon'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-const Metric = ({
-  label,
-  amount,
-  icon,
-  tag: Tag,
-  classNames,
-  styles
-}) => {
+const Metric = ({ label, amount, icon, tag: Tag, classNames, styles }) => {
   const renderIcon = () => {
     if (typeof icon === 'string') {
       return <Icon name={icon} styles={styles.icon} size={1.5} />
@@ -33,16 +26,13 @@ const Metric = ({
 
 Metric.propTypes = {
   /**
-  * The label to be displayed
-  */
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element
-  ]),
+   * The label to be displayed
+   */
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
   /**
-  * The actual amount
-  */
+   * The actual amount
+   */
   amount: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
@@ -50,8 +40,8 @@ Metric.propTypes = {
   ]).isRequired,
 
   /**
-  * The icon to display above the metric
-  */
+   * The icon to display above the metric
+   */
   icon: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
@@ -65,8 +55,8 @@ Metric.propTypes = {
   ]),
 
   /**
-  * Custom styles to be applied
-  */
+   * Custom styles to be applied
+   */
   styles: PropTypes.object
 }
 

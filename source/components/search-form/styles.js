@@ -1,16 +1,9 @@
 import merge from 'lodash/merge'
 
-export default ({
-  toggled,
-  expanded,
-  styles
-}, {
-  mediaQuery,
-  rhythm,
-  scale,
-  transitions,
-  justifyContent
-}) => {
+export default (
+  { toggled, expanded, styles },
+  { mediaQuery, rhythm, scale, transitions, justifyContent }
+) => {
   const open = expanded || toggled
 
   const defaultStyles = {
@@ -44,10 +37,10 @@ export default ({
       fontSize: scale(2),
       opacity: 0,
       transition: transitions.easeOut,
-      ...open && {
+      ...(open && {
         width: '100%',
         opacity: 1
-      }
+      })
     },
 
     label: {
@@ -56,11 +49,11 @@ export default ({
       fontSize: scale(2),
       whiteSpace: 'nowrap',
       transition: transitions.easeOut,
-      ...open && {
+      ...(open && {
         transform: 'translateY(0)',
         fontSize: scale(-1),
         marginTop: '0.6rem'
-      }
+      })
     },
 
     results: {

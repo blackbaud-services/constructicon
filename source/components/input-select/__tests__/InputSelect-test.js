@@ -90,13 +90,13 @@ describe('<InputSelect', () => {
     expect(input.prop('disabled')).to.eql(true)
   })
 
-  it('should fire the onChange handler', (done) => {
+  it('should fire the onChange handler', done => {
     let called
     const wrapper = mount(
       <InputSelect
         label='Test Field'
         name='test-name'
-        onChange={() => called = true}
+        onChange={() => (called = true)}
         options={testOptions}
       />
     )

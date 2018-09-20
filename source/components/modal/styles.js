@@ -1,12 +1,6 @@
 import merge from 'lodash/merge'
 
-export default ({
-  spacing,
-  styles
-}, {
-  calculateSpacing,
-  rhythm
-}) => {
+export default ({ spacing, styles }, { calculateSpacing, rhythm }) => {
   const defaultStyles = {
     overlay: {
       position: 'fixed',

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const withToggle = (Component) => {
+const withToggle = Component => {
   class toggle extends React.Component {
     constructor (props) {
       super(props)

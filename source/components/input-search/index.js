@@ -83,11 +83,12 @@ class InputSearch extends Component {
     const { results } = this.props
 
     if (results.length) {
-      const active = newActive < 0
-        ? results.length - 1
-        : newActive >= results.length
-          ? 0
-          : newActive
+      const active =
+        newActive < 0
+          ? results.length - 1
+          : newActive >= results.length
+            ? 0
+            : newActive
 
       this.setState({ active }, selectItem && this.confirmSelection)
     }
@@ -149,17 +150,16 @@ class InputSearch extends Component {
       valueFormatter
     } = this.props
 
-    const {
-      active,
-      query,
-      toShow
-    } = this.state
+    const { active, query, toShow } = this.state
 
     const inputId = id || name
     const labelId = `label-${inputId}`
 
     return (
-      <div className={`c11n-input-search ${classNames.root}`} onKeyDown={this.handleKeyDown}>
+      <div
+        className={`c11n-input-search ${classNames.root}`}
+        onKeyDown={this.handleKeyDown}
+      >
         {label && (
           <Label
             id={labelId}
@@ -170,7 +170,8 @@ class InputSearch extends Component {
             styles={{
               root: styles.label,
               required: styles.required
-            }}>
+            }}
+          >
             {label}
           </Label>
         )}
@@ -186,11 +187,11 @@ class InputSearch extends Component {
             readOnly={readOnly || !!value}
             ref='input'
             required={required}
-            onChange={(e) => {
+            onChange={e => {
               e.persist && e.persist()
               this.handleChange(e)
             }}
-            onBlur={(e) => onBlur && onBlur(e.target.value)}
+            onBlur={e => onBlur && onBlur(e.target.value)}
           />
           {value ? (
             <div onClick={this.clearSelection}>
@@ -218,8 +219,10 @@ class InputSearch extends Component {
                 showMore={showMore}
                 selectItem={this.setActiveItem}
                 status={status}
-                toShow={toShow}>
-                {showMore && results.length > toShow && (
+                toShow={toShow}
+              >
+                {showMore &&
+                  results.length > toShow && (
                   <ShowMore
                     className={classNames.showMore}
                     onClick={this.showMore}
@@ -242,119 +245,113 @@ class InputSearch extends Component {
 
 InputSearch.propTypes = {
   /**
-  * The length of time to debounce (false to disable debounce)
-  */
-  debounce: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.number
-  ]),
+   * The length of time to debounce (false to disable debounce)
+   */
+  debounce: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 
   /**
-  * The message to display when no results are found
-  */
+   * The message to display when no results are found
+   */
   emptyMessage: PropTypes.string,
 
   /**
-  * The message to display when there is an error
-  */
+   * The message to display when there is an error
+   */
   errorMessage: PropTypes.string,
 
   /**
-  * If the field is in an error state
-  */
+   * If the field is in an error state
+   */
   error: PropTypes.bool,
 
   /**
-  * The icon to display on the right of the field (false to hide)
-  */
-  icon: PropTypes.oneOfType([ PropTypes.string, PropTypes.bool ]),
+   * The icon to display on the right of the field (false to hide)
+   */
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 
   /**
-  * The ID of the input field
-  */
+   * The ID of the input field
+   */
   id: PropTypes.string,
 
   /**
-  * The label of the input field
-  */
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element
-  ]),
+   * The label of the input field
+   */
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
   /**
-  * The number of results to show
-  */
+   * The number of results to show
+   */
   limit: PropTypes.number,
 
   /**
-  * The name of the input
-  */
+   * The name of the input
+   */
   name: PropTypes.string,
 
   /**
-  * The function to call when a user selects an item
-  */
+   * The function to call when a user selects an item
+   */
   onChange: PropTypes.func,
 
   /**
-  * The function to call when a user blurs the input
-  */
+   * The function to call when a user blurs the input
+   */
   onBlur: PropTypes.func,
 
   /**
-  * The function to call when the search is altered
-  */
+   * The function to call when the search is altered
+   */
   onSearch: PropTypes.func.isRequired,
 
   /**
-  * A component that is used to render each individual result
-  */
+   * A component that is used to render each individual result
+   */
   ResultComponent: PropTypes.func,
 
   /**
-  * The array of currently applicable results
-  */
+   * The array of currently applicable results
+   */
   results: PropTypes.array,
 
   /**
-  * Whether the field is required or not
-  */
+   * Whether the field is required or not
+   */
   required: PropTypes.bool,
 
   /**
-  * The currently selected value (useful if your values are objects with various keys e.g. id, label)
-  */
+   * The currently selected value (useful if your values are objects with various keys e.g. id, label)
+   */
   value: PropTypes.any,
 
   /**
-  * A function to format the value to display on the label
-  */
+   * A function to format the value to display on the label
+   */
   valueFormatter: PropTypes.func,
 
   /**
-  * Enables a Show More button
-  */
+   * Enables a Show More button
+   */
   showMore: PropTypes.bool,
 
   /**
-  * The status of the searching
-  */
-  status: PropTypes.oneOf([ 'fetching', 'fetched', 'failed' ]),
+   * The status of the searching
+   */
+  status: PropTypes.oneOf(['fetching', 'fetched', 'failed']),
 
   /**
-  * The type of the search input field
-  */
+   * The type of the search input field
+   */
   type: PropTypes.string,
 
   /**
-  * An array of validation messages to display
-  */
+   * An array of validation messages to display
+   */
   validations: PropTypes.array,
 
   /**
-  * The autocomplete value for the field
-  */
+   * The autocomplete value for the field
+   */
   autoComplete: PropTypes.string
 }
 
@@ -369,7 +366,7 @@ InputSearch.defaultProps = {
   results: [],
   status: 'fetched',
   type: 'search',
-  valueFormatter: (value) => value
+  valueFormatter: value => value
 }
 
 export default compose(

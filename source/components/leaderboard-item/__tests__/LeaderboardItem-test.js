@@ -27,11 +27,7 @@ describe('LeaderboardItem', () => {
     )
 
     const wrapper = mount(
-      <LeaderboardItem
-        linkTag={MyLink}
-        title='Name'
-        amount='$2,500'
-      />
+      <LeaderboardItem linkTag={MyLink} title='Name' amount='$2,500' />
     )
 
     const customLink = wrapper.find('MyLink')
@@ -40,23 +36,16 @@ describe('LeaderboardItem', () => {
 
   it('should use the supplied link target', () => {
     const wrapper = mount(
-      <LeaderboardItem
-        href='http://google.com'
-        title='Name'
-        target='_top'
-      />
+      <LeaderboardItem href='http://google.com' title='Name' target='_top' />
     )
 
     const item = wrapper.find('a')
     expect(item.prop('target')).to.eql('_top')
   })
 
-  it ('applies linkProps to the link', () => {
+  it('applies linkProps to the link', () => {
     const wrapper = mount(
-      <LeaderboardItem
-        linkProps={{ foo: 'bar' }}
-        title='Name'
-      />
+      <LeaderboardItem linkProps={{ foo: 'bar' }} title='Name' />
     )
 
     const item = wrapper.find('a')

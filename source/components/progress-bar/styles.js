@@ -1,16 +1,9 @@
 import merge from 'lodash/merge'
 
-export default ({
-  background,
-  fill,
-  radius,
-  progress = 0,
-  styles
-}, {
-  rhythm,
-  colors,
-  radiuses
-}) => {
+export default (
+  { background, fill, radius, progress = 0, styles },
+  { rhythm, colors, radiuses }
+) => {
   const defaultStyles = {
     root: {
       background: colors[background],

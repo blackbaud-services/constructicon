@@ -3,10 +3,7 @@ import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-const InputValidations = ({
-  classNames,
-  validations = []
-}) => (
+const InputValidations = ({ classNames, validations = [] }) => (
   <div className={`c11n-input-validations ${classNames.root}`}>
     {validations.map((error, i) => (
       <div className={classNames.error} key={i}>
@@ -18,15 +15,14 @@ const InputValidations = ({
 
 InputValidations.propTypes = {
   /**
-  * An array of input validations
-  */
+   * An array of input validations
+   */
   validations: PropTypes.array,
 
   /**
-  *
-  */
+   *
+   */
   styles: PropTypes.object
-
 }
 
 InputValidations.defaultProps = {}

@@ -1,14 +1,9 @@
 import merge from 'lodash/merge'
 
-export default ({
-  isDisabled,
-  isLoading,
-  styles
-}, {
-  colors,
-  radiuses,
-  rhythm
-}) => {
+export default (
+  { isDisabled, isLoading, styles },
+  { colors, radiuses, rhythm }
+) => {
   const isInactive = isDisabled || isLoading
 
   const defaultStyles = {

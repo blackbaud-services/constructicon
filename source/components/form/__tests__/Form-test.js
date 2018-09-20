@@ -2,12 +2,7 @@ import Form from '..'
 
 describe('Form', () => {
   it('renders a simple form', () => {
-    const wrapper = mount(
-      <Form
-        submit='Test Label'
-        onSubmit={() => {}}
-      />
-    )
+    const wrapper = mount(<Form submit='Test Label' onSubmit={() => {}} />)
     const form = wrapper.find('form')
     const submit = wrapper.find('button')
     expect(form.length).to.eql(1)
@@ -29,9 +24,7 @@ describe('Form', () => {
 
   it('disables the form submit', () => {
     const wrapper = mount(
-      <Form
-        isDisabled
-        onSubmit={() => {}}>
+      <Form isDisabled onSubmit={() => {}}>
         <input type='text' name='test' />
       </Form>
     )
@@ -41,11 +34,7 @@ describe('Form', () => {
 
   it('fires the onSubmit handler', () => {
     let called
-    const wrapper = mount(
-      <Form
-        onSubmit={() => called = true}
-      />
-    )
+    const wrapper = mount(<Form onSubmit={() => (called = true)} />)
     const form = wrapper.find('form')
     form.simulate('submit', { target: { value: 'test' } })
     expect(called).to.eql(true)
