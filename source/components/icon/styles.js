@@ -1,11 +1,5 @@
 export default (props, traits, keyframes) => {
-  const {
-    color,
-    rotate,
-    size,
-    spin,
-    styles
-  } = props
+  const { color, rotate, size, spin, styles } = props
 
   return {
     root: {

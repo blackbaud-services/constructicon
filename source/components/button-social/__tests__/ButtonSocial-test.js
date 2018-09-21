@@ -16,7 +16,13 @@ describe('ButtonSocial', () => {
   })
 
   it('should allow us to override props', () => {
-    const wrapper = mount(<ButtonSocial type='facebook' href='http://facebook.com' background='primary' />)
+    const wrapper = mount(
+      <ButtonSocial
+        type='facebook'
+        href='http://facebook.com'
+        background='primary'
+      />
+    )
     const button = wrapper.find('Button')
     const styles = button.prop('styles')
     expect(styles.root.backgroundColor).to.eql(colors.primary)

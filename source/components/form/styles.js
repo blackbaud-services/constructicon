@@ -1,17 +1,9 @@
 import merge from 'lodash/merge'
 
 export default (props, traits, keyframes) => {
-  const {
-    isDisabled,
-    isLoading,
-    styles
-  } = props
+  const { isDisabled, isLoading, styles } = props
 
-  const {
-    colors,
-    radiuses,
-    rhythm
-  } = traits
+  const { colors, radiuses, rhythm } = traits
   const isInactive = isDisabled || isLoading
 
   const defaultStyles = {

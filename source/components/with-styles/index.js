@@ -4,9 +4,9 @@ import { stylesToClasses, addKeyframes } from '../../lib/css'
 import * as defaultTraits from '../../lib/traits'
 
 /**
-* Higher order component to take a styles function and call it with the necessary props and traits
-*/
-const withStyles = (styles, keyframes = {}) => (ComponentToWrap) => {
+ * Higher order component to take a styles function and call it with the necessary props and traits
+ */
+const withStyles = (styles, keyframes = {}) => ComponentToWrap => {
   class ConnectStyles extends Component {
     render () {
       // get current traits and defaults from context
@@ -21,12 +21,16 @@ const withStyles = (styles, keyframes = {}) => (ComponentToWrap) => {
 
       // add any keyframes
       const keyframesIsFunction = typeof keyframes === 'function'
-      const keyframesObject = keyframesIsFunction ? keyframes(combinedProps, traits) : keyframes
+      const keyframesObject = keyframesIsFunction
+        ? keyframes(combinedProps, traits)
+        : keyframes
       const keyframeNames = addKeyframes(keyframesObject)
 
       // if styles is a function, call it and pass through our props and traits
       const stylesIsFunction = typeof styles === 'function'
-      const stylesObject = stylesIsFunction ? styles(combinedProps, traits, keyframeNames) : styles
+      const stylesObject = stylesIsFunction
+        ? styles(combinedProps, traits, keyframeNames)
+        : styles
       const classNames = stylesToClasses(stylesObject)
 
       // build out our final props to be passed down to the original component

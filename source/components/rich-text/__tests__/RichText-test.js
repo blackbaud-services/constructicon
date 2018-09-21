@@ -46,7 +46,12 @@ describe('RichText', () => {
         fontSize: 100
       }
     }
-    const wrapper = mount(<RichText styles={customStyles}>'<h1>Heading</h1><h2>Body</h2>'</RichText>)
+    const wrapper = mount(
+      <RichText styles={customStyles}>
+        '<h1>Heading</h1>
+        <h2>Body</h2>'
+      </RichText>
+    )
     const styles = wrapper.find('RichText').prop('styles')
     expect(styles.root['& h1'].fontSize).to.eql(100)
   })

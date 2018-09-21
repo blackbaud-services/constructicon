@@ -90,7 +90,8 @@ const Form = ({
           aria-label={submit}
           title={submit}
           type='submit'
-          {...submitProps}>
+          {...submitProps}
+        >
           <span>{submit}</span>
           {icon && renderIcon(icon)}
         </Button>
@@ -147,8 +148,8 @@ Form.propTypes = {
   ]),
 
   /**
-  * Props to spread over the submit Button
-  */
+   * Props to spread over the submit Button
+   */
   submitProps: PropTypes.object
 }
 

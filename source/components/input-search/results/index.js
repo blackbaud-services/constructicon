@@ -43,12 +43,7 @@ const Results = ({
   return (
     <ol className={classNames.list}>
       {results.slice(0, toShow).map((result, index) => (
-        <li
-          key={index}
-          className={classNames.listItem}
-          data-selected={index}
-          onClick={() => selectItem(index, true)}
-        >
+        <li key={index} onClick={() => selectItem(index, true)}>
           <ResultComponent isActive={index === active} result={result} />
         </li>
       ))}
