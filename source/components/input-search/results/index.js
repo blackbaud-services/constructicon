@@ -12,7 +12,6 @@ const Results = ({
   errorMessage,
   ResultComponent = DefaultResultComponent,
   results,
-  showMore,
   selectItem,
   status,
   toShow
@@ -42,9 +41,13 @@ const Results = ({
   }
 
   return (
-    <ol>
+    <ol className={classNames.list}>
       {results.slice(0, toShow).map((result, index) => (
-        <li key={index} onClick={() => selectItem(index, true)}>
+        <li
+          key={index}
+          className={classNames.listItem}
+          onClick={() => selectItem(index, true)}
+        >
           <ResultComponent isActive={index === active} result={result} />
         </li>
       ))}
