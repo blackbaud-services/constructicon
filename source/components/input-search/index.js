@@ -78,17 +78,18 @@ class InputSearch extends Component {
     this.props.onSearch(this.state.query)
   }
 
-  setActiveItem (newActive, selectItem) {
+  setActiveItem (newIndex, selectItem) {
     const { results } = this.props
 
     if (results.length) {
-      const active =
-        newActive < 0
-          ? results.length - 1
-          : newActive >= results.length
-            ? 0
-            : newActive
+      const isLast = newIndex < 0
+      const isFirst = newIndex >= results.length
+      const active = isLast ? results.length - 1 : isFirst ? 0 : newIndex
 
+      const resultsEl = this.refs.results
+      const selectedEl = resultsEl.querySelector(`[data-selected="${active}"]`)
+
+      resultsEl.scrollTop = selectedEl && selectedEl.offsetTop
       this.setState({ active }, selectItem && this.confirmSelection)
     }
   }
