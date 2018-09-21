@@ -10,7 +10,6 @@ import Icon from '../icon'
 import InputValidations from '../input-validations'
 import Label from '../label'
 import Results from './results'
-import ShowMore from './show-more'
 
 class InputSearch extends Component {
   constructor (props) {
@@ -218,17 +217,20 @@ class InputSearch extends Component {
                 errorMessage={errorMessage}
                 ResultComponent={ResultComponent}
                 results={results}
-                showMore={showMore}
                 selectItem={this.setActiveItem}
                 status={status}
                 toShow={toShow}
               >
                 {showMore &&
                   results.length > toShow && (
-                  <ShowMore
+                  <button
+                    type='button'
                     className={classNames.showMore}
                     onClick={this.showMore}
-                  />
+                  >
+                    <span>Load More</span>{' '}
+                    <Icon name='chevron' rotate={90} size={0.75} />
+                  </button>
                 )}
               </Results>
             </div>

@@ -79,11 +79,13 @@ export default (
     },
 
     showMore: {
+      display: 'block',
+      width: '100%',
       padding: rhythm(0.5),
       textAlign: 'center',
-      fontSize: scale(-1),
-      fontWeight: 500,
+      fontSize: scale(-0.5),
       cursor: 'pointer',
+      backgroundColor: colors.paleGrey,
 
       ':hover': {
         backgroundColor: colors.primary,
