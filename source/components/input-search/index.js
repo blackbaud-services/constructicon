@@ -72,7 +72,7 @@ class InputSearch extends Component {
   }
 
   handleClickOutside () {
-    this.clearActive()
+    this.props.closeOnClickOutside && this.clearActive()
   }
 
   sendQuery (query) {
@@ -127,6 +127,7 @@ class InputSearch extends Component {
   render () {
     const {
       autoComplete,
+      autoFocus,
       classNames,
       emptyMessage,
       error,
@@ -178,6 +179,7 @@ class InputSearch extends Component {
         <div className={classNames.fieldWrapper}>
           <input
             aria-labelledby={labelId}
+            autoFocus={autoFocus}
             autoComplete={autoComplete}
             className={classNames.field}
             type={type}
@@ -352,11 +354,22 @@ InputSearch.propTypes = {
   /**
    * The autocomplete value for the field
    */
-  autoComplete: PropTypes.string
+  autoComplete: PropTypes.string,
+
+  /**
+   * The autofocus value for the field
+   */
+  autoFocus: PropTypes.bool,
+
+  /**
+   * The autofocus value for the field
+   */
+  closeOnClickOutside: PropTypes.bool
 }
 
 InputSearch.defaultProps = {
-  autoComplete: 'nope',
+  autoComplete: 'off',
+  closeOnClickOutside: true,
   debounce: 500,
   emptyMessage: 'No results found',
   errorMessage: 'There was an unexpected error',
