@@ -46,6 +46,7 @@ const Results = ({
         <li
           key={index}
           className={classNames.listItem}
+          data-selected={index}
           onClick={() => selectItem(index, true)}
         >
           <ResultComponent isActive={index === active} result={result} />
