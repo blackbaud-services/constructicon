@@ -1,14 +1,10 @@
 import merge from 'lodash/merge'
 
-export default ({
-  color,
-  size,
-  duration,
-  styles
-}, {
-  colors,
-  rhythm
-}, keyframes) => {
+export default (
+  { color, size, duration, styles },
+  { colors, rhythm },
+  keyframes
+) => {
   const dotSize = size / 2
 
   const defaultStyles = {

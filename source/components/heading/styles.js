@@ -12,8 +12,10 @@ export default (
       marginBottom: rhythm(1),
       color: color && colors[color],
 
-    '&:first-child': {
-      marginTop: 0
-    }
-  }, styles)
+      '&:first-child': {
+        marginTop: 0
+      }
+    },
+    styles
+  )
 })

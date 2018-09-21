@@ -36,10 +36,10 @@ export default (
         fontSize: scale(2),
         cursor: 'pointer',
         zIndex: 1,
-        ':hover + button:before': {
+        '&:hover + button:before': {
           opacity: 1
         },
-        ':focus + button': {
+        '&:focus + button': {
           borderColor: isInvalid ? colors.danger : colors.secondary,
           boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
         }

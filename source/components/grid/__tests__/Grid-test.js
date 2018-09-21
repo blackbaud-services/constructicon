@@ -51,6 +51,8 @@ describe('Grid', () => {
     expect(styles.root[mediaQuery('sm')].flex).to.eql('1 0 50%')
     expect(styles.root[mediaQuery('md')].flex.split(' ')[0]).to.eql('1')
     expect(styles.root[mediaQuery('md')].flex.split(' ')[1]).to.eql('0')
-    expect(styles.root[mediaQuery('md')].flex.split(' ')[2]).to.contain('33.3333')
+    expect(styles.root[mediaQuery('md')].flex.split(' ')[2]).to.contain(
+      '33.3333'
+    )
   })
 })

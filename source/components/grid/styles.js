@@ -14,12 +14,14 @@ export default (
       ...justifyContent(justify),
       ...calculateSpacing(spacing, 'margin', { multiplier: -1 }),
 
-    '& > *': {
-      ...calculateSpacing(spacing, 'padding')
-    },
+      '& > *': {
+        ...calculateSpacing(spacing, 'padding')
+      },
 
-    '& > *:empty': {
-      padding: 0
-    }
-  }, styles)
+      '& > *:empty': {
+        padding: 0
+      }
+    },
+    styles
+  )
 })

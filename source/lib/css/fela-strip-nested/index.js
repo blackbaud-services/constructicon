@@ -1,4 +1,4 @@
-export default () => (styles) => (
+export default () => styles =>
   Object.keys(styles).reduce((result, key) => {
     const isNested = typeof styles[key] === 'object'
     const isCSSSelector = key.indexOf('&') === 0
@@ -9,4 +9,3 @@ export default () => (styles) => (
       ? result
       : { ...result, [key]: styles[key] }
   }, {})
-)

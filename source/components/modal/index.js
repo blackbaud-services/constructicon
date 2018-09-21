@@ -30,7 +30,9 @@ class Modal extends Component {
   calculateDocumentScroll (props) {
     if (!props.enableDocumentScroll) {
       window.document.body.style.overflow = props.isOpen ? 'hidden' : 'auto'
-      window.document.documentElement.style.overflow = props.isOpen ? 'hidden' : 'auto'
+      window.document.documentElement.style.overflow = props.isOpen
+        ? 'hidden'
+        : 'auto'
     }
   }
 
@@ -128,13 +130,13 @@ Modal.propTypes = {
   spacing: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
 
   /**
-  * Custom styles for the overlay, content, container or close
-  */
+   * Custom styles for the overlay, content, container or close
+   */
   styles: PropTypes.object,
 
   /**
-  * Enable scroll of document when modal is open
-  */
+   * Enable scroll of document when modal is open
+   */
   enableDocumentScroll: PropTypes.bool
 }
 

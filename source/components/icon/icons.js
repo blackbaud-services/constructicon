@@ -80,15 +80,6 @@ export const fitbit = [
   }
 ]
 
-export const twitch = [
-  {
-    d:
-      'M3 0l-3 5v23h8v4h4l4-4h5l9-9v-19h-27zM26 17l-5 5h-5l-4 4v-4h-6v-18h20v13z'
-  },
-  { d: 'M19 8h3v8h-3v-8z' },
-  { d: 'M13 8h3v8h-3v-8z' }
-]
-
 /**
  * Other
  */
