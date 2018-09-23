@@ -10,7 +10,7 @@
     "format": "prettier-standard 'source/**/*.js'",
     "precommit": "lint-staged",
     "build": "babel source -d dist",
-    "build:styleguide": "styleguidist buipbld",
+    "build:styleguide": "styleguidist build",
     "deploy:styleguide": "npm run build:styleguide && gh-pages -d styleguide",
     "deploy:prepare": "gulp npm-prepare"
   },
