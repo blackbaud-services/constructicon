@@ -36,7 +36,10 @@ export const colors = {
   strava: '#fc4c02',
   twitch: '#6701B3',
   danger: '#d9534f',
-  success: '#5cb85c'
+  success: '#5cb85c',
+  blackbaud: '#8cbe4f',
+  everydayhero: '#1bab6b',
+  justgiving: '#ad29b6'
 }
 
 /**
@@ -71,6 +74,16 @@ export const treatments = {
     maxWidth: rhythm(40)
   }
 }
+
+/**
+ * Default background styles
+ */
+export const background = (url, size = 'cover') => ({
+  backgroundImage: !!url && `url('${url}')`,
+  backgroundSize: size,
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center center'
+})
 
 /**
  * Borders and Edges
