@@ -22,7 +22,7 @@ describe('Ticker', () => {
   it('allows us to set the background color', () => {
     const wrapper = mount(<Ticker background='secondary' items={['Test']} />)
     const ticker = wrapper.find('Ticker')
-    const rule = utils.findRule(css.rules, ticker.prop('classNames').root)
-    expect(rule.css).to.contain(`background-color:${colors.secondary}`)
+    const styles = ticker.prop('styles')
+    expect(styles.root.backgroundColor).to.eql(colors.secondary)
   })
 })

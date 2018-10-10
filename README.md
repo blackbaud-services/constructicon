@@ -72,19 +72,13 @@ A few breaking changes were introduced in `1.0.0` that need to be considered on 
 
 ### Upgrading to v2
 
-Constructicon now uses Fela as it's CSS in JS solution. There are a few small things you will need to do to ensure your CSS is compatible.
+Constructicon now uses Emotion as it's CSS in JS solution. There are a few small things you will need to do to ensure your CSS is compatible.
 
 - Any child CSS selectors are required to be prefixed with an `&` e.g. `'& > div'`, `&:hover`
-- Define your keyframes in their own object and pass them into withStyles as the second argument, which will then pass your computed keyframes back to you as the third argument of your styles function
-- Atomic CSS and a mix of shorthand and longhand CSS rules don't play nicely, so avoid longhand CSS for this reason
-
-### V2 Todo
-
-- Remove any shorthand usage
-- Find a proper solution for ordering media queries
+- Define your keyframes in their own object and pass them into withStyles, which will then pass your computed keyframes back to your styles function e.g. see components/icon/styles.js
+- If you are using your own renderDocument function, renderServerCSS is now a function that takes your server rendered string of HTML, and returns an updated HTML string with the required styles inlined in the markup
 
 ## Development
-
 
 ### Scripts
 

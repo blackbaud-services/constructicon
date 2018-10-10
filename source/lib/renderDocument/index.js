@@ -1,6 +1,6 @@
 import React, { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { renderServerCSS } from '../css'
+import { renderStylesToString } from 'emotion-server'
 
 import Helmet from 'react-helmet'
 
@@ -27,7 +27,6 @@ export const Document = ({
       {styles.map((style, index) => (
         <link key={index} rel='stylesheet' href={style} />
       ))}
-      {renderServerCSS()}
       <script
         dangerouslySetInnerHTML={{
           __html: `
@@ -72,18 +71,23 @@ export const renderDocument = ({
 }) => {
   const styles = assets.filter(asset => asset.match(/\.css$/))
   const scripts = assets.filter(asset => asset.match(/\.js$/))
+
   return (
     '<!doctype html>' +
-    renderToStaticMarkup(
-      createElement(DocumentComponent, {
-        head: Helmet.rewind(),
-        styles,
-        scripts,
-        content,
-        state
-      })
+    renderStylesToString(
+      renderToStaticMarkup(
+        createElement(DocumentComponent, {
+          head: Helmet.rewind(),
+          styles,
+          scripts,
+          content,
+          state
+        })
+      )
     )
   )
 }
+
+export const renderServerCSS = renderStylesToString
 
 export default renderDocument

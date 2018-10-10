@@ -44,7 +44,8 @@ describe('Icon', () => {
   it('should spin the icon if set', () => {
     const wrapper = mount(<Icon name='loading' spin />)
     const styles = wrapper.find('Icon').prop('styles')
-    expect(styles.root.animation).to.eql('k1 1s linear infinite')
+    expect(styles.root.animation).to.contain('animation-')
+    expect(styles.root.animation).to.contain('1s linear infinite')
   })
 
   it('should rotate the icon if set', () => {
