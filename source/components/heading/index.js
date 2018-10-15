@@ -42,6 +42,11 @@ Heading.propTypes = {
   size: PropTypes.number,
 
   /**
+   * Disable the bottom margin of the heading
+   */
+  spacing: PropTypes.oneOf([PropTypes.number, PropTypes.object]),
+
+  /**
    * Custom styles to be added to the element
    */
   styles: PropTypes.object
@@ -50,6 +55,7 @@ Heading.propTypes = {
 Heading.defaultProps = {
   tag: 'h2',
   size: 3,
+  spacing: { b: 0.5 },
   styles: {}
 }
 
