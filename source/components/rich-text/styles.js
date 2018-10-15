@@ -7,12 +7,12 @@ export default (
   const headingStyle = size => ({
     ...treatments.head,
     fontSize: scale(size),
-    marginBottom: rhythm(1),
-    lineHeight: measures.medium
+    marginBottom: rhythm(1)
   })
 
   const defaultStyles = {
     fontSize: scale(size),
+    lineHeight: measures.medium,
     ...treatments.body,
 
     ...(lineClamp && {
