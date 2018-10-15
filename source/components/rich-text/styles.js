@@ -1,32 +1,42 @@
 import merge from 'lodash/merge'
 
-export default ({ styles }, { measures, rhythm, scale, treatments }) => {
+export default (
+  { lineClamp, size, styles },
+  { measures, rhythm, scale, treatments }
+) => {
   const headingStyle = size => ({
     ...treatments.head,
     fontSize: scale(size),
-    paddingBottom: rhythm(1)
+    marginBottom: rhythm(1),
+    lineHeight: measures.medium
   })
 
   const defaultStyles = {
+    fontSize: scale(size),
     ...treatments.body,
 
+    ...(lineClamp && {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      display: '-webkit-box',
+      webkitBoxOrient: 'vertical',
+      lineClamp
+    }),
+
     p: {
-      paddingBottom: rhythm(1),
-      lineHeight: measures.medium
+      marginBottom: rhythm(1)
     },
 
     ul: {
       listStyleType: 'disc',
       listStylePosition: 'outside',
-      paddingBottom: rhythm(1),
-      lineHeight: measures.medium
+      marginBottom: rhythm(1)
     },
 
     ol: {
       listStyleType: 'decimal',
       listStylePosition: 'outside',
-      paddingBottom: rhythm(1),
-      lineHeight: measures.medium
+      marginBottom: rhythm(1)
     },
 
     li: {
@@ -35,12 +45,11 @@ export default ({ styles }, { measures, rhythm, scale, treatments }) => {
 
     blockquote: {
       maxWidth: rhythm(25),
-      paddingBottom: rhythm(1),
+      marginBottom: rhythm(1),
       margin: '0 auto',
       textAlign: 'center',
-      lineHeight: measures.medium,
       fontWeight: 700,
-      fontSize: scale(1),
+      fontSize: scale(size + 1),
       ':before': {
         content: 'open-quote'
       },
@@ -57,7 +66,7 @@ export default ({ styles }, { measures, rhythm, scale, treatments }) => {
     },
 
     iframe: {
-      paddingBottom: rhythm(2)
+      marginBottom: rhythm(2)
     },
 
     strong: {
@@ -69,22 +78,26 @@ export default ({ styles }, { measures, rhythm, scale, treatments }) => {
     },
 
     h1: {
-      ...headingStyle(4)
+      ...headingStyle(size + 4)
     },
     h2: {
-      ...headingStyle(3)
+      ...headingStyle(size + 3)
     },
     h3: {
-      ...headingStyle(2)
+      ...headingStyle(size + 2)
     },
     h4: {
-      ...headingStyle(1)
+      ...headingStyle(size + 1)
     },
     h5: {
-      ...headingStyle(0)
+      ...headingStyle(size)
     },
     h6: {
-      ...headingStyle(-1)
+      ...headingStyle(size - 1)
+    },
+
+    '> *:last-child': {
+      marginBottom: 0
     }
   }
 
