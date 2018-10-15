@@ -2,7 +2,7 @@ import React from 'react'
 import isEmpty from 'lodash/isEmpty'
 
 import Icon from '../../icon'
-import Section from '../../section'
+import InputSearchResult from '../../input-search-result'
 
 const Results = ({
   active,
@@ -58,9 +58,7 @@ const Results = ({
 }
 
 const DefaultResultComponent = ({ isActive, result }) => (
-  <Section background={isActive ? 'shade' : 'light'} spacing={{ x: 1, y: 0.5 }}>
-    {result.label}
-  </Section>
+  <InputSearchResult isActive={isActive}>{result.label}</InputSearchResult>
 )
 
 export default Results
