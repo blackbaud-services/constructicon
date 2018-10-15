@@ -1,20 +1,15 @@
 import merge from 'lodash/merge'
 
 export default (
-  { color, size, styles },
-  { colors, rhythm, scale, treatments }
+  { color, size, spacing, styles },
+  { calculateSpacing, colors, scale, treatments }
 ) => ({
   root: merge(
     {
       ...treatments.head,
+      ...calculateSpacing(spacing, 'margin'),
       fontSize: scale(size),
-      marginTop: rhythm(1),
-      marginBottom: rhythm(1),
-      color: color && colors[color],
-
-      ':first-child': {
-        marginTop: 0
-      }
+      color: color && colors[color]
     },
     styles
   )
