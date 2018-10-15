@@ -35,14 +35,25 @@ RichText.propTypes = {
   tag: PropTypes.string,
 
   /**
+   * The base font size to use
+   */
+  size: PropTypes.number,
+
+  /**
+   * The number of lines to clamp
+   */
+  lineClamp: PropTypes.number,
+
+  /**
    * Custom styles to be added to the element
    */
   styles: PropTypes.object
 }
 
 RichText.defaultProps = {
-  tag: 'div',
-  styles: {}
+  size: 0,
+  styles: {},
+  tag: 'div'
 }
 
 export default withStyles(styles)(RichText)
