@@ -19,6 +19,7 @@ export default (
       top: 0,
       left: 0,
       width: `${progress}%`,
+      maxWidth: '100%',
       height: rhythm(1)
     },
 
