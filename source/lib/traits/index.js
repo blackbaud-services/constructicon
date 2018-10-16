@@ -24,6 +24,7 @@ export const colors = {
   shade: 'rgba(0, 0, 0, 0.125)',
   tint: 'rgba(255, 255, 255, 0.25)',
   transparent: 'transparent',
+  inherit: 'inherit',
   facebook: '#3b5999',
   twitter: '#55acee',
   instagram: '#e4405f',
