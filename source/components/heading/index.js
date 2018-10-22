@@ -44,7 +44,7 @@ Heading.propTypes = {
   /**
    * Disable the bottom margin of the heading
    */
-  spacing: PropTypes.oneOf([PropTypes.number, PropTypes.object]),
+  spacing: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
 
   /**
    * Custom styles to be added to the element

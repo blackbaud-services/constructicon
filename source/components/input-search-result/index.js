@@ -28,7 +28,7 @@ InputSearchResult.propTypes = {
   /**
    * The spacing to be applied to the result
    */
-  spacing: PropTypes.oneOf([PropTypes.object, PropTypes.number]),
+  spacing: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
 
   /**
    * Custom styles to be applied
