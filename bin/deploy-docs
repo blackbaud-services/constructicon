@@ -10,5 +10,5 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
 
 # Publish styleguide to Github Pages
 npm install yarn -g
-yarn
+yarn --ignore-engines
 yarn deploy:styleguide
