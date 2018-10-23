@@ -15,9 +15,7 @@ class Modal extends Component {
     if (appElement) {
       ReactModal.setAppElement(appElement)
     }
-  }
 
-  componentDidMount () {
     this.calculateDocumentScroll(this.props)
   }
 
