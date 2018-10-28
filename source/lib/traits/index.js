@@ -125,7 +125,7 @@ export const transitions = {
 export const utils = {
   fullSize: {
     position: 'absolute',
-    content: '',
+    content: '""',
     top: 0,
     right: 0,
     bottom: 0,
