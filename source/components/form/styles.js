@@ -63,7 +63,7 @@ export default (props, traits, keyframes) => {
       },
 
       '&:after': {
-        content: isLoading && '""',
+        content: '""',
         display: isLoading ? 'inline-block' : 'none',
         width: rhythm(0.75),
         height: rhythm(0.75),
