@@ -19,8 +19,8 @@ export default (
       overflow: 'hidden',
       textOverflow: 'ellipsis',
       display: '-webkit-box',
-      webkitBoxOrient: 'vertical',
-      lineClamp
+      WebkitBoxOrient: 'vertical',
+      WebkitLineClamp: lineClamp
     }),
 
     '& p': {
