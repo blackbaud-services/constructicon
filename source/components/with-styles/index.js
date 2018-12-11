@@ -9,31 +9,35 @@ import * as defaultTraits from '../../lib/traits'
 const withStyles = (styles, keyframes = {}) => ComponentToWrap => {
   class ConnectStyles extends Component {
     render () {
-      // get current traits and defaults from context
+      // Get current traits and defaults from context
       const { traits = defaultTraits } = this.context
 
-      // build our combined props from the component itself's default props,
-      // the specified default traits, and the actual provided props
+      // Build our combined props from the component itself's default props,
+      // The specified default traits, and the actual provided props
       const combinedProps = {
         ...ComponentToWrap.defaultProps,
         ...this.props
       }
 
-      // add any keyframes
+      // Add any keyframes
       const keyframesIsFunction = typeof keyframes === 'function'
       const keyframesObject = keyframesIsFunction
         ? keyframes(combinedProps, traits)
         : keyframes
       const keyframeNames = addKeyframes(keyframesObject)
 
-      // if styles is a function, call it and pass through our props and traits
+      // If styles is a function, call it and pass through our props and traits
       const stylesIsFunction = typeof styles === 'function'
       const stylesObject = stylesIsFunction
         ? styles(combinedProps, traits, keyframeNames)
         : styles
-      const classNames = stylesToClasses(stylesObject)
 
-      // build out our final props to be passed down to the original component
+      const classNames =
+        typeof this.props.classNames === 'object'
+          ? this.props.classNames
+          : stylesToClasses(stylesObject)
+
+      // Build out our final props to be passed down to the original component
       const newProps = {
         ...combinedProps,
         styles: stylesObject,
