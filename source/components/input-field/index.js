@@ -46,6 +46,7 @@ const InputField = ({
       name={name}
       id={inputId}
       value={value}
+      checked={isBoolean(type) && value}
       onChange={e =>
         onChange &&
         onChange(isBoolean(type) ? e.target.checked : e.target.value)
