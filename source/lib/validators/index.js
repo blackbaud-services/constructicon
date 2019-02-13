@@ -60,72 +60,86 @@ export const equalsField = (field, msg = `Field must be equal to ${field}`) => {
 
 export const greaterThan = (min = 0, msg) => {
   return val => {
-    switch (typeof val) {
-      case 'undefined':
-        return val
-      case 'number':
-        return val <= min && (msg || `Number must be greater than ${min}`)
-      default:
-        return (
-          !!val &&
-          val.length <= min &&
-          (msg || `Must have a length greater than ${min}`)
-        )
+    if (parseFloat(val)) {
+      return (
+        parseFloat(val) <= min && (msg || `Number must be greater than ${min}`)
+      )
+    } else {
+      switch (typeof val) {
+        case 'undefined':
+          return val
+        default:
+          return (
+            !!val &&
+            val.length <= min &&
+            (msg || `Must have a length greater than ${min}`)
+          )
+      }
     }
   }
 }
 
 export const greaterThanOrEqualTo = (min = 0, msg) => {
   return val => {
-    switch (typeof val) {
-      case 'undefined':
-        return val
-      case 'number':
-        return (
-          val < min && (msg || `Number must be greater than or equal to ${min}`)
-        )
-      default:
-        return (
-          !!val &&
-          val.length < min &&
-          (msg || `Must have a length greater than or equal to ${min}`)
-        )
+    if (parseFloat(val)) {
+      return (
+        parseFloat(val) < min &&
+        (msg || `Number must be greater than or equal to ${min}`)
+      )
+    } else {
+      switch (typeof val) {
+        case 'undefined':
+          return val
+        default:
+          return (
+            !!val &&
+            val.length < min &&
+            (msg || `Must have a length greater than or equal to ${min}`)
+          )
+      }
     }
   }
 }
 
 export const lessThan = (max = 0, msg) => {
   return val => {
-    switch (typeof val) {
-      case 'undefined':
-        return val
-      case 'number':
-        return val >= max && (msg || `Number must be less than ${max}`)
-      default:
-        return (
-          !!val &&
-          val.length >= max &&
-          (msg || `Must have a length less than ${max}`)
-        )
+    if (parseFloat(val)) {
+      return (
+        parseFloat(val) >= max && (msg || `Number must be less than ${max}`)
+      )
+    } else {
+      switch (typeof val) {
+        case 'undefined':
+          return val
+        default:
+          return (
+            !!val &&
+            val.length >= max &&
+            (msg || `Must have a length less than ${max}`)
+          )
+      }
     }
   }
 }
 
 export const lessThanOrEqualTo = (max = 0, msg) => {
   return val => {
-    switch (typeof val) {
-      case 'undefined':
-        return val
-      case 'number':
-        return (
-          val > max && (msg || `Number must be less than or equal to ${max}`)
-        )
-      default:
-        return (
-          !!val &&
-          val.length < max &&
-          (msg || `Must have a length less than or equal to ${max}`)
-        )
+    if (parseFloat(val)) {
+      return (
+        parseFloat(val) > max &&
+        (msg || `Number must be less than or equal to ${max}`)
+      )
+    } else {
+      switch (typeof val) {
+        case 'undefined':
+          return val
+        default:
+          return (
+            !!val &&
+            val.length < max &&
+            (msg || `Must have a length less than or equal to ${max}`)
+          )
+      }
     }
   }
 }
