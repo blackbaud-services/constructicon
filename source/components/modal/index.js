@@ -25,6 +25,10 @@ class Modal extends Component {
     }
   }
 
+  componentWillUnmount () {
+    this.calculateDocumentScroll({ isOpen: false })
+  }
+
   calculateDocumentScroll (props) {
     if (!props.enableDocumentScroll) {
       window.document.body.style.overflow = props.isOpen ? 'hidden' : 'auto'
