@@ -1,6 +1,6 @@
 {
   "name": "constructicon",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Library of re-usable components for Professional Services projects",
   "main": "index.js",
   "scripts": {
