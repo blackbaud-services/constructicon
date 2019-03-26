@@ -133,7 +133,7 @@ InputSelect.propTypes = {
   /**
    * The label for the field
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
   /**
    * The name of the field
