@@ -53,7 +53,7 @@ export default (
         paddingLeft: '100%',
         animation: `marquee linear infinite`,
         whiteSpace: 'nowrap',
-        animationDuration: `${items.length * speeds[speed]}s`,
+        animationDuration: `${Math.max(10, items.length * speeds[speed])}s`,
 
         '@keyframes marquee': {
           '0%': {
