@@ -50,7 +50,7 @@ Ticker.propTypes = {
   /**
    * Animation speed
    */
-  speed: PropTypes.oneOf(['slow', 'medium', 'fast']),
+  speed: PropTypes.oneOf(['snail', 'slow', 'medium', 'fast']),
 
   /**
    * Custom styles to be applied

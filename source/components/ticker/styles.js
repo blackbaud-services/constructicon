@@ -1,8 +1,9 @@
 import merge from 'lodash/merge'
 
 const speeds = {
-  slow: 5,
-  medium: 2.5,
+  snail: 5,
+  slow: 3,
+  medium: 2,
   fast: 1
 }
 
@@ -50,9 +51,10 @@ export default (
         position: 'absolute',
         top: '50%',
         left: 0,
-        animation: `${keyframes.banner} 25s linear infinite`,
+        paddingLeft: '100%',
+        animation: `${keyframes.marquee} linear infinite`,
         whiteSpace: 'nowrap',
-        animationDuration: `${8 + items.length * speeds[speed]}s`
+        animationDuration: `${items.length * speeds[speed]}s`
       },
 
       item: {
@@ -64,9 +66,9 @@ export default (
   )
 
 export const keyframes = {
-  banner: {
+  marquee: {
     '0%': {
-      transform: 'translate(100vw, -50%)'
+      transform: 'translate(0, -50%)'
     },
     '100%': {
       transform: 'translate(-100%, -50%)'
