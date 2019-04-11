@@ -1,8 +1,9 @@
 import merge from 'lodash/merge'
 
 const speeds = {
-  slow: 5,
-  medium: 2.5,
+  snail: 5,
+  slow: 3,
+  medium: 2,
   fast: 1
 }
 
@@ -49,14 +50,15 @@ export default (
         position: 'absolute',
         top: '50%',
         left: 0,
-        animation: `banner 25s linear infinite`,
+        paddingLeft: '100%',
+        animation: `marquee linear infinite`,
         whiteSpace: 'nowrap',
-        animationDuration: `${8 + items.length * speeds[speed]}s`,
+        animationDuration: `${items.length * speeds[speed]}s`,
 
-        '@keyframes banner': {
+        '@keyframes marquee': {
           '0%': {
             // from off the right of the viewport i.e. move 100vw along the X axis
-            transform: 'translate(100vw, -50%)'
+            transform: 'translate(0, -50%)'
           },
           '100%': {
             // to off the left of the viewport i.e. -100% of the width of the content along the X axis
