@@ -13,6 +13,7 @@ export default (
 
   const defaultStyles = {
     root: {
+      position: 'relative',
       paddingTop: rhythm(0.5),
       paddingBottom: rhythm(0.5),
       ...borderStyles
@@ -20,9 +21,20 @@ export default (
 
     head: {
       display: 'flex',
+      width: '100%',
       alignItems: 'center',
       ...justifyContent('flex-start'),
-      cursor: 'pointer'
+      cursor: 'pointer',
+      '&:focus:after': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        boxShadow: `0 0 1rem ${colors.shade}`,
+        pointerEvents: 'none'
+      }
     },
 
     toggle: {
