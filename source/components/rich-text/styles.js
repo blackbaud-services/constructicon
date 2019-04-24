@@ -52,10 +52,10 @@ export default (
       fontSize: scale(size + 1)
     },
     '& blockquote:before': {
-      content: 'open-quote'
+      content: '"open-quote"'
     },
     '& blockquote:after': {
-      content: 'close-quote'
+      content: '"close-quote"'
     },
 
     '& img': {

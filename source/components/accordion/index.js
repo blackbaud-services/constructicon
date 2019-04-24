@@ -1,4 +1,5 @@
 import React from 'react'
+import uuid from 'uuid/v1'
 import PropTypes from 'prop-types'
 import Icon from '../icon'
 import compose from '../../lib/compose'
@@ -9,6 +10,7 @@ import styles from './styles'
 const Accordion = ({
   children,
   title,
+  id = uuid(),
   opened,
   closed,
   toggled,
@@ -16,11 +18,25 @@ const Accordion = ({
   classNames
 }) => (
   <div className={`c11n-accordion ${classNames.root}`}>
-    <div className={classNames.head} onClick={onToggle}>
+    <button
+      id={`${id}-title`}
+      aria-controls={`${id}-body`}
+      aria-expanded={toggled}
+      className={classNames.head}
+      onClick={onToggle}
+    >
       <div className={classNames.toggle}>{toggled ? opened : closed}</div>
       <div className={classNames.title}>{title}</div>
+    </button>
+    <div
+      aria-labelledby={`${id}-title`}
+      role='region'
+      id={`${id}-body`}
+      hidden={!toggled}
+      className={classNames.body}
+    >
+      {children}
     </div>
-    <div className={classNames.body}>{children}</div>
   </div>
 )
 
@@ -59,6 +75,11 @@ Accordion.propTypes = {
    * Opens the accordion by default
    */
   toggled: PropTypes.bool,
+
+  /**
+   * DOM ID
+   */
+  id: PropTypes.string,
 
   /**
    * Icon to show when the panel is open
