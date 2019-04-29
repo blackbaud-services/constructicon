@@ -1,13 +1,13 @@
-import ButtonSocial from '..'
+import ButtonShare from '..'
 import { css } from '../../../lib/css'
 import { colors } from '../../../lib/traits'
 
-describe('ButtonSocial', () => {
+describe('ButtonShare', () => {
   const getMountedElement = el => utils.getMountedElement(el, 'a')
 
   it('should render a button', () => {
     const wrapper = mount(
-      <ButtonSocial type='facebook' href='http://facebook.com' />
+      <ButtonShare type='facebook' href='http://facebook.com' />
     )
     const icon = wrapper.find('Icon')
     const button = wrapper.find('a')
@@ -17,7 +17,7 @@ describe('ButtonSocial', () => {
 
   it('should allow us to override props', () => {
     const wrapper = mount(
-      <ButtonSocial
+      <ButtonShare
         type='facebook'
         href='http://facebook.com'
         background='primary'
@@ -29,7 +29,7 @@ describe('ButtonSocial', () => {
   })
 
   it('should show a share button', () => {
-    const wrapper = mount(<ButtonSocial type='facebook' share />)
+    const wrapper = mount(<ButtonShare type='facebook' share />)
     const button = wrapper.find('Button')
     expect(typeof button.prop('onClick')).to.eql('function')
   })

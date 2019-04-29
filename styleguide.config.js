@@ -33,7 +33,7 @@ module.exports = {
         path.resolve(__dirname, 'source/components/accordion', 'index.js'),
         path.resolve(__dirname, 'source/components/button', 'index.js'),
         path.resolve(__dirname, 'source/components/button-group', 'index.js'),
-        path.resolve(__dirname, 'source/components/button-social', 'index.js'),
+        path.resolve(__dirname, 'source/components/button-share', 'index.js'),
         path.resolve(__dirname, 'source/components/carousel', 'index.js'),
         path.resolve(__dirname, 'source/components/flippy', 'index.js'),
         path.resolve(__dirname, 'source/components/heading', 'index.js'),

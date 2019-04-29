@@ -91,6 +91,10 @@
 ```
 
 ```
+<Icon name='phone' />
+```
+
+```
 <Icon name='pin' />
 ```
 
@@ -112,6 +116,10 @@
 
 ```
 <Icon name='share' />
+```
+
+```
+<Icon name='sms' />
 ```
 
 ```
@@ -178,6 +186,26 @@
 
 ```
 <Icon name='fitbit' color='fitbit' />
+```
+
+```
+<Icon name='slack' color='slack' />
+```
+
+```
+<Icon name='whatsapp' color='whatsapp' />
+```
+
+```
+<Icon name='pinterest' color='pinterest' />
+```
+
+```
+<Icon name='messenger' color='messenger' />
+```
+
+```
+<Icon name='reddit' color='reddit' />
 ```
 
 
