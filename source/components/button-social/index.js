@@ -1,64 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Button from '../button'
-import Icon from '../icon'
-import openShareDialog from './openShareDialog'
+import ButtonShare from '../button-share'
 
-/**
- * Uses the Button component to create a social icon
- *
- * Will accept any props that the Button accepts
- */
-const ButtonSocial = ({ share, type, url, title, hashtags, ...props }) => (
-  <Button
-    background={type}
-    tag={share ? 'button' : 'a'}
-    onClick={share && openShareDialog({ type, url, title, hashtags })}
-    aria-label={type}
-    {...props}
-  >
-    <Icon name={type} />
-  </Button>
-)
-
-ButtonSocial.propTypes = {
-  /**
-   * The social network
-   */
-  type: PropTypes.oneOf([
-    'facebook',
-    'twitter',
-    'instagram',
-    'linkedin',
-    'youtube',
-    'google',
-    'vimeo',
-    'strava',
-    'mapmyfitness',
-    'fitbit'
-  ]).isRequired,
-
-  /**
-   * Makes the button a share button (only available for twitter, facebook and google)
-   */
-  share: PropTypes.bool,
-
-  /**
-   * Hashtags to be added to a Twitter share
-   */
-  hashtags: PropTypes.string,
-
-  /**
-   * The text for a Twitter or Linkedin share
-   */
-  text: PropTypes.string
+export default props => {
+  console.log(
+    'The ButtonSocial component has been renamed and moved to the more reusable ButtonShare component. Support for importing from `constructicon/button-social` will be removed in version 3'
+  )
+  return <ButtonShare {...props} />
 }
-
-ButtonSocial.defaultProps = {
-  spacing: 0.5,
-  effect: 'grow',
-  radius: 'large',
-  target: '_blank'
-}
-
-export default ButtonSocial
