@@ -15,12 +15,14 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
       display: 'block',
       position: 'relative',
       minHeight: rhythm(2),
-      padding: `${rhythm(0.33)} ${rhythm(0.33)} ${rhythm(0.33)} ${rhythm(2)}`,
+      padding: `${rhythm(0.33)} ${rhythm(0.33)} ${rhythm(0.33)} ${rhythm(
+        rank ? 2 : 0.33
+      )}`,
       fontSize: scale(-1),
       breakInside: 'avoid',
       listStyle: 'none',
       '&:after': {
-        content: !rank && 'counter(board) "."',
+        content: rank ? 'counter(board) "."' : null,
         counterIncrement: 'board',
         ...rankStyles
       }

@@ -10,6 +10,7 @@
     subtitle='Charity Name'
     image='http://placehold.it/250x250'
     amount='2,500km'
+    rank={1}
   />
 </Leaderboard>
 ```
