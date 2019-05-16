@@ -1,15 +1,6 @@
 import merge from 'lodash/merge'
 
 export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
-  const rankStyles = {
-    position: 'absolute',
-    top: '50%',
-    left: rhythm(0.5),
-    height: rhythm(2),
-    lineHeight: rhythm(2),
-    marginTop: rhythm(-1)
-  }
-
   const defaultStyles = {
     root: {
       display: 'block',
@@ -20,15 +11,17 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
       )}`,
       fontSize: scale(-1),
       breakInside: 'avoid',
-      listStyle: 'none',
-      '&:after': {
-        content: rank ? 'counter(board) "."' : null,
-        counterIncrement: 'board',
-        ...rankStyles
-      }
+      listStyle: 'none'
     },
 
-    rank: rankStyles,
+    rank: {
+      position: 'absolute',
+      top: '50%',
+      left: rhythm(0.5),
+      height: rhythm(2),
+      lineHeight: rhythm(2),
+      marginTop: rhythm(-1)
+    },
 
     link: {
       display: 'flex',

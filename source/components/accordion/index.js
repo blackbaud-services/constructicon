@@ -22,6 +22,7 @@ const Accordion = ({
       id={`${id}-title`}
       aria-controls={`${id}-body`}
       aria-expanded={toggled}
+      aria-label={title}
       className={classNames.head}
       onClick={onToggle}
     >
