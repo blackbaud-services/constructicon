@@ -4,7 +4,7 @@ export const stylesToClasses = (styles = {}) =>
   Object.keys(styles).reduce(
     (classNames, styleKey) => ({
       ...classNames,
-      [styleKey]: createClass(styles[styleKey])
+      [styleKey]: createClass({ ...styles[styleKey], label: styleKey })
     }),
     {}
   )
