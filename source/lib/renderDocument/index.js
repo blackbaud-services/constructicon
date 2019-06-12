@@ -65,7 +65,7 @@ export const Document = ({
 
 export const renderDocument = ({
   assets,
-  content,
+  content = '',
   state = {},
   DocumentComponent = Document
 }) => {
@@ -74,16 +74,14 @@ export const renderDocument = ({
 
   return (
     '<!doctype html>' +
-    renderStylesToString(
-      renderToStaticMarkup(
-        createElement(DocumentComponent, {
-          head: Helmet.rewind(),
-          styles,
-          scripts,
-          content,
-          state
-        })
-      )
+    renderToStaticMarkup(
+      createElement(DocumentComponent, {
+        head: Helmet.rewind(),
+        styles,
+        scripts,
+        content: renderStylesToString(content),
+        state
+      })
     )
   )
 }
