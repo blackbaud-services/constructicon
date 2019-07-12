@@ -79,7 +79,7 @@ export const renderDocument = ({
         head: Helmet.rewind(),
         styles,
         scripts,
-        content: renderStylesToString(content),
+        content: renderStylesToString(content || ''),
         state
       })
     )
