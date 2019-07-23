@@ -145,3 +145,11 @@ const leaders = [ leader, leader, leader, leader, leader, leader ];
   ))}
 </Leaderboard>
 ```
+
+**Treatments**
+
+The following treatments in your project's traits will be applied:
+
+- `leaderboard` -> `root`
+- `leaderboardState` -> `state`
+- `leaderboardLeaders` -> `leaders`

@@ -28,3 +28,9 @@ var styles = {
 
 <Label styles={styles}>Green Label</Label>
 ```
+
+**Treatments**
+
+The following treatments in your project's traits will be applied:
+
+- `label` -> `root`

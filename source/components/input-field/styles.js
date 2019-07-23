@@ -16,7 +16,8 @@ export default (
       paddingLeft: checkbox ? rhythm(1) : '0',
       fontFamily: fonts.body,
       textAlign: 'left',
-      marginBottom: rhythm(1)
+      marginBottom: rhythm(1),
+      ...treatments.inputRoot
     },
 
     field: checkbox

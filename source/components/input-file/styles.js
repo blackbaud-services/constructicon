@@ -26,7 +26,6 @@ export default (
       },
 
       input: {
-        ...treatments.input,
         position: 'absolute',
         top: 0,
         left: 0,
@@ -36,6 +35,7 @@ export default (
         fontSize: scale(2),
         cursor: 'pointer',
         zIndex: 1,
+        ...treatments.input,
         '&:hover + button:before': {
           opacity: 1
         },

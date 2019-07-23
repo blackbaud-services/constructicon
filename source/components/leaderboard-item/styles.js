@@ -1,6 +1,6 @@
 import merge from 'lodash/merge'
 
-export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
+export default ({ rank, styles, subtitle }, { measures, rhythm, scale, treatments }) => {
   const defaultStyles = {
     root: {
       display: 'block',
@@ -11,7 +11,8 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
       )}`,
       fontSize: scale(-1),
       breakInside: 'avoid',
-      listStyle: 'none'
+      listStyle: 'none',
+      ...treatments.leaderboardItem
     },
 
     rank: {
@@ -20,7 +21,8 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
       left: rhythm(0.5),
       height: rhythm(2),
       lineHeight: rhythm(2),
-      marginTop: rhythm(-1)
+      marginTop: rhythm(-1),
+      ...treatments.leaderboardItemRank
     },
 
     link: {
@@ -40,7 +42,8 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
       backgroundColor: 'rgba(0,0,0,0.125)',
       border: '2px solid rgba(0,0,0,0.25)',
       borderRadius: '50%',
-      marginRight: rhythm(0.5)
+      marginRight: rhythm(0.5),
+      ...treatments.leaderboardItemImage
     },
 
     info: {
@@ -53,7 +56,8 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
       fontWeight: 700,
       whiteSpace: 'nowrap',
       overflow: 'hidden',
-      textOverflow: 'ellipsis'
+      textOverflow: 'ellipsis',
+      ...treatments.leaderboardItemTitle
     },
 
     subtitle: {
@@ -62,7 +66,8 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
       opacity: 0.7,
       whiteSpace: 'nowrap',
       overflow: 'hidden',
-      textOverflow: 'ellipsis'
+      textOverflow: 'ellipsis',
+      ...treatments.leaderboardItemSubtitle
     },
 
     amount: {
@@ -70,7 +75,8 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale }) => {
       paddingLeft: rhythm(0.5),
       paddingRight: rhythm(0.5),
       textAlign: 'right',
-      lineHeight: measures.medium
+      lineHeight: measures.medium,
+      ...treatments.leaderboardItemAmount
     }
   }
 
