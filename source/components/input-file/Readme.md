@@ -21,3 +21,10 @@
   onChange={(files) => console.log(files)}
 />
 ```
+
+**Treatments**
+
+The following treatments in your project's traits will be applied:
+
+- `inputRoot` -> `root`
+- `input` -> `field`

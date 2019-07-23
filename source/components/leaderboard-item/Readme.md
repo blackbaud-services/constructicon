@@ -61,3 +61,13 @@ const styles = {
   />
 </Leaderboard>
 ```
+
+**Treatments**
+
+The following treatments in your project's traits will be applied:
+
+- `leaderboardItem` -> `root`
+- `leaderboardItemImage` -> `image`
+- `leaderboardItemTitle` -> `title`
+- `leaderboardItemSubtitle` -> `subtitle`
+- `leaderboardItemAmount` -> `amount`

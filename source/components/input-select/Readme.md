@@ -60,3 +60,10 @@ Apply a custom styles object to alter the look. Available elements are:
 - `icon` - dropdown icon
 - `errors` - Error messages container
 - `error` - Error message styles
+
+**Treatments**
+
+The following treatments in your project's traits will be applied:
+
+- `inputRoot` -> `root`
+- `input` -> `field`

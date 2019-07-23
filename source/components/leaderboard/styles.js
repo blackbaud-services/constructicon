@@ -2,7 +2,7 @@ import merge from 'lodash/merge'
 
 export default (
   { background, foreground, columns, styles },
-  { colors, mediaQuery, scale, rhythm, justifyContent }
+  { colors, mediaQuery, scale, rhythm, justifyContent, treatments }
 ) => {
   const createColumns = () => {
     return Object.keys(columns).reduce(
@@ -19,12 +19,14 @@ export default (
   const defaultStyles = {
     root: {
       backgroundColor: background && colors[background],
-      color: foreground && colors[foreground]
+      color: foreground && colors[foreground],
+      ...treatments.leaderboard
     },
 
     leaders: {
       counterReset: 'board',
-      ...createColumns()
+      ...createColumns(),
+      ...treatments.leaderboardLeaders
     },
 
     state: {
@@ -33,6 +35,7 @@ export default (
       ...justifyContent('center'),
       padding: rhythm(2),
       fontSize: scale(-1),
+      ...treatments.leaderboardState,
 
       '& > *': {
         margin: rhythm([0, 0.25])

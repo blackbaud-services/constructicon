@@ -12,7 +12,8 @@ export default (
       position: 'relative',
       fontFamily: fonts.body,
       textAlign: 'left',
-      marginBottom: rhythm(1)
+      marginBottom: rhythm(1),
+      ...treatments.inputRoot
     },
 
     fieldWrapper: {

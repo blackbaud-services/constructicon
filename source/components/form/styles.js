@@ -2,15 +2,15 @@ import merge from 'lodash/merge'
 
 export default (props, traits, keyframes) => {
   const { isDisabled, isLoading, styles } = props
-
-  const { colors, radiuses, rhythm } = traits
+  const { colors, radiuses, rhythm, treatments } = traits
   const isInactive = isDisabled || isLoading
 
   const defaultStyles = {
     root: {
       display: 'block',
       margin: 'auto',
-      paddingBottom: rhythm(1.5)
+      paddingBottom: rhythm(1.5),
+      ...treatments.form
     },
 
     fields: {
@@ -25,6 +25,7 @@ export default (props, traits, keyframes) => {
       fontWeight: 'bold',
       color: colors.light,
       borderRadius: rhythm(radiuses.small),
+      ...treatments.formError,
 
       '& p + p': {
         marginTop: rhythm(0.666)
@@ -37,7 +38,8 @@ export default (props, traits, keyframes) => {
 
     action: {
       backgroundColor: colors.transparent,
-      color: colors.primary
+      color: colors.primary,
+      ...treatments.formAction
     },
 
     submit: {
@@ -75,7 +77,9 @@ export default (props, traits, keyframes) => {
         textIndent: '-9999px',
         overflow: 'hidden',
         animation: `${keyframes.spin} 1s linear infinite`
-      }
+      },
+
+      ...treatments.formSubmit
     },
 
     icon: {

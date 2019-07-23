@@ -118,3 +118,9 @@ Pass in custom style rules to be applied to the button
   backgroundColor: '#777'
 }}>Custom Styles</Button>
 ```
+
+**Treatments**
+
+The following treatments in your project's traits will be applied:
+
+- `button`

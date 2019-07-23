@@ -29,3 +29,10 @@ var styles = {
   validations={[ 'Field is required' ]}
 />
 ```
+
+**Treatments**
+
+The following treatments in your project's traits will be applied:
+
+- `inputValidations` -> `root`
+- `inputValidation` -> `error`

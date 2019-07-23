@@ -172,3 +172,12 @@ Apply a custom styles object to alter the look. Available elements are:
 - `action` - Form action
 - `submit` - Submit button
 - `icon` - Submit button icon
+
+**Treatments**
+
+The following treatments in your project's traits will be applied:
+
+- `form` -> `root`
+- `formError` -> `error`
+- `formAction` -> `action`
+- `formSubmit` -> `submit`

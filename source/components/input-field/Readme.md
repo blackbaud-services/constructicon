@@ -93,3 +93,10 @@ const styles = {
   required
 />
 ```
+
+**Treatments**
+
+The following treatments in your project's traits will be applied:
+
+- `inputRoot` -> `root`
+- `input` -> `field`
