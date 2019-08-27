@@ -46,7 +46,8 @@ module.exports = {
         path.resolve(__dirname, 'source/components/number-to-words', 'index.js'),
         path.resolve(__dirname, 'source/components/progress-bar', 'index.js'),
         path.resolve(__dirname, 'source/components/rich-text', 'index.js'),
-        path.resolve(__dirname, 'source/components/ticker', 'index.js')
+        path.resolve(__dirname, 'source/components/ticker', 'index.js'),
+        path.resolve(__dirname, 'source/components/tooltip', 'index.js')
       ])
     },
     {
