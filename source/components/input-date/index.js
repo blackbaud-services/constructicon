@@ -13,16 +13,14 @@ import Label from '../label'
 class InputDate extends Component {
   constructor (props) {
     super(props)
-    this.updateDay = this.updateDay.bind(this)
-    this.updateMonth = this.updateMonth.bind(this)
-    this.updateYear = this.updateYear.bind(this)
+    this.updateDateFragment = this.updateDateFragment.bind(this)
     this.updateDate = this.updateDate.bind(this)
 
     this.state = {
       touched: !!props.value,
       showSelects: props.showSelects,
       value: props.value,
-      date: props.value ? moment(props.value) : moment()
+      date: props.value ? moment(props.value) : moment(props.default)
     }
   }
 
@@ -40,19 +38,14 @@ class InputDate extends Component {
     if (this.testDateInput()) this.setState({ showSelects: true })
   }
 
-  updateDay (day) {
-    const date = this.state.date.date(day)
-    this.updateDate(date)
-  }
+  updateDateFragment (type) {
+    return value => {
+      if (!value) {
+        return
+      }
 
-  updateMonth (month) {
-    const date = this.state.date.month(month)
-    this.updateDate(date)
-  }
-
-  updateYear (year) {
-    const date = this.state.date.year(year)
-    this.updateDate(date)
+      return this.updateDate(this.state.date[type](value))
+    }
   }
 
   updateDate (moment) {
@@ -118,8 +111,8 @@ class InputDate extends Component {
             {...allowedProps}
             styles={styles.input}
             value={touched ? date.date().toString() : ''}
-            onChange={this.updateDay}
-            onBlur={this.updateDay}
+            onChange={this.updateDateFragment('date')}
+            onBlur={this.updateDateFragment('date')}
             label='Day'
             name={`${name}-day`}
             aria-labelledby={labelId}
@@ -132,8 +125,8 @@ class InputDate extends Component {
             {...allowedProps}
             styles={styles.input}
             value={touched ? date.month().toString() : ''}
-            onChange={this.updateMonth}
-            onBlur={this.updateMonth}
+            onChange={this.updateDateFragment('month')}
+            onBlur={this.updateDateFragment('month')}
             label='Month'
             name={`${name}-month`}
             aria-labelledby={labelId}
@@ -143,8 +136,8 @@ class InputDate extends Component {
             {...allowedProps}
             styles={styles.input}
             value={touched ? date.year().toString() : ''}
-            onChange={this.updateYear}
-            onBlur={this.updateYear}
+            onChange={this.updateDateFragment('year')}
+            onBlur={this.updateDateFragment('year')}
             label='Year'
             name={`${name}-year`}
             aria-labelledby={labelId}
@@ -165,6 +158,10 @@ class InputDate extends Component {
       <InputField type='date' {...this.props} />
     )
   }
+}
+
+InputDate.defaultProps = {
+  default: '1980-01-01'
 }
 
 export default withStyles(styles)(InputDate)
