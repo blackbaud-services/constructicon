@@ -22,6 +22,7 @@ describe('Flippy', () => {
     )
     const flippy = wrapper.find('Flippy')
     const styles = flippy.prop('styles')
-    expect(styles.wrapper.backgroundColor).to.eql(colors.secondary)
+    expect(styles.back.backgroundColor).to.eql(colors.secondary)
+    expect(styles.front.backgroundColor).to.eql(colors.secondary)
   })
 })

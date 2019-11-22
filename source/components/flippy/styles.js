@@ -4,6 +4,29 @@ export default (
   { background, font, foreground, image, size, spacing, styles },
   { rhythm, scale, colors, treatments, calculateSpacing, justifyContent }
 ) => {
+  const commonStyles = {
+    backfaceVisibility: 'hidden',
+    display: 'flex',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    padding: rhythm(1),
+    height: '100%',
+    width: '100%',
+    transition: '0.5s ease-out',
+    transformStyle: 'preserve-3d',
+    flexDirection: 'column',
+    alignItems: 'center',
+    alignContent: 'center',
+    ...justifyContent('center'),
+    textAlign: 'center',
+    backgroundColor: colors[background],
+    color: colors[foreground],
+    fontSize: scale(size),
+    ...calculateSpacing(spacing),
+    ...treatments[font]
+  }
+
   const defaultStyles = {
     root: {
       display: 'block',
@@ -21,30 +44,8 @@ export default (
       }
     },
 
-    wrapper: {
-      backfaceVisibility: 'hidden',
-      display: 'flex',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      padding: rhythm(1),
-      height: '100%',
-      width: '100%',
-      transition: '0.5s ease-out',
-      transformStyle: 'preserve-3d',
-      flexDirection: 'column',
-      alignItems: 'center',
-      alignContent: 'center',
-      ...justifyContent('center'),
-      textAlign: 'center',
-      backgroundColor: colors[background],
-      color: colors[foreground],
-      fontSize: scale(size),
-      ...calculateSpacing(spacing),
-      ...treatments[font]
-    },
-
     front: {
+      ...commonStyles,
       transform: 'rotateY(0)',
       visibility: 'visible',
       zIndex: 1,
@@ -63,6 +64,7 @@ export default (
     },
 
     back: {
+      ...commonStyles,
       transform: 'rotateY(-180deg)'
     }
   }
