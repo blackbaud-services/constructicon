@@ -10,6 +10,7 @@ import openShareDialog from './openShareDialog'
  * Will accept any props that the Button accepts
  */
 const ButtonShare = ({
+  children,
   share,
   type,
   url,
@@ -26,6 +27,7 @@ const ButtonShare = ({
     {...props}
   >
     <Icon name={type} />
+    {children}
   </Button>
 )
 

@@ -68,10 +68,10 @@ export default (
 export const keyframes = {
   marquee: {
     '0%': {
-      transform: 'translate(0, -50%)'
+      transform: 'translate3D(0, -50%, 0)'
     },
     '100%': {
-      transform: 'translate(-100%, -50%)'
+      transform: 'translate3D(-100%, -50%, 0)'
     }
   }
 }
