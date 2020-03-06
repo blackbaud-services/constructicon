@@ -155,7 +155,7 @@ class InputDate extends Component {
         )}
       </div>
     ) : (
-      <InputField type='date' {...this.props} />
+      <InputField type='date' {...this.props} styles={styles.field} />
     )
   }
 }
