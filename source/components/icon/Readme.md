@@ -119,6 +119,10 @@
 ```
 
 ```
+<Icon name='smiley' />
+```
+
+```
 <Icon name='sms' />
 ```
 
@@ -144,6 +148,26 @@
 
 ```
 <Icon name='yen' />
+```
+
+```
+<Icon name='walk' />
+```
+
+```
+<Icon name='run' />
+```
+
+```
+<Icon name='ride' />
+```
+
+```
+<Icon name='hike' />
+```
+
+```
+<Icon name='swim' />
 ```
 
 **Social / Providers**
@@ -208,6 +232,21 @@
 <Icon name='reddit' color='reddit' />
 ```
 
+```
+<Icon name='tumblr' color='tumblr' />
+```
+
+```
+<Icon name='snapchat' color='snapchat' />
+```
+
+```
+<Icon name='tiktok' />
+```
+
+```
+<Icon name='houseparty' color='houseparty' />
+```
 
 **Colors**
 

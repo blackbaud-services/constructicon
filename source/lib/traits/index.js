@@ -25,12 +25,12 @@ export const colors = {
   tint: 'rgba(255, 255, 255, 0.25)',
   transparent: 'transparent',
   inherit: 'inherit',
-  facebook: '#3b5999',
-  twitter: '#55acee',
+  facebook: '#1877f2',
+  twitter: '#1da1f2',
   instagram: '#e4405f',
-  youtube: '#cd201f',
-  linkedin: '#0084bf',
-  google: '#dd4b39',
+  youtube: '#ff0000',
+  linkedin: '#0077b5',
+  google: '#4285f4',
   vimeo: '#1ab7ea',
   fitbit: '#00b0b9',
   mapmyfitness: '#004a8d',
@@ -38,14 +38,17 @@ export const colors = {
   twitch: '#6701B3',
   slack: '#4a154b',
   whatsapp: '#25d366',
-  pinterest: '#bd081c',
-  messenger: '#0084ff',
+  pinterest: '#e60023',
+  messenger: '#006aff',
   reddit: '#ff4500',
   danger: '#d9534f',
   success: '#5cb85c',
   blackbaud: '#8cbe4f',
   everydayhero: '#1bab6b',
-  justgiving: '#ad29b6'
+  justgiving: '#ad29b6',
+  tumblr: '#36465d',
+  snapchat: '#fffc00',
+  houseparty: '#ff004d'
 }
 
 /**
