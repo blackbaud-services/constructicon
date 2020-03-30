@@ -10,6 +10,16 @@ PACKAGE_VERSION=$(cat package.json \
   | tr -d '[[:space:]]')
 
 curl \
+${TEAMS_WEBHOOK_URL} \
+-X POST \
+-H 'Content-Type: application/json' \
+-d @/dev/stdin <<JSON
+{
+  "text": "Constructicon version ${PACKAGE_VERSION} released!"
+}
+JSON
+
+curl \
 ${SLACK_WEBHOOK_URL} \
 -X POST \
 -H 'Content-Type: application/json' \
