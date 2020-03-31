@@ -24,8 +24,15 @@ const withForm = config => ComponentToWrap =>
 
     initOptions (config) {
       const defaults = { fields: {} }
+
+      // Build our combined props from the component's default props
+      const combinedProps = {
+        ...ComponentToWrap.defaultProps,
+        ...this.props
+      }
+
       const supplied =
-        typeof config === 'function' ? config(this.props) : config
+        typeof config === 'function' ? config(combinedProps) : config
       return merge(defaults, supplied)
     }
 
