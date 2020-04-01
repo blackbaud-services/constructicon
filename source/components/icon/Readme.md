@@ -23,6 +23,10 @@
 ```
 
 ```
+<Icon name='clock' />
+```
+
+```
 <Icon name='close' />
 ```
 
@@ -143,6 +147,10 @@
 ```
 
 ```
+<Icon name='users' />
+```
+
+```
 <Icon name='warning' />
 ```
 
@@ -163,12 +171,21 @@
 ```
 
 ```
+<Icon name='swim' />
+```
+
+```
 <Icon name='hike' />
 ```
 
 ```
-<Icon name='swim' />
+<Icon name='elevation' />
 ```
+
+```
+<Icon name='duration' />
+```
+
 
 **Social / Providers**
 
