@@ -62,6 +62,7 @@ const Form = ({
               aria-label={submit}
               title={submit}
               type='submit'
+              {...submitProps}
             >
               <span>{submit}</span>
               {icon && renderIcon(icon)}
