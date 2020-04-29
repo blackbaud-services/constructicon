@@ -25,43 +25,68 @@ export default (
     shadows,
     treatments
   }
-) => ({
-  root: merge(
-    {
-      display: block ? 'block' : 'inline-block',
-      width: block ? '100%' : 'auto',
-      cursor: 'pointer',
-      textDecoration: 'none',
-      overflow: 'hidden',
-      transform: 'translateZ(0)', // workaround for transition vs overflow:hidden/border-radius bug
-      verticalAlign: 'middle',
-      textAlign: 'center',
-      ...calculateSpacing(spacing),
-      backgroundColor: colors[background] || colors.primary,
-      color: colors[foreground] || colors.light,
-      border: `${borderWidth}px solid ${colors[borderColor]}`,
-      borderRadius: rhythm(radiuses[radius]),
-      boxShadow: shadow && shadows[shadow],
-      fontSize: scale(size),
-      ...treatments[font],
-      ...effects[effect],
+) => {
+  const backgroundColor = colors[background] || colors.primary
+  const foregroundColor = colors[foreground] || colors.light
 
-      '& > *': {
-        margin: rhythm([0, 0.125])
-      },
+  const baseStyles = {
+    display: block ? 'block' : 'inline-block',
+    width: block ? '100%' : 'auto',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    overflow: 'hidden',
+    transform: 'translateZ(0)', // workaround for transition vs overflow:hidden/border-radius bug
+    verticalAlign: 'middle',
+    textAlign: 'center',
+    ...calculateSpacing(spacing),
+    backgroundColor,
+    color: getForegroundColor(backgroundColor, foregroundColor),
+    border: `${borderWidth}px solid ${colors[borderColor]}`,
+    borderRadius: rhythm(radiuses[radius]),
+    boxShadow: shadow && shadows[shadow],
+    fontSize: scale(size),
+    ...treatments[font],
+    ...effects[effect],
 
-      '& > *:first-child': {
-        marginLeft: 0
-      },
-
-      '& > *:last-child': {
-        marginRight: 0
-      },
-
-      '& > *:first-child:last-child': {
-        display: 'block' // removes awkward spacing around single child e.g. share icon
-      }
+    '& > *': {
+      margin: rhythm([0, 0.125])
     },
-    styles
-  )
-})
+
+    '& > *:first-child': {
+      marginLeft: 0
+    },
+
+    '& > *:last-child': {
+      marginRight: 0
+    },
+
+    '& > *:first-child:last-child': {
+      display: 'block' // removes awkward spacing around single child e.g. share icon
+    }
+  }
+
+  return { root: merge(baseStyles, styles) }
+}
+
+const getForegroundColor = (background, foreground) => {
+  const lightVariants = [
+    'transparent',
+    'white',
+    '#ffffff',
+    '#FFFFFF',
+    '#fff',
+    '#FFF'
+  ]
+
+  const isBackgroundLight =
+    !background || lightVariants.indexOf(background) !== -1
+
+  const isForegroundLight =
+    !foreground || lightVariants.indexOf(foreground) !== -1
+
+  if (isBackgroundLight && isForegroundLight) {
+    return '#000000'
+  } else {
+    return foreground
+  }
+}
