@@ -61,6 +61,7 @@ module.exports = {
         path.resolve(__dirname, 'source/components/input-search', 'index.js'),
         path.resolve(__dirname, 'source/components/input-search-result', 'index.js'),
         path.resolve(__dirname, 'source/components/input-file', 'index.js'),
+        path.resolve(__dirname, 'source/components/input-image', 'index.js'),
         path.resolve(__dirname, 'source/components/input-validations', 'index.js'),
         path.resolve(__dirname, 'source/components/label', 'index.js'),
         path.resolve(__dirname, 'source/components/search-form', 'index.js')
