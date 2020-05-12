@@ -10,7 +10,8 @@ var componentsFiles = [
 ]
 
 var libFiles = [
-  './dist/lib/**/*.js'
+  './dist/lib/**/*.js',
+  './dist/lib/**/*.css'
 ]
 
 var rootFiles = [
@@ -19,6 +20,7 @@ var rootFiles = [
 
 var otherFiles = [
   './dist/**/*.js',
+  './dist/**/*.css',
   '!./dist/components/**/*.js',
   '!./dist/lib/**/*.js',
   '!./dist/*.js'

@@ -9,7 +9,7 @@
     "test": "mocha source/**/**/__tests__/*.js",
     "format": "prettier-standard 'source/**/*.js'",
     "precommit": "lint-staged",
-    "build": "babel source -d dist",
+    "build": "babel source -d dist --copy-files",
     "build:styleguide": "styleguidist build",
     "deploy:styleguide": "npm run build:styleguide && gh-pages -d styleguide",
     "deploy:prepare": "gulp npm-prepare"
