@@ -115,7 +115,7 @@ module.exports = {
     }
   ],
   require: [
-    path.join(__dirname, 'node_modules/minimal.css/minimal.css')
+    path.join(__dirname, 'source/lib/css/reset.css')
   ],
   webpackConfig: {
     module: {
@@ -127,7 +127,7 @@ module.exports = {
         },
         {
           test: /\.css$/,
-          include: path.join(__dirname, 'node_modules', 'minimal.css'),
+          include: path.join(__dirname, 'source/lib/css/reset.css'),
           loader: 'style-loader!css-loader?modules'
         }
       ]

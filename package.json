@@ -28,7 +28,6 @@
     "emotion-server": "^9.2.6",
     "filestack-js": "^3.12.4",
     "lodash": "^4.17.4",
-    "minimal.css": "^1.0.1",
     "moment": "^2.19.1",
     "prop-types": "^15.5.8",
     "query-string": "4.3.4",
