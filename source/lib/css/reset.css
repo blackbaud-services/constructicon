@@ -14,6 +14,8 @@
   list-style: none;
   text-transform: none;
   background-repeat: no-repeat;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Reset */
@@ -44,6 +46,15 @@
   border: 0;
   background: none;
   background-color: transparent;
+}
+
+/**
+ * Ensure tags don't display that shouldn't
+ */
+
+script,
+style {
+  display: none !important;
 }
 
 /**
