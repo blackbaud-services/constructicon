@@ -9,7 +9,8 @@ export default (
       background: colors[background],
       borderRadius: rhythm(radiuses[radius]),
       height: rhythm(1),
-      position: 'relative'
+      position: 'relative',
+      overflow: 'hidden'
     },
 
     fill: {

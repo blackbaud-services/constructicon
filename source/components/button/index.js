@@ -89,7 +89,7 @@ Button.propTypes = {
   /**
    * The scale to be used for the font size
    */
-  size: PropTypes.number,
+  size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
   /**
    * The spacing to be applied
