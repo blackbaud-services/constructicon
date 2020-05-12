@@ -13,6 +13,7 @@ const Accordion = ({
   id = uuid(),
   opened,
   closed,
+  label,
   toggled,
   onToggle,
   classNames
@@ -21,8 +22,8 @@ const Accordion = ({
     <button
       id={`${id}-title`}
       aria-controls={`${id}-body`}
-      aria-expanded={toggled}
-      aria-label={title}
+      aria-expanded={!!toggled}
+      aria-label={label || title}
       className={classNames.head}
       onClick={onToggle}
     >
@@ -51,6 +52,11 @@ Accordion.propTypes = {
    * The title of the section
    */
   title: PropTypes.any.isRequired,
+
+  /**
+   * Labels the accordion title
+   */
+  label: PropTypes.string,
 
   /**
    * The size of the gutter to be passed through rhythm
