@@ -5,6 +5,7 @@ import withStyles from '../with-styles'
 import styles from './styles'
 import { isBoolean } from '../../lib/form'
 
+import ContentEditable from 'react-contenteditable'
 import Icon from '../icon'
 import InputValidations from '../input-validations'
 import Label from '../label'
@@ -19,6 +20,7 @@ const InputField = ({
   type = 'text',
   onBlur,
   onChange,
+  onKeyDown,
   styles = {},
   status,
   validations,
@@ -35,9 +37,25 @@ const InputField = ({
     'validators'
   ]
   const allowedProps = omit(props, propsBlacklist)
-  const Tag = type === 'textarea' ? 'textarea' : 'input'
+  const Tag = getTag(type)
   const inputId = id || name
   const labelId = `label-${inputId}`
+  const isContentEditable = type === 'contenteditable'
+
+  const handleKeyDown = event => {
+    onKeyDown && onKeyDown(event)
+
+    if (isContentEditable && event.metaKey) {
+      switch (event.key) {
+        case 'u':
+          return document.execCommand('underline', false)
+        case 's':
+          event.preventDefault()
+          return document.execCommand('strikeThrough', false)
+        default:
+      }
+    }
+  }
 
   const renderField = () => (
     <Tag
@@ -46,7 +64,9 @@ const InputField = ({
       name={name}
       id={inputId}
       value={value}
+      html={isContentEditable && value}
       checked={isBoolean(type) && value}
+      contentEditable={isContentEditable}
       onChange={e =>
         onChange &&
         onChange(isBoolean(type) ? e.target.checked : e.target.value)
@@ -54,6 +74,7 @@ const InputField = ({
       onBlur={e =>
         onBlur && onBlur(isBoolean(type) ? e.target.checked : e.target.value)
       }
+      onKeyDown={handleKeyDown}
       required={required}
       aria-labelledby={labelId}
       {...allowedProps}
@@ -103,6 +124,17 @@ const InputField = ({
   )
 }
 
+const getTag = type => {
+  switch (type) {
+    case 'textarea':
+      return 'textarea'
+    case 'contenteditable':
+      return ContentEditable
+    default:
+      return 'input'
+  }
+}
+
 InputField.propTypes = {
   /**
    * The label for the field
@@ -146,6 +178,7 @@ InputField.propTypes = {
   type: PropTypes.oneOf([
     'checkbox',
     'color',
+    'contenteditable',
     'date',
     'email',
     'hidden',

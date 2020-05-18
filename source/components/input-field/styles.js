@@ -6,7 +6,7 @@ export default (
   { colors, fonts, measures, radiuses, rhythm, scale, treatments }
 ) => {
   const checkbox = isBoolean(type)
-  const textarea = type === 'textarea'
+  const textarea = ['textarea', 'contenteditable'].indexOf(type) > -1
   const isInvalid = touched && invalid
 
   const defaultStyles = {
@@ -46,6 +46,22 @@ export default (
         '&:focus': {
           borderColor: isInvalid ? colors.danger : colors.secondary,
           boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
+        },
+
+        b: {
+          fontWeight: 'bold'
+        },
+
+        i: {
+          fontStyle: 'italic'
+        },
+
+        's, strike': {
+          textDecoration: 'line-through'
+        },
+
+        u: {
+          textDecoration: 'underline'
         }
       },
 
