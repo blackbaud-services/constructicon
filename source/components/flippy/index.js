@@ -4,7 +4,7 @@ import withStyles from '../with-styles'
 import styles from './styles'
 
 const Flippy = ({ front, back, color, classNames }) => (
-  <div className={`c11n-flippy ${classNames.root}`}>
+  <div className={`c11n-flippy ${classNames.root}`} tabIndex={0}>
     <div className={classNames.front}>{front}</div>
     <div className={classNames.back}>{back}</div>
   </div>

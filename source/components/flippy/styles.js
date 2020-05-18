@@ -41,6 +41,12 @@ export default (
       },
       '&:hover > div:last-child': {
         transform: 'rotateY(0)'
+      },
+      '&:focus > div:first-child': {
+        transform: 'rotateY(180deg)'
+      },
+      '&:focus > div:last-child': {
+        transform: 'rotateY(0)'
       }
     },
 
