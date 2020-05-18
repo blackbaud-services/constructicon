@@ -64,7 +64,7 @@ const InputField = ({
       name={name}
       id={inputId}
       value={value}
-      html={isContentEditable && value}
+      html={isContentEditable ? value : undefined}
       checked={isBoolean(type) && value}
       contentEditable={isContentEditable}
       onChange={e =>
