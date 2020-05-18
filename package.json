@@ -32,6 +32,7 @@
     "prop-types": "^15.5.8",
     "query-string": "4.3.4",
     "react-avatar-editor": "^11.0.2",
+    "react-contenteditable": "^3.3.4",
     "react-dropzone": "^4.2.9",
     "react-modal": "^3.2.1",
     "react-onclickoutside": "^6.7.1",

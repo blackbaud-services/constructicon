@@ -69,12 +69,20 @@ export default (
       marginBottom: rhythm(2)
     },
 
-    '& strong': {
-      fontWeight: 700
+    '& strong, & b': {
+      fontWeight: 'bold'
     },
 
-    '& em': {
+    '& em, & i': {
       fontStyle: 'italic'
+    },
+
+    '& u': {
+      textDecoration: 'underline'
+    },
+
+    '& strike, & s': {
+      textDecoration: 'line-through'
     },
 
     '& h1': {

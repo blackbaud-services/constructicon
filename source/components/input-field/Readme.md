@@ -26,6 +26,23 @@ initialState = { fn: '', ln: '' };
 </div>
 ```
 
+**Content Editable**
+
+```
+initialState = { val: '<b>Some</b> <i>text</i> <u>here</u>.' };
+
+<div>
+  <InputField
+    type='contenteditable'
+    label='Rich text'
+    name='contenteditable'
+    value={state.val}
+    onChange={val => setState({ val })}
+  />
+
+  <Section tag='pre' background='paleGrey' spacing={0.5} style={{ fontFamily: 'monospace'}} children={state.val} />
+</div>
+```
 
 **Status indicator**
 
