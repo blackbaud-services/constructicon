@@ -4,48 +4,55 @@ import omit from 'lodash/omit'
 import withStyles from '../with-styles'
 import styles from './styles'
 import { isBoolean } from '../../lib/form'
+import sanitizeHtml from '../../lib/sanitizeHtml'
 
 import ContentEditable from 'react-contenteditable'
 import Icon from '../icon'
 import InputValidations from '../input-validations'
 import Label from '../label'
 
-const InputField = ({
-  classNames,
-  error,
-  id,
-  label,
-  name,
-  required,
-  type = 'text',
-  onBlur,
-  onChange,
-  onKeyDown,
-  styles = {},
-  status,
-  validations,
-  value,
-  ...props
-}) => {
-  const propsBlacklist = [
-    'children',
-    'dirty',
-    'initial',
-    'invalid',
-    'styles',
-    'touched',
-    'validators'
-  ]
-  const allowedProps = omit(props, propsBlacklist)
-  const Tag = getTag(type)
-  const inputId = id || name
-  const labelId = `label-${inputId}`
-  const isContentEditable = type === 'contenteditable'
+class InputField extends React.Component {
+  constructor (props) {
+    super(props)
+    this.handleBlur = this.handleBlur.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.handlePaste = this.handlePaste.bind(this)
+    this.state = { value: props.value }
+  }
 
-  const handleKeyDown = event => {
+  getTag () {
+    switch (this.props.type) {
+      case 'textarea':
+        return 'textarea'
+      case 'contenteditable':
+        return ContentEditable
+      default:
+        return 'input'
+    }
+  }
+
+  handleChange (event) {
+    const { onChange, type } = this.props
+    const value = isBoolean(type) ? event.target.checked : event.target.value
+
+    this.setState({ value })
+
+    return onChange && onChange(value)
+  }
+
+  handleBlur () {
+    const { onBlur } = this.props
+
+    return onBlur && onBlur(sanitizeHtml(this.state.value))
+  }
+
+  handleKeyDown (event) {
+    const { onKeyDown, type } = this.props
+
     onKeyDown && onKeyDown(event)
 
-    if (isContentEditable && event.metaKey) {
+    if (type === 'contenteditable' && event.metaKey) {
       switch (event.key) {
         case 'u':
           return document.execCommand('underline', false)
@@ -57,81 +64,116 @@ const InputField = ({
     }
   }
 
-  const renderField = () => (
-    <Tag
-      className={classNames.field}
-      type={type}
-      name={name}
-      id={inputId}
-      value={value}
-      html={isContentEditable ? value : undefined}
-      checked={isBoolean(type) && value}
-      contentEditable={isContentEditable}
-      onChange={e =>
-        onChange &&
-        onChange(isBoolean(type) ? e.target.checked : e.target.value)
-      }
-      onBlur={e =>
-        onBlur && onBlur(isBoolean(type) ? e.target.checked : e.target.value)
-      }
-      onKeyDown={handleKeyDown}
-      required={required}
-      aria-labelledby={labelId}
-      {...allowedProps}
-    />
-  )
+  handlePaste (event) {
+    const { onChange, type } = this.props
 
-  const renderStatus = () => {
-    switch (status) {
-      case 'fetching':
-        return <Icon styles={styles.status} name='loading' spin color='grey' />
-      case 'fetched':
-        return <Icon styles={styles.status} name='check' color='success' />
-      case 'failed':
-        return <Icon styles={styles.status} name='warning' color='danger' />
-      default:
-        return null
+    if (type === 'contenteditable') {
+      return setTimeout(() => {
+        const value = sanitizeHtml(this.state.value)
+
+        this.setState({ value })
+        onChange && onChange(value)
+      })
     }
   }
 
-  return (
-    <div className={`c11n-input-field ${classNames.root}`}>
-      {label && (
-        <Label
-          id={labelId}
-          inputId={inputId}
-          required={required}
-          styles={{
-            root: styles.label,
-            required: styles.required
-          }}
-        >
-          {label}
-        </Label>
-      )}
+  render () {
+    const {
+      classNames,
+      error,
+      id,
+      label,
+      name,
+      required,
+      type = 'text',
+      onBlur,
+      onChange,
+      onKeyDown,
+      styles = {},
+      status,
+      validations,
+      value,
+      ...props
+    } = this.props
 
-      {renderField()}
+    const propsBlacklist = [
+      'children',
+      'dirty',
+      'initial',
+      'invalid',
+      'styles',
+      'touched',
+      'validators'
+    ]
+    const allowedProps = omit(props, propsBlacklist)
+    const Tag = this.getTag()
+    const inputId = id || name
+    const labelId = `label-${inputId}`
+    const isContentEditable = type === 'contenteditable'
 
-      {status && renderStatus()}
+    const renderField = () => (
+      <Tag
+        className={classNames.field}
+        type={type}
+        name={name}
+        id={inputId}
+        value={value}
+        html={isContentEditable ? value : undefined}
+        checked={isBoolean(type) && value}
+        contentEditable={isContentEditable}
+        onChange={this.handleChange}
+        onBlur={this.handleBlur}
+        onKeyDown={this.handleKeyDown}
+        onPaste={this.handlePaste}
+        required={required}
+        aria-labelledby={labelId}
+        {...allowedProps}
+      />
+    )
 
-      {error && (
-        <InputValidations
-          styles={{ root: styles.error }}
-          validations={validations}
-        />
-      )}
-    </div>
-  )
-}
+    const renderStatus = () => {
+      switch (status) {
+        case 'fetching':
+          return (
+            <Icon styles={styles.status} name='loading' spin color='grey' />
+          )
+        case 'fetched':
+          return <Icon styles={styles.status} name='check' color='success' />
+        case 'failed':
+          return <Icon styles={styles.status} name='warning' color='danger' />
+        default:
+          return null
+      }
+    }
 
-const getTag = type => {
-  switch (type) {
-    case 'textarea':
-      return 'textarea'
-    case 'contenteditable':
-      return ContentEditable
-    default:
-      return 'input'
+    return (
+      <div className={`c11n-input-field ${classNames.root}`}>
+        {label && (
+          <Label
+            id={labelId}
+            inputId={inputId}
+            required={required}
+            styles={{
+              root: styles.label,
+              required: styles.required
+            }}
+          >
+            {label}
+          </Label>
+        )}
+
+        {renderField()}
+
+        {status && renderStatus()}
+
+        {error && (
+          <InputValidations
+            styles={{ root: styles.error }}
+            validations={validations}
+          />
+        )}
+      </div>
+    )
   }
 }
 

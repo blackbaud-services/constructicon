@@ -38,6 +38,7 @@ initialState = { val: '<b>Some</b> <i>text</i> <u>here</u>.' };
     name='contenteditable'
     value={state.val}
     onChange={val => setState({ val })}
+    onBlur={val => setState({ val })}
   />
 
   <Section tag='pre' background='paleGrey' spacing={0.5} style={{ fontFamily: 'monospace'}} children={state.val} />

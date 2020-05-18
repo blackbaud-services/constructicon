@@ -35,12 +35,14 @@ export default (
         padding: rhythm([textarea ? 0.25 : 0.125, 0.333]),
         height: textarea ? 'auto' : rhythm(1.666),
         lineHeight: textarea && '1.333em',
-        minHeight: textarea && rhythm(4),
-        maxHeight: textarea && rhythm(10),
-        resize: textarea && 'vertical',
+        minHeight: textarea && rhythm(3.25),
         border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
         boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
         borderRadius: rhythm(radiuses.small),
+        ...(type === 'textarea' && {
+          maxHeight: rhythm(12),
+          resize: 'vertical'
+        }),
         ...treatments.input,
 
         '&:focus': {
