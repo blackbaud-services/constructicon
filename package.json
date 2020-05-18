@@ -37,7 +37,8 @@
     "react-modal": "^3.2.1",
     "react-onclickoutside": "^6.7.1",
     "react-slick": "^0.18.1",
-    "react-slider": "^0.11.2"
+    "react-slider": "^0.11.2",
+    "sanitize-html": "^1.23.0"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
@@ -61,8 +62,8 @@
     "mocha": "^2.5.3",
     "prettier": "^1.14.3",
     "prettier-standard": "^8.0.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-helmet": "^5.2.0",
     "react-styleguidist": "^6.2.6",
     "sinon": "^4.1.3",

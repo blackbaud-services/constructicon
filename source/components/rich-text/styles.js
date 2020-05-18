@@ -81,7 +81,7 @@ export default (
       textDecoration: 'underline'
     },
 
-    '& strike, & s': {
+    '& strike, & s, & del': {
       textDecoration: 'line-through'
     },
 
