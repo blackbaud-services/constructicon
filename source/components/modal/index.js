@@ -139,7 +139,12 @@ Modal.propTypes = {
   /**
    * Enable scroll of document when modal is open
    */
-  enableDocumentScroll: PropTypes.bool
+  enableDocumentScroll: PropTypes.bool,
+
+  /**
+   * Max width of the modal
+   */
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }
 
 Modal.defaultProps = {
@@ -147,7 +152,8 @@ Modal.defaultProps = {
   closeIcon: <Icon name='close' />,
   shouldCloseOnOverlayClick: true,
   spacing: 1,
-  styles: {}
+  styles: {},
+  width: 26
 }
 
 export default withStyles(styles)(Modal)

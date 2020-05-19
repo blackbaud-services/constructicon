@@ -1,6 +1,6 @@
 import merge from 'lodash/merge'
 
-export default ({ spacing, styles }, { calculateSpacing, rhythm }) => {
+export default ({ spacing, styles, width }, { calculateSpacing, rhythm }) => {
   const defaultStyles = {
     overlay: {
       position: 'fixed',
@@ -23,7 +23,7 @@ export default ({ spacing, styles }, { calculateSpacing, rhythm }) => {
       maxHeight: 'calc(100vh - 2rem)',
       border: '1px solid #ccc',
       background: '#fff',
-      maxWidth: '40rem',
+      maxWidth: rhythm(width),
       overflow: 'hidden',
       borderRadius: '4px',
       outline: 'none',
