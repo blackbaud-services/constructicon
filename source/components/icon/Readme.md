@@ -63,6 +63,10 @@
 ```
 
 ```
+<Icon name='image' />
+```
+
+```
 <Icon name='info' />
 ```
 
@@ -148,6 +152,10 @@
 
 ```
 <Icon name='users' />
+```
+
+```
+<Icon name='video' />
 ```
 
 ```
