@@ -28,8 +28,14 @@ class InputVideo extends React.Component {
       Promise.resolve()
         .then(() => this.setState({ status: 'fetching' }))
         .then(() => fetchOembedUrl(val))
-        .then(video => video.type === 'video' && this.setState({ video }))
-        .then(() => this.setState({ status: 'fetched' }))
+        .then(video => {
+          if (video.type !== 'video') {
+            return this.setState({ status: 'failed' })
+          }
+
+          this.setState({ video, status: 'fetched' })
+          this.props.onVideoChange && this.props.onVideoChange(video)
+        })
         .catch(() => this.setState({ status: 'failed' }))
     } else {
       this.setState({ status: 'failed' })
@@ -104,6 +110,11 @@ InputVideo.propTypes = {
    * The change handler that will receive the updated value as it's only param
    */
   onChange: PropTypes.func.isRequired,
+
+  /**
+   * The change handler that will receive the updated video information
+   */
+  onVideoChange: PropTypes.func,
 
   /**
    * Mark the field as required and displays an asterisk next to the label

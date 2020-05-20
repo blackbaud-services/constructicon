@@ -19,7 +19,6 @@ export default (
     root: {
       display: 'block',
       position: 'relative',
-      minHeight: rhythm(2),
       ...calculateSpacing(margin, 'margin'),
       ...calculateSpacing(spacing),
       backgroundColor: background && colors[background],
