@@ -99,9 +99,13 @@ class InputImage extends React.Component {
               max={200}
               onChange={zoom => this.setState({ zoom })}
             />
-            <div className={classNames.note}>
-              {`${image.name} (${formatFileSize(image.size)})`}
-            </div>
+            {image.size && (
+              <div className={classNames.note}>
+                {`${image.name || 'upload.jpg'} (${formatFileSize(
+                  image.size
+                )})`}
+              </div>
+            )}
           </div>
         ) : (
           <div className={classNames.dropzoneContainer}>

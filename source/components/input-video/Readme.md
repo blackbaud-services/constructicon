@@ -13,3 +13,18 @@ initialState = { video: '' };
   value={state.video}
 />
 ```
+
+
+**With initial value**
+
+```
+initialState = { video: 'https://vimeo.com/243244233' };
+
+<InputVideo
+  label='Enter a video URL'
+  name='video'
+  onChange={video => setState({ video })}
+  onVideoChange={console.log}
+  value={state.video}
+/>
+```

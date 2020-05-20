@@ -18,6 +18,10 @@ class InputVideo extends React.Component {
     }
   }
 
+  componentDidMount () {
+    this.handleChange(this.props.value)
+  }
+
   handleChange (val) {
     if (!val) {
       this.setState({ status: 'empty', video: null })
@@ -78,7 +82,7 @@ class InputVideo extends React.Component {
         />
         {video ? (
           <div className={classNames.video}>
-            <Video embed={video} />
+            {video.html && <Video embed={video} />}
             <button className={classNames.clear} onClick={this.handleClear}>
               Clear Video
             </button>

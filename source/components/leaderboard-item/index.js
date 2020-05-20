@@ -136,6 +136,7 @@ LeaderboardItem.propTypes = {
 }
 
 LeaderboardItem.defaultProps = {
+  avatarRadius: 'large',
   borderColor: 'shade',
   href: '#',
   linkTag: 'a',

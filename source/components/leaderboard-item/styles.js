@@ -2,6 +2,7 @@ import merge from 'lodash/merge'
 
 export default (
   {
+    avatarRadius,
     background,
     borderColor,
     borderWidth,
@@ -58,7 +59,7 @@ export default (
       height: rhythm(1.25),
       backgroundColor: 'rgba(0,0,0,0.125)',
       border: '2px solid rgba(0,0,0,0.25)',
-      borderRadius: '50%',
+      borderRadius: rhythm(radiuses[avatarRadius]),
       marginRight: rhythm(0.5),
       ...treatments.leaderboardItemImage
     },
