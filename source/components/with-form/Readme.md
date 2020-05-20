@@ -107,11 +107,11 @@ You can call form.updateValues() which can update the values of fields from outs
 Values can be updated in the format below:
 
 ```javascript static
-componentWillReceiveProps (nextProps) {
-  const { testValue } = nextProps
-  if (testValue !=== this.props.testValue)
+componentDidUpdate (prevProps) {
+  const { testValue } = this.props
+  if (testValue !=== prevProps.testValue)
     this.props.form.updateValues({
-      testValue: testValue
+      testValue
     })
   }
 }

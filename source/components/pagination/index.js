@@ -15,15 +15,15 @@ export default class Pagination extends Component {
     this.handlePagintionClick = this.handlePaginationClick.bind(this)
   }
 
-  componentWillReceiveProps ({ toPaginate }) {
+  componentDidUpdate () {
     if (this.props.persistPage) {
       this.setState({
-        allPages: this.paginate(toPaginate)
+        allPages: this.paginate(this.props.toPaginate)
       })
     } else {
       this.setState({
         pageNumber: 0,
-        allPages: this.paginate(toPaginate)
+        allPages: this.paginate(this.props.toPaginate)
       })
     }
   }
