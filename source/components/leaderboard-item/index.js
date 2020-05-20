@@ -13,10 +13,11 @@ const LeaderboardItem = ({
   rank,
   subtitle,
   target,
-  title
+  title,
+  tag: Tag
 }) => {
   return (
-    <li className={`c11n-leaderboard-item ${classNames.root}`}>
+    <Tag className={`c11n-leaderboard-item ${classNames.root}`}>
       <LinkTag
         href={href}
         target={target}
@@ -35,11 +36,50 @@ const LeaderboardItem = ({
           {amount && <div className={classNames.amount}>{amount}</div>}
         </div>
       </LinkTag>
-    </li>
+    </Tag>
   )
 }
 
 LeaderboardItem.propTypes = {
+  /**
+   * The background color of the section
+   */
+  background: PropTypes.string,
+
+  /**
+   * The color of the text
+   */
+  foreground: PropTypes.string,
+
+  /**
+   * The color of the border
+   */
+  borderColor: PropTypes.string,
+
+  /**
+   * The width of the border
+   */
+  borderWidth: PropTypes.number,
+
+  /**
+   * The radius of the section
+   */
+  radius: PropTypes.string,
+
+  /**
+   * The margin to be applied
+   */
+  margin: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+
+  /**
+   * The tag or component to be used for the root element
+   */
+  tag: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
+
   /**
    * The tag or component to be used as the link. e.g. `a`, React Router `Link`
    */
@@ -96,10 +136,15 @@ LeaderboardItem.propTypes = {
 }
 
 LeaderboardItem.defaultProps = {
-  linkTag: 'a',
-  target: '_blank',
+  borderColor: 'shade',
   href: '#',
-  styles: {}
+  linkTag: 'a',
+  margin: 0,
+  radius: 'medium',
+  spacing: 0.5,
+  styles: {},
+  tag: 'li',
+  target: '_blank'
 }
 
 export default withStyles(styles)(LeaderboardItem)

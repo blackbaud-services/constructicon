@@ -1,14 +1,31 @@
 import merge from 'lodash/merge'
 
-export default ({ rank, styles, subtitle }, { measures, rhythm, scale, treatments }) => {
+export default (
+  {
+    background,
+    borderColor,
+    borderWidth,
+    foreground,
+    margin,
+    radius,
+    rank,
+    spacing,
+    styles,
+    subtitle
+  },
+  { calculateSpacing, colors, measures, radiuses, rhythm, scale, treatments }
+) => {
   const defaultStyles = {
     root: {
       display: 'block',
       position: 'relative',
       minHeight: rhythm(2),
-      padding: `${rhythm(0.33)} ${rhythm(0.33)} ${rhythm(0.33)} ${rhythm(
-        rank ? 2 : 0.33
-      )}`,
+      ...calculateSpacing(margin, 'margin'),
+      ...calculateSpacing(spacing),
+      backgroundColor: background && colors[background],
+      color: foreground && colors[foreground],
+      border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
+      borderRadius: radius && rhythm(radiuses[radius]),
       fontSize: scale(-1),
       breakInside: 'avoid',
       listStyle: 'none',
@@ -16,12 +33,13 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale, treatment
     },
 
     rank: {
-      position: 'absolute',
-      top: '50%',
-      left: rhythm(0.5),
-      height: rhythm(2),
-      lineHeight: rhythm(2),
-      marginTop: rhythm(-1),
+      width: rhythm(1),
+      flexBasis: rhythm(1),
+      flexShrink: 0,
+      flexGrow: 0,
+      marginRight: rhythm(0.25),
+      textAlign: 'center',
+      fontWeight: 700,
       ...treatments.leaderboardItemRank
     },
 
@@ -75,6 +93,7 @@ export default ({ rank, styles, subtitle }, { measures, rhythm, scale, treatment
       paddingLeft: rhythm(0.5),
       paddingRight: rhythm(0.5),
       textAlign: 'right',
+      fontWeight: 700,
       lineHeight: measures.medium,
       ...treatments.leaderboardItemAmount
     }

@@ -81,6 +81,10 @@ const leaders = [ leader, leader, leader, leader, leader, leader ];
       title={leader.name}
       subtitle={leader.charity}
       amount={leader.amount}
+      rank={i + 1}
+      borderWidth={1}
+      spacing={0.5}
+      margin={{ b: 0.5 }}
     />
   ))}
 </Leaderboard>
