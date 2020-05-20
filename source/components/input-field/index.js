@@ -89,6 +89,7 @@ class InputField extends React.Component {
       onBlur,
       onChange,
       onKeyDown,
+      setRef,
       styles = {},
       status,
       validations,
@@ -113,6 +114,7 @@ class InputField extends React.Component {
 
     const renderField = () => (
       <Tag
+        ref={setRef}
         className={classNames.field}
         type={type}
         name={name}
