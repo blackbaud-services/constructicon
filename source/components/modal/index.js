@@ -19,9 +19,9 @@ class Modal extends Component {
     this.calculateDocumentScroll(this.props)
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.isOpen !== this.props.isOpen) {
-      this.calculateDocumentScroll(nextProps)
+  componentDidUpdate (prevProps) {
+    if (prevProps.isOpen !== this.props.isOpen) {
+      this.calculateDocumentScroll(this.props)
     }
   }
 
