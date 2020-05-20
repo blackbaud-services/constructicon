@@ -24,6 +24,7 @@
   "author": "Dan Henderson <dan.henderson@everydayhero.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.2",
     "emotion": "^9.2.6",
     "emotion-server": "^9.2.6",
     "filestack-js": "^3.12.4",
