@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { formatFileSize } from '../../lib/files'
 import withStyles from '../with-styles'
 import styles from './styles'
 
@@ -11,14 +12,15 @@ import Label from '../label'
 import Slider from 'react-slider'
 
 class InputImage extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.editor = null
     this.handleClearImage = this.handleClearImage.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleSetImage = this.handleSetImage.bind(this)
     this.setRef = this.setRef.bind(this)
     this.state = {
-      image: null,
+      image: props.value,
       zoom: 100,
       step: 0
     }
@@ -39,6 +41,13 @@ class InputImage extends React.Component {
   handleClearImage () {
     this.setState({ image: null })
     this.props.onChange(null)
+  }
+
+  handleSetImage (image) {
+    const { onFileChange } = this.props
+
+    this.setState({ image }, this.handleChange)
+    onFileChange && onFileChange(image)
   }
 
   setRef (el) {
@@ -90,17 +99,20 @@ class InputImage extends React.Component {
               max={200}
               onChange={zoom => this.setState({ zoom })}
             />
+            <div className={classNames.note}>
+              {`${image.name} (${formatFileSize(image.size)})`}
+            </div>
           </div>
         ) : (
           <div className={classNames.dropzoneContainer}>
             <Dropzone
               className={classNames.dropzone}
-              onDrop={images => this.setState({ image: images[0] })}
+              onDrop={images => this.handleSetImage(images[0])}
             >
               <Button {...buttonProps}>Select Image</Button>
               <p>
                 Upload an image or drop a file into this area
-                {note && <small>{note}</small>}
+                {note && <small className={classNames.note}>{note}</small>}
               </p>
             </Dropzone>
           </div>
@@ -131,6 +143,11 @@ InputImage.propTypes = {
    * The change handler that will receive the updated value as it's only param
    */
   onChange: PropTypes.func.isRequired,
+
+  /**
+   * The change handler that will receive the updated file
+   */
+  onFileChange: PropTypes.func,
 
   /**
    * Mark the field as required and displays an asterisk next to the label
