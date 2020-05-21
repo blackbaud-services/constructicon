@@ -59,10 +59,12 @@ class InputImage extends React.Component {
       buttonProps,
       classNames,
       error,
+      height,
       label,
       note,
       required,
-      validations
+      validations,
+      width
     } = this.props
 
     const { image, zoom } = this.state
@@ -75,7 +77,7 @@ class InputImage extends React.Component {
             <AvatarEditor
               border={25}
               color={[0, 0, 0, 0.125]}
-              height={500}
+              height={height}
               image={image}
               onImageChange={this.handleChange}
               onImageReady={this.handleChange}
@@ -83,7 +85,7 @@ class InputImage extends React.Component {
               rotate={0}
               scale={zoom / 100}
               style={{ width: '100%', height: 'auto' }}
-              width={500}
+              width={width}
             />
             <button
               className={classNames.clear}
@@ -125,6 +127,11 @@ class InputImage extends React.Component {
       </div>
     )
   }
+}
+
+InputImage.defaultProps = {
+  height: 500,
+  width: 500
 }
 
 InputImage.propTypes = {

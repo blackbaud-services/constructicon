@@ -61,6 +61,7 @@ class InputVideo extends React.Component {
       note,
       onBlur,
       onChange,
+      onVideoChange,
       styles = {},
       value,
       type = 'search',
