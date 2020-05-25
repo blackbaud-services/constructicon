@@ -13,3 +13,14 @@ initialState = { image: '' };
   value={state.image}
 />
 ```
+
+```
+<InputImage
+  label='Upload an image'
+  name='image'
+  onChange={console.log}
+  orientationChange
+  width={800}
+  heigh={600}
+/>
+```

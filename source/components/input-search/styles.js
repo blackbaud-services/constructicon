@@ -88,7 +88,7 @@ export default (
       cursor: 'pointer',
       backgroundColor: colors.paleGrey,
 
-      '&:hover': {
+      '&:hover, &:focus': {
         backgroundColor: colors.primary,
         color: colors.light
       }
