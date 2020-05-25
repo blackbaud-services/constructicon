@@ -1,4 +1,5 @@
 import merge from 'lodash/merge'
+import { getForegroundColor } from '../../lib/color'
 
 export default (
   {
@@ -66,27 +67,4 @@ export default (
   }
 
   return { root: merge(baseStyles, styles) }
-}
-
-const getForegroundColor = (background, foreground) => {
-  const lightVariants = [
-    'transparent',
-    'white',
-    '#ffffff',
-    '#FFFFFF',
-    '#fff',
-    '#FFF'
-  ]
-
-  const isBackgroundLight =
-    !background || lightVariants.indexOf(background) !== -1
-
-  const isForegroundLight =
-    !foreground || lightVariants.indexOf(foreground) !== -1
-
-  if (isBackgroundLight && isForegroundLight) {
-    return '#000000'
-  } else {
-    return foreground
-  }
 }

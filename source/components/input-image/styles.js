@@ -1,8 +1,9 @@
 import merge from 'lodash/merge'
+import { getForegroundColor } from '../../lib/color'
 
 export default (props, traits) => {
-  const { colors, measures, rhythm, scale } = traits
-  const { styles, value } = props
+  const { styles, value, maxWidth } = props
+  const { colors, effects, measures, rhythm, scale, treatments } = traits
 
   const overlay =
     'linear-gradient(rgba(240, 240, 240, 0.85),  rgba(240, 240, 240, 0.85))'
@@ -10,9 +11,13 @@ export default (props, traits) => {
   const baseStyles = {
     root: {
       position: 'relative',
-      maxWidth: '350px',
       textAlign: 'center',
+      maxWidth: maxWidth,
       marginBottom: rhythm(1)
+    },
+
+    image: {
+      position: 'relative'
     },
 
     dropzoneContainer: {
@@ -54,27 +59,69 @@ export default (props, traits) => {
     },
 
     clear: {
-      marginTop: rhythm(0.5),
+      margin: rhythm(0.25),
       fontSize: scale(-1),
       textDecoration: 'underline',
       opacity: 0.5
     },
 
+    controls: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: 'auto'
+    },
+
     slider: {
+      flex: 1,
       height: rhythm(0.5),
       maxWidth: 250,
-      margin: '1rem auto 0',
       backgroundColor: colors.shade,
-      borderRadius: rhythm(0.25)
+      borderRadius: rhythm(0.25),
+      marginRight: rhythm(0.5)
+    },
+
+    sliderTrack: {
+      height: rhythm(0.5)
     },
 
     sliderHandle: {
+      ...treatments.button,
+      position: 'relative',
       height: rhythm(1),
       width: rhythm(1),
       backgroundColor: colors.primary,
-      borderRadius: rhythm(0.5),
+      color: getForegroundColor(colors.primary, colors.light),
+      borderRadius: rhythm(1),
       transform: `translateY(${rhythm(-0.25)})`,
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ...effects.tint
+    },
+
+    fileInfo: {
+      display: 'inline-block',
+      verticalAlign: 'middle',
+      maxWidth: rhythm(8),
+      margin: rhythm([0.5, 0.25]),
+      fontSize: scale(-1),
+      lineHeight: measures.medium,
+      opacity: 0.5,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    },
+
+    orientation: {
+      position: 'absolute',
+      top: rhythm(1),
+      right: rhythm(1)
+    },
+
+    icon: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)'
     },
 
     note: {

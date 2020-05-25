@@ -151,7 +151,7 @@ export const effects = {
       backgroundColor: colors.shade,
       opacity: 0
     },
-    '&:hover:before': {
+    '&:hover:before, &:focus:before': {
       opacity: 1
     }
   },
@@ -163,21 +163,21 @@ export const effects = {
       backgroundColor: colors.tint,
       opacity: 0
     },
-    '&:hover:before': {
+    '&:hover:before, &:focus:before': {
       opacity: 1
     }
   },
   grow: {
     transition: transitions.easeOut,
     backfaceVisibility: 'hidden',
-    '&:hover': {
+    '&:hover, &:focus': {
       transform: 'scale(1.1)'
     }
   },
   shrink: {
     transition: transitions.easeOut,
     backfaceVisibility: 'hidden',
-    '&:hover': {
+    '&:hover, &:focus': {
       transform: 'scale(0.925)'
     }
   }

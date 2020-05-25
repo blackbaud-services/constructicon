@@ -7543,10 +7543,10 @@ react-slick@^0.18.1:
     json2mq "^0.2.0"
     object-assign "^4.1.0"
 
-react-slider@^0.11.2:
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/react-slider/-/react-slider-0.11.2.tgz#ae014e1454c3cdd5f28b5c2495b2a08abd9971e6"
-  integrity sha512-y49ZwJJ7OcPdihgt71xYI8GRdAzpFuSLQR8b+cKotutxqf8MAEPEtqvWKlg+3ZQRe5PMN6oWbIb7wEYDF8XhNQ==
+react-slider@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-slider/-/react-slider-1.0.7.tgz#3e1a49cef0b96ce9596af0ee3494cce1384105c5"
+  integrity sha512-4n0hUtUYB7fLB8xENS28tu9T+H2QyJcXc1wYDBIdsxx5TVIxk8ngahxKzHKcE9Y509z4ppXH2JI1ok4cHrvg6w==
 
 react-styleguidist@^6.2.6:
   version "6.5.3"

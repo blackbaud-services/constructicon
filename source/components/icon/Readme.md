@@ -115,7 +115,15 @@
 ```
 
 ```
+<Icon name='portrait' />
+```
+
+```
 <Icon name='pound' />
+```
+
+```
+<Icon name='rotate' />
 ```
 
 ```
@@ -290,6 +298,9 @@
 <Icon name='loading' spin />
 ```
 
+```
+<Icon name='rotate' spin />
+```
 
 **Rotate**
 
