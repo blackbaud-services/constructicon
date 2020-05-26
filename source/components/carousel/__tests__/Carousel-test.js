@@ -9,12 +9,8 @@ describe('Carousel', () => {
         <div>Slide 2</div>
       </Carousel>
     )
-    expect(
-      wrapper
-        .find('.slick-slide')
-        .first()
-        .prop('children')
-    ).to.eql('Slide 2')
+    expect(wrapper.find('.slick-slide:not(.slick-cloned)')).to.have.length(2)
+    expect(wrapper.find('.slick-active')).to.have.length(1)
     expect(wrapper.find('.slick-track')).to.have.length(1)
   })
 

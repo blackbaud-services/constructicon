@@ -191,14 +191,19 @@ class InputImage extends React.Component {
         ) : (
           <div className={classNames.dropzoneContainer}>
             <Dropzone
-              className={classNames.dropzone}
+              accept='image/*'
               onDrop={images => this.handleSetImage(images[0])}
             >
-              <Button {...buttonProps}>Select Image</Button>
-              <p>
-                Upload an image or drop a file into this area
-                {note && <small className={classNames.note}>{note}</small>}
-              </p>
+              {({ getRootProps, getInputProps }) => (
+                <div {...getRootProps()} className={classNames.dropzone}>
+                  <input {...getInputProps()} />
+                  <Button {...buttonProps}>Select Image</Button>
+                  <p>
+                    Upload an image or drop a file into this area
+                    {note && <small className={classNames.note}>{note}</small>}
+                  </p>
+                </div>
+              )}
             </Dropzone>
           </div>
         )}
