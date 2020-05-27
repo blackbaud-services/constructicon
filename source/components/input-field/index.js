@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import omit from 'lodash/omit'
+import merge from 'lodash/merge'
 import withStyles from '../with-styles'
 import styles from './styles'
 import { isBoolean } from '../../lib/form'
@@ -106,11 +107,13 @@ class InputField extends React.Component {
       'touched',
       'validators'
     ]
-    const allowedProps = omit(props, propsBlacklist)
+    const allowedProps = merge(
+      omit(props, propsBlacklist),
+      type === 'contenteditable' ? { html: value } : { value }
+    )
     const Tag = this.getTag()
     const inputId = id || name
     const labelId = `label-${inputId}`
-    const isContentEditable = type === 'contenteditable'
 
     const renderField = () => (
       <Tag
@@ -119,10 +122,7 @@ class InputField extends React.Component {
         type={type}
         name={name}
         id={inputId}
-        value={value}
-        html={isContentEditable ? value : undefined}
         checked={isBoolean(type) && value}
-        contentEditable={isContentEditable}
         onChange={this.handleChange}
         onBlur={this.handleBlur}
         onKeyDown={this.handleKeyDown}
