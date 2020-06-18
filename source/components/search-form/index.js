@@ -66,8 +66,10 @@ class SearchForm extends Component {
     return (
       <div className={`c11n-search-form ${classNames.root}`}>
         <div className={classNames.form} onKeyDown={this.handleKeyDown}>
-          <label className={classNames.field} id='label-search-form'>
-            <span className={classNames.label}>{title}</span>
+          <div className={classNames.field}>
+            <label className={classNames.label} id='label-search-form'>
+              {title}
+            </label>
             <input
               ref='field'
               type='search'
@@ -78,7 +80,7 @@ class SearchForm extends Component {
               onChange={this.onChange()}
               className={classNames.input}
             />
-          </label>
+          </div>
           <div className={classNames.cta}>
             <Button
               onClick={
