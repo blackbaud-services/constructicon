@@ -23,7 +23,7 @@ const ButtonShare = ({
     background={type}
     tag={share ? 'button' : 'a'}
     onClick={share && openShareDialog({ type, url, title, hashtags, image })}
-    aria-label={type}
+    aria-label={`${share ? 'Share' : 'View'} on ${type}`}
     {...props}
   >
     <Icon name={type} />
