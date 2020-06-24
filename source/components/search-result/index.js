@@ -6,6 +6,7 @@ import Button from '../button'
 
 const SearchResult = ({
   image,
+  label,
   subtitle,
   title,
   url,
@@ -27,7 +28,7 @@ const SearchResult = ({
       <Button
         tag='a'
         href={url}
-        aria-label={cta}
+        aria-label={label || cta}
         children={cta}
         target='_blank'
         rel='noopener'
@@ -67,6 +68,11 @@ SearchResult.propTypes = {
    * The button text
    */
   cta: PropTypes.string,
+
+  /**
+   * The aria label for the search result
+   */
+  label: PropTypes.string,
 
   /**
    * Custom styles to be applied
