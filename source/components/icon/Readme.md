@@ -151,6 +151,10 @@
 ```
 
 ```
+<Icon name='trash' />
+```
+
+```
 <Icon name='upload' />
 ```
 
