@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import uuid from 'uuid/v4'
 import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
 import styles from './styles'
@@ -16,24 +17,67 @@ const LeaderboardItem = ({
   title,
   tag: Tag
 }) => {
+  const [id] = useState(uuid())
+
   return (
     <Tag className={`c11n-leaderboard-item ${classNames.root}`}>
       <LinkTag
+        aria-describedby={`${id}-rank ${id}-title ${id}-subtitle ${id}-amount`}
+        id={id}
         href={href}
         target={target}
         rel={target === '_blank' ? 'noopener' : undefined}
         {...linkProps}
       >
         <div className={classNames.link}>
-          {rank && <div className={classNames.rank}>{rank}</div>}
+          {rank && (
+            <div
+              aria-hidden
+              id={`${id}-rank`}
+              for={id}
+              className={classNames.rank}
+            >
+              {rank}
+            </div>
+          )}
           {image && (
-            <img src={image} alt={title} className={classNames.image} />
+            <img
+              src={image}
+              alt={title}
+              aria-hidden
+              className={classNames.image}
+            />
           )}
           <div className={classNames.info}>
-            <div className={classNames.title}>{title}</div>
-            {subtitle && <div className={classNames.subtitle}>{subtitle}</div>}
+            <div
+              aria-hidden
+              id={`${id}-title`}
+              for={id}
+              className={classNames.title}
+            >
+              {title}
+            </div>
+            {subtitle && (
+              <div
+                aria-hidden
+                id={`${id}-subtitle`}
+                for={id}
+                className={classNames.subtitle}
+              >
+                {subtitle}
+              </div>
+            )}
           </div>
-          {amount && <div className={classNames.amount}>{amount}</div>}
+          {amount && (
+            <div
+              aria-hidden
+              id={`${id}-amount`}
+              for={id}
+              className={classNames.amount}
+            >
+              {amount}
+            </div>
+          )}
         </div>
       </LinkTag>
     </Tag>
