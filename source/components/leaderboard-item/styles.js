@@ -26,7 +26,6 @@ export default (
       color: foreground && colors[foreground],
       border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
       borderRadius: radius && rhythm(radiuses[radius]),
-      fontSize: scale(-1),
       breakInside: 'avoid',
       listStyle: 'none',
       ...treatments.leaderboardItem
@@ -55,8 +54,8 @@ export default (
 
     image: {
       flex: '0 0 auto',
-      width: rhythm(1.25),
-      height: rhythm(1.25),
+      width: rhythm(1.5),
+      height: rhythm(1.5),
       backgroundColor: 'rgba(0,0,0,0.125)',
       border: '2px solid rgba(0,0,0,0.25)',
       borderRadius: rhythm(radiuses[avatarRadius]),
@@ -80,7 +79,7 @@ export default (
 
     subtitle: {
       lineHeight: measures.medium,
-      fontSize: '0.75em',
+      fontSize: '0.875em',
       opacity: 0.7,
       whiteSpace: 'nowrap',
       overflow: 'hidden',
