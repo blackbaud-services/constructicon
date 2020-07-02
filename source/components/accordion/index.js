@@ -13,23 +13,22 @@ const Accordion = ({
   id = uuid(),
   opened,
   closed,
-  label,
   toggled,
   onToggle,
   classNames
 }) => (
   <div className={`c11n-accordion ${classNames.root}`}>
-    <button
-      id={`${id}-title`}
+    <div
       aria-controls={`${id}-body`}
       aria-expanded={!!toggled}
-      aria-label={label || title}
       className={classNames.head}
+      id={`${id}-title`}
       onClick={onToggle}
+      role='button'
     >
       <div className={classNames.toggle}>{toggled ? opened : closed}</div>
       <div className={classNames.title}>{title}</div>
-    </button>
+    </div>
     <div
       aria-labelledby={`${id}-title`}
       role='region'
@@ -52,11 +51,6 @@ Accordion.propTypes = {
    * The title of the section
    */
   title: PropTypes.any.isRequired,
-
-  /**
-   * Labels the accordion title
-   */
-  label: PropTypes.string,
 
   /**
    * The size of the gutter to be passed through rhythm
