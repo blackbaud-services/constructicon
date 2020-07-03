@@ -22,19 +22,22 @@ const Accordion = ({
       aria-controls={`${id}-body`}
       aria-expanded={!!toggled}
       className={classNames.head}
+      onKeyDown={e => e.key === 'Enter' && onToggle()}
       id={`${id}-title`}
       onClick={onToggle}
       role='button'
+      tabIndex={0}
     >
       <div className={classNames.toggle}>{toggled ? opened : closed}</div>
       <div className={classNames.title}>{title}</div>
     </div>
     <div
       aria-labelledby={`${id}-title`}
-      role='region'
-      id={`${id}-body`}
-      hidden={!toggled}
       className={classNames.body}
+      hidden={!toggled}
+      id={`${id}-body`}
+      role='region'
+      tabIndex={0}
     >
       {children}
     </div>
