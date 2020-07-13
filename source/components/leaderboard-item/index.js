@@ -34,7 +34,7 @@ const LeaderboardItem = ({
             <div
               aria-hidden
               id={`${id}-rank`}
-              for={id}
+              htmlFor={id}
               className={classNames.rank}
             >
               {rank}
@@ -52,7 +52,7 @@ const LeaderboardItem = ({
             <div
               aria-hidden
               id={`${id}-title`}
-              for={id}
+              htmlFor={id}
               className={classNames.title}
             >
               {title}
@@ -61,7 +61,7 @@ const LeaderboardItem = ({
               <div
                 aria-hidden
                 id={`${id}-subtitle`}
-                for={id}
+                htmlFor={id}
                 className={classNames.subtitle}
               >
                 {subtitle}
@@ -72,7 +72,7 @@ const LeaderboardItem = ({
             <div
               aria-hidden
               id={`${id}-amount`}
-              for={id}
+              htmlFor={id}
               className={classNames.amount}
             >
               {amount}
