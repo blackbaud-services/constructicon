@@ -39,6 +39,7 @@
     "react-onclickoutside": "^6.9.0",
     "react-slick": "^0.26.1",
     "react-slider": "^1.0.7",
+    "react-ticker": "^1.2.2",
     "sanitize-html": "^1.24.0"
   },
   "devDependencies": {
