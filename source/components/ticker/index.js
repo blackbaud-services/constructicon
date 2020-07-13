@@ -1,20 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
-import styles, { keyframes } from './styles'
+import styles from './styles'
 
-const Ticker = ({ classNames, label, items = [] }) => (
-  <div className={`c11n-ticker ${classNames.root}`}>
-    <ul className={classNames.items}>
-      {items.map((item, index) => (
-        <li className={classNames.item} key={index}>
-          {item}
-        </li>
-      ))}
-    </ul>
-    {label && <div className={classNames.label}>{label}</div>}
-  </div>
-)
+import BaseTicker from 'react-ticker'
+
+const Ticker = ({
+  classNames,
+  direction,
+  items = [],
+  label,
+  offset,
+  pauseOnHover,
+  speed
+}) => {
+  const [move, setMove] = useState(true)
+  const speeds = {
+    snail: 5,
+    slow: 7.5,
+    medium: 10,
+    fast: 12.5,
+    cheetah: 20
+  }
+
+  return (
+    <div
+      className={`c11n-ticker ${classNames.root}`}
+      onMouseOver={() => pauseOnHover && setMove(false)}
+      onMouseLeave={() => setMove(true)}
+    >
+      <BaseTicker
+        direction={direction}
+        speed={speeds[speed]}
+        move={move}
+        offset={offset}
+      >
+        {() => (
+          <ul className={classNames.items}>
+            {items.map((item, index) => (
+              <li className={classNames.item} key={index}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
+      </BaseTicker>
+      {label && <div className={classNames.label}>{label}</div>}
+    </div>
+  )
+}
 
 Ticker.propTypes = {
   /**
@@ -26,6 +60,16 @@ Ticker.propTypes = {
    * The color of the text
    */
   foreground: PropTypes.string,
+
+  /**
+   * The scrolling direction
+   */
+  direction: PropTypes.oneOf(['toLeft', 'toRight']),
+
+  /**
+   * The height (passed to rhythm)
+   */
+  height: PropTypes.number,
 
   /**
    * Items to display in animated scroll
@@ -48,9 +92,19 @@ Ticker.propTypes = {
   labelForeground: PropTypes.string,
 
   /**
+   * Ticker offset
+   */
+  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * Pause ticker on hover?
+   */
+  pauseOnHover: PropTypes.bool,
+
+  /**
    * Animation speed
    */
-  speed: PropTypes.oneOf(['snail', 'slow', 'medium', 'fast']),
+  speed: PropTypes.oneOf(['snail', 'slow', 'medium', 'fast', 'cheetah']),
 
   /**
    * Custom styles to be applied
@@ -61,10 +115,14 @@ Ticker.propTypes = {
 Ticker.defaultProps = {
   background: 'shade',
   foreground: 'dark',
+  direction: 'toLeft',
+  height: 2.5,
   labelBackground: 'primary',
   labelForeground: 'light',
-  speed: 'medium',
+  offset: '100%',
+  pauseOnHover: true,
+  speed: 'slow',
   styles: {}
 }
 
-export default withStyles(styles, keyframes)(Ticker)
+export default withStyles(styles)(Ticker)

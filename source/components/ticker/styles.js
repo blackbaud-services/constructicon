@@ -1,32 +1,24 @@
 import merge from 'lodash/merge'
 
-const speeds = {
-  snail: 5,
-  slow: 3,
-  medium: 2,
-  fast: 1
-}
-
 export default (
   {
     background,
     foreground,
+    height,
     items = [],
     labelBackground,
     labelForeground,
     spacing,
-    speed,
     styles
   },
-  { colors, rhythm, treatments },
-  keyframes
+  { colors, rhythm, treatments }
 ) =>
   merge(
     {
       root: {
         position: 'relative',
         overflow: 'hidden',
-        height: rhythm(2.5),
+        height: rhythm(height),
         backgroundColor: colors[background],
         color: colors[foreground]
       },
@@ -48,13 +40,9 @@ export default (
       },
 
       items: {
-        position: 'absolute',
-        top: '50%',
-        left: 0,
-        paddingLeft: '100%',
-        animation: `${keyframes.marquee} linear infinite`,
-        whiteSpace: 'nowrap',
-        animationDuration: `${Math.max(10, items.length * speeds[speed])}s`
+        height: rhythm(height),
+        lineHeight: rhythm(height),
+        whiteSpace: 'nowrap'
       },
 
       item: {
@@ -64,14 +52,3 @@ export default (
     },
     styles
   )
-
-export const keyframes = {
-  marquee: {
-    '0%': {
-      transform: 'translate3D(0, -50%, 0)'
-    },
-    '100%': {
-      transform: 'translate3D(-100%, -50%, 0)'
-    }
-  }
-}
