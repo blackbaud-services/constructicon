@@ -36,6 +36,7 @@ export const colors = {
   mapmyfitness: '#004a8d',
   strava: '#fc4c02',
   twitch: '#6701B3',
+  eventbrite: '#f05537',
   slack: '#4a154b',
   whatsapp: '#25d366',
   pinterest: '#e60023',

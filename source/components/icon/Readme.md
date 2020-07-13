@@ -250,6 +250,10 @@
 ```
 
 ```
+<Icon name='eventbrite' />
+```
+
+```
 <Icon name='slack' color='slack' />
 ```
 
