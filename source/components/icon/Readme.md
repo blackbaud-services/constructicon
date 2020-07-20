@@ -123,6 +123,10 @@
 ```
 
 ```
+<Icon name='reply' />
+```
+
+```
 <Icon name='rotate' />
 ```
 
