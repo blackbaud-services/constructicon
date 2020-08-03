@@ -69,14 +69,6 @@ class Leaderboard extends Component {
 
 Leaderboard.propTypes = {
   /**
-   * An an array of leaderboard items for each leader
-   */
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element)
-  ]),
-
-  /**
    * If the results are currently loading
    */
   loading: PropTypes.bool,
