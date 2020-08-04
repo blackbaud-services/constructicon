@@ -188,7 +188,7 @@ LeaderboardItem.defaultProps = {
   radius: 'medium',
   spacing: 0.5,
   styles: {},
-  tag: 'li',
+  tag: 'div',
   target: '_blank'
 }
 

@@ -1,11 +1,69 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import chunk from 'lodash/chunk'
 import isEmpty from 'lodash/isEmpty'
 import Icon from '../icon'
+import compose from '../../lib/compose'
+import withBreakpoints from '../with-breakpoints'
 import withStyles from '../with-styles'
 import styles from './styles'
 
 class Leaderboard extends Component {
+  constructor () {
+    super()
+    this.state = {}
+    this.setMaxHeight = this.setMaxHeight.bind(this)
+  }
+
+  componentDidMount () {
+    this.setMaxHeight()
+  }
+
+  componentDidUpdate (prevProps) {
+    if (this.props.breakpoints.current !== prevProps.breakpoints.current) {
+      this.setMaxHeight()
+    }
+  }
+
+  setMaxHeight () {
+    const { children } = this.props
+
+    if (children && children.length > 1) {
+      const columnSize = Math.ceil(
+        children.length / this.getCurrentColumnCount()
+      )
+      const childHeights = Array.prototype.map.call(
+        this.refs.list.children,
+        child => child.clientHeight
+      )
+      const columnHeights = chunk(childHeights, columnSize)
+        .map(column => column.reduce((acc, cell) => acc + cell, 0))
+        .sort((a, b) => b - a)
+
+      this.setState({
+        style: { maxHeight: columnHeights[0] }
+      })
+    }
+  }
+
+  getCurrentColumnCount () {
+    const { breakpoints, columns = {} } = this.props
+    const fullWidth = columns.xs || 1
+
+    switch (breakpoints.current) {
+      case 'xl':
+        return columns.xl || columns.lg || columns.md || columns.sm || fullWidth
+      case 'lg':
+        return columns.lg || columns.md || columns.sm || fullWidth
+      case 'md':
+        return columns.md || columns.sm || fullWidth
+      case 'sm':
+        return columns.sm || fullWidth
+      default:
+        return fullWidth
+    }
+  }
+
   render () {
     const { classNames } = this.props
 
@@ -61,9 +119,21 @@ class Leaderboard extends Component {
   }
 
   renderLeaders () {
-    const { children, classNames } = this.props
+    const { children, classNames, tag: Tag } = this.props
 
-    return <ol className={classNames.leaders}>{children}</ol>
+    if (children && children.length > 1) {
+      return (
+        <ol ref='list' className={classNames.leaders} {...this.state}>
+          {children.map((child, key) => (
+            <li className={classNames.cell} key={key}>
+              {child}
+            </li>
+          ))}
+        </ol>
+      )
+    }
+
+    return <Tag className={classNames.leaders}>{children}</Tag>
   }
 }
 
@@ -104,6 +174,15 @@ Leaderboard.propTypes = {
   foreground: PropTypes.string,
 
   /**
+   * The tag or component to be used for the root element
+   */
+  tag: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
+
+  /**
    * Custom styles to be applied to root, leaders
    */
   styles: PropTypes.object
@@ -113,7 +192,11 @@ Leaderboard.defaultProps = {
   columns: {},
   styles: {},
   emptyLabel: 'No results found',
-  errorLabel: 'There was an error loading the results'
+  errorLabel: 'There was an error loading the results',
+  tag: 'div'
 }
 
-export default withStyles(styles)(Leaderboard)
+export default compose(
+  withBreakpoints,
+  withStyles(styles)
+)(Leaderboard)

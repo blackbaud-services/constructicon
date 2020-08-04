@@ -1,19 +1,39 @@
 import merge from 'lodash/merge'
 
 export default (
-  { background, foreground, columns, styles },
+  { background, children, foreground, columns, styles },
   { colors, mediaQuery, scale, rhythm, justifyContent, treatments }
 ) => {
+  const childrenCount = children ? children.length : 0
   const createColumns = () => {
-    return Object.keys(columns).reduce(
-      (styles, breakpoint) => ({
-        ...styles,
-        [mediaQuery(breakpoint)]: {
-          columnCount: columns[breakpoint]
-        }
-      }),
-      {}
-    )
+    return Object.keys(columns).reduce((styles, breakpoint) => {
+      const columnCount = columns[breakpoint]
+
+      return merge(
+        {},
+        styles,
+        childrenCount > 1
+          ? {
+            leaders: {
+              display: 'flex',
+              flexDirection: 'column',
+              flexWrap: 'wrap'
+            },
+            cell: {
+              [mediaQuery(breakpoint)]: {
+                width: `${100 / columnCount}%`
+              }
+            }
+          }
+          : {
+            leaders: {
+              [mediaQuery(breakpoint)]: {
+                columnCount
+              }
+            }
+          }
+      )
+    }, {})
   }
 
   const defaultStyles = {
@@ -25,8 +45,12 @@ export default (
 
     leaders: {
       counterReset: 'board',
-      ...createColumns(),
       ...treatments.leaderboardLeaders
+    },
+
+    cell: {
+      display: 'block',
+      listStyle: 'none'
     },
 
     state: {
@@ -43,5 +67,5 @@ export default (
     }
   }
 
-  return merge(defaultStyles, styles)
+  return merge(defaultStyles, createColumns(), styles)
 }
