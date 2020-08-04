@@ -112,6 +112,10 @@ module.exports = {
         {
           name: 'withToggle',
           content: 'source/components/with-toggle/Readme.md'
+        },
+        {
+          name: 'withBreakpoints',
+          content: 'source/components/with-breakpoints/Readme.md'
         }
       ]
     }
