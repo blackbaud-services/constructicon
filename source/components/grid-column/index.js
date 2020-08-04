@@ -34,6 +34,11 @@ GridColumn.propTypes = {
   lg: PropTypes.number,
 
   /**
+   * The size of the column in a 12 column grid at the `xl` breakpoint
+   */
+  xl: PropTypes.number,
+
+  /**
    * The default alignment
    */
   xsAlign: PropTypes.oneOf(['left', 'center', 'right']),
@@ -52,6 +57,11 @@ GridColumn.propTypes = {
    * The alignment at the `lg` breakpoint
    */
   lgAlign: PropTypes.oneOf(['left', 'center', 'right']),
+
+  /**
+   * The alignment at the `xl` breakpoint
+   */
+  xlAlign: PropTypes.oneOf(['left', 'center', 'right']),
 
   /**
    * The background color of the section -
