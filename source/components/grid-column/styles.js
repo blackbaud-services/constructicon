@@ -6,10 +6,12 @@ export default (
     sm,
     md,
     lg,
+    xl,
     xsAlign,
     smAlign,
     mdAlign,
     lgAlign,
+    xlAlign,
     background,
     borderColor,
     borderWidth,
@@ -47,6 +49,10 @@ export default (
         [mediaQuery('lg')]: {
           textAlign: lgAlign,
           ...calculateSize(lg)
+        },
+        [mediaQuery('xl')]: {
+          textAlign: xlAlign,
+          ...calculateSize(xl)
         }
       },
       styles
