@@ -10,6 +10,7 @@ const Ticker = ({
   direction,
   items = [],
   label,
+  mode,
   offset,
   pauseOnHover,
   speed
@@ -31,9 +32,10 @@ const Ticker = ({
     >
       <BaseTicker
         direction={direction}
-        speed={speeds[speed]}
+        mode={mode}
         move={move}
         offset={offset}
+        speed={speeds[speed]}
       >
         {() => (
           <ul className={classNames.items}>
@@ -92,6 +94,11 @@ Ticker.propTypes = {
   labelForeground: PropTypes.string,
 
   /**
+   * The mode for the ticker
+   */
+  mode: PropTypes.oneOf(['await', 'chain', 'smooth']),
+
+  /**
    * Ticker offset
    */
   offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -119,6 +126,7 @@ Ticker.defaultProps = {
   height: 2.5,
   labelBackground: 'primary',
   labelForeground: 'light',
+  mode: 'smooth',
   offset: '100%',
   pauseOnHover: true,
   speed: 'slow',
