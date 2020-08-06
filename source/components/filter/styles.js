@@ -19,6 +19,7 @@ export default ({ background, foreground, styles }, { rhythm, colors }) => {
 
     input: {
       display: 'block',
+      appearance: 'none',
       width: '100%',
       height: rhythm(2),
       paddingLeft: rhythm(1.5),
