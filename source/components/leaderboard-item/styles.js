@@ -45,6 +45,7 @@ export default (
     link: {
       display: 'flex',
       alignItems: 'center',
+      backfaceVisibility: 'hidden',
       transition: 'opacity 200ms ease',
       minHeight: rhythm(1.33),
       '&:hover': {

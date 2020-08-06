@@ -22,6 +22,7 @@ const LeaderboardItem = ({
   return (
     <Tag className={`c11n-leaderboard-item ${classNames.root}`}>
       <LinkTag
+        className={classNames.link}
         aria-describedby={`${id}-rank ${id}-title ${id}-subtitle ${id}-amount`}
         id={id}
         href={href}
@@ -29,56 +30,54 @@ const LeaderboardItem = ({
         rel={target === '_blank' ? 'noopener' : undefined}
         {...linkProps}
       >
-        <div className={classNames.link}>
-          {rank && (
-            <div
-              aria-hidden
-              id={`${id}-rank`}
-              htmlFor={id}
-              className={classNames.rank}
-            >
-              {rank}
-            </div>
-          )}
-          {image && (
-            <img
-              src={image}
-              alt={title}
-              aria-hidden
-              className={classNames.image}
-            />
-          )}
-          <div className={classNames.info}>
-            <div
-              aria-hidden
-              id={`${id}-title`}
-              htmlFor={id}
-              className={classNames.title}
-            >
-              {title}
-            </div>
-            {subtitle && (
-              <div
-                aria-hidden
-                id={`${id}-subtitle`}
-                htmlFor={id}
-                className={classNames.subtitle}
-              >
-                {subtitle}
-              </div>
-            )}
+        {rank && (
+          <div
+            aria-hidden
+            id={`${id}-rank`}
+            htmlFor={id}
+            className={classNames.rank}
+          >
+            {rank}
           </div>
-          {amount && (
+        )}
+        {image && (
+          <img
+            src={image}
+            alt={title}
+            aria-hidden
+            className={classNames.image}
+          />
+        )}
+        <div className={classNames.info}>
+          <div
+            aria-hidden
+            id={`${id}-title`}
+            htmlFor={id}
+            className={classNames.title}
+          >
+            {title}
+          </div>
+          {subtitle && (
             <div
               aria-hidden
-              id={`${id}-amount`}
+              id={`${id}-subtitle`}
               htmlFor={id}
-              className={classNames.amount}
+              className={classNames.subtitle}
             >
-              {amount}
+              {subtitle}
             </div>
           )}
         </div>
+        {amount && (
+          <div
+            aria-hidden
+            id={`${id}-amount`}
+            htmlFor={id}
+            className={classNames.amount}
+          >
+            {amount}
+          </div>
+        )}
       </LinkTag>
     </Tag>
   )
