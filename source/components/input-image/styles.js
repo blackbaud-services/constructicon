@@ -59,7 +59,7 @@ export default (props, traits) => {
     },
 
     clear: {
-      margin: rhythm(0.25),
+      margin: rhythm([0.5, 0.25]),
       fontSize: scale(-1),
       textDecoration: 'underline',
       opacity: 0.5
