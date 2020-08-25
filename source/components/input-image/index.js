@@ -15,6 +15,7 @@ class InputImage extends React.Component {
   constructor (props) {
     super(props)
     this.editor = null
+    this.getImageProperties = this.getImageProperties.bind(this)
     this.handleClearImage = this.handleClearImage.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleOrientationChange = this.handleOrientationChange.bind(this)
@@ -87,10 +88,45 @@ class InputImage extends React.Component {
     )
   }
 
-  handleSetImage (image) {
-    const { onFileChange } = this.props
+  getImageProperties (image) {
+    const { maxSize } = this.props
+    const orientation = image.height > image.width ? 'portrait' : 'landscape'
+    const aspectRatio = image.width / image.height
 
-    this.setState({ image }, this.handleChange)
+    if (orientation === 'portrait') {
+      const height = Math.min(image.height, maxSize)
+      const width = height * aspectRatio
+
+      return { width, height, orientation }
+    }
+
+    const width = Math.min(image.width, maxSize)
+    const height = width / aspectRatio
+
+    return { width, height, orientation }
+  }
+
+  handleSetImage (image) {
+    const { onFileChange, resizeOnUpload } = this.props
+    const reader = new window.FileReader()
+    const img = new window.Image()
+
+    if (resizeOnUpload) {
+      reader.readAsDataURL(image)
+      reader.onload = event => {
+        img.src = event.target.result
+        img.onload = () => {
+          const { width, height, orientation } = this.getImageProperties(img)
+          this.setState(
+            { image, orientation, width, height },
+            this.handleChange
+          )
+        }
+      }
+    } else {
+      this.setState({ image }, this.handleChange)
+    }
+
     onFileChange && onFileChange(image)
   }
 
@@ -100,6 +136,7 @@ class InputImage extends React.Component {
 
   render () {
     const {
+      borderWidth,
       buttonProps,
       classNames,
       error,
@@ -119,8 +156,9 @@ class InputImage extends React.Component {
         {image ? (
           <div className={classNames.image}>
             <AvatarEditor
-              border={25}
+              border={Math.max(width, height) * borderWidth}
               color={[0, 0, 0, 0.125]}
+              disableHiDPIScaling
               height={height}
               image={image}
               onImageChange={this.handleChange}
@@ -138,6 +176,9 @@ class InputImage extends React.Component {
                 spacing={0.25}
                 styles={styles.orientation}
                 onClick={this.handleOrientationChange}
+                title={`Change to ${
+                  orientation === 'portrait' ? 'landscape' : 'portrait'
+                } orientation.`}
               >
                 <Icon
                   name={orientation === 'portrait' ? 'image' : 'portrait'}
@@ -145,9 +186,9 @@ class InputImage extends React.Component {
               </Button>
             )}
             <div>
-              <span className={classNames.fileInfo}>
-                {`${image.name || 'image.jpg'}`}
-              </span>
+              {image.name && (
+                <span className={classNames.fileInfo}>{image.name}</span>
+              )}
               <Button
                 background='transparent'
                 effect='grow'
@@ -214,12 +255,19 @@ class InputImage extends React.Component {
 }
 
 InputImage.defaultProps = {
+  borderWidth: 0.05,
   height: 500,
-  width: 500,
-  maxWidth: 350
+  maxSize: 1600,
+  maxWidth: 350,
+  width: 500
 }
 
 InputImage.propTypes = {
+  /**
+   * Border width (as fraction of total width)
+   */
+  borderWidth: PropTypes.number,
+
   /**
    * Props to be passed to the Button component
    */
@@ -229,6 +277,11 @@ InputImage.propTypes = {
    * The label for the field
    */
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+  /**
+   * The max width/length of an uploaded image
+   */
+  maxSize: PropTypes.number,
 
   /**
    * The name of the field
@@ -249,6 +302,11 @@ InputImage.propTypes = {
    * Allow user to change orientation of image
    */
   orientationChange: PropTypes.bool,
+
+  /**
+   * Resize canvas on image upload to match image dimensions
+   */
+  resizeOnUpload: PropTypes.bool,
 
   /**
    * Mark the field as required and displays an asterisk next to the label

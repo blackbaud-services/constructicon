@@ -16,7 +16,7 @@ initialState = { image: '' };
 
 ```
 <InputImage
-  label='Upload an image'
+  label='Upload an image (then rotate it)'
   name='image'
   onChange={console.log}
   orientationChange
