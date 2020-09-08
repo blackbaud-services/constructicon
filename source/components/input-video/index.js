@@ -97,10 +97,6 @@ class InputVideo extends React.Component {
   }
 }
 
-InputVideo.defaultProps = {
-  note: 'Youtube, Vimeo and Facebook video URLs are supported.'
-}
-
 InputVideo.propTypes = {
   /**
    * The label for the field

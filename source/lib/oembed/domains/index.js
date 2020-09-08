@@ -542,7 +542,6 @@ export const videoDomains = [
   'www.sinemalar.com',
   'www.stocksy.com',
   'www.thinglink.com',
-  'www.tiktok.com',
   'www.tvc.ru',
   'www.vestifinance.ru',
   'www.video.az',
