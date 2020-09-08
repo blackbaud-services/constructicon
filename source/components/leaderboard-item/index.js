@@ -6,6 +6,7 @@ import styles from './styles'
 
 const LeaderboardItem = ({
   amount,
+  amountLabel,
   classNames,
   href,
   image,
@@ -71,6 +72,7 @@ const LeaderboardItem = ({
         {amount && (
           <div
             aria-hidden
+            aria-label={amountLabel}
             id={`${id}-amount`}
             htmlFor={id}
             className={classNames.amount}
@@ -171,6 +173,11 @@ LeaderboardItem.propTypes = {
    * The amount being ranked by
    */
   amount: PropTypes.string,
+
+  /**
+   * The aria-label for the amount e.g. 11 miles for an amount of 11 mi.
+   */
+  amountLabel: PropTypes.string,
 
   /**
    * The custom styles to be applied
