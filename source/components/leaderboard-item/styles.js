@@ -70,7 +70,6 @@ export default (
     },
 
     title: {
-      marginBottom: subtitle && rhythm(0.125),
       fontWeight: 700,
       whiteSpace: 'nowrap',
       overflow: 'hidden',

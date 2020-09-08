@@ -8,12 +8,13 @@ export default (
     margin,
     radius,
     spacing,
-    embed,
+    embed = {},
     styles
   },
   { colors, radiuses, rhythm, calculateSpacing }
 ) => {
-  const { width, height } = embed || { width: 480, height: 270 }
+  const width = embed.width || embed.thumbnail_width || 480
+  const height = embed.height || embed.thumbnail_height || 270
   const aspectRatio = height / width
 
   return {

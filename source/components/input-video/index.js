@@ -5,7 +5,6 @@ import withStyles from '../with-styles'
 import styles from './styles'
 
 import InputField from '../input-field'
-import Video from '../video'
 
 class InputVideo extends React.Component {
   constructor (props) {
@@ -83,7 +82,9 @@ class InputVideo extends React.Component {
         />
         {video ? (
           <div className={classNames.video}>
-            {video.html && <Video embed={video} />}
+            {video.html && (
+              <div dangerouslySetInnerHTML={{ __html: video.html }} />
+            )}
             <button className={classNames.clear} onClick={this.handleClear}>
               Clear Video
             </button>
