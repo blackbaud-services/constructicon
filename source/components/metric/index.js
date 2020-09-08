@@ -4,7 +4,15 @@ import Icon from '../icon'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-const Metric = ({ label, amount, icon, tag: Tag, classNames, styles }) => {
+const Metric = ({
+  label,
+  amount,
+  amountLabel,
+  icon,
+  tag: Tag,
+  classNames,
+  styles
+}) => {
   const renderIcon = () => {
     if (typeof icon === 'string') {
       return <Icon name={icon} styles={styles.icon} size={1.5} />
@@ -19,7 +27,11 @@ const Metric = ({ label, amount, icon, tag: Tag, classNames, styles }) => {
     <Tag className={`c11n-metric ${classNames.root}`}>
       {renderIcon()}
       {label && <div className={classNames.label}>{label}</div>}
-      {amount && <div className={classNames.amount}>{amount}</div>}
+      {amount && (
+        <div className={classNames.amount} aria-label={amountLabel}>
+          {amount}
+        </div>
+      )}
     </Tag>
   )
 }
@@ -53,6 +65,11 @@ Metric.propTypes = {
     PropTypes.element,
     PropTypes.func
   ]),
+
+  /**
+   * The aria-label for the amount e.g. 11 miles for an amount of 11 mi.
+   */
+  amountLabel: PropTypes.string,
 
   /**
    * Custom styles to be applied
