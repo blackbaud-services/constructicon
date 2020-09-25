@@ -27,22 +27,18 @@ class InputVideo extends React.Component {
       return this.props.onChange('')
     }
 
-    if (videoRegex.test(val)) {
-      Promise.resolve()
-        .then(() => this.setState({ status: 'fetching' }))
-        .then(() => fetchOembedUrl(val))
-        .then(video => {
-          if (video.type !== 'video') {
-            return this.setState({ status: 'failed' })
-          }
+    Promise.resolve()
+      .then(() => this.setState({ status: 'fetching' }))
+      .then(() => fetchOembedUrl(val))
+      .then(video => {
+        if (video.type !== 'video' || !videoRegex.test(video.url)) {
+          return this.setState({ status: 'failed' })
+        }
 
-          this.setState({ video, status: 'fetched' })
-          this.props.onVideoChange && this.props.onVideoChange(video)
-        })
-        .catch(() => this.setState({ status: 'failed' }))
-    } else {
-      this.setState({ status: 'failed' })
-    }
+        this.setState({ video, status: 'fetched' })
+        this.props.onVideoChange && this.props.onVideoChange(video)
+      })
+      .catch(() => this.setState({ status: 'failed' }))
 
     this.props.onChange(val)
   }
