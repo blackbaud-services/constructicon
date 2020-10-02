@@ -293,6 +293,10 @@
 <Icon name='houseparty' color='houseparty' />
 ```
 
+```
+<Icon name='nextdoor' color='nextdoor' />
+```
+
 **Colors**
 
 ```

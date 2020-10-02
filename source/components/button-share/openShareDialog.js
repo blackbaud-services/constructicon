@@ -19,6 +19,12 @@ const services = {
   messenger: ({ url }) => {
     return `fb-messenger://share?${stringify({ link: url })}`
   },
+  nextdoor: ({ url, title }) => {
+    return `https://au.nextdoor.com/share/?${stringify({
+      body: url,
+      title
+    })}`
+  },
   pinterest: ({ url, title, image }) => {
     return `http://pinterest.com/pin/create/button/?${stringify({
       url,
@@ -44,7 +50,14 @@ const services = {
   }
 }
 
-const popupShares = ['facebook', 'twitter', 'linkedin', 'pinterest', 'reddit']
+const popupShares = [
+  'facebook',
+  'twitter',
+  'linkedin',
+  'nextdoor',
+  'pinterest',
+  'reddit'
+]
 
 const toString = obj => {
   return map(obj, function (value, key) {
@@ -86,7 +99,7 @@ export default options => () => {
       toolbar: 0,
       status: 0,
       width: 640,
-      height: 320
+      height: 400
     }
 
     const shareUrl = service({
