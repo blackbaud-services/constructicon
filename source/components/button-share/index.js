@@ -44,6 +44,7 @@ ButtonShare.propTypes = {
     'mail',
     'mapmyfitness',
     'messenger',
+    'nextdoor',
     'pinterest',
     'reddit',
     'slack',
