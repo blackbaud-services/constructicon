@@ -3,18 +3,8 @@ build:
   working_dir: /code
   volumes:
     - .:/code
-    - $SSH_AUTH_SOCK:/ssh-agent
   environment:
-    - AWS_KEY
-    - AWS_SECRET
-    - NPM_USER
-    - NPM_PASS
+    - GITHUB_TOKEN
     - NPM_EMAIL
-    - SLACK_WEBHOOK_URL
-    - SLACK_ANNOUNCE_EMOJI
+    - NPM_API_TOKEN
     - TEAMS_WEBHOOK_URL
-    - BUILD_URL
-    - BUILDKITE_MESSAGE
-    - COMMIT=${BUILDKITE_COMMIT}
-    - GITHUB_RELEASE_ACCESS_TOKEN
-    - SSH_AUTH_SOCK=/ssh-agent

@@ -12,16 +12,16 @@
     "build": "babel source -d dist --copy-files",
     "build:styleguide": "styleguidist build",
     "deploy:styleguide": "npm run build:styleguide && gh-pages -d styleguide",
-    "deploy:prepare": "gulp npm-prepare"
+    "deploy:prepare": "npm run build && gulp npm-prepare"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/everydayhero/constructicon.git"
+    "url": "git+https://github.com/blackbaud/constructicon.git"
   },
   "bugs": {
-    "url": "https://github.com/everydayhero/constructicon/issues"
+    "url": "https://github.com/blackbaud/constructicon/issues"
   },
-  "author": "Dan Henderson <dan.henderson@everydayhero.com>",
+  "author": "Dan Henderson <dan.henderson@blackbaud.com>",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
@@ -76,6 +76,9 @@
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
     "react-helmet": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "standard": {
     "ignore": [

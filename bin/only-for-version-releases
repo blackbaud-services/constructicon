@@ -1,7 +1,0 @@
-#!/bin/sh
-
-pat="^v?[0-9.]+$"
-
-if git show -s --pretty=format:%s "${COMMIT}" | egrep -q "$pat"; then
-  "$@"
-fi

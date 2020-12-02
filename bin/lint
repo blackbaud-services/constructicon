@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -eu pipefail
-
-npm install yarn -g
-yarn --ignore-engines
-yarn lint
