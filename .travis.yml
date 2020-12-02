@@ -22,18 +22,19 @@ script:
 
 before_deploy:
   - docker-compose run build bash -c "yarn deploy:prepare"
+  - docker-compose run build bash -c "yarn build:styleguide"
 
 deploy:
   - provider: npm
     skip_cleanup: true
     email: $NPM_EMAIL
     api_key: $NPM_API_TOKEN
-    src: ./npm-constructicon
+    src: npm-constructicon
     on:
       tags: true
   - provider: pages
     skip_cleanup: true
-    github_token: $GITHUB_TOKEN
+    token: $GITHUB_TOKEN
     keep_history: true
     local_dir: styleguide
     on:
