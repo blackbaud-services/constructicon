@@ -15,10 +15,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blackbaud/constructicon.git"
+    "url": "git+https://github.com/blackbaud-services/constructicon.git"
   },
   "bugs": {
-    "url": "https://github.com/blackbaud/constructicon/issues"
+    "url": "https://github.com/blackbaud-services/constructicon/issues"
   },
   "author": "Dan Henderson <dan.henderson@blackbaud.com>",
   "license": "MIT",

@@ -9,7 +9,7 @@ The aim of this library is to provide a toolbelt of components, that will allow 
 
 We are building this with a living style guide to showcase how to use the various components, using React Styleguidist.
 
-The styleguide will be publicly available at [https://everydayhero.github.io/constructicon](https://everydayhero.github.io/constructicon)
+The styleguide will be publicly available at [https://blackbaud-services.github.io/constructicon](https://blackbaud-services.github.io/constructicon)
 
 While developing, it is useful to serve the styleguide using `yarn start`, which will hot reload changes as you develop.
 
@@ -25,7 +25,7 @@ We can manage the look of most components via various props, and even have custo
 
 A few breaking changes were introduced in `1.0.0` that need to be considered on the following components:
 
-- [`Container`](https://everydayhero.github.io/constructicon/#Container)
+- [`Container`](https://blackbaud-services.github.io/constructicon/#Container)
 
   Changes from `styles` object (e.g. `styles = { ... }`) to use nested keys, e.g.
 
@@ -36,7 +36,7 @@ A few breaking changes were introduced in `1.0.0` that need to be considered on 
   }
   ```
 
-- [`Modal`](https://everydayhero.github.io/constructicon/#Modal)
+- [`Modal`](https://blackbaud-services.github.io/constructicon/#Modal)
 
   Removed nested `styles` object weirdness. So instead of:
 
@@ -62,11 +62,11 @@ A few breaking changes were introduced in `1.0.0` that need to be considered on 
   }
   ```
 
-- [`Form`](https://everydayhero.github.io/constructicon/#Form)
+- [`Form`](https://blackbaud-services.github.io/constructicon/#Form)
 
   Change `styles.form` to `styles.root` for consistency.
 
-- [`ProgressBar`](https://everydayhero.github.io/constructicon/#ProgressBar)
+- [`ProgressBar`](https://blackbaud-services.github.io/constructicon/#ProgressBar)
 
   Change `styles.background` to `styles.root` for consistency.
 

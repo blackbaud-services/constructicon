@@ -20,7 +20,7 @@ Share the current page on supported social networks or via email
 ```
 <ButtonGroup align='center'>
   <ButtonShare type='facebook' share />
-  <ButtonShare type='twitter' url='https://everydayhero.com' title='Everydayhero' share />
+  <ButtonShare type='twitter' url='https://blackbaud.com' title='Blackbaud' share />
   <ButtonShare type='linkedin' share />
   <ButtonShare type='reddit' share />
   <ButtonShare type='pinterest' share />
