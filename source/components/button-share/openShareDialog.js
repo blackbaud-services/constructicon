@@ -46,7 +46,9 @@ const services = {
     })}`
   },
   whatsapp: ({ url, title }) => {
-    return `whatsapp://send?${stringify({ text: [title, url].join(' - ') })}`
+    return `https://api.whatsapp.com/send?${stringify({
+      text: [title, url].join(' - ')
+    })}`
   }
 }
 
