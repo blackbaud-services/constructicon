@@ -34,11 +34,12 @@ export default (
         color: readOnly ? colors.lightGrey : colors.dark,
         padding: rhythm([textarea ? 0.25 : 0.125, 0.333]),
         height: textarea ? 'auto' : rhythm(1.666),
-        lineHeight: textarea && '1.333em',
+        lineHeight: textarea ? '1.333em' : rhythm(1.666),
         minHeight: textarea && rhythm(3.25),
         border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
         boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
         borderRadius: rhythm(radiuses.small),
+        WebkitMinLogicalWidth: 'calc(100% - 18px)',
         ...(type === 'textarea' && {
           maxHeight: rhythm(12),
           resize: 'vertical'
