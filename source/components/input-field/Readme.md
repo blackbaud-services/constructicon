@@ -112,6 +112,23 @@ const styles = {
 />
 ```
 
+**Limited characters**
+
+```
+initialState = { tweet: '' };
+
+<InputField
+  type='textarea'
+  label='Tweet'
+  name='tweet'
+  value={state.tweet}
+  onChange={(v) => setState({ tweet: v })}
+  maxLength={240}
+/>
+
+```
+
+
 **Treatments**
 
 The following treatments in your project's traits will be applied:

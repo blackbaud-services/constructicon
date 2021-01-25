@@ -73,6 +73,23 @@ export default (
       top: label ? rhythm(1.633) : rhythm(0.5),
       right: rhythm(0.5),
       pointerEvents: 'none'
+    },
+
+    remaining: {
+      position: 'absolute',
+      top: label ? rhythm(1.633) : rhythm(0.5),
+      right: rhythm(0.5),
+      pointerEvents: 'none',
+      fontSize: scale(-1),
+      opacity: 0.25,
+
+      '&[data-warning="true"]': {
+        color: colors.danger
+      },
+
+      '&[data-hidden="false"]': {
+        opacity: 0.75
+      }
     }
   }
 

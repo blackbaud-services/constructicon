@@ -89,6 +89,7 @@ class InputField extends React.Component {
       error,
       id,
       label,
+      maxLength,
       name,
       required,
       type = 'text',
@@ -134,6 +135,7 @@ class InputField extends React.Component {
         onPaste={this.handlePaste}
         required={required}
         aria-labelledby={labelId}
+        maxLength={maxLength}
         {...allowedProps}
       />
     )
@@ -170,6 +172,17 @@ class InputField extends React.Component {
         )}
 
         {renderField()}
+
+        {type === 'textarea' &&
+          !!maxLength && (
+          <span
+            className={classNames.remaining}
+            data-hidden={maxLength - value.length > 99}
+            data-warning={maxLength - value.length < 10}
+          >
+            {maxLength - value.length}
+          </span>
+        )}
 
         {status && renderStatus()}
 
