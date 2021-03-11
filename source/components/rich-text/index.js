@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
 import styles from './styles'
 
-const RichText = ({ children, tag: Tag, classNames }) => {
+const RichText = ({ children, tag: Tag, classNames, onClick }) => {
   if (!children) {
     return null
   }
 
   return (
-    <Tag className={`c11n-rich-text ${classNames.root}`}>
+    <Tag className={`c11n-rich-text ${classNames.root}`} onClick={onClick}>
       {typeof children === 'string' ? (
         <span dangerouslySetInnerHTML={{ __html: children }} />
       ) : (
@@ -33,6 +33,11 @@ RichText.propTypes = {
    * The tag to be used for the containing element
    */
   tag: PropTypes.string,
+
+  /**
+   *  onClick func
+   */
+  onClick: PropTypes.func,
 
   /**
    * The base font size to use
