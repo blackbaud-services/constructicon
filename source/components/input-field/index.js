@@ -173,7 +173,7 @@ class InputField extends React.Component {
 
         {renderField()}
 
-        {type === 'textarea' &&
+        {['textarea', 'contenteditable'].indexOf(type) > -1 &&
           !!maxLength && (
           <span
             className={classNames.remaining}
