@@ -4,3 +4,4 @@ npm-debug.log
 npm-constructicon
 npm-ps-components
 styleguide
+.vscode/*
