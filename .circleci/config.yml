@@ -20,9 +20,9 @@ workflows:
   production:
     jobs:
       - production:
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only: master
 
 commands:
   install:
