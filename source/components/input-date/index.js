@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
-dayjs.extend(customParseFormat)
 import range from 'lodash/range'
 import pick from 'lodash/pick'
 import withStyles from '../with-styles'
@@ -11,6 +10,7 @@ import InputField from '../input-field'
 import InputSelect from '../input-select'
 import InputValidations from '../input-validations'
 import Label from '../label'
+dayjs.extend(customParseFormat)
 
 class InputDate extends Component {
   constructor (props) {
