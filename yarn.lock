@@ -2074,6 +2074,11 @@ commander@^2.11.0, commander@^2.14.1, commander@^2.9.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
+commander@^2.20.3:
+  version "2.20.3"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+  integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
+
 commander@~2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/commander/-/commander-2.1.0.tgz#d121bbae860d9992a3d517ba96f56588e47c6781"
@@ -2360,6 +2365,11 @@ css-what@2.1:
 cssesc@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-0.1.0.tgz#c814903e45623371a0477b40109aaafbeeaddbb4"
+
+cssfilter@0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/cssfilter/-/cssfilter-0.0.10.tgz#c6d2672632a2e5c83e013e6864a42ce8defd20ae"
+  integrity sha1-xtJnJjKi5cg+AT5oZKQs6N79IK4=
 
 cssnano@^3.10.0:
   version "3.10.0"
@@ -9814,6 +9824,14 @@ x-is-string@^0.1.0:
 xml-name-validator@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-2.0.1.tgz#4d8b8f1eccd3419aa362061becef515e1e559635"
+
+xss@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/xss/-/xss-1.0.9.tgz#3ffd565571ff60d2e40db7f3b80b4677bec770d2"
+  integrity sha512-2t7FahYnGJys6DpHLhajusId7R0Pm2yTmuL0GV9+mV0ZlaLSnb2toBmppATfg5sWIhZQGlsTLoecSzya+l4EAQ==
+  dependencies:
+    commander "^2.20.3"
+    cssfilter "0.0.10"
 
 "xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.1"

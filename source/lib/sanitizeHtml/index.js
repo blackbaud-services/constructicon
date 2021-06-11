@@ -1,37 +1,34 @@
-import sanitize from 'sanitize-html'
+import xss from 'xss'
 
-export const config = {
-  allowedTags: [
-    'a',
-    'abbr',
-    'b',
-    'br',
-    'del',
-    'div',
-    'em',
-    'hr',
-    'i',
-    'iframe',
-    'img',
-    'p',
-    'pre',
-    's',
-    'small',
-    'span',
-    'strike',
-    'strong',
-    'sub',
-    'sup',
-    'u'
-  ],
-  allowedAttributes: {
+const defaultConfig = {
+  whiteList: {
     a: ['href'],
     abbr: ['title'],
+    b: [],
+    br: [],
+    del: [],
+    div: [],
+    em: [],
+    hr: [],
+    i: [],
+    p: [],
+    pre: [],
+    s: [],
+    small: [],
+    span: [],
+    strike: [],
+    strong: [],
+    sub: [],
+    sup: [],
+    u: [],
     iframe: ['src'],
     img: ['alt', 'src']
   }
 }
 
-export const sanitizeHtml = (html, options = config) => sanitize(html, options)
+export const sanitizeHtml = (html, options = defaultConfig) => {
+  console.log(html)
+  return xss(html, options)
+}
 
 export default sanitizeHtml
