@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import moment from 'moment'
+import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+dayjs.extend(customParseFormat)
 import range from 'lodash/range'
 import pick from 'lodash/pick'
 import withStyles from '../with-styles'
@@ -20,7 +22,7 @@ class InputDate extends Component {
       touched: !!props.value,
       showSelects: props.showSelects,
       value: props.value,
-      date: props.value ? moment(props.value) : moment(props.default)
+      date: props.value ? dayjs(props.value) : dayjs(props.default)
     }
   }
 
@@ -50,7 +52,7 @@ class InputDate extends Component {
 
   updateDate (moment) {
     this.setState({ date: moment, touched: true })
-    this.props.onChange(moment.format('YYYY-MM-DD'))
+    this.props.onChange(dayjs(moment).format('YYYY-MM-DD'))
   }
 
   render () {
@@ -65,7 +67,7 @@ class InputDate extends Component {
       validations
     } = this.props
 
-    const { showSelects, touched, date = moment() } = this.state
+    const { showSelects, touched, date = dayjs() } = this.state
 
     const labelId = `label-${id || name}`
     const allowedProps = pick(this.props, [
@@ -143,7 +145,7 @@ class InputDate extends Component {
             aria-labelledby={labelId}
             options={[
               { label: 'Year', value: '', disabled: true },
-              ...mapValues(range(1900, parseInt(moment().year() + 1)))
+              ...mapValues(range(1900, parseInt(dayjs().year() + 1)))
             ]}
           />
         </div>

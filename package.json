@@ -24,6 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
+    "dayjs": "^1.10.5",
     "emotion": "^9.2.7",
     "emotion-server": "^9.2.7",
     "filestack-js": "^3.12.4",
