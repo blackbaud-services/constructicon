@@ -26,9 +26,7 @@ const defaultConfig = {
   }
 }
 
-export const sanitizeHtml = (html, options = defaultConfig) => {
-  console.log(html)
-  return xss(html, options)
-}
+export const sanitizeHtml = (html, options = defaultConfig) =>
+  xss(html, options)
 
 export default sanitizeHtml
