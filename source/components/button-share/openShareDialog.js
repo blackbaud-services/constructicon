@@ -112,8 +112,6 @@ export default options => () => {
       image
     })
 
-    console.log(shareUrl)
-
     return popupShares.indexOf(type) > -1
       ? openPopup(shareUrl, popupConfig)
       : window.location.assign(shareUrl)
