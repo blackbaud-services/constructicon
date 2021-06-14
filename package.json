@@ -11,7 +11,8 @@
     "precommit": "lint-staged",
     "build": "babel source -d dist --copy-files",
     "build:styleguide": "styleguidist build",
-    "deploy:prepare": "npm run build && gulp npm-prepare"
+    "deploy:prepare": "npm run build && gulp npm-prepare",
+    "announce": "./bin/announce"
   },
   "repository": {
     "type": "git",
