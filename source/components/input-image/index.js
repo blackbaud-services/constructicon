@@ -141,6 +141,8 @@ class InputImage extends React.Component {
       classNames,
       error,
       label,
+      maxFiles,
+      multiple,
       note,
       orientationChange,
       required,
@@ -233,6 +235,8 @@ class InputImage extends React.Component {
           <div className={classNames.dropzoneContainer}>
             <Dropzone
               accept='image/*'
+              maxFiles={maxFiles}
+              multiple={multiple}
               onDrop={images => this.handleSetImage(images[0])}
             >
               {({ getRootProps, getInputProps }) => (
@@ -257,8 +261,10 @@ class InputImage extends React.Component {
 InputImage.defaultProps = {
   borderWidth: 0.05,
   height: 500,
+  maxFiles: 1,
   maxSize: 1600,
   maxWidth: 350,
+  multiple: false,
   width: 500
 }
 
@@ -279,9 +285,19 @@ InputImage.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
   /**
+   * The max number of files accepted
+   */
+  maxFiles: PropTypes.number,
+
+  /**
    * The max width/length of an uploaded image
    */
   maxSize: PropTypes.number,
+
+  /**
+   * Allow multiple files?
+   */
+  multiple: PropTypes.bool,
 
   /**
    * The name of the field
