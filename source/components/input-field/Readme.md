@@ -72,6 +72,19 @@ handleChange = (search) => {
 />
 ```
 
+**Password field**
+
+```
+initialState = { password: '' };
+
+<InputField
+  type='password'
+  name='fakePass'
+  label='Password'
+  value={state.password}
+  onChange={password => setState({ password })}
+/>
+```
 
 **Custom Styles**
 

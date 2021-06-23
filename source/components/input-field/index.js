@@ -19,7 +19,10 @@ class InputField extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.handlePaste = this.handlePaste.bind(this)
-    this.state = { value: props.value }
+    this.state = {
+      value: props.value,
+      type: props.type
+    }
   }
 
   getTag () {
@@ -125,7 +128,7 @@ class InputField extends React.Component {
       <Tag
         ref={setRef}
         className={classNames.field}
-        type={type}
+        type={this.state.type}
         name={name}
         id={inputId}
         checked={isBoolean(type) ? Boolean(value) : undefined}
@@ -153,6 +156,23 @@ class InputField extends React.Component {
         default:
           return null
       }
+    }
+
+    const renderVisibilityToggle = () => {
+      return (
+        <button
+          className={classNames.toggle}
+          type='button'
+          onClick={e => {
+            e.preventDefault()
+            this.setState({
+              type: this.state.type === 'password' ? 'text' : 'password'
+            })
+          }}
+        >
+          {this.state.type === 'password' ? 'Show' : 'Hide'}
+        </button>
+      )
     }
 
     return (
@@ -185,6 +205,8 @@ class InputField extends React.Component {
         )}
 
         {status && renderStatus()}
+
+        {type === 'password' && renderVisibilityToggle()}
 
         {error && (
           <InputValidations
