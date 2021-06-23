@@ -2,7 +2,7 @@ import merge from 'lodash/merge'
 import { isBoolean } from '../../lib/form'
 
 export default (
-  { label, type, touched, invalid, readOnly, styles },
+  { label, type, touched, invalid, readOnly, status, styles },
   { colors, fonts, measures, radiuses, rhythm, scale, treatments }
 ) => {
   const checkbox = isBoolean(type)
@@ -40,6 +40,11 @@ export default (
         boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
         borderRadius: rhythm(radiuses.small),
         WebkitMinLogicalWidth: 'calc(100% - 18px)',
+
+        ...((!!status || type === 'password') && {
+          paddingRight: rhythm(1.5)
+        }),
+
         ...(type === 'textarea' && {
           maxHeight: rhythm(12),
           resize: 'vertical'
@@ -73,6 +78,24 @@ export default (
       top: label ? rhythm(1.633) : rhythm(0.5),
       right: rhythm(0.5),
       pointerEvents: 'none'
+    },
+
+    toggle: {
+      position: 'absolute',
+      top: label ? rhythm(1.633) : rhythm(0.5),
+      right: rhythm(0.5),
+      lineHeight: rhythm(0.666),
+      fontSize: scale(-1),
+      fontWeight: 'bold',
+
+      '&:before': {
+        content: '""',
+        position: 'absolute',
+        top: rhythm(-0.333),
+        right: rhythm(-0.333),
+        bottom: rhythm(-0.333),
+        left: rhythm(-0.333)
+      }
     },
 
     remaining: {
