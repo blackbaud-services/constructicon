@@ -7,20 +7,26 @@ export default (
     borderWidth,
     foreground,
     margin,
+    font,
     radius,
+    size,
     spacing,
-    styles
+    styles,
+    textAlign
   },
-  { colors, radiuses, rhythm, calculateSpacing }
+  { colors, radiuses, rhythm, calculateSpacing, scale, treatments }
 ) => ({
   root: merge(
     {
       ...calculateSpacing(spacing),
       ...calculateSpacing(margin, 'margin'),
+      ...treatments[font || 'body'],
       backgroundColor: background && colors[background],
-      color: foreground && colors[foreground],
       border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
-      borderRadius: radius && rhythm(radiuses[radius])
+      borderRadius: radius && rhythm(radiuses[radius]),
+      color: foreground && colors[foreground],
+      fontSize: scale(size),
+      textAlign
     },
     styles
   )
