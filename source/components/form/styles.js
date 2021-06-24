@@ -32,7 +32,9 @@ export default (props, traits, keyframes) => {
       },
 
       '& a': {
-        color: colors.tertiary
+        fontWeight: 'bold',
+        color: colors.light,
+        textDecoration: 'underline'
       }
     },
 
