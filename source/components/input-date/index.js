@@ -50,9 +50,9 @@ class InputDate extends Component {
     }
   }
 
-  updateDate (moment) {
-    this.setState({ date: moment, touched: true })
-    this.props.onChange(dayjs(moment).format('YYYY-MM-DD'))
+  updateDate (date) {
+    this.setState({ date, touched: true })
+    this.props.onChange(dayjs(date).format('YYYY-MM-DD'))
   }
 
   render () {
