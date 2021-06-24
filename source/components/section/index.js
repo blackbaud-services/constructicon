@@ -9,11 +9,14 @@ const Section = ({
   borderWidth,
   children,
   classNames,
+  font,
   foreground,
   margin,
+  size,
   spacing,
   styles,
   tag: Tag,
+  textAlign,
   ...props
 }) => {
   if (!children) {
@@ -59,6 +62,11 @@ Section.propTypes = {
   borderWidth: PropTypes.number,
 
   /**
+   * The section font
+   */
+  font: PropTypes.string,
+
+  /**
    * The radius of the section
    */
   radius: PropTypes.string,
@@ -74,17 +82,29 @@ Section.propTypes = {
   margin: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
 
   /**
+   * The font size
+   */
+  size: PropTypes.number,
+
+  /**
+   * The text alignment
+   */
+  textAlign: PropTypes.oneOf(['left', 'center', 'right', 'justify', 'inherit']),
+
+  /**
    * The custom styles to be applied to the section
    */
   styles: PropTypes.object
 }
 
 Section.defaultProps = {
-  tag: 'section',
   borderColor: 'shade',
-  spacing: { x: 1, y: 1 },
   margin: 0,
-  styles: {}
+  size: 0,
+  spacing: { x: 1, y: 1 },
+  styles: {},
+  tag: 'section',
+  textAlign: 'inherit'
 }
 
 export default withStyles(styles)(Section)
