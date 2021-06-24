@@ -11,7 +11,13 @@ export default ({ styles }, { colors, scale, rhythm, treatments }) => {
 
     error: {
       marginTop: rhythm(0.5),
-      ...treatments.inputValidation
+      ...treatments.inputValidation,
+
+      '& a': {
+        fontWeight: 700,
+        color: colors.danger,
+        textDecoration: 'underline'
+      }
     }
   }
 
