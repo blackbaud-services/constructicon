@@ -1,3 +1,21 @@
+export const regularExpressions = {
+  alpha: /^[A-Za-z]+$/i,
+  alphaNumeric: /^[A-Za-z0-9]+$/i,
+  alphaNumericSpecial: /^[A-Za-z0-9'_./#&+-\s]+$/i,
+  passwordComplexity: /^(?:(?=.*\W)(?=.*[a-zA-Z])(?=.*\d))/,
+  phone: /^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{1}( |-){0,1}[0-9]{3}$/,
+  slug: /^[A-Za-z0-9-]+$/i,
+  url: /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
+}
+
+const containsSubstring = (valueA, valueB) => {
+  return (
+    String(valueA)
+      .toLowerCase()
+      .indexOf(valueB.toLowerCase()) > -1
+  )
+}
+
 export const required = (msg = 'This field is required') => {
   return val => {
     switch (typeof val) {
@@ -19,19 +37,18 @@ export const email = (msg = 'Please enter a valid email') => {
 }
 
 export const phone = (msg = 'Please enter a valid phone number') => {
-  const phoneRegex = /^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{1}( |-){0,1}[0-9]{3}$/
-  return val => !!val && !phoneRegex.test(val.replace(/\s/g, '')) && msg
+  return val =>
+    !!val && !regularExpressions.phone.test(val.replace(/\s/g, '')) && msg
 }
 
 export const url = (msg = 'Please enter a valid URL') => {
-  const urlRegex = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
-  return val => !!val && !urlRegex.test(val) && msg
+  return val => !!val && !regularExpressions.url.test(val) && msg
 }
 
 export const slug = (
   msg = 'Please enter a valid URL using only letters, numbers or hyphens (-)'
 ) => {
-  return val => !!val && !/^[A-Za-z0-9-]+$/i.test(val) && msg
+  return val => !!val && !regularExpressions.slug.test(val) && msg
 }
 
 export const number = (msg = 'Must be a number') => {
@@ -39,15 +56,22 @@ export const number = (msg = 'Must be a number') => {
 }
 
 export const alphaNumeric = (msg = 'Field must be only letters or numbers') => {
-  return val => !!val && !/^[A-Za-z0-9]+$/i.test(val) && msg
+  return val => !!val && !regularExpressions.alphaNumeric.test(val) && msg
 }
 
 export const alpha = (msg = 'Field must be only letters') => {
-  return val => !!val && !/^[A-Za-z]+$/i.test(val) && msg
+  return val => !!val && !regularExpressions.alpha.test(val) && msg
 }
 
 export const alphaNumericSpecial = (msg = 'No special characters allowed') => {
-  return val => !!val && !/^[A-Za-z0-9'_./#&+-\s]+$/i.test(val) && msg
+  return val =>
+    !!val && !regularExpressions.alphaNumericSpecial.test(val) && msg
+}
+
+export const passwordComplexity = (
+  msg = 'Password must include at least one number, a lower or upper case letter and a special character (#,$,%,&,@ etc.)'
+) => {
+  return val => !!val && !regularExpressions.passwordComplexity.test(val) && msg
 }
 
 export const equals = (value, msg = `Field must be equal to ${value}`) => {
@@ -56,6 +80,26 @@ export const equals = (value, msg = `Field must be equal to ${value}`) => {
 
 export const equalsField = (field, msg = `Field must be equal to ${field}`) => {
   return (val, values) => !!val && val !== values[field] && msg
+}
+
+export const doesNotEqualField = (
+  field,
+  msg = `Field must be different to ${field}`
+) => {
+  return (val, values) => !!val && val === values[field] && msg
+}
+
+export const containsField = (field, msg = `Field must include ${field}`) => {
+  return (val, values) =>
+    !!val && !!values[field] && !containsSubstring(val, values[field]) && msg
+}
+
+export const doesNotContainField = (
+  field,
+  msg = `Field must not include ${field}`
+) => {
+  return (val, values) =>
+    !!val && !!values[field] && containsSubstring(val, values[field]) && msg
 }
 
 export const greaterThan = (min = 0, msg) => {
