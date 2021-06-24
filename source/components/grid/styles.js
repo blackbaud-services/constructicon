@@ -1,14 +1,14 @@
 import merge from 'lodash/merge'
 
 export default (
-  { align, direction, justify, spacing, styles },
+  { align, direction, justify, spacing, styles, wrap },
   { calculateSpacing, justifyContent }
 ) => ({
   root: merge(
     {
       display: 'flex',
       minWidth: '100%',
-      flexWrap: 'wrap',
+      flexWrap: wrap,
       alignItems: align,
       direction: direction,
       ...justifyContent(justify),

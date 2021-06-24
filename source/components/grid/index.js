@@ -47,7 +47,12 @@ Grid.propTypes = {
   /**
    * Custom styles to apply
    */
-  styles: PropTypes.object
+  styles: PropTypes.object,
+
+  /**
+   * Direction of the columns
+   */
+  wrap: PropTypes.oneOf(['wrap', 'nowrap', 'wrap-reverse'])
 }
 
 Grid.defaultProps = {
@@ -55,7 +60,8 @@ Grid.defaultProps = {
   justify: 'space-between',
   direction: 'row',
   spacing: 0,
-  styles: {}
+  styles: {},
+  wrap: 'wrap'
 }
 
 export default withStyles(styles)(Grid)
