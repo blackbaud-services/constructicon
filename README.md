@@ -89,9 +89,16 @@ Constructicon now uses Emotion as it's CSS in JS solution. There are a few small
 - `yarn run test:unit` to run unit tests
 - `yarn run build` to build for production
 - `yarn run build:styleguide` to build the styleguide
+- `yarn run build:icons` to minify and prepare the icons to import into `icons.js`. See more below.
 
 ### Tests
 
 We are aiming to build from the ground up with tests where appropriate, using Mocha, Chai and Enzyme.
 
 To execute the tests, simply run `yarn test`.
+
+### Icons
+
+The icon set is maintained in a [Sketch file](https://github.com/blackbaud-services/constructicon/blob/master/icons.sketch), which is setup to export individual SVG files for each icon to [the icons directory](https://github.com/blackbaud-services/constructicon/tree/master/icons).
+
+After exporting from Sketch, run `yarn run build:icons` to minify SVGs and concatenate into a single file to grab the path data to import into `icons.js`.
