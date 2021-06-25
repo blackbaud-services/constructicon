@@ -39,11 +39,11 @@
 ```
 
 ```
-<Icon name='dropdown' />
+<Icon name='download' />
 ```
 
 ```
-<Icon name='download' />
+<Icon name='dropdown' />
 ```
 
 ```
@@ -203,6 +203,10 @@
 ```
 
 ```
+<Icon name='wheelchair' />
+```
+
+```
 <Icon name='elevation' />
 ```
 
@@ -239,6 +243,10 @@
 
 ```
 <Icon name='vimeo' color='vimeo' />
+```
+
+```
+<Icon name='justgiving' color='justgiving' />
 ```
 
 ```
@@ -283,14 +291,6 @@
 
 ```
 <Icon name='snapchat' color='snapchat' />
-```
-
-```
-<Icon name='tiktok' />
-```
-
-```
-<Icon name='houseparty' color='houseparty' />
 ```
 
 ```
