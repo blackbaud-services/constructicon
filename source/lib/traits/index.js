@@ -49,7 +49,6 @@ export const colors = {
   justgiving: '#ad29b6',
   tumblr: '#36465d',
   snapchat: '#fffc00',
-  houseparty: '#ff004d',
   nextdoor: '#93D500'
 }
 
