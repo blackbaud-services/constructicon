@@ -15,7 +15,7 @@ export const scale = (exponent = 0, scale = 1.2) =>
 export const colors = {
   light: '#fff',
   dark: '#000',
-  grey: '#7a898f',
+  grey: '#4F595F',
   lightGrey: '#aec0c6',
   paleGrey: '#ebf1f3',
   primary: '#1bab6b',
