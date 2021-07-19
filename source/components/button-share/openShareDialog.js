@@ -58,7 +58,8 @@ const popupShares = [
   'linkedin',
   'nextdoor',
   'pinterest',
-  'reddit'
+  'reddit',
+  'whatsapp'
 ]
 
 const toString = obj => {
