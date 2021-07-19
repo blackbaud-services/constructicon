@@ -5,6 +5,7 @@ import merge from 'lodash/merge'
 import withStyles from '../with-styles'
 import styles from './styles'
 import { isBoolean } from '../../lib/form'
+import { regularExpressions } from '../../lib/validators'
 import sanitizeHtml from '../../lib/sanitizeHtml'
 
 import ContentEditable from 'react-contenteditable'
@@ -56,10 +57,35 @@ class InputField extends React.Component {
     return onBlur && onBlur(value)
   }
 
+  handlePhoneKeyDown (event) {
+    const validKeys = [
+      ' ',
+      'Alt',
+      'ArrowDown',
+      'ArrowLeft',
+      'ArrowRight',
+      'ArrowUp',
+      'Backspace',
+      'Control',
+      'Enter',
+      'Escape',
+      'Shift',
+      'Tab'
+    ]
+    const isPhoneChar = regularExpressions.phone.test(event.key)
+    const isValidKey = isPhoneChar || validKeys.indexOf(event.key) > -1
+
+    if (!event.metaKey && !isValidKey) {
+      event.preventDefault()
+    }
+  }
+
   handleKeyDown (event) {
     const { onKeyDown, type } = this.props
 
     onKeyDown && onKeyDown(event)
+
+    if (type === 'tel') this.handlePhoneKeyDown(event)
 
     if (type === 'contenteditable' && event.metaKey) {
       switch (event.key) {

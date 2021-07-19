@@ -3,7 +3,7 @@ export const regularExpressions = {
   alphaNumeric: /^[A-Za-z0-9]+$/i,
   alphaNumericSpecial: /^[A-Za-z0-9'_./#&+-\s]+$/i,
   passwordComplexity: /^(?:(?=.*\W)(?=.*[a-zA-Z])(?=.*\d))/,
-  phone: /^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{1}( |-){0,1}[0-9]{3}$/,
+  phone: /^[\d\-+.*#()]/,
   slug: /^[A-Za-z0-9-]+$/i,
   url: /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
 }
