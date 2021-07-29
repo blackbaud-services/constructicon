@@ -13,6 +13,7 @@
     "build:styleguide": "styleguidist build",
     "build:icons": "svgo -f ./icons; tail -n +1 ./icons/*.svg > ./icons.xml",
     "deploy:prepare": "npm run build && gulp npm-prepare",
+    "deploy:docs": "npm run build:styleguide && gh-pages -d styleguide",
     "announce": "./bin/announce"
   },
   "repository": {
