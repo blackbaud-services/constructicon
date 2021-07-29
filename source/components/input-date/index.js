@@ -18,11 +18,17 @@ class InputDate extends Component {
     this.updateDateFragment = this.updateDateFragment.bind(this)
     this.updateDate = this.updateDate.bind(this)
 
+    const date = dayjs(props.value || props.default)
+
     this.state = {
-      touched: !!props.value,
       showSelects: props.showSelects,
       value: props.value,
-      date: props.value ? dayjs(props.value) : dayjs(props.default)
+      date,
+      fragments: {
+        date: props.value ? date.date().toString() : '',
+        month: props.value ? date.month().toString() : '',
+        year: props.value ? date.year().toString() : ''
+      }
     }
   }
 
@@ -42,16 +48,30 @@ class InputDate extends Component {
 
   updateDateFragment (type) {
     return value => {
-      if (!value) {
-        return
+      if (!value) return
+
+      const fragments = {
+        ...this.state.fragments,
+        [type]: value
       }
 
-      return this.updateDate(this.state.date[type](value))
+      const { date, month, year } = fragments
+
+      this.setState({ fragments })
+
+      if (date && month && year) {
+        return this.updateDate(
+          this.state.date
+            .date(date)
+            .month(month)
+            .year(year)
+        )
+      }
     }
   }
 
   updateDate (date) {
-    this.setState({ date, touched: true })
+    this.setState({ date })
     this.props.onChange(dayjs(date).format('YYYY-MM-DD'))
   }
 
@@ -67,7 +87,7 @@ class InputDate extends Component {
       validations
     } = this.props
 
-    const { showSelects, touched, date = dayjs() } = this.state
+    const { showSelects, date = dayjs() } = this.state
 
     const labelId = `label-${id || name}`
     const allowedProps = pick(this.props, [
@@ -112,7 +132,7 @@ class InputDate extends Component {
           <InputSelect
             {...allowedProps}
             styles={styles.input}
-            value={touched ? date.date().toString() : ''}
+            value={this.state.fragments.date}
             onChange={this.updateDateFragment('date')}
             onBlur={this.updateDateFragment('date')}
             label='Day'
@@ -126,7 +146,7 @@ class InputDate extends Component {
           <InputSelect
             {...allowedProps}
             styles={styles.input}
-            value={touched ? date.month().toString() : ''}
+            value={this.state.fragments.month}
             onChange={this.updateDateFragment('month')}
             onBlur={this.updateDateFragment('month')}
             label='Month'
@@ -137,7 +157,7 @@ class InputDate extends Component {
           <InputSelect
             {...allowedProps}
             styles={styles.input}
-            value={touched ? date.year().toString() : ''}
+            value={this.state.fragments.year}
             onChange={this.updateDateFragment('year')}
             onBlur={this.updateDateFragment('year')}
             label='Year'
