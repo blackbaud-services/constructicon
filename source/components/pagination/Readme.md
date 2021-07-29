@@ -36,7 +36,7 @@ The child function supplied to __Pagination__, will receive one argument, an obj
 // create some fake leaderboard data
 const leaders = new Array(15).fill({
   href: 'http://google.com',
-  image: 'http://placehold.it/250x250',
+  image: 'http://source.unsplash.com/random/250x250',
   name: 'Leader Name',
   charity: 'Charity Name',
   amount: '$1,500'

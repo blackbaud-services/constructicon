@@ -33,14 +33,14 @@ Filled with SearchResults
 <SearchResults>
   <SearchResult
     cta='Support'
-    image='http://placehold.it/100x100'
+    image='http://source.unsplash.com/random/100x100'
     title='Support Name'
     subtitle='Supporter Charity'>
     <Button tag='a' href='http://google.com'>Support</Button>
   </SearchResult>
   <SearchResult
     cta='Support'
-    image='http://placehold.it/100x100'
+    image='http://source.unsplash.com/random/100x100'
     title='Support Name'
     subtitle='Supporter Charity'>
     <Button tag='a' href='http://google.com'>Support</Button>

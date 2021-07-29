@@ -22,7 +22,7 @@ var supporters = [1, 2, 3];
     {supporters.map((sup, i) => (
       <SearchResult
         key={i}
-        image='http://placehold.it/250x250'
+        image='http://source.unsplash.com/random/250x250'
         title='Supporter Name'
         subtitle='Charity Name'>
         <Button>Support</Button>

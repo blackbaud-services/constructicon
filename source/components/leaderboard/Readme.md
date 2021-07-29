@@ -5,7 +5,7 @@
 ```
 const leader = {
   href: 'http://google.com',
-  image: 'http://placehold.it/250x250',
+  image: 'http://source.unsplash.com/random/250x250',
   name: 'Leader Name',
   charity: 'Charity Name',
   amount: '$1,500'
@@ -35,7 +35,7 @@ Set the background and foreground color of the leaderboard
 ```
 const leader = {
   href: 'http://google.com',
-  image: 'http://placehold.it/250x250',
+  image: 'http://source.unsplash.com/random/250x250',
   name: 'Leader Name',
   charity: 'Charity name that is actually rather long',
   amount: '$1,500'
@@ -64,7 +64,7 @@ Set the leaderboard to break into columns at certain breakpoints
 ```
 const leader = {
   href: 'http://google.com',
-  image: 'http://placehold.it/250x250',
+  image: 'http://source.unsplash.com/random/250x250',
   name: 'Leader Name',
   charity: 'Charity Name',
   amount: '$1,500'
@@ -124,7 +124,7 @@ Apply a custom styles object to alter the look. Available elements are:
 ```
 const leader = {
   href: 'http://google.com',
-  image: 'http://placehold.it/250x250',
+  image: 'http://source.unsplash.com/random/250x250',
   name: 'Leader Name',
   charity: 'Charity Name',
   amount: '$1,500'

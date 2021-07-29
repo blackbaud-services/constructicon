@@ -6,6 +6,6 @@
 <Image
   alt='Example Image'
   maxHeight={5}
-  src='https://placehold.it/400x200'
+  src='https://source.unsplash.com/random/400x200'
 />
 ```
