@@ -95,4 +95,54 @@ describe('InputDate', () => {
       done()
     }, 500)
   })
+
+  it('should not set date if only month is selected', done => {
+    let dateValue
+
+    const wrapper = mount(
+      <InputDate
+        label='Test Field'
+        name='test-date'
+        value={dateValue}
+        showSelects
+        onChange={value => (dateValue = value)}
+      />
+    )
+    const input = wrapper.find('select').at(1)
+    input.simulate('change', { target: { value: 1 } })
+
+    // need to wait for callback to debounce
+    setTimeout(() => {
+      expect(dateValue).to.eql(undefined)
+      done()
+    }, 500)
+  })
+
+  it('should set date if day, month and year are all selected', done => {
+    let dateValue
+
+    const wrapper = mount(
+      <InputDate
+        label='Test Field'
+        name='test-date'
+        value={dateValue}
+        showSelects
+        onChange={value => (dateValue = value)}
+      />
+    )
+
+    const dayInput = wrapper.find('select').at(0)
+    const monthInput = wrapper.find('select').at(1)
+    const yearInput = wrapper.find('select').at(2)
+
+    dayInput.simulate('change', { target: { value: 2 } })
+    monthInput.simulate('change', { target: { value: 1 } })
+    yearInput.simulate('change', { target: { value: 2022 } })
+
+    // need to wait for callback to debounce
+    setTimeout(() => {
+      expect(dateValue).to.eql('2022-02-02')
+      done()
+    }, 500)
+  })
 })
