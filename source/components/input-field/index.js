@@ -203,6 +203,8 @@ class InputField extends React.Component {
 
     return (
       <div className={`c11n-input-field ${classNames.root}`}>
+        {isBoolean(type) && renderField()}
+
         {label && (
           <Label
             id={labelId}
@@ -217,7 +219,7 @@ class InputField extends React.Component {
           </Label>
         )}
 
-        {renderField()}
+        {!isBoolean(type) && renderField()}
 
         {['textarea', 'contenteditable'].indexOf(type) > -1 &&
           !!maxLength && (
