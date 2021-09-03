@@ -9,7 +9,7 @@ export default (
       display: 'block',
       fontWeight: 700,
       fontSize: scale(-0.5),
-      lineHeight: measures.medium,
+      lineHeight: '1.5em',
       textAlign: 'left',
       marginBottom: rhythm(0.25),
       ...treatments.label,
