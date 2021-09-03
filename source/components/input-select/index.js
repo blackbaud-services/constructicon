@@ -10,6 +10,14 @@ import Icon from '../icon'
 import InputValidations from '../input-validations'
 import Label from '../label'
 
+const isIos = () => {
+  if (typeof window !== 'undefined' && !!navigator) {
+    return !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent)
+  }
+
+  return false
+}
+
 const InputSelect = ({
   classNames,
   error,
@@ -69,11 +77,21 @@ const InputSelect = ({
 
       return resultOptions
     } else {
-      return options.map(({ value, label, disabled }, index) => (
-        <option value={value} key={index} disabled={disabled}>
-          {label}
-        </option>
-      ))
+      // Hack for long labels on iOS
+      const hasLongOptionLabel = options.reduce((acc, option) => {
+        return acc || option.label.length > 32
+      }, false)
+
+      return (
+        <React.Fragment>
+          {options.map(({ value, label, disabled }, index) => (
+            <option value={value} key={index} disabled={disabled}>
+              {label}
+            </option>
+          ))}
+          {isIos() && hasLongOptionLabel && <optgroup label='' />}
+        </React.Fragment>
+      )
     }
   }
 
