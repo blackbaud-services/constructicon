@@ -13,7 +13,7 @@ export default (
     root: {
       display: 'block',
       position: 'relative',
-      paddingLeft: checkbox ? rhythm(1) : '0',
+      paddingLeft: checkbox ? rhythm(1.25) : '0',
       fontFamily: fonts.body,
       textAlign: 'left',
       marginBottom: rhythm(1),
@@ -24,7 +24,17 @@ export default (
       ? {
         position: 'absolute',
         top: rhythm(0.125),
-        left: 0
+        left: 0,
+        width: rhythm(0.75),
+        height: rhythm(0.75),
+        border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
+        boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
+        borderRadius: rhythm(radiuses.small),
+
+        '&:focus': {
+          borderColor: isInvalid ? colors.danger : colors.secondary,
+          boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
+        }
       }
       : {
         display: 'block',
