@@ -165,7 +165,7 @@ class InputDate extends Component {
             aria-labelledby={labelId}
             options={[
               { label: 'Year', value: '', disabled: true },
-              ...mapValues(range(1900, parseInt(dayjs().year() + 1)))
+              ...mapValues(range(1900, parseInt(dayjs().year() + 1)).reverse())
             ]}
           />
         </div>
