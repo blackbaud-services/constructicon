@@ -92,8 +92,10 @@ class InputDate extends Component {
     const labelId = `label-${id || name}`
     const allowedProps = pick(this.props, [
       'disabled',
+      'invalid',
       'placeholder',
-      'required'
+      'required',
+      'touched'
     ])
     const months = [
       { label: 'January', value: 0 },
