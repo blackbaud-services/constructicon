@@ -1,0 +1,19 @@
+[data-testid="Icon-container"] article {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -1rem;
+}
+
+[data-testid="Icon-container"] article > div:first-child,
+[data-testid="Icon-container"] article p {
+  width: 100%;
+  margin-right: 1rem;
+}
+
+[data-testid="Icon-container"] article > div:first-child ~ div {
+  margin-right: 1rem;
+}
+
+[data-testid="Icon-container"] article > div:first-child ~ div div {
+  text-align: center;
+}
