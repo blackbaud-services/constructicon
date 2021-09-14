@@ -5,19 +5,18 @@
 Pass an onChange callback to be notified of changes
 
 ```
-initialState = { date: '' };
-styles = { padding: '1rem', textAlign: 'center', backgroundColor: 'whitesmoke' };
+const [date, setDate] = React.useState('');
 
 <div>
   <InputDate
     label='Date of Birth'
     name='birthday'
-    value={state.date}
-    onChange={(v) => setState({ date: v })}
+    value={date}
+    onChange={val => setDate(val)}
     required
   />
-  <div style={styles}>
-    {state.date || 'No date selected'}
+  <div style={{ padding: '1rem', textAlign: 'center', backgroundColor: 'whitesmoke' }}>
+    {date || 'No date selected'}
   </div>
 </div>
 ```
@@ -25,19 +24,18 @@ styles = { padding: '1rem', textAlign: 'center', backgroundColor: 'whitesmoke' }
 **Always show selects**
 
 ```
-initialState = { date: '' };
-styles = { padding: '1rem', textAlign: 'center', backgroundColor: 'whitesmoke' };
+const [date, setDate] = React.useState('');
 
 <div>
   <InputDate
     label='Date of Birth'
     name='dob'
-    value={state.date}
-    onChange={(v) => setState({ date: v })}
+    value={date}
+    onChange={val => setDate(val)}
     showSelects
   />
-  <div style={styles}>
-    {state.date || 'No date selected'}
+  <div style={{ padding: '1rem', textAlign: 'center', backgroundColor: 'whitesmoke' }}>
+    {date || 'No date selected'}
   </div>
 </div>
 ```

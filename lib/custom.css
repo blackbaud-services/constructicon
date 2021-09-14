@@ -1,19 +1,23 @@
 [data-testid="Icon-container"] article {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -1rem;
 }
 
 [data-testid="Icon-container"] article > div:first-child,
 [data-testid="Icon-container"] article p {
   width: 100%;
-  margin-right: 1rem;
+  flex-basis: 100%;
 }
 
-[data-testid="Icon-container"] article > div:first-child ~ div {
-  margin-right: 1rem;
+[data-testid="Icon-container"] article > div[class*='rsg--root'] {
+  margin-right: 2rem;
 }
 
-[data-testid="Icon-container"] article > div:first-child ~ div div {
+[data-testid="Icon-container"] article > div[class*='rsg--root'] [class*='rsg--preview'] {
   text-align: center;
+  font-size: 1.5rem;
+}
+
+[data-testid="Icon-container"] article [class*='rsg--toolbar'] {
+  display: none;
 }
