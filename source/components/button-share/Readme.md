@@ -5,6 +5,8 @@
 Links to the required social profiles
 
 ```
+import ButtonGroup from '../button-group';
+
 <ButtonGroup align='center'>
   <ButtonShare type='facebook' href='http://facebook.com' />
   <ButtonShare type='instagram' href='http://instagram.com' />
@@ -18,6 +20,8 @@ Links to the required social profiles
 Share the current page on supported social networks or via email
 
 ```
+import ButtonGroup from '../button-group';
+
 <ButtonGroup align='center'>
   <ButtonShare type='facebook' share />
   <ButtonShare type='twitter' url='https://blackbaud.com' title='Blackbaud' share />

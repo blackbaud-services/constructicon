@@ -353,6 +353,9 @@
 **Button**
 
 ```
+import ButtonGroup from '../button-group';
+import Button from '../button';
+
 <ButtonGroup>
   <Button>
     <span>Proceed</span>

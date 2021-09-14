@@ -3,6 +3,8 @@
 **Standard Use**
 
 ```
+import Leaderboard from '../leaderboard';
+
 <Leaderboard>
   <LeaderboardItem
     href='http://google.com'
@@ -19,6 +21,8 @@
 **Custom Link Component**
 
 ```
+import Leaderboard from '../leaderboard';
+
 <Leaderboard>
   <LeaderboardItem
     href='http://google.com'
@@ -46,6 +50,8 @@ Apply a custom styles object to alter the look. Available elements are:
 - `amount` - the amount
 
 ```
+import Leaderboard from '../leaderboard';
+
 const styles = {
   image: {
     height: '5em',

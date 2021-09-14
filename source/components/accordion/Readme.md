@@ -3,6 +3,8 @@
 **Standard Use**
 
 ```
+import RichText from '../rich-text';
+
 <div>
   <Accordion title='Lorem ipsum dolor sit amet, consectetur adipiscing elit?'>
     <RichText>
@@ -62,6 +64,8 @@ Set the font style for the title
 Set the open and close icon or text
 
 ```
+import RichText from '../rich-text';
+
 const opened = 'Close';
 const closed = 'Open';
 

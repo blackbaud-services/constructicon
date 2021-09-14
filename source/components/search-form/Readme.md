@@ -15,7 +15,11 @@
 **With Search Results**
 
 ```
-var supporters = [1, 2, 3];
+import Button from '../button';
+import SearchResults from '../search-results';
+import SearchResult from '../search-result';
+
+const supporters = [1, 2, 3];
 
 <SearchForm onChange={(v) => alert('Search for ' + v)}>
   <SearchResults loading={!supporters.length}>

@@ -3,6 +3,8 @@
 **Standard Use**
 
 ```
+import MetricGroup from '../metric-group';
+
 <MetricGroup>
   <Metric
     label='Target'

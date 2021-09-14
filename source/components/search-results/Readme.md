@@ -30,6 +30,9 @@ If the no leaderboard items are passed in, an empty message will be shown
 Filled with SearchResults
 
 ```
+import Button from '../button';
+import SearchResult from '../search-result';
+
 <SearchResults>
   <SearchResult
     cta='Support'
