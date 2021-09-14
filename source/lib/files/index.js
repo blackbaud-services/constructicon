@@ -26,9 +26,9 @@ export const dataURIToBlob = dataURI => {
     .split(':')[1]
     .split(';')[0]
 
-  let ia = new Uint8Array(byteString.length)
+  const ia = new Uint8Array(byteString.length)
 
-  for (var i = 0; i < byteString.length; i++) {
+  for (let i = 0; i < byteString.length; i++) {
     ia[i] = byteString.charCodeAt(i)
   }
 

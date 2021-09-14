@@ -5,20 +5,20 @@ const withToggle = Component => {
     constructor (props) {
       super(props)
       this.state = { toggled: props.toggled }
-      this.toggle = this.toggle.bind(this)
-      this.toggleOn = this.toggleOn.bind(this)
-      this.toggleOff = this.toggleOff.bind(this)
+      this.handleToggle = this.handleToggle.bind(this)
+      this.handleToggleOn = this.handleToggleOn.bind(this)
+      this.handleToggleOff = this.handleToggleOff.bind(this)
     }
 
-    toggle () {
+    handleToggle () {
       this.setState({ toggled: !this.state.toggled })
     }
 
-    toggleOn () {
+    handleToggleOn () {
       this.setState({ toggled: true })
     }
 
-    toggleOff () {
+    handleToggleOff () {
       this.setState({ toggled: false })
     }
 
@@ -27,9 +27,9 @@ const withToggle = Component => {
         <Component
           {...this.props}
           toggled={this.state.toggled}
-          onToggle={this.toggle}
-          onToggleOn={this.toggleOn}
-          onToggleOff={this.toggleOff}
+          onToggle={this.handleToggle}
+          onToggleOn={this.handleToggleOn}
+          onToggleOff={this.handleToggleOff}
         />
       )
     }

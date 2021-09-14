@@ -72,10 +72,9 @@ const withForm = config => ComponentToWrap =>
         case 'function':
           return validators(value, values)
         case 'object':
-          const validations = validators.map(validator =>
-            this.validateField(validator, value, values)
-          )
-          return validations.filter(v => v)
+          return validators
+            .map(validator => this.validateField(validator, value, values))
+            .filter(Boolean)
         default:
           return validators
       }
@@ -151,11 +150,10 @@ const withForm = config => ComponentToWrap =>
     submitForm () {
       const fields = this.touchFields(this.state.fields)
       this.setState({ fields })
-      return new Promise(
-        (resolve, reject) =>
-          this.checkIfValid(fields)
-            ? resolve(this.getValues(fields))
-            : reject(this.getValidations(fields))
+      return new Promise((resolve, reject) =>
+        this.checkIfValid(fields)
+          ? resolve(this.getValues(fields))
+          : reject(this.getValidations(fields))
       )
     }
 

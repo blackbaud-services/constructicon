@@ -9,19 +9,20 @@ import styles from './styles'
 class SearchForm extends Component {
   constructor () {
     super()
-    this.showForm = this.showForm.bind(this)
+    this.handleShowForm = this.handleShowForm.bind(this)
     this.closeForm = this.closeForm.bind(this)
     this.onChange = this.onChange.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.fieldRef = React.createRef()
   }
 
-  showForm () {
+  handleShowForm () {
     this.props.onToggleOn()
-    this.refs.field.focus()
+    this.fieldRef.current.focus()
   }
 
   closeForm () {
-    this.refs.field.value = ''
+    this.fieldRef.current.value = ''
     this.props.onToggleOff()
     this.props.onChange()
   }
@@ -37,7 +38,7 @@ class SearchForm extends Component {
 
     return debounce
       ? this.debounce(onChange)
-      : () => onChange(this.refs.field.value)
+      : () => onChange(this.fieldRef.current.value)
   }
 
   debounce (callback, delay = 500) {
@@ -45,7 +46,7 @@ class SearchForm extends Component {
     return () => {
       clearTimeout(timeout)
       timeout = setTimeout(() => {
-        callback(this.refs.field.value)
+        callback(this.fieldRef.current.value)
       }, delay)
     }
   }
@@ -71,12 +72,12 @@ class SearchForm extends Component {
               {title}
             </label>
             <input
-              ref='field'
+              ref={this.fieldRef}
               type='search'
               aria-labelledby='label-search-form'
               placeholder={placeholder}
               autoFocus={autofocus}
-              onFocus={this.showForm}
+              onFocus={this.handleShowForm}
               onChange={this.onChange()}
               className={classNames.input}
             />
@@ -87,15 +88,16 @@ class SearchForm extends Component {
                 expanded
                   ? this.onChange()
                   : toggled
-                    ? this.closeForm
-                    : this.showForm
+                  ? this.closeForm
+                  : this.handleShowForm
               }
-              children={expanded ? buttonText : toggled ? 'Close' : buttonText}
               aria-label={
                 expanded ? buttonText : toggled ? 'Close' : buttonText
               }
               {...button}
-            />
+            >
+              {expanded ? buttonText : toggled ? 'Close' : buttonText}
+            </Button>
           </div>
         </div>
         {children && <div className={classNames.results}>{children}</div>}
@@ -166,7 +168,4 @@ SearchForm.defaultProps = {
   onChange: () => {}
 }
 
-export default compose(
-  withToggle,
-  withStyles(styles)
-)(SearchForm)
+export default compose(withToggle, withStyles(styles))(SearchForm)

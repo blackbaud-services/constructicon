@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "styleguidist server",
-    "lint": "standard",
+    "lint": "prettier-standard --check 'source/**/*.js'",
     "test": "mocha source/**/**/__tests__/*.js --recursive --ui bdd --require @babel/register --require test/common.js",
     "format": "prettier-standard 'source/**/*.js'",
     "precommit": "lint-staged",
@@ -74,7 +74,6 @@
     "react-styleguidist": "^11.1.7",
     "sinon": "^11.1.2",
     "source-map-loader": "^1.0.0",
-    "standard": "^16.0.3",
     "style-loader": "^2.0.0",
     "svgo": "^2.5.0",
     "webpack": "^4.44.2"
@@ -91,14 +90,8 @@
     "ignore": [
       "source/**/**/__tests__/*.js",
       "test",
+      "styleguide.config.js",
       "gulpfile.js"
-    ],
-    "globals": [
-      "it",
-      "describe",
-      "mount",
-      "expect",
-      "utils"
     ]
   },
   "lint-staged": {

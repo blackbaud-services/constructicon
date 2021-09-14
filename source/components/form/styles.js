@@ -52,12 +52,12 @@ export default (props, traits, keyframes) => {
 
       '&:focus': {
         opacity: isInactive ? '0.3 !important' : 1,
-        boxShadow: `0 0 15px 1px rgba(0, 0, 0, 0.25)`
+        boxShadow: '0 0 15px 1px rgba(0, 0, 0, 0.25)'
       },
 
       '&:active': {
         opacity: isInactive ? '0.3 !important' : 1,
-        boxShadow: `inset 0 0 15px 1px rgba(0, 0, 0, 0.25)`
+        boxShadow: 'inset 0 0 15px 1px rgba(0, 0, 0, 0.25)'
       },
 
       '&:hover': {

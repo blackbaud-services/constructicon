@@ -70,7 +70,7 @@ class LazyImage extends React.Component {
     this.setState({
       status: 'fetching'
     })
-    let img = document.createElement('img')
+    const img = document.createElement('img')
     img.onload = () => {
       this.setState({
         status: 'fetched'
@@ -82,7 +82,7 @@ class LazyImage extends React.Component {
 
   isImageInViewport () {
     if (!this.image) return false
-    var rect = this.image.getBoundingClientRect()
+    const rect = this.image.getBoundingClientRect()
 
     return (
       rect.bottom > 0 &&
@@ -94,11 +94,8 @@ class LazyImage extends React.Component {
 
   render () {
     const { classNames, url, children, loadingProps } = this.props
-
     const { status } = this.state
-
     const loaded = status === 'fetched'
-
     const spinner = children || <Loading {...loadingProps} />
 
     return (

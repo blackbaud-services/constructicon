@@ -22,66 +22,66 @@ export default (
 
     field: checkbox
       ? {
-        position: 'absolute',
-        top: rhythm(0.125),
-        left: 0,
-        width: rhythm(0.75),
-        height: rhythm(0.75),
-        border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
-        boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
-        borderRadius: rhythm(radiuses.small),
+          position: 'absolute',
+          top: rhythm(0.125),
+          left: 0,
+          width: rhythm(0.75),
+          height: rhythm(0.75),
+          border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
+          boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
+          borderRadius: rhythm(radiuses.small),
 
-        '&:focus': {
-          borderColor: isInvalid ? colors.danger : colors.secondary,
-          boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
+          '&:focus': {
+            borderColor: isInvalid ? colors.danger : colors.secondary,
+            boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
+          }
         }
-      }
       : {
-        display: 'block',
-        width: '100%',
-        textAlign: 'left',
-        backgroundColor: colors.light,
-        color: readOnly ? colors.lightGrey : colors.dark,
-        padding: rhythm([textarea ? 0.25 : 0.125, 0.333]),
-        height: textarea ? 'auto' : rhythm(1.666),
-        lineHeight: textarea ? '1.333em' : rhythm(1.666),
-        minHeight: textarea && rhythm(3.25),
-        border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
-        boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
-        borderRadius: rhythm(radiuses.small),
-        WebkitMinLogicalWidth: 'calc(100% - 18px)',
+          display: 'block',
+          width: '100%',
+          textAlign: 'left',
+          backgroundColor: colors.light,
+          color: readOnly ? colors.lightGrey : colors.dark,
+          padding: rhythm([textarea ? 0.25 : 0.125, 0.333]),
+          height: textarea ? 'auto' : rhythm(1.666),
+          lineHeight: textarea ? '1.333em' : rhythm(1.666),
+          minHeight: textarea && rhythm(3.25),
+          border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
+          boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
+          borderRadius: rhythm(radiuses.small),
+          WebkitMinLogicalWidth: 'calc(100% - 18px)',
 
-        ...((!!status || type === 'password') && {
-          paddingRight: rhythm(1.5)
-        }),
+          ...((!!status || type === 'password') && {
+            paddingRight: rhythm(1.5)
+          }),
 
-        ...(type === 'textarea' && {
-          maxHeight: rhythm(12),
-          resize: 'vertical'
-        }),
-        ...treatments.input,
+          ...(type === 'textarea' && {
+            maxHeight: rhythm(12),
+            resize: 'vertical'
+          }),
+          ...treatments.input,
 
-        '&:focus': {
-          borderColor: isInvalid ? colors.danger : colors.secondary,
-          boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
+          '&:focus': {
+            borderColor: isInvalid ? colors.danger : colors.secondary,
+            boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
+          },
+
+          b: {
+            fontWeight: 'bold'
+          },
+
+          i: {
+            fontStyle: 'italic'
+          },
+
+          's, strike': {
+            textDecoration: 'line-through'
+          },
+
+          u: {
+            textDecoration: 'underline'
+          }
         },
-
-        b: {
-          fontWeight: 'bold'
-        },
-
-        i: {
-          fontStyle: 'italic'
-        },
-
-        's, strike': {
-          textDecoration: 'line-through'
-        },
-
-        u: {
-          textDecoration: 'underline'
-        }
-      },
 
     status: {
       position: 'absolute',

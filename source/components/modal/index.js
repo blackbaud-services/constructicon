@@ -71,8 +71,9 @@ class Modal extends Component {
             className={classNames.close}
             onClick={props.onRequestClose}
             aria-label='Close'
-            children={closeIcon}
-          />
+          >
+            {closeIcon}
+          </button>
         )}
         <div className={classNames.container}>{children}</div>
       </ReactModal>

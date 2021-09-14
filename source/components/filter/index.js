@@ -5,6 +5,11 @@ import withStyles from '../with-styles'
 import styles from './styles'
 
 class Filter extends Component {
+  constructor () {
+    super()
+    this.fieldRef = React.createRef()
+  }
+
   onChange () {
     const { onChange, debounce } = this.props
 
@@ -22,7 +27,7 @@ class Filter extends Component {
     return () => {
       clearTimeout(timeout)
       timeout = setTimeout(() => {
-        const val = this.refs.field.value
+        const val = this.fieldRef.current.value
         callback(val)
       }, delay)
     }
@@ -30,7 +35,7 @@ class Filter extends Component {
 
   noDebounce (callback) {
     return () => {
-      const val = this.refs.field.value
+      const val = this.fieldRef.current.value
       callback(val)
     }
   }
@@ -46,7 +51,7 @@ class Filter extends Component {
       >
         <Icon name='search' size={1.25} styles={styles.icon} />
         <input
-          ref='field'
+          ref={this.fieldRef}
           type='search'
           aria-label={placeholder}
           placeholder={placeholder}

@@ -5,6 +5,10 @@ module.exports = function(markup) {
   global.document = document
   global.window = document.defaultView
 
+  global.requestAnimationFrame = function (callback) {
+    return setTimeout(callback, 0);
+  }
+
   // Stub `matchMedia` to silence errors
   global.window.matchMedia = global.window.matchMedia || function() {
     return {
@@ -17,4 +21,7 @@ module.exports = function(markup) {
   global.navigator = {
     userAgent: 'chrome'
   }
+
+  global.HTMLCollection = window.HTMLCollection
+  global.NodeList = window.NodeList
 }

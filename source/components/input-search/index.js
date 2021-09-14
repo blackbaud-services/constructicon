@@ -16,9 +16,11 @@ class InputSearch extends Component {
     super(props)
     this.handleChange = this.handleChange.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
-    this.showMore = this.showMore.bind(this)
-    this.clearSelection = this.clearSelection.bind(this)
+    this.handleShowMore = this.handleShowMore.bind(this)
+    this.handleClearSelection = this.handleClearSelection.bind(this)
     this.setActiveItem = this.setActiveItem.bind(this)
+    this.inputRef = React.createRef()
+    this.resultsRef = React.createRef()
 
     if (props.debounce) {
       this.handleChange = debounce(this.handleChange, props.debounce)
@@ -33,7 +35,7 @@ class InputSearch extends Component {
 
   handleChange (e) {
     const query = e.target.value
-    if (this.refs.results) this.refs.results.scrollTop = 0
+    if (this.resultsRef.current) this.resultsRef.current.scrollTop = 0
     this.setState({ query }, this.sendQuery)
   }
 
@@ -51,14 +53,14 @@ class InputSearch extends Component {
       case 'Escape':
         e.preventDefault()
         if (this.props.value) {
-          return this.clearSelection()
+          return this.handleClearSelection()
         } else {
           return this.clearActive()
         }
       case 'Backspace':
         if (this.props.value) {
           e.preventDefault()
-          return this.clearSelection()
+          return this.handleClearSelection()
         } else if (this.state.active !== -1) {
           e.preventDefault()
           return this.clearActive()
@@ -86,7 +88,7 @@ class InputSearch extends Component {
       const isFirst = newIndex >= results.length
       const active = isLast ? results.length - 1 : isFirst ? 0 : newIndex
 
-      const resultsEl = this.refs.results
+      const resultsEl = this.resultsRef
       const selectedEl = resultsEl.querySelector(`[data-selected="${active}"]`)
 
       resultsEl.scrollTop = selectedEl && selectedEl.offsetTop
@@ -111,12 +113,12 @@ class InputSearch extends Component {
     })
   }
 
-  clearSelection () {
+  handleClearSelection () {
     this.props.onChange()
-    this.refs.input.focus()
+    this.inputRef.current.focus()
   }
 
-  showMore () {
+  handleShowMore () {
     const { toShow } = this.state
     const { limit } = this.props
     this.setState({
@@ -187,7 +189,7 @@ class InputSearch extends Component {
             name={name}
             placeholder={placeholder}
             readOnly={readOnly || !!value}
-            ref='input'
+            ref={this.inputRef}
             required={required}
             onChange={e => {
               e.persist && e.persist()
@@ -196,7 +198,7 @@ class InputSearch extends Component {
             onBlur={e => onBlur && onBlur(e.target.value)}
           />
           {value ? (
-            <div onClick={this.clearSelection}>
+            <div onClick={this.handleClearSelection}>
               <div className={classNames.selected}>{valueFormatter(value)}</div>
               <div className={classNames.icon}>
                 <Icon name='close' />
@@ -210,7 +212,7 @@ class InputSearch extends Component {
             )
           )}
           {query && (
-            <div className={classNames.results} ref='results'>
+            <div className={classNames.results} ref={this.resultsRef}>
               <Results
                 active={active}
                 classNames={classNames}
@@ -222,12 +224,11 @@ class InputSearch extends Component {
                 status={status}
                 toShow={toShow}
               >
-                {showMore &&
-                  results.length > toShow && (
+                {showMore && results.length > toShow && (
                   <button
                     type='button'
                     className={classNames.showMore}
-                    onClick={this.showMore}
+                    onClick={this.handleShowMore}
                   >
                     <span>Load More</span>{' '}
                     <Icon name='chevron' rotate={90} size={0.75} />
@@ -385,7 +386,4 @@ InputSearch.defaultProps = {
   valueFormatter: value => value
 }
 
-export default compose(
-  withStyles(styles),
-  onClickOutside
-)(InputSearch)
+export default compose(withStyles(styles), onClickOutside)(InputSearch)

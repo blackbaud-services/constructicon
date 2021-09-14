@@ -97,7 +97,6 @@ const Form = ({
           {icon && renderIcon(icon)}
         </Button>
       ) : null}
-
       {footer}
     </form>
   )
