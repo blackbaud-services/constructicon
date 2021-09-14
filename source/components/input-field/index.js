@@ -221,8 +221,7 @@ class InputField extends React.Component {
 
         {!isBoolean(type) && renderField()}
 
-        {['textarea', 'contenteditable'].indexOf(type) > -1 &&
-          !!maxLength && (
+        {['textarea', 'contenteditable'].indexOf(type) > -1 && !!maxLength && (
           <span
             className={classNames.remaining}
             data-hidden={maxLength - value.length > 99}

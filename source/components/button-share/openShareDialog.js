@@ -71,8 +71,8 @@ const toString = obj => {
 const openPopup = (url, config) => {
   config = defaults(config || {}, { width: 640, height: 320 })
 
-  let windowTop = window.screenTop ? window.screenTop : window.screenY
-  let windowLeft = window.screenLeft ? window.screenLeft : window.screenX
+  const windowTop = window.screenTop ? window.screenTop : window.screenY
+  const windowLeft = window.screenLeft ? window.screenLeft : window.screenX
 
   config.top = windowTop + window.innerHeight / 2 - config.height / 2
   config.left = windowLeft + window.innerWidth / 2 - config.width / 2

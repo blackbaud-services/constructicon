@@ -6,9 +6,9 @@ export default (
 ) => {
   const borderStyles = border
     ? {
-      paddingLeft: rhythm(0.5),
-      borderLeft: `2px solid ${toggled ? colors[color] : colors.shade}`
-    }
+        paddingLeft: rhythm(0.5),
+        borderLeft: `2px solid ${toggled ? colors[color] : colors.shade}`
+      }
     : {}
 
   const defaultStyles = {

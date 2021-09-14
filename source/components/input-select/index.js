@@ -83,14 +83,14 @@ const InputSelect = ({
       }, false)
 
       return (
-        <React.Fragment>
+        <>
           {options.map(({ value, label, disabled }, index) => (
             <option value={value} key={index} disabled={disabled}>
               {label}
             </option>
           ))}
           {isIos() && hasLongOptionLabel && <optgroup label='' />}
-        </React.Fragment>
+        </>
       )
     }
   }

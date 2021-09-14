@@ -29,11 +29,12 @@ const SearchResult = ({
         tag='a'
         href={url}
         aria-label={label || cta}
-        children={cta}
         target='_blank'
         rel='noopener'
         {...button}
-      />
+      >
+        {cta}
+      </Button>
     </div>
   </li>
 )

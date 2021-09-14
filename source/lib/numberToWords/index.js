@@ -74,8 +74,8 @@ const convert = groupsOfHundreds =>
         groupsOfHundreds.length > 1 && groupsOfHundreds.length - 1 === i
       return groupHasValue(group)
         ? `${convertHundreds(group, isLast)} ${
-          sizes(groupsOfHundreds.length)[i]
-        }`
+            sizes(groupsOfHundreds.length)[i]
+          }`
         : ''
     })
     .join(' ')

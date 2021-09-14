@@ -111,7 +111,4 @@ Accordion.defaultProps = {
   styles: {}
 }
 
-export default compose(
-  withToggle,
-  withStyles(styles)
-)(Accordion)
+export default compose(withToggle, withStyles(styles))(Accordion)

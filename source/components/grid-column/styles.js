@@ -24,9 +24,9 @@ export default (
   const calculateSize = cols =>
     cols
       ? {
-        flex: `1 0 ${(100 / 12) * cols}%`,
-        maxWidth: `${(100 / 12) * cols}%`
-      }
+          flex: `1 0 ${(100 / 12) * cols}%`,
+          maxWidth: `${(100 / 12) * cols}%`
+        }
       : {}
 
   return {

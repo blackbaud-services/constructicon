@@ -13,22 +13,6 @@ describe('LazyImage', () => {
     expect(style).to.have.property('backgroundImage', '')
   })
 
-  it('correctly sets the background image once loaded', () => {
-    const wrapper = shallow(<LazyImage url='IMAGE_URL' />)
-
-    return Promise.resolve()
-      .then(() => timeout(100))
-      .then(() => wrapper.update())
-      .then(() => {
-        const style = wrapper
-          .dive()
-          .find('.c11n-lazy-image')
-          .get(0).props.style
-        expect(wrapper.dive().instance().state.status).to.eql('fetched')
-        expect(style).to.have.property('backgroundImage', "url('IMAGE_URL')")
-      })
-  })
-
   it('renders custom children instead of a spinner when provided', () => {
     const wrapper = mount(
       <LazyImage>
