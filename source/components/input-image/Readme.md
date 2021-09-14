@@ -3,14 +3,14 @@
 **Standard Use**
 
 ```
-initialState = { image: '' };
+const [image, setImage] = React.useState('');
 
 <InputImage
   label='Upload an image'
   name='image'
-  onChange={image => setState({ image })}
+  onChange={image => setImage(image)}
   onFileChange={console.log}
-  value={state.image}
+  value={image}
 />
 ```
 

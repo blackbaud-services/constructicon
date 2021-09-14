@@ -5,41 +5,42 @@
 Example of a component that opens a modal when a button is clicked
 
 ```
-const React = require('react')
+import Button from '../button';
+import RichText from '../rich-text';
 
 class ModalExample extends React.Component {
-    constructor (props) {
-      super(props)
-      this.state = { open: false }
-      this.openModal = this.openModal.bind(this)
-      this.closeModal = this.closeModal.bind(this)
-    }
+  constructor (props) {
+    super(props)
+    this.state = { open: false }
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+  }
 
-    openModal () {
-      this.setState({ open: true })
-    }
+  openModal () {
+    this.setState({ open: true })
+  }
 
-    closeModal() {
-      this.setState({ open: false })
-    }
+  closeModal() {
+    this.setState({ open: false })
+  }
 
-    render () {
-      return (
-        <div>
-          <Button onClick={this.openModal}>Open Modal</Button>
-          <Modal
-            isOpen={this.state.open}
-            onRequestClose={this.closeModal}
-            contentLabel='Label'
-            appElement='#app'>
-            <RichText>
-              <h1>Everydayhero</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus.</p>
-            </RichText>
-          </Modal>
-        </div>
-      )
-    }
+  render () {
+    return (
+      <div>
+        <Button onClick={this.openModal}>Open Modal</Button>
+        <Modal
+          isOpen={this.state.open}
+          onRequestClose={this.closeModal}
+          contentLabel='Label'
+        >
+          <RichText>
+            <h1>Everydayhero</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus.</p>
+          </RichText>
+        </Modal>
+      </div>
+    )
+  }
 }
 
 <ModalExample />
@@ -50,7 +51,9 @@ class ModalExample extends React.Component {
 Example using the withToggle higher order component
 
 ```
-const withToggle = require('../with-toggle').default;
+import Button from '../button';
+import RichText from '../rich-text';
+import withToggle from '../with-toggle';
 
 const ModalExample = withToggle((props) => (
   <div>
@@ -59,7 +62,7 @@ const ModalExample = withToggle((props) => (
       isOpen={props.toggled}
       onRequestClose={props.onToggleOff}
       contentLabel='Label'
-      appElement='#app'>
+    >
       <RichText>
         <h1>Everydayhero</h1>
         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus.</p>
@@ -76,7 +79,13 @@ const ModalExample = withToggle((props) => (
 Contains some custom spacing, styles and close button
 
 ```
-const withToggle = require('../with-toggle').default;
+import Button from '../button';
+import ButtonGroup from '../button-group';
+import Grid from '../grid';
+import GridColumn from '../grid-column';
+import RichText from '../rich-text';
+import Section from '../section';
+import withToggle from '../with-toggle';
 
 const styles = {
   content: {
@@ -94,7 +103,8 @@ const ModalExample = withToggle((props) => (
       closeIcon={false}
       styles={styles}
       contentLabel='Modal'
-      appElement='#app'>
+      appElement='#mount'
+    >
       <div>
         <Section background='primary' foreground='light'>
           <h1>Everydayhero</h1>

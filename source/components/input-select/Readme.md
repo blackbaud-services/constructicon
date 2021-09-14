@@ -5,15 +5,15 @@
 Pass an onChange callback to be notified of changes
 
 ```
-initialState = { gender: '' };
+const [value, setValue] = React.useState('');
 
 <div>
   <InputSelect
     label='Gender'
     name='gender'
     placeholder='Please Select Gender'
-    value={state.gender}
-    onChange={(v) => setState({ gender: v })}
+    value={value}
+    onChange={val => setValue(val)}
     options={[
       { value: 'male', label: 'Male' },
       { value: 'female', label: 'Female' },
@@ -27,15 +27,15 @@ initialState = { gender: '' };
 Includes support for `<optgroup>`
 
 ```
-initialState = { event: '' };
+const [value, setValue] = React.useState('');
 
 <div>
   <InputSelect
     label='Event'
     name='event'
     placeholder='Please Select Event'
-    value={state.event}
-    onChange={(v) => setState({ event: v })}
+    value={value}
+    onChange={val => setValue(val)}
     groupOptions
     options={[
       { value: 'all', label: 'All Events' },

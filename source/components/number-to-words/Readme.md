@@ -5,6 +5,8 @@ It converts a number between 0 and 1,000,000,000 to words and forwards the props
 # Example
 
 ```
+import Heading from '../heading';
+
 <div>
   <NumberToWords number={0} />
 

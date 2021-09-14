@@ -33,6 +33,11 @@ The child function supplied to __Pagination__, will receive one argument, an obj
 # Example
 
 ```
+import Button from '../button';
+import ButtonGroup from '../button-group';
+import Leaderboard from '../leaderboard';
+import LeaderboardItem from '../leaderboard-item';
+
 // create some fake leaderboard data
 const leaders = new Array(15).fill({
   href: 'http://google.com',
@@ -68,7 +73,12 @@ const leaders = new Array(15).fill({
 
       <br />
 
-      <ButtonGroup styles={styles}>
+      <ButtonGroup styles={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%'
+      }}>
         <Button
           disabled={!paginated.canPrev}
           onClick={paginated.prev}>
@@ -87,11 +97,4 @@ const leaders = new Array(15).fill({
     </div>
   )}
 </Pagination>
-
-const styles = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  width: '100%'
-}
 ```

@@ -5,6 +5,8 @@
 Used to contain site content within a centered and minimum width container
 
 ```
+import Section from '../section';
+
 <Container>
   <Section>Header</Section>
   <Section>Body</Section>
@@ -17,6 +19,8 @@ Used to contain site content within a centered and minimum width container
 Alter the minimum width of the container
 
 ```
+import Section from '../section';
+
 <Container width={10} styles={{ backgroundColor: '#eee' }}>
   <Section>Header</Section>
   <Section>Body</Section>
@@ -29,6 +33,8 @@ Alter the minimum width of the container
 Apply one of the theme's shadows to the container
 
 ```
+import Section from '../section';
+
 <Container shadow='light'>
   <Section>Header</Section>
   <Section>Body</Section>

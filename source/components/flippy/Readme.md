@@ -3,6 +3,8 @@
 **Standard Use**
 
 ```
+import Container from '../container';
+
 <Container width={16} spacing={1}>
   <Flippy
     front='Hover to see more...'
@@ -23,6 +25,8 @@ Apply a custom styles object to alter the look. Available elements are:
 - `back` - Content seen on hover
 
 ```
+import Container from '../container';
+
 <Container width={16} spacing={1}>
   <Flippy
     styles={{
