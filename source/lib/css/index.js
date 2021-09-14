@@ -1,4 +1,4 @@
-import { css as createClass, keyframes as createKeyframe } from 'emotion'
+import { css as createClass, keyframes as createKeyframe } from '@emotion/css'
 
 export const stylesToClasses = (styles = {}) =>
   Object.keys(styles).reduce(

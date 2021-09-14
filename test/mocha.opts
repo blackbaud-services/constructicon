@@ -1,4 +1,0 @@
---recursive
---ui bdd
---require test/common.js
---compilers js:babel-register

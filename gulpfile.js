@@ -72,10 +72,10 @@ gulp.task('npm-prep-meta', function() {
 })
 
 
-gulp.task('npm-prepare', [
+gulp.task('npm-prepare', gulp.series(
   'npm-prep-components',
   'npm-prep-lib',
   'npm-prep-root',
   'npm-prep-other',
   'npm-prep-meta'
-])
+))

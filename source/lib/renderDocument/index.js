@@ -1,6 +1,6 @@
 import React, { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { renderStylesToString } from 'emotion-server'
+import { renderStylesToString } from '@emotion/server'
 
 import Helmet from 'react-helmet'
 

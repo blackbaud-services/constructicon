@@ -1,7 +1,8 @@
 module.exports = function(markup) {
-  if (typeof document !== 'undefined') return
-  var jsdom = require('jsdom').jsdom
-  global.document = jsdom(markup || '')
+  // if (typeof document !== 'undefined') return
+  const { JSDOM } = require('jsdom')
+  const { document } = new JSDOM(markup).window
+  global.document = document
   global.window = document.defaultView
 
   // Stub `matchMedia` to silence errors

@@ -33,7 +33,7 @@ const theme = {
     sidebarBackground: colors.primary
   },
   fontFamily: {
-    base: '"proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+    base: '"Blackbaud Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
     monospace: 'Consolas, "Liberation Mono", Menlo, monospace'
   },
   fontSize: {

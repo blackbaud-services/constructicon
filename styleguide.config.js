@@ -6,10 +6,19 @@ const { version } = require('./package.json')
 
 module.exports = {
   title: `Constructicon ${version}`,
-  template: './styleguide.template.html',
-  editorConfig: { theme: 'cobalt' },
+  template: {
+    favicon: 'https://www.blackbaud.com/favicon.ico',
+    head: {
+      links: [{
+        rel: 'stylesheet',
+        href: 'https://assets.blackbaud-sites.com/fonts/blackbaud-sans/stylesheet.css'
+      }]
+    }
+  },
+  styleguideDir: 'styleguide/components',
   serverPort: 3000,
-  showUsage: true,
+  usageMode: 'expand',
+  mountPointId: 'mount',
   styles,
   theme,
   getComponentPathLine: (componentPath) => {
@@ -121,20 +130,28 @@ module.exports = {
     }
   ],
   require: [
-    path.join(__dirname, 'source/lib/css/reset.css')
+    path.join(__dirname, 'source/lib/css/reset.css'),
+    path.join(__dirname, 'lib/custom.css')
   ],
   webpackConfig: {
     module: {
-      loaders: [
+      rules: [
+        {
+          test: /\.js$/,
+          enforce: 'pre',
+          use: ['source-map-loader'],
+        },
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
         },
         {
           test: /\.css$/,
-          include: path.join(__dirname, 'source/lib/css/reset.css'),
-          loader: 'style-loader!css-loader?modules'
+          use: ['style-loader', 'css-loader']
         }
       ]
     }
