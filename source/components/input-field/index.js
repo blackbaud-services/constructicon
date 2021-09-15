@@ -80,13 +80,39 @@ class InputField extends React.Component {
     }
   }
 
+  handleNumberKeyDown (event) {
+    const validKeys = [
+      'Alt',
+      'ArrowDown',
+      'ArrowLeft',
+      'ArrowRight',
+      'ArrowUp',
+      'Backspace',
+      'Control',
+      'Enter',
+      'Escape',
+      'Shift',
+      'Tab'
+    ]
+
+    const isNumberChar = regularExpressions.numeric.test(event.key)
+    const isValidKey =
+      event.key === '.'
+        ? event.target.value.indexOf('.') < 0
+        : isNumberChar || validKeys.indexOf(event.key) > -1
+
+    if (!event.metaKey && !isValidKey) {
+      event.preventDefault()
+    }
+  }
+
   handleKeyDown (event) {
     const { onKeyDown, type } = this.props
 
     onKeyDown && onKeyDown(event)
 
     if (type === 'tel') this.handlePhoneKeyDown(event)
-
+    if (type === 'number') this.handleNumberKeyDown(event)
     if (type === 'contenteditable' && event.metaKey) {
       switch (event.key) {
         case 'u':

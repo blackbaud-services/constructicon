@@ -2,6 +2,7 @@ export const regularExpressions = {
   alpha: /^[A-Za-z]+$/i,
   alphaNumeric: /^[A-Za-z0-9]+$/i,
   alphaNumericSpecial: /^[A-Za-z0-9'_./#&+-\s]+$/i,
+  numeric: /^[0-9.]+$/i,
   passwordComplexity: /^(?:(?=.*\W)(?=.*[a-zA-Z])(?=.*\d))/,
   phone: /^[\d\-+.*#()]/,
   slug: /^[A-Za-z0-9-]+$/i,
