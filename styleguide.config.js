@@ -15,7 +15,6 @@ module.exports = {
       }]
     }
   },
-  styleguideDir: 'styleguide/components',
   serverPort: 3000,
   usageMode: 'expand',
   mountPointId: 'mount',
