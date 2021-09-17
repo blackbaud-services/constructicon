@@ -88,7 +88,7 @@ class InputSearch extends Component {
       const isFirst = newIndex >= results.length
       const active = isLast ? results.length - 1 : isFirst ? 0 : newIndex
 
-      const resultsEl = this.resultsRef
+      const resultsEl = this.resultsRef.current
       const selectedEl = resultsEl.querySelector(`[data-selected="${active}"]`)
 
       resultsEl.scrollTop = selectedEl && selectedEl.offsetTop
