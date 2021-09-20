@@ -46,7 +46,7 @@ export const colors = {
   success: '#5cb85c',
   blackbaud: '#8cbe4f',
   everydayhero: '#1bab6b',
-  justgiving: '#ad29b6',
+  justgiving: '#7a04dd',
   tumblr: '#36465d',
   snapchat: '#fffc00',
   nextdoor: '#93D500'
