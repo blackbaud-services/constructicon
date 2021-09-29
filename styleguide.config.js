@@ -111,6 +111,19 @@ module.exports = {
       ])
     },
     {
+      name: 'Hooks',
+      sections: [
+        {
+          name: 'useDimensions',
+          content: 'source/components/use-dimensions/Readme.md'
+        },
+        {
+          name: 'useWindowSize',
+          content: 'source/components/use-window-size/Readme.md'
+        }
+      ]
+    },
+    {
       name: 'Higher Order Components',
       sections: [
         {
