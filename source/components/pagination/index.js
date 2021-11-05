@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import chunk from 'lodash/chunk'
+import isEqual from 'lodash/isEqual'
 
 export default class Pagination extends Component {
   constructor () {
@@ -18,7 +19,7 @@ export default class Pagination extends Component {
   componentDidUpdate (prevProps) {
     const { toPaginate } = this.props
 
-    if (toPaginate !== prevProps.toPaginate) {
+    if (!isEqual(toPaginate, prevProps.toPaginate)) {
       if (this.props.persistPage) {
         this.setState({
           allPages: this.paginate(toPaginate)
