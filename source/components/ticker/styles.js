@@ -36,6 +36,7 @@ export default (
         backgroundColor: colors[labelBackground],
         color: colors[labelForeground],
         boxShadow: `0.5rem 0 3rem ${colors[background]}`,
+        transform: 'translate3d(0,0,0)',
         ...treatments.head
       },
 
