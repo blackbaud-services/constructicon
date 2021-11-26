@@ -6,7 +6,7 @@ A half filled progress bar.
 
 ```
 <ProgressBar
-  alt='<%= progress %>% raised'
+  alt='50% raised'
   progress={50}
 />
 ```
@@ -17,7 +17,7 @@ Uses custom colors and radiuses as specified by traits
 
 ```
 <ProgressBar
-  alt='<%= progress %>% raised'
+  alt='50% raised'
   progress={50}
   background='secondary'
   fill='dark'
@@ -36,7 +36,7 @@ For example, using a gradient for the progress fill:
 
 ```
 <ProgressBar
-  alt='<%= progress %>% raised'
+  alt='50% raised'
   progress={50}
   styles={{
     fill: {

@@ -9,9 +9,7 @@ import {
   treatments
 } from '../../../lib/traits'
 
-const minimalComponent = mount(
-  <ProgressBar progress={50} alt='<%= progress %>% raised' />
-)
+const minimalComponent = mount(<ProgressBar progress={50} alt='50% raised' />)
 
 describe('ProgressBar', () => {
   it('should render an alt text', () => {
@@ -40,7 +38,7 @@ describe('ProgressBar', () => {
     const wrapper = mount(
       <ProgressBar
         progress={50}
-        alt='<%= progress %>% raised'
+        alt='50% raised'
         background='secondary'
         fill='dark'
         radius='none'
@@ -60,7 +58,7 @@ describe('ProgressBar', () => {
     const wrapper = mount(
       <ProgressBar
         progress={50}
-        alt='<%= progress %>% raised'
+        alt='50% raised'
         styles={{
           fill: {
             background: '#123456'
