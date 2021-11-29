@@ -8,7 +8,7 @@ export default class Pagination extends Component {
     super(...arguments)
 
     this.state = {
-      pageNumber: 0,
+      pageNumber: this.props.initialPage || 0,
       allPages: this.paginate(this.props.toPaginate)
     }
 
@@ -81,10 +81,16 @@ export default class Pagination extends Component {
 }
 
 Pagination.defaultProps = {
+  initialPage: 0,
   max: 10
 }
 
 Pagination.propTypes = {
+  /**
+   * The initial page number
+   */
+  initialPage: PropTypes.number,
+
   /**
    * The array to be paginated
    */
