@@ -75,6 +75,10 @@
 ```
 
 ```
+<Icon name='link' />
+```
+
+```
 <Icon name='loading' />
 ```
 
