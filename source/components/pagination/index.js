@@ -17,7 +17,11 @@ export default class Pagination extends Component {
   }
 
   componentDidUpdate (prevProps) {
-    const { toPaginate } = this.props
+    const { initialPage, toPaginate } = this.props
+
+    if (!isEqual(initialPage, prevProps.initialPage)) {
+      this.setState({ pageNumber: initialPage })
+    }
 
     if (!isEqual(toPaginate, prevProps.toPaginate)) {
       if (this.props.persistPage) {
