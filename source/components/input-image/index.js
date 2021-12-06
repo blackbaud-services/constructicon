@@ -36,9 +36,15 @@ class InputImage extends React.Component {
   handleChange () {
     const canvas = this.editor.getImageScaledToCanvas()
     const context = canvas.getContext('2d')
+
     context.globalCompositeOperation = 'destination-over'
     context.fillStyle = 'white'
     context.fillRect(0, 0, canvas.width, canvas.height)
+
+    if (this.props.overlay) {
+      context.globalCompositeOperation = 'source-over'
+      context.drawImage(this.refs.overlay, 0, 0, canvas.width, canvas.height)
+    }
 
     const image = canvas.toDataURL('image/jpeg', 1)
 
@@ -145,6 +151,7 @@ class InputImage extends React.Component {
       multiple,
       note,
       orientationChange,
+      overlay,
       required,
       styles,
       validations
@@ -157,20 +164,23 @@ class InputImage extends React.Component {
         <Label required={required}>{label}</Label>
         {image ? (
           <div className={classNames.image}>
-            <AvatarEditor
-              border={Math.max(width, height) * borderWidth}
-              color={[0, 0, 0, 0.125]}
-              disableHiDPIScaling
-              height={height}
-              image={image}
-              onImageChange={this.handleChange}
-              onImageReady={this.handleChange}
-              ref={this.setRef}
-              rotate={rotate}
-              scale={zoom / 100}
-              style={{ width: '100%', height: 'auto' }}
-              width={width}
-            />
+            <div className={classNames.editor}>
+              <AvatarEditor
+                border={overlay ? 0 : Math.max(width, height) * borderWidth}
+                className={classNames.canvas}
+                color={[0, 0, 0, 0.125]}
+                disableHiDPIScaling
+                height={height}
+                image={image}
+                onImageChange={this.handleChange}
+                onImageReady={this.handleChange}
+                ref={this.setRef}
+                rotate={rotate}
+                scale={zoom / 100}
+                style={{ width: '100%', height: 'auto' }}
+                width={width}
+              />
+            </div>
             {orientationChange && (
               <Button
                 background='light'
@@ -253,6 +263,14 @@ class InputImage extends React.Component {
           </div>
         )}
         {error && <InputValidations validations={validations} />}
+        {overlay && (
+          <img
+            className={classNames.overlayImg}
+            crossOrigin='anonymous'
+            src={overlay}
+            ref='overlay'
+          />
+        )}
       </div>
     )
   }
@@ -318,6 +336,11 @@ InputImage.propTypes = {
    * Allow user to change orientation of image
    */
   orientationChange: PropTypes.bool,
+
+  /**
+   * Overlay image URL (resource URL must support CORS)
+   */
+  overlay: PropTypes.string,
 
   /**
    * Resize canvas on image upload to match image dimensions

@@ -2,10 +2,10 @@ import merge from 'lodash/merge'
 import { getForegroundColor } from '../../lib/color'
 
 export default (props, traits) => {
-  const { styles, value, maxWidth } = props
+  const { styles, value, maxWidth, overlay } = props
   const { colors, effects, measures, rhythm, scale, treatments } = traits
 
-  const overlay =
+  const gradient =
     'linear-gradient(rgba(240, 240, 240, 0.85),  rgba(240, 240, 240, 0.85))'
 
   const baseStyles = {
@@ -18,6 +18,24 @@ export default (props, traits) => {
 
     image: {
       position: 'relative'
+    },
+
+    editor: {
+      position: 'relative',
+
+      ...(overlay && {
+        '&:after': {
+          content: '""',
+          backgroundImage: `url(${overlay})`,
+          backgroundSize: '100% 100%',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          pointerEvents: 'none'
+        }
+      })
     },
 
     dropzoneContainer: {
@@ -39,7 +57,7 @@ export default (props, traits) => {
       width: '100%',
       padding: rhythm(1),
       backgroundColor: colors.shade,
-      backgroundImage: value && `${overlay}, url(${value})`,
+      backgroundImage: value && `${gradient}, url(${value})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       textAlign: 'center',
@@ -138,6 +156,12 @@ export default (props, traits) => {
           margin: '0 auto'
         }
       }
+    },
+
+    overlayImg: {
+      visibility: 'hidden',
+      position: 'absolute',
+      opacity: 0
     }
   }
 
