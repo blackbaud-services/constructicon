@@ -29,12 +29,13 @@ const [image, setImage] = React.useState('');
 const [image, setImage] = React.useState('');
 
 <InputImage
-  label='Include an overlay image'
+  camera
+  label='Include an overlay image and allow camera input'
   name='image'
   onChange={image => setImage(image)}
   value={image}
   width={600}
   height={600}
-  overlay='https://images.justgiving.com/image/e6bbb7bb-2747-48d3-aab5-7e66837246c4.png'
+  overlay='https://images.justgiving.com/image/e4a95af6-bec2-4888-b04a-3f2bad3f0dc9.png'
 />
 ```
