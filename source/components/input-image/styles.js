@@ -170,6 +170,7 @@ export default (props, traits) => {
 
     cameraContainer: {
       '& > div': {
+        overflow: 'hidden',
         paddingBottom: '100%',
         marginBottom: rhythm(0.5)
       }
