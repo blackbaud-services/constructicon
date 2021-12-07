@@ -9,6 +9,7 @@ import Dropzone from 'react-dropzone'
 import Icon from '../icon'
 import InputValidations from '../input-validations'
 import Label from '../label'
+import Loading from '../loading'
 import Slider from 'react-slider'
 
 class InputImage extends React.Component {
@@ -16,6 +17,7 @@ class InputImage extends React.Component {
     super(props)
     this.editor = null
     this.getImageProperties = this.getImageProperties.bind(this)
+    this.handleCaptureImage = this.handleCaptureImage.bind(this)
     this.handleClearImage = this.handleClearImage.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleOrientationChange = this.handleOrientationChange.bind(this)
@@ -26,10 +28,23 @@ class InputImage extends React.Component {
       height: props.height,
       image:
         props.value && props.value.indexOf('base64') > -1 ? props.value : null,
+      input: 'default',
+      loading: false,
       orientation: props.height > props.width ? 'portrait' : 'landscape',
       rotate: 0,
+      stream: null,
       width: props.width,
       zoom: 100
+    }
+  }
+
+  componentWillUnmount () {
+    this.handleStopVideo()
+  }
+
+  handleStopVideo () {
+    if (this.state.stream) {
+      this.state.stream.getTracks().forEach(track => track.stop())
     }
   }
 
@@ -51,10 +66,65 @@ class InputImage extends React.Component {
     this.props.onChange(image)
   }
 
+  handleStartCamera () {
+    const { width, height } = this.props
+
+    this.setState({ input: 'camera', loading: true })
+
+    navigator.mediaDevices
+      .getUserMedia({
+        video: {
+          aspectRatio: { exact: 1 },
+          facingMode: 'user',
+          width,
+          height
+        },
+        audio: false
+      })
+      .then(stream => {
+        this.setState({ stream }, () => {
+          if (this.video) {
+            this.video.srcObject = stream
+            this.video.play()
+            this.video.onloadedmetadata = () => {
+              this.video.play()
+              this.setState({ loading: false })
+            }
+          }
+        })
+      })
+      .catch(err => {
+        console.log('An error occurred: ' + err)
+        this.setState({ input: 'default', loading: false })
+      })
+  }
+
+  handleCaptureImage () {
+    const { width, height } = this.props
+    const context = this.canvas.getContext('2d')
+
+    this.canvas.width = width
+    this.canvas.height = height
+
+    context.drawImage(this.video, 0, 0, width, height)
+
+    this.canvas.toBlob(
+      blob => {
+        this.handleSetImage(new File([blob], 'photo.jpg'))
+        this.handleStopVideo()
+      },
+      'image/jpeg',
+      1
+    )
+  }
+
   handleClearImage (event) {
     const { width, height, onChange } = this.props
 
     event.preventDefault()
+
+    if (this.state.input === 'camera') this.handleStartCamera()
+
     this.setState({
       height,
       image: null,
@@ -144,6 +214,7 @@ class InputImage extends React.Component {
     const {
       borderWidth,
       buttonProps,
+      camera,
       classNames,
       error,
       label,
@@ -157,7 +228,15 @@ class InputImage extends React.Component {
       validations
     } = this.props
 
-    const { height, image, orientation, rotate, width, zoom } = this.state
+    const {
+      height,
+      input,
+      image,
+      orientation,
+      rotate,
+      width,
+      zoom
+    } = this.state
 
     return (
       <div className={classNames.root}>
@@ -168,6 +247,7 @@ class InputImage extends React.Component {
               <AvatarEditor
                 border={overlay ? 0 : Math.max(width, height) * borderWidth}
                 className={classNames.canvas}
+                disableBoundaryChecks={!!overlay}
                 color={[0, 0, 0, 0.125]}
                 disableHiDPIScaling
                 height={height}
@@ -209,7 +289,7 @@ class InputImage extends React.Component {
                 className={classNames.clear}
                 onClick={this.handleClearImage}
               >
-                Clear Image
+                {input === 'camera' ? 'Retake photo?' : 'Clear image'}
               </Button>
             </div>
             <div className={classNames.controls}>
@@ -241,6 +321,46 @@ class InputImage extends React.Component {
               </Button>
             </div>
           </div>
+        ) : input === 'camera' ? (
+          <div className={classNames.cameraContainer}>
+            <div className={classNames.editor}>
+              <video
+                autoPlay
+                playsInline
+                ref={video => (this.video = video)}
+                className={classNames.video}
+                height={height}
+                width={width}
+              />
+              {this.state.loading && (
+                <div className={classNames.loading}>
+                  <Loading />
+                </div>
+              )}
+            </div>
+            <Button {...buttonProps} onClick={this.handleCaptureImage}>
+              Capture photo
+            </Button>
+            <div>
+              <Button
+                background='transparent'
+                effect='grow'
+                spacing={0.5}
+                foreground='dark'
+                className={classNames.clear}
+                onClick={() => {
+                  this.handleStopVideo()
+                  this.setState({ input: 'default' })
+                }}
+              >
+                Upload an image
+              </Button>
+            </div>
+            <canvas
+              className={classNames.hidden}
+              ref={canvas => (this.canvas = canvas)}
+            />
+          </div>
         ) : (
           <div className={classNames.dropzoneContainer}>
             <Dropzone
@@ -252,7 +372,22 @@ class InputImage extends React.Component {
               {({ getRootProps, getInputProps }) => (
                 <div {...getRootProps()} className={classNames.dropzone}>
                   <input {...getInputProps()} />
-                  <Button {...buttonProps}>Select Image</Button>
+                  <Button {...buttonProps}>
+                    <Icon name='image' />
+                    <span>Select Image</span>
+                  </Button>
+                  {camera && (
+                    <Button
+                      {...buttonProps}
+                      onClick={event => {
+                        event.stopPropagation()
+                        this.handleStartCamera()
+                      }}
+                    >
+                      <Icon name='camera' />
+                      <span>Use your camera</span>
+                    </Button>
+                  )}
                   <p>
                     Upload an image or drop a file into this area
                     {note && <small className={classNames.note}>{note}</small>}
@@ -265,7 +400,7 @@ class InputImage extends React.Component {
         {error && <InputValidations validations={validations} />}
         {overlay && (
           <img
-            className={classNames.overlayImg}
+            className={classNames.hidden}
             crossOrigin='anonymous'
             src={overlay}
             ref='overlay'
@@ -296,6 +431,11 @@ InputImage.propTypes = {
    * Props to be passed to the Button component
    */
   buttonProps: PropTypes.object,
+
+  /**
+   * Allow camera input?
+   */
+  camera: PropTypes.bool,
 
   /**
    * The label for the field

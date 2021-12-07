@@ -73,6 +73,10 @@ export default (props, traits) => {
         display: 'block',
         marginTop: rhythm(0.25),
         fontSize: scale(-2)
+      },
+
+      '& button ~ button': {
+        marginTop: rhythm(0.5)
       }
     },
 
@@ -158,10 +162,38 @@ export default (props, traits) => {
       }
     },
 
-    overlayImg: {
+    hidden: {
       visibility: 'hidden',
       position: 'absolute',
       opacity: 0
+    },
+
+    cameraContainer: {
+      '& > div': {
+        paddingBottom: '100%',
+        marginBottom: rhythm(0.5)
+      }
+    },
+
+    video: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0,0,0,0.5)',
+      transform: 'scaleX(-1)'
+    },
+
+    loading: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      textAlign: 'center'
     }
   }
 
