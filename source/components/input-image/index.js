@@ -32,6 +32,7 @@ class InputImage extends React.Component {
       loading: false,
       orientation: props.height > props.width ? 'portrait' : 'landscape',
       rotate: 0,
+      settings: {},
       stream: null,
       width: props.width,
       zoom: 100
@@ -82,7 +83,10 @@ class InputImage extends React.Component {
         audio: false
       })
       .then(stream => {
-        this.setState({ stream }, () => {
+        const [track] = stream.getVideoTracks()
+        const settings = track.getSettings()
+
+        this.setState({ settings, stream }, () => {
           if (this.video) {
             this.video.srcObject = stream
             this.video.play()
@@ -100,7 +104,7 @@ class InputImage extends React.Component {
   }
 
   handleCaptureImage () {
-    const { width, height } = this.props
+    const { width, height } = this.state.settings
     const context = this.canvas.getContext('2d')
 
     this.canvas.width = width
@@ -230,13 +234,20 @@ class InputImage extends React.Component {
 
     const {
       height,
-      input,
       image,
+      input,
       orientation,
       rotate,
+      settings,
       width,
       zoom
     } = this.state
+
+    // Style fix for Firefox not respecting aspect ratio options
+    const videoStyles = {
+      width: `${(settings.width / settings.height) * 100}%`,
+      left: `${(100 - (settings.width / settings.height) * 100) / 2}%`
+    }
 
     return (
       <div className={classNames.root}>
@@ -331,6 +342,7 @@ class InputImage extends React.Component {
                 className={classNames.video}
                 height={height}
                 width={width}
+                style={videoStyles}
               />
               {this.state.loading && (
                 <div className={classNames.loading}>
