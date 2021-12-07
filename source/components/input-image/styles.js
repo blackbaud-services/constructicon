@@ -168,12 +168,10 @@ export default (props, traits) => {
       opacity: 0
     },
 
-    cameraContainer: {
-      '& > div': {
-        overflow: 'hidden',
-        paddingBottom: '100%',
-        marginBottom: rhythm(0.5)
-      }
+    cameraPreview: {
+      overflow: 'hidden',
+      paddingBottom: '100%',
+      marginBottom: rhythm(0.5)
     },
 
     video: {

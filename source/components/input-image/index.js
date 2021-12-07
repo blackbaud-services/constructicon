@@ -334,7 +334,11 @@ class InputImage extends React.Component {
           </div>
         ) : input === 'camera' ? (
           <div className={classNames.cameraContainer}>
-            <div className={classNames.editor}>
+            <div
+              className={[classNames.editor, classNames.cameraPreview].join(
+                ' '
+              )}
+            >
               <video
                 autoPlay
                 playsInline
