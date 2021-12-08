@@ -43,6 +43,12 @@ class InputImage extends React.Component {
     this.handleStopVideo()
   }
 
+  componentDidUpdate (prevProps) {
+    if (this.props.value && prevProps.overlay !== this.props.overlay) {
+      setTimeout(this.handleChange, 150)
+    }
+  }
+
   handleStopVideo () {
     if (this.state.stream) {
       this.state.stream.getTracks().forEach(track => track.stop())
