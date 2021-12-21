@@ -25,6 +25,7 @@ class InputImage extends React.Component {
     this.handleSetImage = this.handleSetImage.bind(this)
     this.setRef = this.setRef.bind(this)
     this.state = {
+      flip: false,
       height: props.height,
       image:
         props.value && props.value.indexOf('base64') > -1 ? props.value : null,
@@ -76,7 +77,7 @@ class InputImage extends React.Component {
   handleStartCamera () {
     const { width, height } = this.props
 
-    this.setState({ input: 'camera', loading: true })
+    this.setState({ input: 'camera', flip: true, loading: true })
 
     navigator.mediaDevices
       .getUserMedia({
@@ -116,6 +117,11 @@ class InputImage extends React.Component {
     this.canvas.width = width
     this.canvas.height = height
 
+    if (this.state.flip) {
+      context.translate(context.canvas.width, 0)
+      context.scale(-1, 1)
+    }
+
     context.drawImage(this.video, 0, 0, width, height)
 
     this.canvas.toBlob(
@@ -130,12 +136,14 @@ class InputImage extends React.Component {
 
   handleClearImage (event) {
     const { width, height, onChange } = this.props
+    const isCameraInput = this.state.input === 'camera'
 
     event.preventDefault()
 
-    if (this.state.input === 'camera') this.handleStartCamera()
+    if (isCameraInput) this.handleStartCamera()
 
     this.setState({
+      flip: isCameraInput,
       height,
       image: null,
       orientation: height > width ? 'portrait' : 'landscape',
@@ -239,6 +247,7 @@ class InputImage extends React.Component {
     } = this.props
 
     const {
+      flip,
       height,
       image,
       input,
@@ -252,7 +261,8 @@ class InputImage extends React.Component {
     // Style fix for Firefox not respecting aspect ratio options
     const videoStyles = {
       width: `${(settings.width / settings.height) * 100}%`,
-      left: `${(100 - (settings.width / settings.height) * 100) / 2}%`
+      left: `${(100 - (settings.width / settings.height) * 100) / 2}%`,
+      transform: flip && 'scaleX(-1)'
     }
 
     return (
@@ -359,6 +369,20 @@ class InputImage extends React.Component {
                   <Loading />
                 </div>
               )}
+              <Button
+                background='transparent'
+                foreground='dark'
+                effect='grow'
+                spacing={0}
+                onClick={() => this.setState({ flip: !flip })}
+                styles={styles.flip}
+              >
+                <Icon
+                  name='flip'
+                  size={1.5}
+                  styles={{ transform: flip && 'scaleX(-1)' }}
+                />
+              </Button>
             </div>
             <Button {...buttonProps} onClick={this.handleCaptureImage}>
               Capture photo

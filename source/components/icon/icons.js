@@ -241,6 +241,13 @@ export const euro = [
   }
 ]
 
+export const flip = [
+  {
+    d:
+      'M15.071 2v26h-13l13-26Zm-1.857 7.867L5.076 26.143h8.138V9.867ZM16.93 2v26h13l-13-26Z'
+  }
+]
+
 export const heart = [
   {
     d:
