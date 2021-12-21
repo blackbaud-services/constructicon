@@ -13,17 +13,33 @@ export const scale = (exponent = 0, scale = 1.2) =>
  * Colors
  */
 export const colors = {
-  light: '#fff',
-  dark: '#000',
-  grey: '#4F595F',
-  lightGrey: '#aec0c6',
-  paleGrey: '#ebf1f3',
-  primary: '#1bab6b',
-  secondary: '#ad29b6',
-  tertiary: '#203a44',
+  light: '#ffffff',
+  dark: '#252b33',
+  grey: '#818b99',
+  lightGrey: '#e5e5e5',
+  paleGrey: '#f5f5f5',
+  primary: '#1667d9',
+  secondary: '#7a04dd',
+  tertiary: '#540099',
   shade: 'rgba(0, 0, 0, 0.125)',
   tint: 'rgba(255, 255, 255, 0.25)',
   transparent: 'transparent',
+  darkPurple: '#540099',
+  violet: '#b061f2',
+  softPurple: '#e3c2ff',
+  rose: '#ffb2be',
+  yellow: '#fecb34',
+  neonOrange: '#ff4b00',
+  teal: '#00cea3',
+  blue: '#1667d9',
+  skinTone1: '#f5d7cd',
+  skinTone3: '#f2cdae',
+  skinTone5: '#b58a7c',
+  skinTone7: '#603839',
+  skinTone2: '#eaada4',
+  skinTone4: '#f2bd9e',
+  skinTone6: '#784f44',
+  skinTone8: '#77311d',
   inherit: 'inherit',
   facebook: '#1877f2',
   twitter: '#1da1f2',
@@ -56,8 +72,8 @@ export const colors = {
  * Fonts
  */
 export const fonts = {
-  head: '"Open Sans", sans-serif',
-  body: '"Open Sans", sans-serif'
+  head: 'Inter, sans-serif',
+  body: 'Inter, sans-serif'
 }
 
 export const measures = {
@@ -67,15 +83,15 @@ export const measures = {
 export const treatments = {
   head: {
     fontFamily: fonts.head,
-    fontWeight: 700
+    fontWeight: 800,
+    letterSpacing: '-0.02em'
   },
   body: {
     fontFamily: fonts.body
   },
   button: {
     fontFamily: fonts.head,
-    textTransform: 'uppercase',
-    fontWeight: 700
+    fontWeight: 500
   },
   input: {
     fontFamily: fonts.body
@@ -105,7 +121,7 @@ export const shadows = {
 
 export const radiuses = {
   none: 0,
-  small: 0.1,
+  small: 0.175,
   medium: 0.25,
   large: 50
 }
