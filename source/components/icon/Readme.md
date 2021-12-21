@@ -55,6 +55,10 @@
 ```
 
 ```
+<Icon name='flip' />
+```
+
+```
 <Icon name='heart' />
 ```
 

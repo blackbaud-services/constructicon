@@ -180,8 +180,17 @@ export default (props, traits) => {
       left: 0,
       width: '100%',
       height: '100%',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      transform: 'scaleX(-1)'
+      backgroundColor: 'rgba(0,0,0,0.5)'
+    },
+
+    flip: {
+      position: 'absolute',
+      bottom: 0,
+      right: 0,
+      zIndex: 1,
+      color: 'white',
+      padding: '0.5rem',
+      filter: 'drop-shadow(1px 1px 1px rgba(0,0,0,0.25))'
     },
 
     loading: {
