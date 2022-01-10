@@ -194,8 +194,7 @@ LeaderboardItem.defaultProps = {
   radius: 'medium',
   spacing: 0.5,
   styles: {},
-  tag: 'li',
-  target: '_blank'
+  tag: 'li'
 }
 
 export default withStyles(styles)(LeaderboardItem)
