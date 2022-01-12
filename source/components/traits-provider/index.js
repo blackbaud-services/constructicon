@@ -6,7 +6,7 @@ import * as defaultTraits from '../../lib/traits'
 class TraitsProvider extends Component {
   getChildContext () {
     return {
-      traits: merge(defaultTraits, this.props.traits)
+      traits: merge({}, defaultTraits, this.props.traits)
     }
   }
 
