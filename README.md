@@ -1,5 +1,11 @@
 
-# Constructicon [![Build Status](https://travis-ci.com/blackbaud-services/constructicon.svg?branch=master)](https://travis-ci.com/blackbaud-services/constructicon) [![npm](https://img.shields.io/npm/v/constructicon.svg?style=flat-square)](https://www.npmjs.com/package/constructicon)
+# Constructicon [![npm](https://img.shields.io/npm/v/constructicon.svg?style=flat-square)](https://www.npmjs.com/package/constructicon)
+
+## Important Links
+
+- [Pipeline](https://app.circleci.com/pipelines/github/blackbaud-services/constructicon)
+- [NPM Package](https://www.npmjs.com/package/constructicon)
+
 
 #### A collection of common patterns used across many Professional Services projects.
 
