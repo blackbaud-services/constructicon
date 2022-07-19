@@ -17,6 +17,7 @@ const Form = ({
   isDisabled = false,
   noValidate,
   styles,
+  overrideStyles,
   submit = 'Submit',
   actions = [],
   onSubmit,
@@ -57,7 +58,7 @@ const Form = ({
         <ButtonGroup styles={styles.actions}>
           {submit && (
             <Button
-              styles={styles.submit}
+              styles={{ ...styles.submit, ...overrideStyles.button }}
               disabled={isLoading || isDisabled}
               aria-label={submit}
               title={submit}
@@ -72,7 +73,7 @@ const Form = ({
             <Button
               key={i}
               tag='a'
-              styles={styles.action}
+              styles={{ ...styles.action, ...overrideStyles.button }}
               disabled={isLoading || isDisabled}
               aria-label={label}
               title={submit}
@@ -86,7 +87,7 @@ const Form = ({
       ) : submit ? (
         <Button
           block
-          styles={styles.submit}
+          styles={{ ...styles.submit, ...overrideStyles.button }}
           disabled={isLoading || isDisabled}
           aria-label={submit}
           title={submit}
