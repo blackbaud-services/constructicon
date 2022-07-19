@@ -7,8 +7,6 @@ import styles from './styles'
 const Button = ({ children, tag: Tag, type, target, classNames, ...props }) => {
   const propsBlacklist = [
     'children',
-    'background',
-    'foreground',
     'borderColor',
     'borderWidth',
     'font',
