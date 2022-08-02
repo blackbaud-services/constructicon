@@ -350,7 +350,6 @@ InputField.propTypes = {
    * Validation errors
    */
   validations: PropTypes.array,
-  
   styles: PropTypes.object
 }
 
