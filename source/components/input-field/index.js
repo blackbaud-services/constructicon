@@ -107,7 +107,7 @@ class InputField extends React.Component {
   }
 
   handleKeyDown (event) {
-    const { onKeyDown, type, customValidation } = this.props
+    const { onKeyDown, type } = this.props
 
     onKeyDown && onKeyDown(event)
 
