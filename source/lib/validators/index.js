@@ -6,6 +6,7 @@ export const regularExpressions = {
   passwordComplexity: /^(?:(?=.*\W)(?=.*[a-zA-Z])(?=.*\d))/,
   phone: /^[\d\-+.*#()]/,
   slug: /^[A-Za-z0-9-]+$/i,
+  name: /^[A-Za-z0-9-.']+$/i,
   url: /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
 }
 
@@ -67,6 +68,11 @@ export const alpha = (msg = 'Field must be only letters') => {
 export const alphaNumericSpecial = (msg = 'No special characters allowed') => {
   return val =>
     !!val && !regularExpressions.alphaNumericSpecial.test(val) && msg
+}
+
+export const name = (msg = `Only a-z, hyphen (-), apostrophe ('), dot (.) and single space characters are allowed`) => {
+  return val =>
+    !!val && !regularExpressions.name.test(val) && msg
 }
 
 export const passwordComplexity = (
@@ -157,6 +163,25 @@ export const lessThan = (max = 0, msg) => {
 }
 
 export const lessThanOrEqualTo = (max = 0, msg) => {
+  return val => {
+    switch (typeof val) {
+      case 'undefined':
+        return val
+      case 'number':
+        return (
+          val > max && (msg || `Number must be less than or equal to ${max}`)
+        )
+      default:
+        return (
+          !!val &&
+          val.length < max &&
+          (msg || `Must have a length less than or equal to ${max}`)
+        )
+    }
+  }
+}
+
+export const regexValidator = (regex) => {
   return val => {
     switch (typeof val) {
       case 'undefined':
