@@ -70,7 +70,7 @@ export const alphaNumericSpecial = (msg = 'No special characters allowed') => {
     !!val && !regularExpressions.alphaNumericSpecial.test(val) && msg
 }
 
-export const name = (msg = `Only a-z, hyphen (-), apostrophe ('), dot (.) and single space characters are allowed`) => {
+export const name = (msg = 'Only a-z, hyphen (-), apostrophe (\'), dot (.) and single space characters are allowed') => {
   return val =>
     !!val && !regularExpressions.name.test(val) && msg
 }
