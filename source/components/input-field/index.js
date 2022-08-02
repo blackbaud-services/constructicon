@@ -107,7 +107,7 @@ class InputField extends React.Component {
   }
 
   handleKeyDown (event) {
-    const { onKeyDown, type } = this.props
+    const { onKeyDown, type, customValidation } = this.props
 
     onKeyDown && onKeyDown(event)
 
@@ -161,11 +161,9 @@ class InputField extends React.Component {
 
     const propsBlacklist = [
       'children',
-      'dirty',
       'initial',
       'invalid',
       'styles',
-      'touched',
       'validators'
     ]
     const allowedProps = merge(
@@ -352,7 +350,7 @@ InputField.propTypes = {
    * Validation errors
    */
   validations: PropTypes.array,
-
+  
   styles: PropTypes.object
 }
 
