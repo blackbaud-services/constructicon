@@ -70,9 +70,14 @@ export const alphaNumericSpecial = (msg = 'No special characters allowed') => {
     !!val && !regularExpressions.alphaNumericSpecial.test(val) && msg
 }
 
-export const name = (msg = 'Only a-z, hyphen (-), apostrophe (\'), dot (.) and single space characters are allowed') => {
-  return val =>
-    !!val && !regularExpressions.name.test(val) && msg
+export const name = (
+  msg = "Only a-z, hyphen (-), apostrophe ('), dot (.) and single space characters are allowed"
+) => {
+  return val => !!val && !regularExpressions.name.test(val) && msg
+}
+
+export const regex = (msg = "Custom regex expr needs msg provided!") => {
+  return val => !!val && !regularExpressions.name.test(val) && msg
 }
 
 export const passwordComplexity = (
@@ -181,7 +186,7 @@ export const lessThanOrEqualTo = (max = 0, msg) => {
   }
 }
 
-export const regexValidator = (regex) => {
+export const regexValidator = regex => {
   return val => {
     switch (typeof val) {
       case 'undefined':
