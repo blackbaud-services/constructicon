@@ -76,7 +76,7 @@ export const name = (
   return val => !!val && !regularExpressions.name.test(val) && msg
 }
 
-export const regex = (regex, msg = "Custom regex expr needs msg provided!") => {
+export const regex = (regex, msg = 'Custom regex expr needs msg provided!') => {
   const expr = new RegExp(regex)
   return val => !!val && !expr.test(val) && msg
 }
@@ -187,7 +187,7 @@ export const lessThanOrEqualTo = (max = 0, msg) => {
   }
 }
 
-export const regexValidator = (regex) => {
+export const regexValidator = regex => {
   return val => {
     switch (typeof val) {
       case 'undefined':
