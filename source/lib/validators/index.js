@@ -6,7 +6,7 @@ export const regularExpressions = {
   passwordComplexity: /^(?:(?=.*\W)(?=.*[a-zA-Z])(?=.*\d))/,
   phone: /^[\d\-+.*#()]/,
   slug: /^[A-Za-z0-9-]+$/i,
-  name: /^[A-Za-z0-9-.']+$/i,
+  name: /^[A-Za-z0-9-. ']+$/i,
   url: /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
 }
 
@@ -76,8 +76,9 @@ export const name = (
   return val => !!val && !regularExpressions.name.test(val) && msg
 }
 
-export const regex = (msg = "Custom regex expr needs msg provided!") => {
-  return val => !!val && !regularExpressions.name.test(val) && msg
+export const regex = (regex, msg = "Custom regex expr needs msg provided!") => {
+  const expr = new RegExp(regex)
+  return val => !!val && !expr.test(val) && msg
 }
 
 export const passwordComplexity = (
@@ -186,7 +187,7 @@ export const lessThanOrEqualTo = (max = 0, msg) => {
   }
 }
 
-export const regexValidator = regex => {
+export const regexValidator = (regex) => {
   return val => {
     switch (typeof val) {
       case 'undefined':
