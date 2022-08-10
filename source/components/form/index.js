@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
 import styles, { keyframes } from './styles'
@@ -21,8 +21,13 @@ const Form = ({
   actions = [],
   onSubmit,
   submitProps,
+  onLoad,
   ...props
 }) => {
+  useEffect(() => {
+    onLoad && onLoad()
+  }, [])
+
   const renderIcon = icon => {
     return typeof icon === 'object' ? (
       <Icon styles={styles.icon} {...icon} />
