@@ -41,7 +41,7 @@ class InputField extends React.Component {
     const { onChange, type } = this.props
     const value = isBoolean(type)
       ? event.target.checked
-      : props.forceUppercase
+      : this.props.forceUppercase
       ? event.target.value.toUpperCase()
       : event.target.value
 
