@@ -46,7 +46,10 @@ const withForm = config => ComponentToWrap =>
         ...field,
         name: key,
         value: field.initial || this.initialValue(field),
-        onChange: this.handleChange(key),
+        onChange: () => {
+          field.onChange()
+          this.handleChange(key)
+        },
         onBlur: this.handleChange(key, true)
       }))
     }
