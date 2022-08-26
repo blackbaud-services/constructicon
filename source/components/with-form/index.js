@@ -46,10 +46,7 @@ const withForm = config => ComponentToWrap =>
         ...field,
         name: key,
         value: field.initial || this.initialValue(field),
-        onChange: () => {
-          field.onChange()
-          this.handleChange(key)
-        },
+        onChange: this.handleChange(key, undefined, 'change'),
         onBlur: this.handleChange(key, true)
       }))
     }
@@ -98,9 +95,12 @@ const withForm = config => ComponentToWrap =>
       )
     }
 
-    handleChange (key, touched) {
+    handleChange (key, touched, changeOrBlur) {
       return value => {
         const field = this.state.fields[key]
+        if (field && field.onChangeHandler && changeOrBlur === 'change') {
+          field.onChangeHandler()
+        }
         const updatedFields = {
           ...this.state.fields,
           [key]: {
