@@ -4,6 +4,7 @@ import isEmpty from 'lodash/isEmpty'
 import merge from 'lodash/merge'
 import mapValues from 'lodash/mapValues'
 import { isBoolean } from '../../lib/form'
+import { uniq } from 'lodash'
 
 const withForm = config => ComponentToWrap =>
   class extends Component {
@@ -72,9 +73,10 @@ const withForm = config => ComponentToWrap =>
         case 'function':
           return validators(value, values)
         case 'object':
-          return validators
+          const validations = validators
             .map(validator => this.validateField(validator, value, values))
             .filter(Boolean)
+          return uniq(validations)
         default:
           return validators
       }
