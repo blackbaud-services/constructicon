@@ -172,6 +172,12 @@ export const chevron = [
   }
 ]
 
+export const chevron_reversed = [
+  {
+    d: 'M 21,1 7,16 21,31 25,27 15,16 25,5 Z'
+  }
+]
+
 export const clock = [
   {
     d:
