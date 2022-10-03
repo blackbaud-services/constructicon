@@ -172,7 +172,8 @@ class InputField extends React.Component {
     ]
     const allowedProps = merge(
       omit(props, propsBlacklist),
-      type === 'contenteditable' ? { html: value } : { value }
+      type === 'contenteditable' ? { html: value } : { value },
+      type === 'number' ? { inputMode: 'numeric' } : {}
     )
     const Tag = this.getTag()
     const inputId = id || name
