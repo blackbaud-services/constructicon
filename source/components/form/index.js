@@ -83,8 +83,9 @@ const Form = ({
               title={submit}
               {...actionProps}
             >
+              {icon && icon.isBeforeLabel && renderIcon(icon)}
               <span>{label}</span>
-              {icon && renderIcon(icon)}
+              {icon && !icon.isBeforeLabel && renderIcon(icon)}
             </Button>
           ))}
         </ButtonGroup>
