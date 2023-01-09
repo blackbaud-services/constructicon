@@ -50,12 +50,12 @@ commands:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "fa:d4:6b:a1:b6:65:64:1e:02:63:82:2f:06:e4:f3:f7"
+            - "e6:ab:46:69:01:b8:0b:5c:c3:58:dc:65:ac:7f:44:29"
       - run:
           name: Setup git user
           command: |
-            git config --global user.email "svc-gh-edh-bb-services-eng@blackbaud.me"
-            git config --global user.name "blackbaud-services-engineering"
+            git config --global user.email "ci-build@blackbaud.com"
+            git config --global user.name "ci-build"
       - run:
           name: Publish Docs 📄
           command: yarn deploy:docs
