@@ -25,7 +25,7 @@ const ButtonShare = ({
     tag={share ? 'button' : 'a'}
     onClick={() => {
       if (share) {
-        openShareDialog({ type, url, title, hashtags, image })
+        openShareDialog({ type, url, title, hashtags, image, onClick })
       }
     }}
     aria-label={`${share ? 'Share' : 'View'} on ${type}`}
