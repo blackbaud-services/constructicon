@@ -17,12 +17,13 @@ const ButtonShare = ({
   title,
   hashtags,
   image,
+  onClick,
   ...props
 }) => (
   <Button
     background={type}
     tag={share ? 'button' : 'a'}
-    onClick={share && openShareDialog({ type, url, title, hashtags, image })}
+    onClick={share && onClick() && openShareDialog({ type, url, title, hashtags, image })}
     aria-label={`${share ? 'Share' : 'View'} on ${type}`}
     {...props}
   >
