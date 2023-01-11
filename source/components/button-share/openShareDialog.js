@@ -81,7 +81,7 @@ const openPopup = (url, config) => {
   window.open(url, 'shareWindow', config)
 }
 
-export default options => () => {
+export default options => {
   const imageUrl =
     document.head.querySelector('meta[property="og:image"]') &&
     document.head.querySelector('meta[property="og:image"]').content
