@@ -24,11 +24,10 @@ const ButtonShare = ({
     background={type}
     tag={share ? 'button' : 'a'}
     onClick={() => {
-      if (share) {
-        if (onClick) {
-          onClick()
-        }
-
+      if (share && onClick) {
+        onClick()
+        openShareDialog({ type, url, title, hashtags, image })
+      } else if (share) {
         openShareDialog({ type, url, title, hashtags, image })
       }
     }}
