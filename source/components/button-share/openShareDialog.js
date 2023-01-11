@@ -92,7 +92,8 @@ export default options => () => {
     image = imageUrl,
     title = document.title,
     type,
-    url = window.location.href
+    url = window.location.href,
+    onClick
   } = options
 
   const service = services[type]
@@ -103,6 +104,10 @@ export default options => () => {
       status: 0,
       width: 640,
       height: 400
+    }
+
+    if (onClick) {
+      onClick()
     }
 
     const shareUrl = service({
