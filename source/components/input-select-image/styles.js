@@ -15,7 +15,7 @@ const styles = (props, { mediaQuery, rhythm }) => ({
   },
   optionSelected: {
     border: '3px solid black',
-    'p': {
+    p: {
       border: '3px solid black'
     }
   },
@@ -41,11 +41,10 @@ const styles = (props, { mediaQuery, rhythm }) => ({
     ':focus > p': {
       border: '1px solid black'
     },
-    'p': {
+    p: {
       border: '1px solid black'
     }
   }
 })
 
 export default styles
-  
