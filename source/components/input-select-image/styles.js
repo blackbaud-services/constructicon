@@ -8,7 +8,7 @@ const styles = (props, { colors, rhythm, shadows }) => ({
     ':hover': {
       cursor: 'pointer',
       boxShadow: 'none'
-    },
+    }
   },
   optionSelected: {
     border: 'thin solid black',
