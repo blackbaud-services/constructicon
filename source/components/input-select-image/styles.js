@@ -1,29 +1,26 @@
-const styles = (props, { mediaQuery, rhythm }) => ({
+const styles = (props, { colors, rhythm, shadows }) => ({
   root: {
     marginBottom: rhythm(1)
   },
   option: {
+    marginBottom: 10,
+    boxShadow: shadows.full,
     ':hover': {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      boxShadow: 'none'
     },
-    ':hover > p': {
-      border: '2px dashed black'
-    },
-    ':focus > p': {
-      border: '2px dashed black'
-    }
   },
   optionSelected: {
-    border: '3px solid black',
+    border: 'thin solid black',
     p: {
-      border: '3px solid black'
+      border: 'none'
     }
   },
   optionLabel: {
     textAlign: 'center',
     padding: rhythm(0.5),
     margin: 2,
-    border: '1px solid black'
+    border: `thin solid ${colors.lightGrey}`
   },
   radio: {
     width: 0,
@@ -31,18 +28,8 @@ const styles = (props, { mediaQuery, rhythm }) => ({
   },
   disabled: {
     opacity: 0.5,
-    border: '1px solid black',
     ':hover': {
       cursor: 'default'
-    },
-    ':hover > p': {
-      border: '1px solid black'
-    },
-    ':focus > p': {
-      border: '1px solid black'
-    },
-    p: {
-      border: '1px solid black'
     }
   }
 })
