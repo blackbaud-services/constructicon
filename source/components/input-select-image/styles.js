@@ -1,30 +1,45 @@
-const styles = (props, { colors, rhythm, shadows }) => ({
+const styles = (props, { scale, rhythm, shadows, radiuses }) => ({
   root: {
     marginBottom: rhythm(1)
   },
   option: {
     marginBottom: 10,
     boxShadow: shadows.full,
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: rhythm(radiuses.small),
     ':hover': {
       cursor: 'pointer',
-      boxShadow: 'none'
+      boxShadow: shadows.light
     }
   },
   optionSelected: {
-    border: 'thin solid black',
+    boxShadow: shadows.light,
     p: {
       border: 'none'
     }
   },
+  image: {
+    borderTopLeftRadius: rhythm(radiuses.small),
+    borderTopRightRadius: rhythm(radiuses.small)
+  },
+  optionLabelContainer: {
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  },
   optionLabel: {
     textAlign: 'center',
     padding: rhythm(0.5),
-    margin: 2,
-    border: `thin solid ${colors.lightGrey}`
+    paddingBottom: 0,
+    fontSize: scale(-0.5)
+  },
+  radioContainer: {
+    textAlign: 'center'
   },
   radio: {
-    width: 0,
-    height: 0
+    margin: rhythm(0.5)
   },
   disabled: {
     opacity: 0.5,
