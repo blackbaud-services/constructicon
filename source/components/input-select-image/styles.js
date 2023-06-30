@@ -33,7 +33,7 @@ const styles = (props, { scale, rhythm, shadows, radiuses }) => ({
     textAlign: 'center',
     padding: rhythm(0.5),
     paddingBottom: 0,
-    fontSize: scale(-0.5),
+    fontSize: scale(-0.5)
   },
   radioContainer: {
     textAlign: 'center'
