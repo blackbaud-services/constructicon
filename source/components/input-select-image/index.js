@@ -71,16 +71,20 @@ const ImageSelectItem = ({
 
   return (
     <div className={classes} onClick={() => !disabled && onClick()}>
-      <input
-        type='radio'
-        checked={selected}
-        onBlur={onBlur}
-        className={classNames.radio}
-        disabled={disabled}
-        readonly={disabled}
-      />
-      <img src={image} alt={value} />
-      <p className={classNames.optionLabel}>{value}</p>
+      <img src={image} alt={value} className={classNames.image} />
+      <div className={classNames.optionLabelContainer}>
+        <p className={classNames.optionLabel}>{value}</p>
+      </div>
+      <div className={classNames.radioContainer}>
+        <input
+          type='radio'
+          checked={selected}
+          onBlur={onBlur}
+          className={classNames.radio}
+          disabled={disabled}
+          readonly={disabled}
+        />
+      </div>
     </div>
   )
 }
