@@ -59,6 +59,7 @@ const ImageSelect = ({
 const ImageSelectItem = ({
   classNames,
   image,
+  mobileImage,
   value,
   selected,
   onClick,
@@ -71,7 +72,18 @@ const ImageSelectItem = ({
 
   return (
     <div className={classes} onClick={() => !disabled && onClick()}>
-      <img src={image} alt={value} className={classNames.image} />
+      <img
+        src={image}
+        alt={`option ${value}`}
+        className={`${classNames.image} ${classNames.desktopImage}`}
+      />
+      {mobileImage && (
+        <img
+          src={mobileImage}
+          alt={`option ${value}`}
+          className={`${classNames.image} ${classNames.mobileImage}`}
+        />
+      )}
       <div className={classNames.optionLabelContainer}>
         <p className={classNames.optionLabel}>{value}</p>
       </div>
