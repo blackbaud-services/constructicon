@@ -13,7 +13,6 @@ const ImageSelect = ({
   classNames,
   disabled,
   onChange,
-  onBlur,
   error,
   validations,
   ...props
@@ -39,7 +38,6 @@ const ImageSelect = ({
             key={option.value}
             classNames={classNames}
             onClick={() => handleChange(option.value)}
-            onBlur={() => onBlur && onBlur(option.value)}
             selected={selectedItem === option.value}
             disabled={disabled}
             {...option}
