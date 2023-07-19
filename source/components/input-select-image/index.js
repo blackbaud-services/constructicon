@@ -15,11 +15,11 @@ const ImageSelect = ({
   onChange,
   error,
   validations,
-  ...props
+  value
 }) => {
   const inputId = id || name
   const labelId = `label-${inputId}`
-  const [selectedItem, setSelectedItem] = useState()
+  const [selectedItem, setSelectedItem] = useState(value)
   const handleChange = value => {
     setSelectedItem(value)
     onChange && onChange(value)
