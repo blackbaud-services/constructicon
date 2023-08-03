@@ -291,6 +291,7 @@ button:disabled,
 select:disabled,
 input:disabled {
   opacity: .7;
+  cursor: default;
 }
 
 /**
