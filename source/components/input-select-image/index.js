@@ -87,7 +87,7 @@ const ImageSelectItem = ({
       </div>
       <div className={classNames.radioContainer}>
         <input
-          id={value.replace(' ', '_')}
+          id={value.replaceAll(' ', '_')}
           type='radio'
           checked={selected}
           onBlur={onBlur}
