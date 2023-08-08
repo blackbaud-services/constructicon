@@ -67,27 +67,30 @@ const ImageSelectItem = ({
 }) => {
   const classes = `${classNames.option} ${selected &&
     classNames.optionSelected} ${disabled && classNames.disabled}`
+  const id = value.replaceAll(' ', '_')
 
   return (
-    <div className={classes} onClick={() => !disabled && onClick()}>
+    <div className={classes} onClick={() => !disabled && onClick()} id={`option_${id}`}>
       <img
         src={image}
         alt={`option ${value}`}
+        id={`image_${id}`}
         className={`${classNames.image} ${classNames.desktopImage}`}
       />
       {mobileImage && (
         <img
           src={mobileImage}
           alt={`option ${value}`}
+          id={`mobile_image_${id}`}
           className={`${classNames.image} ${classNames.mobileImage}`}
         />
       )}
-      <div className={classNames.optionLabelContainer}>
-        <p className={classNames.optionLabel}>{value}</p>
+      <div className={classNames.optionLabelContainer} id={`labelContainer_${id}`}>
+        <p className={classNames.optionLabel} id={`label_${id}`}>{value}</p>
       </div>
-      <div className={classNames.radioContainer}>
+      <div className={classNames.radioContainer} id={`inputContainer_${id}`}>
         <input
-          id={value.replaceAll(' ', '_')}
+          id={`input_${id}`}
           type='radio'
           checked={selected}
           onBlur={onBlur}
