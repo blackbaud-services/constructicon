@@ -70,7 +70,11 @@ const ImageSelectItem = ({
   const id = value.replaceAll(' ', '_')
 
   return (
-    <div className={classes} onClick={() => !disabled && onClick()} id={`option_${id}`}>
+    <div
+      className={classes}
+      onClick={() => !disabled && onClick()}
+      id={`option_${id}`}
+    >
       <img
         src={image}
         alt={`option ${value}`}
@@ -85,8 +89,13 @@ const ImageSelectItem = ({
           className={`${classNames.image} ${classNames.mobileImage}`}
         />
       )}
-      <div className={classNames.optionLabelContainer} id={`labelContainer_${id}`}>
-        <p className={classNames.optionLabel} id={`label_${id}`}>{value}</p>
+      <div
+        className={classNames.optionLabelContainer}
+        id={`labelContainer_${id}`}
+      >
+        <p className={classNames.optionLabel} id={`label_${id}`}>
+          {value}
+        </p>
       </div>
       <div className={classNames.radioContainer} id={`inputContainer_${id}`}>
         <input
