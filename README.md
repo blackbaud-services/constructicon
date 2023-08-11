@@ -96,6 +96,8 @@ Constructicon now uses Emotion as it's CSS in JS solution. There are a few small
 - `yarn run build` to build for production
 - `yarn run build:styleguide` to build the styleguide
 - `yarn run build:icons` to minify and prepare the icons to import into `icons.js`. See more below.
+- `yarn playground:build` to build webpack for the local development server
+- `yarn playground:start` to start the local development server
 
 ### Tests
 
