@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import omit from 'lodash/omit'
 import mapKeys from 'lodash/mapKeys'
@@ -33,6 +33,8 @@ const InputSelect = ({
   styles = {},
   validations,
   value,
+  elasticSearch,
+  nonIdealElasticSearchResult,
   ...props
 }) => {
   const propsBlacklist = [
@@ -47,6 +49,7 @@ const InputSelect = ({
   const allowedProps = omit(props, propsBlacklist)
   const inputId = id || name
   const labelId = `label-${inputId}`
+  const [searchTerm, setSearchTerm] = useState('')
 
   const renderOptions = () => {
     if (groupOptions) {
@@ -77,23 +80,50 @@ const InputSelect = ({
 
       return resultOptions
     } else {
+      const filteredOptions =
+        elasticSearch && searchTerm.length >= 3
+          ? options.filter(option =>
+              option.label.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+          : options
+
       // Hack for long labels on iOS
-      const hasLongOptionLabel = options.reduce((acc, option) => {
+      const hasLongOptionLabel = filteredOptions.reduce((acc, option) => {
         return acc || option.label.length > 32
       }, false)
 
-      return (
+      return filteredOptions.length ? (
         <>
-          {options.map(({ value, label, disabled }, index) => (
+          {filteredOptions.map(({ value, label, disabled }, index) => (
             <option value={value} key={index} disabled={disabled}>
               {label}
             </option>
           ))}
           {isIos() && hasLongOptionLabel && <optgroup label='' />}
         </>
+      ) : (
+        <>
+          <option disabled>{nonIdealElasticSearchResult}</option>
+        </>
       )
     }
   }
+
+  const getDropdownLength = () => {
+    const filteredOptions = options.filter(option =>
+      option.label.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    // if 1 or 0 search results, still leave extra space at bottom. Cap at 8 results before scrolling.
+    if (filteredOptions.length < 2) return 2
+    return filteredOptions.length > 8 ? 8 : filteredOptions.length
+  }
+
+  const getOptionLabelFromValue = selectedValue =>
+    options.find(({ value }) => value === selectedValue).label
+
+  const showResults =
+    searchTerm.length >= 3 &&
+    (!value || getOptionLabelFromValue(value) !== searchTerm)
 
   return (
     <div className={`c11n-input-select ${classNames.root}`}>
@@ -112,29 +142,62 @@ const InputSelect = ({
       )}
 
       <div className={classNames.wrapper}>
-        <select
-          name={name}
-          id={inputId}
-          value={value}
-          placeholder={placeholder}
-          onChange={e => onChange && onChange(e.target.value)}
-          onBlur={e => onBlur && onBlur(e.target.value)}
-          className={classNames.input}
-          required
-          aria-labelledby={labelId}
-          {...allowedProps}
-        >
-          {placeholder && (
-            <option disabled value=''>
-              {placeholder}
-            </option>
-          )}
-          {renderOptions()}
-        </select>
+        {elasticSearch ? (
+          <>
+            <input
+              placeholder={placeholder}
+              onChange={({ target: { value } }) => setSearchTerm(value)}
+              className={classNames.input}
+              value={searchTerm}
+            />
+            {showResults && (
+              <select
+                size={getDropdownLength()}
+                name={name}
+                id={inputId}
+                value={value}
+                placeholder={placeholder}
+                onChange={e => {
+                  setSearchTerm(getOptionLabelFromValue(e.target.value))
+                  onChange && onChange(e.target.value)
+                }}
+                onBlur={e => onBlur && onBlur(e.target.value)}
+                className={classNames.select}
+                required
+                aria-labelledby={labelId}
+                {...allowedProps}
+              >
+                {renderOptions()}
+              </select>
+            )}{' '}
+          </>
+        ) : (
+          <>
+            <select
+              name={name}
+              id={inputId}
+              value={value}
+              placeholder={placeholder}
+              onChange={e => onChange && onChange(e.target.value)}
+              onBlur={e => onBlur && onBlur(e.target.value)}
+              className={classNames.input}
+              required
+              aria-labelledby={labelId}
+              {...allowedProps}
+            >
+              {placeholder && (
+                <option disabled value=''>
+                  {placeholder}
+                </option>
+              )}
+              {renderOptions()}
+            </select>
 
-        <span className={classNames.field} aria-hidden />
+            <span className={classNames.field} aria-hidden />
 
-        <Icon name='dropdown' size={0.75} styles={styles.icon} />
+            <Icon name='dropdown' size={0.75} styles={styles.icon} />
+          </>
+        )}
       </div>
 
       {error && (
@@ -169,7 +232,7 @@ InputSelect.propTypes = {
   value: PropTypes.string,
 
   /**
-   * The available options i.e. [{ value, label }, { value, label }]
+   * The available options i.e. [{value, label}, {value, label}]
    */
   options: PropTypes.array.isRequired,
 

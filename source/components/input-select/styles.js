@@ -81,6 +81,37 @@ export default (
       top: '50%',
       right: rhythm(0.333),
       transform: 'translateY(-50%)'
+    },
+
+    select: {
+      display: 'block',
+      position: 'absolute',
+      zIndex: 1,
+      width: '100%',
+      textAlign: 'left',
+      lineHeight: rhythm(1.666),
+      paddingLeft: rhythm(0.5),
+      paddingRight: rhythm(1.25),
+      color: readOnly ? colors.lightGrey : colors.dark,
+      border: 0,
+      backgroundColor: 'white',
+      backgroundImage: 'none',
+      boxShadow: 'none',
+      appearance: 'none',
+      outline: 'none',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      overflow: 'scroll',
+      ...treatments.input,
+      '&:focus': {
+        border: 0,
+        outline: 0
+      },
+      '&:focus + span': {
+        borderColor: isInvalid ? colors.danger : colors.secondary,
+        boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
+      }
     }
   }
 
