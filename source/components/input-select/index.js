@@ -80,7 +80,12 @@ const InputSelect = ({
 
       return resultOptions
     } else {
-      const filteredOptions = elasticSearch && searchTerm.length >= 3 ? options.filter(option => option.label.toLowerCase().includes(searchTerm.toLowerCase())) : options
+      const filteredOptions =
+        elasticSearch && searchTerm.length >= 3
+          ? options.filter(option =>
+              option.label.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+          : options
 
       // Hack for long labels on iOS
       const hasLongOptionLabel = filteredOptions.reduce((acc, option) => {
@@ -105,16 +110,20 @@ const InputSelect = ({
   }
 
   const getDropdownLength = () => {
-    const filteredOptions = options.filter(option => option.label.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filteredOptions = options.filter(option =>
+      option.label.toLowerCase().includes(searchTerm.toLowerCase())
+    )
     // if 1 or 0 search results, still leave extra space at bottom. Cap at 8 results before scrolling.
     if (filteredOptions.length < 2) return 2
     return filteredOptions.length > 8 ? 8 : filteredOptions.length
   }
 
-  const getOptionLabelFromValue = (selectedValue) =>
+  const getOptionLabelFromValue = selectedValue =>
     options.find(({ value }) => value === selectedValue).label
 
-  const showResults = searchTerm.length >= 3 && (!value || getOptionLabelFromValue(value) !== searchTerm)
+  const showResults =
+    searchTerm.length >= 3 &&
+    (!value || getOptionLabelFromValue(value) !== searchTerm)
 
   return (
     <div className={`c11n-input-select ${classNames.root}`}>
@@ -133,17 +142,17 @@ const InputSelect = ({
       )}
 
       <div className={classNames.wrapper}>
-        {elasticSearch ?
+        {elasticSearch ? (
           <>
-            <input placeholder={placeholder}
-              onChange={({ target: { value } }) =>
-                setSearchTerm(value)
-              }
+            <input
+              placeholder={placeholder}
+              onChange={({ target: { value } }) => setSearchTerm(value)}
               className={classNames.input}
               value={searchTerm}
             />
-            {showResults &&
-              <select size={getDropdownLength()}
+            {showResults && (
+              <select
+                size={getDropdownLength()}
                 name={name}
                 id={inputId}
                 value={value}
@@ -156,10 +165,13 @@ const InputSelect = ({
                 className={classNames.select}
                 required
                 aria-labelledby={labelId}
-                {...allowedProps}>
+                {...allowedProps}
+              >
                 {renderOptions()}
               </select>
-            } </> :
+            )}{' '}
+          </>
+        ) : (
           <>
             <select
               name={name}
@@ -185,20 +197,16 @@ const InputSelect = ({
 
             <Icon name='dropdown' size={0.75} styles={styles.icon} />
           </>
-        }
-
-
+        )}
       </div>
 
-      {
-        error && (
-          <InputValidations
-            styles={{ root: styles.error }}
-            validations={validations}
-          />
-        )
-      }
-    </div >
+      {error && (
+        <InputValidations
+          styles={{ root: styles.error }}
+          validations={validations}
+        />
+      )}
+    </div>
   )
 }
 
@@ -225,7 +233,7 @@ InputSelect.propTypes = {
 
   /**
    * The available options i.e. [{value, label}, {value, label}]
-      */
+   */
   options: PropTypes.array.isRequired,
 
   /**
