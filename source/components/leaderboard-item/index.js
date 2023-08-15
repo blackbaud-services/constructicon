@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import uuid from 'uuid/v4'
+import { v4 as uuid } from 'uuid'
 import PropTypes from 'prop-types'
 import withStyles from '../with-styles'
 import styles from './styles'
