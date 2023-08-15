@@ -80,7 +80,7 @@ const InputSelect = ({
 
       return resultOptions
     } else {
-      const filteredOptions = elasticSearch && searchTerm.length > 3 ? options.filter(option => option.label.toLowerCase().includes(searchTerm.toLowerCase())) : options
+      const filteredOptions = elasticSearch && searchTerm.length >= 3 ? options.filter(option => option.label.toLowerCase().includes(searchTerm.toLowerCase())) : options
 
       // Hack for long labels on iOS
       const hasLongOptionLabel = filteredOptions.reduce((acc, option) => {
@@ -137,7 +137,7 @@ const InputSelect = ({
               }
               className={classNames.input}
             />
-            {searchTerm.length > 3 &&
+            {searchTerm.length >= 3 &&
               <select size={getDropdownLength()}
                 name={name}
                 id={inputId}
