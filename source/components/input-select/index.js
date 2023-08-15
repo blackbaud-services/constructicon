@@ -111,6 +111,10 @@ const InputSelect = ({
     return filteredOptions.length > 8 ? 8 : filteredOptions.length
   }
 
+  const getOptionLabelFromValue = (selectedValue) =>
+    options.find(({ value }) => value === selectedValue).label
+
+  const showResults = searchTerm.length >= 3 && (!value || getOptionLabelFromValue(value) !== searchTerm)
 
   return (
     <div className={`c11n-input-select ${classNames.root}`}>
@@ -136,14 +140,18 @@ const InputSelect = ({
                 setSearchTerm(value)
               }
               className={classNames.input}
+              value={searchTerm}
             />
-            {searchTerm.length >= 3 &&
+            {showResults &&
               <select size={getDropdownLength()}
                 name={name}
                 id={inputId}
                 value={value}
                 placeholder={placeholder}
-                onChange={e => onChange && onChange(e.target.value)}
+                onChange={e => {
+                  setSearchTerm(getOptionLabelFromValue(e.target.value))
+                  onChange && onChange(e.target.value)
+                }}
                 onBlur={e => onBlur && onBlur(e.target.value)}
                 className={classNames.select}
                 required
@@ -182,13 +190,15 @@ const InputSelect = ({
 
       </div>
 
-      {error && (
-        <InputValidations
-          styles={{ root: styles.error }}
-          validations={validations}
-        />
-      )}
-    </div>
+      {
+        error && (
+          <InputValidations
+            styles={{ root: styles.error }}
+            validations={validations}
+          />
+        )
+      }
+    </div >
   )
 }
 
