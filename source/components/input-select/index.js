@@ -106,9 +106,9 @@ const InputSelect = ({
 
   const getDropdownLength = () => {
     const filteredOptions = options.filter(option => option.label.toLowerCase().includes(searchTerm.toLowerCase()))
-    // if 1 or 0 search results, still leave extra space at bottom
+    // if 1 or 0 search results, still leave extra space at bottom. Cap at 8 results before scrolling.
     if (filteredOptions.length < 2) return 2
-    return filteredOptions.length
+    return filteredOptions.length > 8 ? 8 : filteredOptions.length
   }
 
 
@@ -145,7 +145,7 @@ const InputSelect = ({
                 placeholder={placeholder}
                 onChange={e => onChange && onChange(e.target.value)}
                 onBlur={e => onBlur && onBlur(e.target.value)}
-                className={classNames.input}
+                className={classNames.select}
                 required
                 aria-labelledby={labelId}
                 {...allowedProps}>
