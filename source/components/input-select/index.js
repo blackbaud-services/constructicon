@@ -157,14 +157,13 @@ const InputSelect = ({
               onChange={({ target: { value } }) => setSearchTerm(value)}
               className={classNames.input}
               value={searchTerm}
+              name={name}
+              id={inputId}
+              required
             />
             {showResults && (
               <select
                 size={getDropdownLength()}
-                name={name}
-                id={inputId}
-                value={value}
-                placeholder={placeholder}
                 onBlur={e => onBlur && onBlur(e.target.value)}
                 className={classNames.select}
                 required
