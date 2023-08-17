@@ -95,16 +95,24 @@ const InputSelect = ({
       return filteredOptions.length ? (
         <>
           {filteredOptions.map(({ value, label, disabled }, index) => (
-            <option value={value} key={index} disabled={disabled}>
+            <option
+              value={value}
+              key={index}
+              disabled={disabled}
+              onClick={() => {
+                if (elasticSearch) {
+                  setSearchTerm(value)
+                  onChange && onChange(value)
+                }
+              }}
+            >
               {label}
             </option>
           ))}
           {isIos() && hasLongOptionLabel && <optgroup label='' />}
         </>
       ) : (
-        <>
-          <option disabled>{nonIdealElasticSearchResult}</option>
-        </>
+        <option disabled>{nonIdealElasticSearchResult}</option>
       )
     }
   }
@@ -157,10 +165,6 @@ const InputSelect = ({
                 id={inputId}
                 value={value}
                 placeholder={placeholder}
-                onChange={e => {
-                  setSearchTerm(getOptionLabelFromValue(e.target.value))
-                  onChange && onChange(e.target.value)
-                }}
                 onBlur={e => onBlur && onBlur(e.target.value)}
                 className={classNames.select}
                 required
