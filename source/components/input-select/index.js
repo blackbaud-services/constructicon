@@ -95,17 +95,7 @@ const InputSelect = ({
       return filteredOptions.length ? (
         <>
           {filteredOptions.map(({ value, label, disabled }, index) => (
-            <option
-              value={value}
-              key={index}
-              disabled={disabled}
-              onClick={() => {
-                if (elasticSearch) {
-                  setSearchTerm(value)
-                  onChange && onChange(value)
-                }
-              }}
-            >
+            <option value={value} key={index} disabled={disabled}>
               {label}
             </option>
           ))}
@@ -154,25 +144,33 @@ const InputSelect = ({
           <>
             <input
               placeholder={placeholder}
-              onChange={({ target: { value } }) => setSearchTerm(value)}
+              onChange={({ target: { value } }) => {
+                if (value && value !== searchTerm) {
+                  onChange && onChange('')
+                }
+                setSearchTerm(value)
+              }}
+              onBlur={() => onBlur && onBlur(value)}
               className={classNames.input}
               value={searchTerm}
               name={name}
               id={inputId}
+              aria-labelledby={labelId}
               required
+              {...allowedProps}
             />
             {showResults && (
               <select
                 size={getDropdownLength()}
-                onBlur={e => onBlur && onBlur(e.target.value)}
                 className={classNames.select}
-                required
-                aria-labelledby={labelId}
-                {...allowedProps}
+                onMouseDown={e => {
+                  setSearchTerm(e.target.value)
+                  onChange && onChange(e.target.value)
+                }}
               >
                 {renderOptions()}
               </select>
-            )}{' '}
+            )}
           </>
         ) : (
           <>
