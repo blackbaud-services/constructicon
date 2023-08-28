@@ -37,24 +37,19 @@ export default (
       zIndex: 1,
       width: '100%',
       textAlign: 'left',
+      backgroundColor: colors.light,
+      color: readOnly ? colors.lightGrey : colors.dark,
       height: rhythm(1.666),
       lineHeight: rhythm(1.666),
       paddingLeft: rhythm(0.5),
       paddingRight: rhythm(1.25),
-      color: readOnly ? colors.lightGrey : colors.dark,
-      border: 0,
-      backgroundColor: 'transparent',
-      backgroundImage: 'none',
-      boxShadow: 'none',
-      appearance: 'none',
-      outline: 'none',
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
-      ...treatments.input,
+      border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
+      boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
+      borderRadius: rhythm(radiuses.small),
+      WebkitMinLogicalWidth: 'calc(100% - 18px)',
       '&:focus': {
-        border: 0,
-        outline: 0
+        borderColor: isInvalid ? colors.danger : colors.secondary,
+        boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
       },
       '&:focus + span': {
         borderColor: isInvalid ? colors.danger : colors.secondary,
@@ -86,7 +81,7 @@ export default (
     select: {
       display: 'block',
       position: 'absolute',
-      zIndex: 1,
+      zIndex: 2,
       width: '100%',
       textAlign: 'left',
       lineHeight: rhythm(1.666),
@@ -103,15 +98,7 @@ export default (
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
       overflow: 'scroll',
-      ...treatments.input,
-      '&:focus': {
-        border: 0,
-        outline: 0
-      },
-      '&:focus + span': {
-        borderColor: isInvalid ? colors.danger : colors.secondary,
-        boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
-      }
+      ...treatments.input
     }
   }
 
