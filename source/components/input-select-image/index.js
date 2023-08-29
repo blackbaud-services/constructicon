@@ -93,9 +93,13 @@ const ImageSelectItem = ({
         className={classNames.optionLabelContainer}
         id={`labelContainer_${id}`}
       >
-        <p className={classNames.optionLabel} id={`label_${id}`}>
+        <label
+          className={classNames.optionLabel}
+          id={`label_${id}`}
+          htmlFor={`input_${id}`}
+        >
           {value}
-        </p>
+        </label>
       </div>
       <div className={classNames.radioContainer} id={`inputContainer_${id}`}>
         <input
@@ -105,7 +109,7 @@ const ImageSelectItem = ({
           onBlur={onBlur}
           className={classNames.radio}
           disabled={disabled}
-          readonly={disabled}
+          readOnly={disabled}
         />
       </div>
     </div>

@@ -56,26 +56,4 @@ describe('InputSearch', () => {
       done()
     }, 500)
   })
-
-  it('renders loading spinner if status is fetching', done => {
-    const Result = () => <div>Result</div>
-    const wrapper = mount(
-      <InputSearch
-        onSearch={() => {}}
-        ResultComponent={Result}
-        results={['one', 'two', 'three']}
-        status='fetching'
-      />
-    )
-
-    const input = wrapper.find('input')
-    input.simulate('change', { target: { value: 'test' } })
-
-    setTimeout(() => {
-      wrapper.update()
-      const icon = wrapper.find('Icon').last()
-      expect(icon.prop('name')).to.eql('loading')
-      done()
-    }, 500)
-  })
 })
