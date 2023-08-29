@@ -12,6 +12,7 @@ const Icon = ({ name, paths, viewBox, ariaHidden = true, classNames }) => {
       className={`c11n-icon ${classNames.root}`}
       viewBox={`0 0 ${viewBox} ${viewBox}`}
       aria-hidden={ariaHidden}
+      alt={name ?? ''}
     >
       {iconPaths &&
         iconPaths.map((pathProps, i) => <path {...pathProps} key={i} />)}
