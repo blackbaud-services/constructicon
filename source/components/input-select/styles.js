@@ -94,7 +94,6 @@ export default (
       boxShadow: 'none',
       appearance: 'none',
       outline: 'none',
-      overflow: 'hidden',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
       overflow: 'scroll',

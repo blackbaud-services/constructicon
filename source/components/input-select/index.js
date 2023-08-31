@@ -167,8 +167,11 @@ const InputSelect = ({
                 size={getDropdownLength()}
                 className={classNames.select}
                 onMouseDown={e => {
-                  setSearchTerm(e.target.value)
-                  onChange && onChange(e.target.value)
+                  e.preventDefault()
+                  if (e.target.value) {
+                    setSearchTerm(e.target.value)
+                    onChange && onChange(e.target.value)
+                  }
                 }}
               >
                 {renderOptions()}
