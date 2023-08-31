@@ -82,9 +82,12 @@ const InputSelect = ({
     } else {
       const filteredOptions =
         elasticSearch && searchTerm.length >= 3
-          ? options.filter(option =>
-              option.label.toLowerCase().includes(searchTerm.toLowerCase())
-            )
+          ? options.filter(option => {
+              const optionLabel = option.label.toLowerCase()
+              const searchTerms = searchTerm.toLowerCase().split(' ')
+
+              return searchTerms.every(term => optionLabel.includes(term))
+            })
           : options
 
       // Hack for long labels on iOS
@@ -105,15 +108,6 @@ const InputSelect = ({
         <option disabled>{nonIdealElasticSearchResult}</option>
       )
     }
-  }
-
-  const getDropdownLength = () => {
-    const filteredOptions = options.filter(option =>
-      option.label.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    // if 1 or 0 search results, still leave extra space at bottom. Cap at 8 results before scrolling.
-    if (filteredOptions.length < 2) return 2
-    return filteredOptions.length > 8 ? 8 : filteredOptions.length
   }
 
   const getOptionLabelFromValue = selectedValue =>
@@ -160,16 +154,18 @@ const InputSelect = ({
               {...allowedProps}
             />
             {showResults && (
-              <select
-                size={getDropdownLength()}
+              <div
+                aria-roledescription='select'
                 className={classNames.select}
                 onMouseDown={e => {
-                  setSearchTerm(e.target.value)
-                  onChange && onChange(e.target.value)
+                  if (e.target.value) {
+                    setSearchTerm(e.target.value)
+                    onChange && onChange(e.target.value)
+                  }
                 }}
               >
                 {renderOptions()}
-              </select>
+              </div>
             )}
           </>
         ) : (

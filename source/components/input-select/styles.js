@@ -84,7 +84,7 @@ export default (
       zIndex: 2,
       width: '100%',
       textAlign: 'left',
-      lineHeight: rhythm(1.666),
+      lineHeight: rhythm(1.25),
       paddingLeft: rhythm(0.5),
       paddingRight: rhythm(1.25),
       color: readOnly ? colors.lightGrey : colors.dark,
@@ -94,10 +94,10 @@ export default (
       boxShadow: 'none',
       appearance: 'none',
       outline: 'none',
-      overflow: 'hidden',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
       overflow: 'scroll',
+      maxHeight: rhythm(4),
       ...treatments.input
     }
   }
