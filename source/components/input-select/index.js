@@ -83,11 +83,11 @@ const InputSelect = ({
       const filteredOptions =
         elasticSearch && searchTerm.length >= 3
           ? options.filter(option => {
-            const optionLabel = option.label.toLowerCase()
-            const searchTerms = searchTerm.toLowerCase().split(' ')
-          
-            return searchTerms.every(term => optionLabel.includes(term))
-          })
+              const optionLabel = option.label.toLowerCase()
+              const searchTerms = searchTerm.toLowerCase().split(' ')
+
+              return searchTerms.every(term => optionLabel.includes(term))
+            })
           : options
 
       // Hack for long labels on iOS
