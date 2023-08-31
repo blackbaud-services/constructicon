@@ -110,15 +110,6 @@ const InputSelect = ({
     }
   }
 
-  const getDropdownLength = () => {
-    const filteredOptions = options.filter(option =>
-      option.label.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    // if 1 or 0 search results, still leave extra space at bottom. Cap at 8 results before scrolling.
-    if (filteredOptions.length < 2) return 2
-    return filteredOptions.length > 8 ? 8 : filteredOptions.length
-  }
-
   const getOptionLabelFromValue = selectedValue =>
     options.find(({ value }) => value === selectedValue).label
 
@@ -163,11 +154,10 @@ const InputSelect = ({
               {...allowedProps}
             />
             {showResults && (
-              <select
-                size={getDropdownLength()}
+              <div
+                aria-roledescription='select'
                 className={classNames.select}
                 onMouseDown={e => {
-                  e.preventDefault()
                   if (e.target.value) {
                     setSearchTerm(e.target.value)
                     onChange && onChange(e.target.value)
@@ -175,7 +165,7 @@ const InputSelect = ({
                 }}
               >
                 {renderOptions()}
-              </select>
+              </div>
             )}
           </>
         ) : (
