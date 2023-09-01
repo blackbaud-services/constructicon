@@ -58,23 +58,55 @@ const InputSelect = ({
 
       mapKeys(groupedOptions, (opts, groupLabel) => {
         if (groupLabel !== 'undefined') {
-          resultOptions.push(
-            <optgroup key={groupLabel} label={groupLabel}>
-              {opts.map(({ value, label, disabled }, index) => (
+          if (elasticSearch) {
+            resultOptions.push(
+              <div role='optgroup' key={groupLabel} label={groupLabel}>
+                {opts.map(({ value, label, disabled }, index) => (
+                  <p
+                    role='option'
+                    data-value={value}
+                    key={index}
+                    disabled={disabled}
+                  >
+                    {label}
+                  </p>
+                ))}
+              </div>
+            )
+          } else {
+            resultOptions.push(
+              <optgroup key={groupLabel} label={groupLabel}>
+                {opts.map(({ value, label, disabled }, index) => (
+                  <option value={value} key={index} disabled={disabled}>
+                    {label}
+                  </option>
+                ))}
+              </optgroup>
+            )
+          }
+        } else {
+          if (elasticSearch) {
+            resultOptions.push(
+              opts.map(({ value, label, disabled }, index) => (
+                <p
+                  role='option'
+                  data-value={value}
+                  key={index}
+                  disabled={disabled}
+                >
+                  {label}
+                </p>
+              ))
+            )
+          } else {
+            resultOptions.push(
+              opts.map(({ value, label, disabled }, index) => (
                 <option value={value} key={index} disabled={disabled}>
                   {label}
                 </option>
-              ))}
-            </optgroup>
-          )
-        } else {
-          resultOptions.push(
-            opts.map(({ value, label, disabled }, index) => (
-              <option value={value} key={index} disabled={disabled}>
-                {label}
-              </option>
-            ))
-          )
+              ))
+            )
+          }
         }
       })
 
@@ -95,7 +127,27 @@ const InputSelect = ({
         return acc || option.label.length > 32
       }, false)
 
-      return filteredOptions.length ? (
+      return elasticSearch ? (
+        filteredOptions.length ? (
+          <>
+            {filteredOptions.map(({ value, label, disabled }, index) => (
+              <p
+                role='option'
+                data-value={value}
+                key={index}
+                disabled={disabled}
+              >
+                {label}
+              </p>
+            ))}
+            {isIos() && hasLongOptionLabel && <div label='' role='optgroup' />}
+          </>
+        ) : (
+          <p role='option' disabled>
+            {nonIdealElasticSearchResult}
+          </p>
+        )
+      ) : filteredOptions.length ? (
         <>
           {filteredOptions.map(({ value, label, disabled }, index) => (
             <option value={value} key={index} disabled={disabled}>
@@ -155,12 +207,13 @@ const InputSelect = ({
             />
             {showResults && (
               <div
-                aria-roledescription='select'
+                role='select'
                 className={classNames.select}
                 onMouseDown={e => {
-                  if (e.target.value) {
-                    setSearchTerm(e.target.value)
-                    onChange && onChange(e.target.value)
+                  const selectedTarget = e.target.getAttribute('data-value')
+                  if (selectedTarget) {
+                    setSearchTerm(selectedTarget)
+                    onChange && onChange(selectedTarget)
                   }
                 }}
               >

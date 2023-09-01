@@ -102,18 +102,17 @@ export default (
 
       // Webkit (Chrome) scrollbar to be persistent
       '::-webkit-scrollbar': {
-        width: '8px',
+        width: '8px'
       },
 
       '::-webkit-scrollbar-track': {
-        backgroundColor: 'lightgray',
+        backgroundColor: 'lightgray'
       },
 
       '::-webkit-scrollbar-thumb': {
-        backgroundColor: 'darkgray',
-      },
+        backgroundColor: 'darkgray'
+      }
     }
- 
   }
 
   return merge(defaultStyles, styles)
