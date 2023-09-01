@@ -96,9 +96,22 @@ export default (
       outline: 'none',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
-      overflow: 'scroll',
+      overflowY: 'scroll',
       maxHeight: rhythm(4),
-      ...treatments.input
+      ...treatments.input,
+
+      // Webkit (Chrome) scrollbar to be persistent
+      '::-webkit-scrollbar': {
+        width: '8px'
+      },
+
+      '::-webkit-scrollbar-track': {
+        backgroundColor: 'lightgray'
+      },
+
+      '::-webkit-scrollbar-thumb': {
+        backgroundColor: 'darkgray'
+      }
     }
   }
 
