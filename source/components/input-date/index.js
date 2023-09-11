@@ -89,7 +89,7 @@ class InputDate extends Component {
 
     const { showSelects, date = dayjs() } = this.state
 
-    const labelId = `label-${id || name}`
+    const labelId = `label-${id || name || ''}`.split('.').join('-')
     const allowedProps = pick(this.props, [
       'disabled',
       'invalid',

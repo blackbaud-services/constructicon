@@ -47,7 +47,7 @@ const InputSelect = ({
     'validators'
   ]
   const allowedProps = omit(props, propsBlacklist)
-  const inputId = id || name
+  const inputId = (id || name || '').split('.').join('-')
   const labelId = `label-${inputId}`
   const [searchTerm, setSearchTerm] = useState('')
 
