@@ -17,7 +17,7 @@ const ImageSelect = ({
   validations,
   value
 }) => {
-  const inputId = (id || name).replaceAll('.', '-')
+  const inputId = (id || name || '').replaceAll('.', '-')
   const labelId = `label-${inputId}`
   const [selectedItem, setSelectedItem] = useState(value)
   const handleChange = value => {

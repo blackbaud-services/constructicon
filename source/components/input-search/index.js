@@ -155,7 +155,7 @@ class InputSearch extends Component {
 
     const { active, query, toShow } = this.state
 
-    const inputId = (id || name).replaceAll('.', '-')
+    const inputId = (id || name || '').replaceAll('.', '-')
     const labelId = `label-${inputId}`
 
     return (
