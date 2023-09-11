@@ -61,7 +61,7 @@ class InputFile extends Component {
       'value'
     ]
     const allowedProps = omit(props, propsBlacklist)
-    const inputId = (id || name || '').replaceAll('.', '-')
+    const inputId = (id || name || '').split('.').join('-')
     const labelId = `label-${inputId}`
 
     const renderField = () => (
