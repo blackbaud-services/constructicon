@@ -176,7 +176,7 @@ class InputField extends React.Component {
       type === 'number' ? { inputMode: 'numeric' } : {}
     )
     const Tag = this.getTag()
-    const inputId = id || name
+    const inputId = (id || name).replaceAll('.', '-')
     const labelId = `label-${inputId}`
 
     const renderField = () => (
