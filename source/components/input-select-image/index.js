@@ -57,6 +57,7 @@ const ImageSelect = ({
 const ImageSelectItem = ({
   classNames,
   image,
+  label,
   mobileImage,
   value,
   selected,
@@ -98,7 +99,7 @@ const ImageSelectItem = ({
           id={`label_${id}`}
           htmlFor={`input_${id}`}
         >
-          {value}
+          {label || value}
         </label>
       </div>
       <div className={classNames.radioContainer} id={`inputContainer_${id}`}>
