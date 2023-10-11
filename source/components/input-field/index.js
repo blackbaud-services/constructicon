@@ -140,6 +140,13 @@ class InputField extends React.Component {
         onChange && onChange(value)
       })
     }
+
+    if (type === 'number') {
+      const clipboardValue = event.clipboardData.getData('text')
+      if (isNaN(parseInt(clipboardValue))) {
+        event.preventDefault()
+      }
+    }
   }
 
   render () {
