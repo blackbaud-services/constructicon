@@ -130,7 +130,9 @@ class InputField extends React.Component {
   }
 
   handlePaste (event) {
-    const { onChange, type } = this.props
+    const { onChange, onPaste, type } = this.props
+
+    onPaste && onPaste(event)
 
     if (type === 'contenteditable') {
       return setTimeout(() => {
@@ -139,13 +141,6 @@ class InputField extends React.Component {
         this.setState({ value })
         onChange && onChange(value)
       })
-    }
-
-    if (type === 'number') {
-      const clipboardValue = event.clipboardData.getData('text')
-      if (isNaN(parseInt(clipboardValue))) {
-        event.preventDefault()
-      }
     }
   }
 
