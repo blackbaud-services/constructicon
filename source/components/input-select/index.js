@@ -269,7 +269,7 @@ const InputSelect = ({
 
       {includeOther && showOtherInput && (
         <input
-          placeholder={'Please specify'}
+          placeholder='Please specify'
           onChange={({ target: { value } }) => onChange && handleChange(value)}
           className={classNames.input}
           value={value}
