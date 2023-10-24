@@ -35,6 +35,7 @@ const InputSelect = ({
   value,
   elasticSearch,
   nonIdealElasticSearchResult,
+  includeOther = false,
   ...props
 }) => {
   const propsBlacklist = [
@@ -50,6 +51,12 @@ const InputSelect = ({
   const inputId = (id || name || '').split('.').join('-')
   const labelId = `label-${inputId}`
   const [searchTerm, setSearchTerm] = useState('')
+  const [showOtherInput, setShowOtherInput] = useState(false)
+  const otherOptionValue = `${name}Other`
+
+  if (includeOther) {
+    options.push({ label: 'Other (please specify)', value: otherOptionValue })
+  }
 
   const renderOptions = () => {
     if (groupOptions) {
@@ -169,6 +176,16 @@ const InputSelect = ({
     searchTerm.length >= 3 &&
     (!value || getOptionLabelFromValue(value) !== searchTerm)
 
+  const handleChange = val => {
+    if (includeOther && val === otherOptionValue) {
+      setShowOtherInput(true)
+      // remove any current value to ensure validation runs
+      onChange('')
+    } else {
+      onChange(val)
+    }
+  }
+
   return (
     <div className={`c11n-input-select ${classNames.root}`}>
       {label && (
@@ -213,7 +230,7 @@ const InputSelect = ({
                   const selectedTarget = e.target.getAttribute('data-value')
                   if (selectedTarget) {
                     setSearchTerm(selectedTarget)
-                    onChange && onChange(selectedTarget)
+                    onChange && handleChange(selectedTarget)
                   }
                 }}
               >
@@ -228,7 +245,7 @@ const InputSelect = ({
               id={inputId}
               value={value}
               placeholder={placeholder}
-              onChange={e => onChange && onChange(e.target.value)}
+              onChange={e => onChange && handleChange(e.target.value)}
               onBlur={e => onBlur && onBlur(e.target.value)}
               className={classNames.input}
               required
@@ -249,6 +266,18 @@ const InputSelect = ({
           </>
         )}
       </div>
+
+      {includeOther && showOtherInput && (
+        <input
+          placeholder='Please specify'
+          onChange={({ target: { value } }) => onChange && handleChange(value)}
+          className={classNames.input}
+          value={value}
+          name={name}
+          required
+          {...allowedProps}
+        />
+      )}
 
       {error && (
         <InputValidations
