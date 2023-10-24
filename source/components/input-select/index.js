@@ -179,11 +179,10 @@ const InputSelect = ({
   const handleChange = val => {
     if (includeOther && val === otherOptionValue) {
       setShowOtherInput(true)
-      // remove any current value to ensure validation runs
-      onChange('')
     } else {
-      onChange(val)
+      if (showOtherInput) setShowOtherInput(false)
     }
+    onChange(val)
   }
 
   return (
@@ -243,7 +242,7 @@ const InputSelect = ({
             <select
               name={name}
               id={inputId}
-              value={value}
+              value={showOtherInput ? otherOptionValue : value}
               placeholder={placeholder}
               onChange={e => onChange && handleChange(e.target.value)}
               onBlur={e => onBlur && onBlur(e.target.value)}
@@ -270,9 +269,9 @@ const InputSelect = ({
       {includeOther && showOtherInput && (
         <input
           placeholder={'Please specify'}
-          onChange={({ target: { value } }) => onChange && handleChange(value)}
+          onChange={({ target: { value } }) => onChange && onChange(value)}
           className={classNames.input}
-          value={value}
+          value={value === otherOptionValue ? '' : value}
           name={name}
           required
           {...allowedProps}
