@@ -39,11 +39,13 @@ class InputField extends React.Component {
 
   handleChange (event) {
     const { onChange, type } = this.props
-    const value = isBoolean(type)
-      ? event.target.checked
-      : this.props.forceUppercase
-      ? event.target.value.toUpperCase()
-      : event.target.value
+
+    const value =
+      isBoolean(type) || type === 'checkbox'
+        ? event.target.checked
+        : this.props.forceUppercase
+        ? event.target.value.toUpperCase()
+        : event.target.value
 
     this.setState({ value })
 
@@ -52,7 +54,10 @@ class InputField extends React.Component {
 
   handleBlur (event) {
     const { onBlur, type } = this.props
-    const value = isBoolean(type) ? event.target.checked : event.target.value
+    const value =
+      isBoolean(type) || type === 'checkbox'
+        ? event.target.checked
+        : event.target.value
 
     if (type === 'contenteditable') {
       return onBlur && onBlur(sanitizeHtml(this.state.value))
@@ -188,7 +193,9 @@ class InputField extends React.Component {
         type={this.state.type}
         name={name}
         id={inputId}
-        checked={isBoolean(type) ? Boolean(value) : undefined}
+        checked={
+          isBoolean(type) || type === 'checkbox' ? Boolean(value) : undefined
+        }
         onChange={this.handleChange}
         onBlur={this.handleBlur}
         onKeyDown={this.handleKeyDown}
