@@ -38,7 +38,7 @@ const withForm = config => ComponentToWrap =>
     }
 
     initialValue (field) {
-      return isBoolean(field.type) ? false : ''
+      return isBoolean(field.type) || field.type === 'checkbox' ? false : ''
     }
 
     initFields (fields) {
