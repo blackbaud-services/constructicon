@@ -71,7 +71,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^5.2.0",
-    "react-styleguidist": "^11.1.7",
+    "react-styleguidist": "^13.1.2",
     "sinon": "^11.1.2",
     "source-map-loader": "^1.0.0",
     "style-loader": "^2.0.0",
