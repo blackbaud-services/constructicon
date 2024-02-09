@@ -1,24 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles, { keyframes } from './styles'
-import * as icons from './icons'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles, { keyframes } from "./styles";
+import * as icons from "./icons";
 
 const Icon = ({ name, paths, viewBox, ariaHidden = true, classNames }) => {
-  const iconPaths = name ? icons[name] : paths
+  const iconPaths = name ? icons[name] : paths;
 
   return (
     <svg
       className={`c11n-icon ${classNames.root}`}
       viewBox={`0 0 ${viewBox} ${viewBox}`}
       aria-hidden={ariaHidden}
-      alt={name ?? ''}
+      alt={name ?? ""}
     >
       {iconPaths &&
         iconPaths.map((pathProps, i) => <path {...pathProps} key={i} />)}
     </svg>
-  )
-}
+  );
+};
 
 Icon.propTypes = {
   /**
@@ -64,17 +64,17 @@ Icon.propTypes = {
   /**
    * Add custom styles to the icon
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Icon.defaultProps = {
-  color: 'currentColor',
+  color: "currentColor",
   paths: [],
   rotate: 0,
   size: 1,
   spin: false,
   styles: {},
-  viewBox: 32
-}
+  viewBox: 32,
+};
 
-export default withStyles(styles, keyframes)(Icon)
+export default withStyles(styles, keyframes)(Icon);

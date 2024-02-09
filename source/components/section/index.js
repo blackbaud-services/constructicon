@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const Section = ({
   background,
@@ -20,15 +20,15 @@ const Section = ({
   ...props
 }) => {
   if (!children) {
-    return null
+    return null;
   }
 
   return (
     <Tag className={`c11n-section ${classNames.root}`} {...props}>
       {children}
     </Tag>
-  )
-}
+  );
+};
 
 Section.propTypes = {
   /**
@@ -89,22 +89,22 @@ Section.propTypes = {
   /**
    * The text alignment
    */
-  textAlign: PropTypes.oneOf(['left', 'center', 'right', 'justify', 'inherit']),
+  textAlign: PropTypes.oneOf(["left", "center", "right", "justify", "inherit"]),
 
   /**
    * The custom styles to be applied to the section
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Section.defaultProps = {
-  borderColor: 'shade',
+  borderColor: "shade",
   margin: 0,
   size: 0,
   spacing: { x: 1, y: 1 },
   styles: {},
-  tag: 'section',
-  textAlign: 'inherit'
-}
+  tag: "section",
+  textAlign: "inherit",
+};
 
-export default withStyles(styles)(Section)
+export default withStyles(styles)(Section);

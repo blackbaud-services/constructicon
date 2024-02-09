@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "styleguidist server",
-    "lint": "prettier-standard --check 'source/**/*.js'",
+    "lint": "prettier 'source/**/*.js' --check",
     "test": "mocha source/**/**/__tests__/*.js --recursive --ui bdd --require @babel/register --require test/common.js",
-    "format": "prettier-standard 'source/**/*.js'",
+    "format": "prettier 'source/**/*.js' --write",
     "precommit": "lint-staged",
     "build": "babel source -d dist --copy-files",
     "build:styleguide": "styleguidist build",
@@ -68,7 +68,6 @@
     "mocha": "^9.1.1",
     "moxios": "^0.4.0",
     "prettier": "^2.4.0",
-    "prettier-standard": "^16.4.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^5.2.0",
@@ -87,14 +86,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "standard": {
-    "ignore": [
-      "source/**/**/__tests__/*.js",
-      "test",
-      "styleguide.config.js"
-    ]
-  },
   "lint-staged": {
-    "source/**/*.js": "prettier-standard"
+    "source/**/*.js": "prettier --check"
   }
 }

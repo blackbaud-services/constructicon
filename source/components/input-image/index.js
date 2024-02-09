@@ -1,234 +1,234 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
-import AvatarEditor from 'react-avatar-editor'
-import Button from '../button'
-import Dropzone from 'react-dropzone'
-import Icon from '../icon'
-import InputValidations from '../input-validations'
-import Label from '../label'
-import Loading from '../loading'
-import Slider from 'react-slider'
+import AvatarEditor from "react-avatar-editor";
+import Button from "../button";
+import Dropzone from "react-dropzone";
+import Icon from "../icon";
+import InputValidations from "../input-validations";
+import Label from "../label";
+import Loading from "../loading";
+import Slider from "react-slider";
 
 class InputImage extends React.Component {
-  constructor (props) {
-    super(props)
-    this.editor = null
-    this.getImageProperties = this.getImageProperties.bind(this)
-    this.handleCaptureImage = this.handleCaptureImage.bind(this)
-    this.handleClearImage = this.handleClearImage.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleOrientationChange = this.handleOrientationChange.bind(this)
-    this.handleRotateImage = this.handleRotateImage.bind(this)
-    this.handleSetImage = this.handleSetImage.bind(this)
-    this.setRef = this.setRef.bind(this)
+  constructor(props) {
+    super(props);
+    this.editor = null;
+    this.getImageProperties = this.getImageProperties.bind(this);
+    this.handleCaptureImage = this.handleCaptureImage.bind(this);
+    this.handleClearImage = this.handleClearImage.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleOrientationChange = this.handleOrientationChange.bind(this);
+    this.handleRotateImage = this.handleRotateImage.bind(this);
+    this.handleSetImage = this.handleSetImage.bind(this);
+    this.setRef = this.setRef.bind(this);
     this.state = {
       flip: false,
       height: props.height,
       image:
-        props.value && props.value.indexOf('base64') > -1 ? props.value : null,
-      input: 'default',
+        props.value && props.value.indexOf("base64") > -1 ? props.value : null,
+      input: "default",
       loading: false,
-      orientation: props.height > props.width ? 'portrait' : 'landscape',
+      orientation: props.height > props.width ? "portrait" : "landscape",
       rotate: 0,
       settings: {},
       stream: null,
       width: props.width,
-      zoom: 100
-    }
+      zoom: 100,
+    };
   }
 
-  componentWillUnmount () {
-    this.handleStopVideo()
+  componentWillUnmount() {
+    this.handleStopVideo();
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps) {
     if (this.props.value && prevProps.overlay !== this.props.overlay) {
-      setTimeout(this.handleChange, 150)
+      setTimeout(this.handleChange, 150);
     }
   }
 
-  handleStopVideo () {
+  handleStopVideo() {
     if (this.state.stream) {
-      this.state.stream.getTracks().forEach(track => track.stop())
+      this.state.stream.getTracks().forEach((track) => track.stop());
     }
   }
 
-  handleChange () {
-    const canvas = this.editor.getImageScaledToCanvas()
-    const context = canvas.getContext('2d')
+  handleChange() {
+    const canvas = this.editor.getImageScaledToCanvas();
+    const context = canvas.getContext("2d");
 
-    context.globalCompositeOperation = 'destination-over'
-    context.fillStyle = 'white'
-    context.fillRect(0, 0, canvas.width, canvas.height)
+    context.globalCompositeOperation = "destination-over";
+    context.fillStyle = "white";
+    context.fillRect(0, 0, canvas.width, canvas.height);
 
     if (this.props.overlay) {
-      context.globalCompositeOperation = 'source-over'
-      context.drawImage(this.refs.overlay, 0, 0, canvas.width, canvas.height)
+      context.globalCompositeOperation = "source-over";
+      context.drawImage(this.refs.overlay, 0, 0, canvas.width, canvas.height);
     }
 
-    const image = canvas.toDataURL('image/jpeg', 1)
+    const image = canvas.toDataURL("image/jpeg", 1);
 
-    this.props.onChange(image)
+    this.props.onChange(image);
   }
 
-  handleStartCamera () {
-    const { width, height } = this.props
+  handleStartCamera() {
+    const { width, height } = this.props;
 
-    this.setState({ input: 'camera', flip: true, loading: true })
+    this.setState({ input: "camera", flip: true, loading: true });
 
     navigator.mediaDevices
       .getUserMedia({
         video: {
           aspectRatio: { exact: 1 },
-          facingMode: 'user',
+          facingMode: "user",
           width,
-          height
+          height,
         },
-        audio: false
+        audio: false,
       })
-      .then(stream => {
-        const [track] = stream.getVideoTracks()
-        const settings = track.getSettings()
+      .then((stream) => {
+        const [track] = stream.getVideoTracks();
+        const settings = track.getSettings();
 
         this.setState({ settings, stream }, () => {
           if (this.video) {
-            this.video.srcObject = stream
-            this.video.play()
+            this.video.srcObject = stream;
+            this.video.play();
             this.video.onloadedmetadata = () => {
-              this.video.play()
-              this.setState({ loading: false })
-            }
+              this.video.play();
+              this.setState({ loading: false });
+            };
           }
-        })
+        });
       })
-      .catch(err => {
-        console.log('An error occurred: ' + err)
-        this.setState({ input: 'default', loading: false })
-      })
+      .catch((err) => {
+        console.log("An error occurred: " + err);
+        this.setState({ input: "default", loading: false });
+      });
   }
 
-  handleCaptureImage () {
-    const { width, height } = this.state.settings
-    const context = this.canvas.getContext('2d')
+  handleCaptureImage() {
+    const { width, height } = this.state.settings;
+    const context = this.canvas.getContext("2d");
 
-    this.canvas.width = width
-    this.canvas.height = height
+    this.canvas.width = width;
+    this.canvas.height = height;
 
     if (this.state.flip) {
-      context.translate(context.canvas.width, 0)
-      context.scale(-1, 1)
+      context.translate(context.canvas.width, 0);
+      context.scale(-1, 1);
     }
 
-    context.drawImage(this.video, 0, 0, width, height)
+    context.drawImage(this.video, 0, 0, width, height);
 
     this.canvas.toBlob(
-      blob => {
-        this.handleSetImage(new File([blob], 'photo.jpg'))
-        this.handleStopVideo()
+      (blob) => {
+        this.handleSetImage(new File([blob], "photo.jpg"));
+        this.handleStopVideo();
       },
-      'image/jpeg',
+      "image/jpeg",
       1
-    )
+    );
   }
 
-  handleClearImage (event) {
-    const { width, height, onChange } = this.props
-    const isCameraInput = this.state.input === 'camera'
+  handleClearImage(event) {
+    const { width, height, onChange } = this.props;
+    const isCameraInput = this.state.input === "camera";
 
-    event.preventDefault()
+    event.preventDefault();
 
-    if (isCameraInput) this.handleStartCamera()
+    if (isCameraInput) this.handleStartCamera();
 
     this.setState({
       flip: isCameraInput,
       height,
       image: null,
-      orientation: height > width ? 'portrait' : 'landscape',
+      orientation: height > width ? "portrait" : "landscape",
       rotate: 0,
       width,
-      zoom: 100
-    })
+      zoom: 100,
+    });
 
-    onChange(null)
+    onChange(null);
   }
 
-  handleOrientationChange (event) {
-    const { width, height, orientation } = this.state
+  handleOrientationChange(event) {
+    const { width, height, orientation } = this.state;
 
-    event.preventDefault()
+    event.preventDefault();
 
     if (this.props.orientationChange) {
       this.setState(
         {
-          orientation: orientation === 'landscape' ? 'portrait' : 'landscape',
+          orientation: orientation === "landscape" ? "portrait" : "landscape",
           width: height,
-          height: width
+          height: width,
         },
         this.handleChange
-      )
+      );
     }
   }
 
-  handleRotateImage (event) {
-    const { width, height, rotate } = this.state
+  handleRotateImage(event) {
+    const { width, height, rotate } = this.state;
 
-    event.preventDefault()
+    event.preventDefault();
     this.setState(
       { rotate: rotate + 90, width: height, height: width },
       this.handleChange
-    )
+    );
   }
 
-  getImageProperties (image) {
-    const { maxSize } = this.props
-    const orientation = image.height > image.width ? 'portrait' : 'landscape'
-    const aspectRatio = image.width / image.height
+  getImageProperties(image) {
+    const { maxSize } = this.props;
+    const orientation = image.height > image.width ? "portrait" : "landscape";
+    const aspectRatio = image.width / image.height;
 
-    if (orientation === 'portrait') {
-      const height = Math.min(image.height, maxSize)
-      const width = height * aspectRatio
+    if (orientation === "portrait") {
+      const height = Math.min(image.height, maxSize);
+      const width = height * aspectRatio;
 
-      return { width, height, orientation }
+      return { width, height, orientation };
     }
 
-    const width = Math.min(image.width, maxSize)
-    const height = width / aspectRatio
+    const width = Math.min(image.width, maxSize);
+    const height = width / aspectRatio;
 
-    return { width, height, orientation }
+    return { width, height, orientation };
   }
 
-  handleSetImage (image) {
-    const { onFileChange, resizeOnUpload } = this.props
-    const reader = new window.FileReader()
-    const img = new window.Image()
+  handleSetImage(image) {
+    const { onFileChange, resizeOnUpload } = this.props;
+    const reader = new window.FileReader();
+    const img = new window.Image();
 
     if (resizeOnUpload) {
-      reader.readAsDataURL(image)
-      reader.onload = event => {
-        img.src = event.target.result
+      reader.readAsDataURL(image);
+      reader.onload = (event) => {
+        img.src = event.target.result;
         img.onload = () => {
-          const { width, height, orientation } = this.getImageProperties(img)
+          const { width, height, orientation } = this.getImageProperties(img);
           this.setState(
             { image, orientation, width, height },
             this.handleChange
-          )
-        }
-      }
+          );
+        };
+      };
     } else {
-      this.setState({ image }, this.handleChange)
+      this.setState({ image }, this.handleChange);
     }
 
-    onFileChange && onFileChange(image)
+    onFileChange && onFileChange(image);
   }
 
-  setRef (el) {
-    this.editor = el
+  setRef(el) {
+    this.editor = el;
   }
 
-  render () {
+  render() {
     const {
       borderWidth,
       buttonProps,
@@ -243,8 +243,8 @@ class InputImage extends React.Component {
       overlay,
       required,
       styles,
-      validations
-    } = this.props
+      validations,
+    } = this.props;
 
     const {
       flip,
@@ -255,15 +255,15 @@ class InputImage extends React.Component {
       rotate,
       settings,
       width,
-      zoom
-    } = this.state
+      zoom,
+    } = this.state;
 
     // Style fix for Firefox not respecting aspect ratio options
     const videoStyles = {
       width: `${(settings.width / settings.height) * 100}%`,
       left: `${(100 - (settings.width / settings.height) * 100) / 2}%`,
-      transform: flip && 'scaleX(-1)'
-    }
+      transform: flip && "scaleX(-1)",
+    };
 
     return (
       <div className={classNames.root}>
@@ -284,23 +284,23 @@ class InputImage extends React.Component {
                 ref={this.setRef}
                 rotate={rotate}
                 scale={zoom / 100}
-                style={{ width: '100%', height: 'auto' }}
+                style={{ width: "100%", height: "auto" }}
                 width={width}
               />
             </div>
             {orientationChange && (
               <Button
-                background='light'
-                foreground='dark'
+                background="light"
+                foreground="dark"
                 spacing={0.25}
                 styles={styles.orientation}
                 onClick={this.handleOrientationChange}
                 title={`Change to ${
-                  orientation === 'portrait' ? 'landscape' : 'portrait'
+                  orientation === "portrait" ? "landscape" : "portrait"
                 } orientation.`}
               >
                 <Icon
-                  name={orientation === 'portrait' ? 'image' : 'portrait'}
+                  name={orientation === "portrait" ? "image" : "portrait"}
                 />
               </Button>
             )}
@@ -309,19 +309,19 @@ class InputImage extends React.Component {
                 <span className={classNames.fileInfo}>{image.name}</span>
               )}
               <Button
-                background='transparent'
-                effect='grow'
+                background="transparent"
+                effect="grow"
                 spacing={0.5}
-                foreground='dark'
+                foreground="dark"
                 className={classNames.clear}
                 onClick={this.handleClearImage}
               >
-                {input === 'camera' ? 'Retake photo?' : 'Clear image'}
+                {input === "camera" ? "Retake photo?" : "Clear image"}
               </Button>
             </div>
             <div className={classNames.controls}>
               <Slider
-                ariaLabel='Zoom'
+                ariaLabel="Zoom"
                 ariaValuetext={`Zoom: ${zoom}%`}
                 className={classNames.slider}
                 trackClassName={classNames.sliderTrack}
@@ -329,36 +329,36 @@ class InputImage extends React.Component {
                 defaultValue={100}
                 min={0}
                 max={200}
-                onChange={zoom => this.setState({ zoom })}
+                onChange={(zoom) => this.setState({ zoom })}
                 value={zoom}
                 renderThumb={(props, state) => (
                   <div {...props}>
-                    <Icon styles={styles.icon} name='search' size={0.75} />
+                    <Icon styles={styles.icon} name="search" size={0.75} />
                   </div>
                 )}
               />
               <Button
-                background='transparent'
-                foreground='dark'
-                effect='grow'
+                background="transparent"
+                foreground="dark"
+                effect="grow"
                 spacing={0}
                 onClick={this.handleRotateImage}
               >
-                <Icon name='rotate' size={1.5} rotate={rotate} />
+                <Icon name="rotate" size={1.5} rotate={rotate} />
               </Button>
             </div>
           </div>
-        ) : input === 'camera' ? (
+        ) : input === "camera" ? (
           <div className={classNames.cameraContainer}>
             <div
               className={[classNames.editor, classNames.cameraPreview].join(
-                ' '
+                " "
               )}
             >
               <video
                 autoPlay
                 playsInline
-                ref={video => (this.video = video)}
+                ref={(video) => (this.video = video)}
                 className={classNames.video}
                 height={height}
                 width={width}
@@ -370,17 +370,17 @@ class InputImage extends React.Component {
                 </div>
               )}
               <Button
-                background='transparent'
-                foreground='dark'
-                effect='grow'
+                background="transparent"
+                foreground="dark"
+                effect="grow"
                 spacing={0}
                 onClick={() => this.setState({ flip: !flip })}
                 styles={styles.flip}
               >
                 <Icon
-                  name='flip'
+                  name="flip"
                   size={1.5}
-                  styles={{ transform: flip && 'scaleX(-1)' }}
+                  styles={{ transform: flip && "scaleX(-1)" }}
                 />
               </Button>
             </div>
@@ -389,14 +389,14 @@ class InputImage extends React.Component {
             </Button>
             <div>
               <Button
-                background='transparent'
-                effect='grow'
+                background="transparent"
+                effect="grow"
                 spacing={0.5}
-                foreground='dark'
+                foreground="dark"
                 className={classNames.clear}
                 onClick={() => {
-                  this.handleStopVideo()
-                  this.setState({ input: 'default' })
+                  this.handleStopVideo();
+                  this.setState({ input: "default" });
                 }}
               >
                 Upload an image
@@ -404,33 +404,33 @@ class InputImage extends React.Component {
             </div>
             <canvas
               className={classNames.hidden}
-              ref={canvas => (this.canvas = canvas)}
+              ref={(canvas) => (this.canvas = canvas)}
             />
           </div>
         ) : (
           <div className={classNames.dropzoneContainer}>
             <Dropzone
-              accept='image/*'
+              accept="image/*"
               maxFiles={maxFiles}
               multiple={multiple}
-              onDrop={images => this.handleSetImage(images[0])}
+              onDrop={(images) => this.handleSetImage(images[0])}
             >
               {({ getRootProps, getInputProps }) => (
                 <div {...getRootProps()} className={classNames.dropzone}>
                   <input {...getInputProps()} />
                   <Button {...buttonProps}>
-                    <Icon name='image' />
+                    <Icon name="image" />
                     <span>Select Image</span>
                   </Button>
                   {camera && (
                     <Button
                       {...buttonProps}
-                      onClick={event => {
-                        event.stopPropagation()
-                        this.handleStartCamera()
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        this.handleStartCamera();
                       }}
                     >
-                      <Icon name='camera' />
+                      <Icon name="camera" />
                       <span>Use your camera</span>
                     </Button>
                   )}
@@ -447,13 +447,13 @@ class InputImage extends React.Component {
         {overlay && (
           <img
             className={classNames.hidden}
-            crossOrigin='anonymous'
+            crossOrigin="anonymous"
             src={overlay}
-            ref='overlay'
+            ref="overlay"
           />
         )}
       </div>
-    )
+    );
   }
 }
 
@@ -464,8 +464,8 @@ InputImage.defaultProps = {
   maxSize: 1600,
   maxWidth: 350,
   multiple: false,
-  width: 500
-}
+  width: 500,
+};
 
 InputImage.propTypes = {
   /**
@@ -541,7 +541,7 @@ InputImage.propTypes = {
   /**
    * A note to show under the button
    */
-  note: PropTypes.string
-}
+  note: PropTypes.string,
+};
 
-export default withStyles(styles)(InputImage)
+export default withStyles(styles)(InputImage);

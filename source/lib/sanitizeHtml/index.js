@@ -1,9 +1,9 @@
-import xss from 'xss'
+import xss from "xss";
 
 const defaultConfig = {
   whiteList: {
-    a: ['href'],
-    abbr: ['title'],
+    a: ["href"],
+    abbr: ["title"],
     b: [],
     br: [],
     del: [],
@@ -21,12 +21,12 @@ const defaultConfig = {
     sub: [],
     sup: [],
     u: [],
-    iframe: ['src'],
-    img: ['alt', 'src']
-  }
-}
+    iframe: ["src"],
+    img: ["alt", "src"],
+  },
+};
 
 export const sanitizeHtml = (html, options = defaultConfig) =>
-  xss(html, options)
+  xss(html, options);
 
-export default sanitizeHtml
+export default sanitizeHtml;

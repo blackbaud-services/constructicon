@@ -1,4 +1,4 @@
 const delayPromise = (len, toReturn) =>
-  new Promise(resolve => setTimeout(() => resolve(toReturn), len))
+  new Promise((resolve) => setTimeout(() => resolve(toReturn), len));
 
-export default delayPromise
+export default delayPromise;

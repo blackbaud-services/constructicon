@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
-import Button from '../button'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
+import Button from "../button";
 
 const SearchResult = ({
   image,
@@ -12,7 +12,7 @@ const SearchResult = ({
   url,
   button,
   cta,
-  classNames
+  classNames,
 }) => (
   <li className={`c11n-search-result ${classNames.root}`}>
     {image && (
@@ -26,18 +26,18 @@ const SearchResult = ({
     </div>
     <div>
       <Button
-        tag='a'
+        tag="a"
         href={url}
         aria-label={label || cta}
-        target='_blank'
-        rel='noopener'
+        target="_blank"
+        rel="noopener"
         {...button}
       >
         {cta}
       </Button>
     </div>
   </li>
-)
+);
 
 SearchResult.propTypes = {
   /**
@@ -78,11 +78,11 @@ SearchResult.propTypes = {
   /**
    * Custom styles to be applied
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 SearchResult.defaultProps = {
-  cta: 'Support'
-}
+  cta: "Support",
+};
 
-export default withStyles(styles)(SearchResult)
+export default withStyles(styles)(SearchResult);

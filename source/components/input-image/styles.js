@@ -1,97 +1,97 @@
-import merge from 'lodash/merge'
-import { getForegroundColor } from '../../lib/color'
+import merge from "lodash/merge";
+import { getForegroundColor } from "../../lib/color";
 
 export default (props, traits) => {
-  const { styles, value, maxWidth, overlay } = props
-  const { colors, effects, measures, rhythm, scale, treatments } = traits
+  const { styles, value, maxWidth, overlay } = props;
+  const { colors, effects, measures, rhythm, scale, treatments } = traits;
 
   const gradient =
-    'linear-gradient(rgba(240, 240, 240, 0.85),  rgba(240, 240, 240, 0.85))'
+    "linear-gradient(rgba(240, 240, 240, 0.85),  rgba(240, 240, 240, 0.85))";
 
   const baseStyles = {
     root: {
-      position: 'relative',
-      textAlign: 'center',
+      position: "relative",
+      textAlign: "center",
       maxWidth: maxWidth,
-      marginBottom: rhythm(1)
+      marginBottom: rhythm(1),
     },
 
     image: {
-      position: 'relative'
+      position: "relative",
     },
 
     editor: {
-      position: 'relative',
+      position: "relative",
 
       ...(overlay && {
-        '&:after': {
+        "&:after": {
           content: '""',
           backgroundImage: `url(${overlay})`,
-          backgroundSize: '100% 100%',
-          position: 'absolute',
+          backgroundSize: "100% 100%",
+          position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          pointerEvents: 'none'
-        }
-      })
+          pointerEvents: "none",
+        },
+      }),
     },
 
     dropzoneContainer: {
-      position: 'relative',
-      paddingBottom: '87.5%'
+      position: "relative",
+      paddingBottom: "87.5%",
     },
 
     dropzone: {
-      position: 'absolute !important',
+      position: "absolute !important",
       top: 0,
       left: 0,
       bottom: 0,
       right: 0,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexPack: 'center',
-      flexDirection: 'column',
-      width: '100%',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexPack: "center",
+      flexDirection: "column",
+      width: "100%",
       padding: rhythm(1),
       backgroundColor: colors.shade,
       backgroundImage: value && `${gradient}, url(${value})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      textAlign: 'center',
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      textAlign: "center",
       lineHeight: measures.medium,
 
-      '& p': {
+      "& p": {
         marginTop: rhythm(0.5),
         fontSize: scale(-1),
-        opacity: 0.5
+        opacity: 0.5,
       },
 
-      '& small': {
-        display: 'block',
+      "& small": {
+        display: "block",
         marginTop: rhythm(0.25),
-        fontSize: scale(-2)
+        fontSize: scale(-2),
       },
 
-      '& button ~ button': {
-        marginTop: rhythm(0.5)
-      }
+      "& button ~ button": {
+        marginTop: rhythm(0.5),
+      },
     },
 
     clear: {
       margin: rhythm([0.5, 0.25]),
       fontSize: scale(-1),
-      textDecoration: 'underline',
-      opacity: 0.5
+      textDecoration: "underline",
+      opacity: 0.5,
     },
 
     controls: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      margin: 'auto'
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      margin: "auto",
     },
 
     slider: {
@@ -100,50 +100,50 @@ export default (props, traits) => {
       maxWidth: 250,
       backgroundColor: colors.shade,
       borderRadius: rhythm(0.25),
-      marginRight: rhythm(0.5)
+      marginRight: rhythm(0.5),
     },
 
     sliderTrack: {
-      height: rhythm(0.5)
+      height: rhythm(0.5),
     },
 
     sliderHandle: {
       ...treatments.button,
-      position: 'relative',
+      position: "relative",
       height: rhythm(1),
       width: rhythm(1),
       backgroundColor: colors.primary,
       color: getForegroundColor(colors.primary, colors.light),
       borderRadius: rhythm(1),
       transform: `translateY(${rhythm(-0.25)})`,
-      cursor: 'pointer',
-      ...effects.tint
+      cursor: "pointer",
+      ...effects.tint,
     },
 
     fileInfo: {
-      display: 'inline-block',
-      verticalAlign: 'middle',
+      display: "inline-block",
+      verticalAlign: "middle",
       maxWidth: rhythm(8),
       margin: rhythm([0.5, 0.25]),
       fontSize: scale(-1),
       lineHeight: measures.medium,
       opacity: 0.5,
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis'
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
     },
 
     orientation: {
-      position: 'absolute',
+      position: "absolute",
       top: rhythm(1),
-      right: rhythm(1)
+      right: rhythm(1),
     },
 
     icon: {
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)'
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
     },
 
     note: {
@@ -151,59 +151,59 @@ export default (props, traits) => {
       margin: `${rhythm(1)} auto`,
       fontSize: scale(-1),
       lineHeight: measures.medium,
-      opacity: 0.5
+      opacity: 0.5,
     },
 
     form: {
       root: {
-        '& > button': {
-          margin: '0 auto'
-        }
-      }
+        "& > button": {
+          margin: "0 auto",
+        },
+      },
     },
 
     hidden: {
-      visibility: 'hidden',
-      position: 'absolute',
-      opacity: 0
+      visibility: "hidden",
+      position: "absolute",
+      opacity: 0,
     },
 
     cameraPreview: {
-      overflow: 'hidden',
-      paddingBottom: '100%',
-      marginBottom: rhythm(0.5)
+      overflow: "hidden",
+      paddingBottom: "100%",
+      marginBottom: rhythm(0.5),
     },
 
     video: {
-      position: 'absolute',
+      position: "absolute",
       top: 0,
       left: 0,
-      width: '100%',
-      height: '100%',
-      backgroundColor: 'rgba(0,0,0,0.5)'
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0,0,0,0.5)",
     },
 
     flip: {
-      position: 'absolute',
+      position: "absolute",
       bottom: 0,
       right: 0,
       zIndex: 1,
-      color: 'white',
-      padding: '0.5rem',
-      filter: 'drop-shadow(1px 1px 1px rgba(0,0,0,0.25))'
+      color: "white",
+      padding: "0.5rem",
+      filter: "drop-shadow(1px 1px 1px rgba(0,0,0,0.25))",
     },
 
     loading: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      textAlign: 'center'
-    }
-  }
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      textAlign: "center",
+    },
+  };
 
-  return merge(baseStyles, styles)
-}
+  return merge(baseStyles, styles);
+};

@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Button from '../button'
-import Icon from '../icon'
-import openShareDialog from './openShareDialog'
+import React from "react";
+import PropTypes from "prop-types";
+import Button from "../button";
+import Icon from "../icon";
+import openShareDialog from "./openShareDialog";
 
 /**
  * Uses the Button component to create a share button with an icon. Renamed from `ButtonSocial` in v2.1
@@ -22,43 +22,43 @@ const ButtonShare = ({
 }) => (
   <Button
     background={type}
-    tag={share ? 'button' : 'a'}
+    tag={share ? "button" : "a"}
     onClick={() => {
       if (share) {
-        openShareDialog({ type, url, title, hashtags, image, onClick })
+        openShareDialog({ type, url, title, hashtags, image, onClick });
       }
     }}
-    aria-label={`${share ? 'Share' : 'View'} on ${type}`}
+    aria-label={`${share ? "Share" : "View"} on ${type}`}
     {...props}
   >
     <Icon name={type} />
     {children}
   </Button>
-)
+);
 
 ButtonShare.propTypes = {
   /**
    * The social network / share target
    */
   type: PropTypes.oneOf([
-    'facebook',
-    'fitbit',
-    'google',
-    'instagram',
-    'linkedin',
-    'mail',
-    'mapmyfitness',
-    'messenger',
-    'nextdoor',
-    'pinterest',
-    'reddit',
-    'slack',
-    'sms',
-    'strava',
-    'twitter',
-    'vimeo',
-    'whatsapp',
-    'youtube'
+    "facebook",
+    "fitbit",
+    "google",
+    "instagram",
+    "linkedin",
+    "mail",
+    "mapmyfitness",
+    "messenger",
+    "nextdoor",
+    "pinterest",
+    "reddit",
+    "slack",
+    "sms",
+    "strava",
+    "twitter",
+    "vimeo",
+    "whatsapp",
+    "youtube",
   ]).isRequired,
 
   /**
@@ -74,14 +74,14 @@ ButtonShare.propTypes = {
   /**
    * The text for a twitter, linkedin or pinterest share. Also the email subject for mail share
    */
-  title: PropTypes.string
-}
+  title: PropTypes.string,
+};
 
 ButtonShare.defaultProps = {
   spacing: 0.5,
-  effect: 'grow',
-  radius: 'large',
-  target: '_blank'
-}
+  effect: "grow",
+  radius: "large",
+  target: "_blank",
+};
 
-export default ButtonShare
+export default ButtonShare;

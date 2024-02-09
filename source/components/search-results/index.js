@@ -1,70 +1,70 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import isEmpty from 'lodash/isEmpty'
-import Icon from '../icon'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import isEmpty from "lodash/isEmpty";
+import Icon from "../icon";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 class SearchResults extends Component {
-  render () {
-    const { classNames } = this.props
+  render() {
+    const { classNames } = this.props;
 
     return (
       <div
-        aria-live='polite'
+        aria-live="polite"
         className={`c11n-search-results ${classNames.root}`}
       >
         {this.renderSearchResults()}
       </div>
-    )
+    );
   }
 
-  renderSearchResults () {
-    const { children, loading, error } = this.props
+  renderSearchResults() {
+    const { children, loading, error } = this.props;
 
     if (loading) {
-      return this.renderLoading()
+      return this.renderLoading();
     }
 
     if (error) {
-      return this.renderError()
+      return this.renderError();
     }
 
     if (isEmpty(children)) {
-      return this.renderEmpty()
+      return this.renderEmpty();
     }
 
-    return this.renderResults()
+    return this.renderResults();
   }
 
-  renderLoading () {
+  renderLoading() {
     return (
       <div className={this.props.classNames.state}>
-        <Icon name='loading' size={2} spin />
+        <Icon name="loading" size={2} spin />
       </div>
-    )
+    );
   }
 
-  renderError () {
+  renderError() {
     return (
       <div className={this.props.classNames.state}>
-        <Icon name='warning' />
+        <Icon name="warning" />
         {this.props.errorLabel}
       </div>
-    )
+    );
   }
 
-  renderEmpty () {
+  renderEmpty() {
     return (
       <div className={this.props.classNames.state}>
-        <Icon name='warning' />
+        <Icon name="warning" />
         {this.props.emptyLabel}
       </div>
-    )
+    );
   }
 
-  renderResults () {
-    return <ul>{this.props.children}</ul>
+  renderResults() {
+    return <ul>{this.props.children}</ul>;
   }
 }
 
@@ -74,7 +74,7 @@ SearchResults.propTypes = {
    */
   children: PropTypes.oneOfType([
     PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element)
+    PropTypes.arrayOf(PropTypes.element),
   ]),
 
   /**
@@ -110,13 +110,13 @@ SearchResults.propTypes = {
   /**
    * Custom styles to be applied to root, leaders
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 SearchResults.defaultProps = {
   styles: {},
-  emptyLabel: 'No results found',
-  errorLabel: 'There was an error loading the results'
-}
+  emptyLabel: "No results found",
+  errorLabel: "There was an error loading the results",
+};
 
-export default withStyles(styles)(SearchResults)
+export default withStyles(styles)(SearchResults);

@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import omit from 'lodash/omit'
-import mapKeys from 'lodash/mapKeys'
-import groupBy from 'lodash/groupBy'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import omit from "lodash/omit";
+import mapKeys from "lodash/mapKeys";
+import groupBy from "lodash/groupBy";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
-import Icon from '../icon'
-import InputValidations from '../input-validations'
-import Label from '../label'
+import Icon from "../icon";
+import InputValidations from "../input-validations";
+import Label from "../label";
 
 const isIos = () => {
-  if (typeof window !== 'undefined' && !!navigator) {
-    return !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent)
+  if (typeof window !== "undefined" && !!navigator) {
+    return !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent);
   }
 
-  return false
-}
+  return false;
+};
 
 const InputSelect = ({
   classNames,
@@ -39,38 +39,38 @@ const InputSelect = ({
   ...props
 }) => {
   const propsBlacklist = [
-    'children',
-    'dirty',
-    'initial',
-    'invalid',
-    'styles',
-    'touched',
-    'validators'
-  ]
-  const allowedProps = omit(props, propsBlacklist)
-  const inputId = (id || name || '').split('.').join('-')
-  const labelId = `label-${inputId}`
-  const [searchTerm, setSearchTerm] = useState('')
-  const [showOtherInput, setShowOtherInput] = useState(false)
-  const otherOptionValue = `${name}Other`
+    "children",
+    "dirty",
+    "initial",
+    "invalid",
+    "styles",
+    "touched",
+    "validators",
+  ];
+  const allowedProps = omit(props, propsBlacklist);
+  const inputId = (id || name || "").split(".").join("-");
+  const labelId = `label-${inputId}`;
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showOtherInput, setShowOtherInput] = useState(false);
+  const otherOptionValue = `${name}Other`;
 
   if (includeOther) {
-    options.push({ label: 'Other (please specify)', value: otherOptionValue })
+    options.push({ label: "Other (please specify)", value: otherOptionValue });
   }
 
   const renderOptions = () => {
     if (groupOptions) {
-      const groupedOptions = groupBy(options, 'group')
-      const resultOptions = []
+      const groupedOptions = groupBy(options, "group");
+      const resultOptions = [];
 
       mapKeys(groupedOptions, (opts, groupLabel) => {
-        if (groupLabel !== 'undefined') {
+        if (groupLabel !== "undefined") {
           if (elasticSearch) {
             resultOptions.push(
-              <div role='optgroup' key={groupLabel} label={groupLabel}>
+              <div role="optgroup" key={groupLabel} label={groupLabel}>
                 {opts.map(({ value, label, disabled }, index) => (
                   <p
-                    role='option'
+                    role="option"
                     data-value={value}
                     key={index}
                     disabled={disabled}
@@ -79,7 +79,7 @@ const InputSelect = ({
                   </p>
                 ))}
               </div>
-            )
+            );
           } else {
             resultOptions.push(
               <optgroup key={groupLabel} label={groupLabel}>
@@ -89,14 +89,14 @@ const InputSelect = ({
                   </option>
                 ))}
               </optgroup>
-            )
+            );
           }
         } else {
           if (elasticSearch) {
             resultOptions.push(
               opts.map(({ value, label, disabled }, index) => (
                 <p
-                  role='option'
+                  role="option"
                   data-value={value}
                   key={index}
                   disabled={disabled}
@@ -104,7 +104,7 @@ const InputSelect = ({
                   {label}
                 </p>
               ))
-            )
+            );
           } else {
             resultOptions.push(
               opts.map(({ value, label, disabled }, index) => (
@@ -112,34 +112,34 @@ const InputSelect = ({
                   {label}
                 </option>
               ))
-            )
+            );
           }
         }
-      })
+      });
 
-      return resultOptions
+      return resultOptions;
     } else {
       const filteredOptions =
         elasticSearch && searchTerm.length >= 3
-          ? options.filter(option => {
-              const optionLabel = option.label.toLowerCase()
-              const searchTerms = searchTerm.toLowerCase().split(' ')
+          ? options.filter((option) => {
+              const optionLabel = option.label.toLowerCase();
+              const searchTerms = searchTerm.toLowerCase().split(" ");
 
-              return searchTerms.every(term => optionLabel.includes(term))
+              return searchTerms.every((term) => optionLabel.includes(term));
             })
-          : options
+          : options;
 
       // Hack for long labels on iOS
       const hasLongOptionLabel = filteredOptions.reduce((acc, option) => {
-        return acc || option.label.length > 32
-      }, false)
+        return acc || option.label.length > 32;
+      }, false);
 
       return elasticSearch ? (
         filteredOptions.length ? (
           <>
             {filteredOptions.map(({ value, label, disabled }, index) => (
               <p
-                role='option'
+                role="option"
                 data-value={value}
                 key={index}
                 disabled={disabled}
@@ -147,10 +147,10 @@ const InputSelect = ({
                 {label}
               </p>
             ))}
-            {isIos() && hasLongOptionLabel && <div label='' role='optgroup' />}
+            {isIos() && hasLongOptionLabel && <div label="" role="optgroup" />}
           </>
         ) : (
-          <p role='option' disabled>
+          <p role="option" disabled>
             {nonIdealElasticSearchResult}
           </p>
         )
@@ -161,29 +161,29 @@ const InputSelect = ({
               {label}
             </option>
           ))}
-          {isIos() && hasLongOptionLabel && <optgroup label='' />}
+          {isIos() && hasLongOptionLabel && <optgroup label="" />}
         </>
       ) : (
         <option disabled>{nonIdealElasticSearchResult}</option>
-      )
+      );
     }
-  }
+  };
 
-  const getOptionLabelFromValue = selectedValue =>
-    options.find(({ value }) => value === selectedValue).label
+  const getOptionLabelFromValue = (selectedValue) =>
+    options.find(({ value }) => value === selectedValue).label;
 
   const showResults =
     searchTerm.length >= 3 &&
-    (!value || getOptionLabelFromValue(value) !== searchTerm)
+    (!value || getOptionLabelFromValue(value) !== searchTerm);
 
-  const handleChange = val => {
+  const handleChange = (val) => {
     if (includeOther && val === otherOptionValue) {
-      setShowOtherInput(true)
+      setShowOtherInput(true);
     } else {
-      if (showOtherInput) setShowOtherInput(false)
+      if (showOtherInput) setShowOtherInput(false);
     }
-    onChange(val)
-  }
+    onChange(val);
+  };
 
   return (
     <div className={`c11n-input-select ${classNames.root}`}>
@@ -194,7 +194,7 @@ const InputSelect = ({
           required={required}
           styles={{
             root: styles.label,
-            required: styles.required
+            required: styles.required,
           }}
         >
           {label}
@@ -208,9 +208,9 @@ const InputSelect = ({
               placeholder={placeholder}
               onChange={({ target: { value } }) => {
                 if (value && value !== searchTerm) {
-                  onChange && onChange('')
+                  onChange && onChange("");
                 }
-                setSearchTerm(value)
+                setSearchTerm(value);
               }}
               onBlur={() => onBlur && onBlur(value)}
               className={classNames.input}
@@ -223,13 +223,13 @@ const InputSelect = ({
             />
             {showResults && (
               <div
-                role='select'
+                role="select"
                 className={classNames.select}
-                onMouseDown={e => {
-                  const selectedTarget = e.target.getAttribute('data-value')
+                onMouseDown={(e) => {
+                  const selectedTarget = e.target.getAttribute("data-value");
                   if (selectedTarget) {
-                    setSearchTerm(selectedTarget)
-                    onChange && handleChange(selectedTarget)
+                    setSearchTerm(selectedTarget);
+                    onChange && handleChange(selectedTarget);
                   }
                 }}
               >
@@ -244,15 +244,15 @@ const InputSelect = ({
               id={inputId}
               value={showOtherInput ? otherOptionValue : value}
               placeholder={placeholder}
-              onChange={e => onChange && handleChange(e.target.value)}
-              onBlur={e => onBlur && onBlur(e.target.value)}
+              onChange={(e) => onChange && handleChange(e.target.value)}
+              onBlur={(e) => onBlur && onBlur(e.target.value)}
               className={classNames.input}
               required
               aria-labelledby={labelId}
               {...allowedProps}
             >
               {placeholder && (
-                <option disabled value=''>
+                <option disabled value="">
                   {placeholder}
                 </option>
               )}
@@ -261,17 +261,17 @@ const InputSelect = ({
 
             <span className={classNames.field} aria-hidden />
 
-            <Icon name='dropdown' size={0.75} styles={styles.icon} />
+            <Icon name="dropdown" size={0.75} styles={styles.icon} />
           </>
         )}
       </div>
 
       {includeOther && showOtherInput && (
         <input
-          placeholder='Please specify'
+          placeholder="Please specify"
           onChange={({ target: { value } }) => onChange && onChange(value)}
           className={classNames.input}
-          value={value === otherOptionValue ? '' : value}
+          value={value === otherOptionValue ? "" : value}
           name={name}
           required
           {...allowedProps}
@@ -285,8 +285,8 @@ const InputSelect = ({
         />
       )}
     </div>
-  )
-}
+  );
+};
 
 InputSelect.propTypes = {
   /**
@@ -337,7 +337,7 @@ InputSelect.propTypes = {
   /**
    * Mark the field as required and displays an asterisk next to the label
    */
-  required: PropTypes.bool
-}
+  required: PropTypes.bool,
+};
 
-export default withStyles(styles)(InputSelect)
+export default withStyles(styles)(InputSelect);

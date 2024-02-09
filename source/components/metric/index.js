@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Icon from '../icon'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import Icon from "../icon";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const Metric = ({
   label,
@@ -11,17 +11,17 @@ const Metric = ({
   icon,
   tag: Tag,
   classNames,
-  styles
+  styles,
 }) => {
   const renderIcon = () => {
-    if (typeof icon === 'string') {
-      return <Icon name={icon} styles={styles.icon} size={1.5} />
+    if (typeof icon === "string") {
+      return <Icon name={icon} styles={styles.icon} size={1.5} />;
     } else if (Array.isArray(icon)) {
-      return <Icon paths={icon} styles={styles.icon} size={1.5} />
+      return <Icon paths={icon} styles={styles.icon} size={1.5} />;
     } else {
-      return icon
+      return icon;
     }
-  }
+  };
 
   return (
     <Tag className={`c11n-metric ${classNames.root}`}>
@@ -33,8 +33,8 @@ const Metric = ({
         </div>
       )}
     </Tag>
-  )
-}
+  );
+};
 
 Metric.propTypes = {
   /**
@@ -48,7 +48,7 @@ Metric.propTypes = {
   amount: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.element
+    PropTypes.element,
   ]).isRequired,
 
   /**
@@ -57,13 +57,13 @@ Metric.propTypes = {
   icon: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
-    PropTypes.element
+    PropTypes.element,
   ]),
 
   tag: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
-    PropTypes.func
+    PropTypes.func,
   ]),
 
   /**
@@ -74,13 +74,13 @@ Metric.propTypes = {
   /**
    * Custom styles to be applied
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Metric.defaultProps = {
-  align: 'center',
+  align: "center",
   styles: {},
-  tag: 'div'
-}
+  tag: "div",
+};
 
-export default withStyles(styles)(Metric)
+export default withStyles(styles)(Metric);

@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default (
   { align, direction, justify, spacing, styles, wrap },
@@ -6,22 +6,22 @@ export default (
 ) => ({
   root: merge(
     {
-      display: 'flex',
-      minWidth: '100%',
+      display: "flex",
+      minWidth: "100%",
       flexWrap: wrap,
       alignItems: align,
       direction: direction,
       ...justifyContent(justify),
-      ...calculateSpacing(spacing, 'margin', { multiplier: -1 }),
+      ...calculateSpacing(spacing, "margin", { multiplier: -1 }),
 
-      '& > *': {
-        ...calculateSpacing(spacing, 'padding')
+      "& > *": {
+        ...calculateSpacing(spacing, "padding"),
       },
 
-      '& > *:empty': {
-        padding: 0
-      }
+      "& > *:empty": {
+        padding: 0,
+      },
     },
     styles
-  )
-})
+  ),
+});

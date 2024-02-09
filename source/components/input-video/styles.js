@@ -1,32 +1,32 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default ({ styles }, { measures, rhythm, scale }) => {
   const baseStyles = {
     root: {
-      display: 'block',
-      position: 'relative',
-      marginBottom: rhythm(1)
+      display: "block",
+      position: "relative",
+      marginBottom: rhythm(1),
     },
 
     video: {
-      textAlign: 'center'
+      textAlign: "center",
     },
 
     clear: {
       marginTop: rhythm(0.5),
       fontSize: scale(-1),
-      textDecoration: 'underline',
-      opacity: 0.5
+      textDecoration: "underline",
+      opacity: 0.5,
     },
 
     note: {
-      display: 'block',
+      display: "block",
       margin: rhythm([-0.5, 0, 1]),
       fontSize: scale(-1),
       lineHeight: measures.medium,
-      opacity: 0.5
-    }
-  }
+      opacity: 0.5,
+    },
+  };
 
-  return merge(baseStyles, styles)
-}
+  return merge(baseStyles, styles);
+};

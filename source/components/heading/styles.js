@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default (
   { color, size, spacing, styles },
@@ -7,10 +7,10 @@ export default (
   root: merge(
     {
       ...treatments.head,
-      ...calculateSpacing(spacing, 'margin'),
+      ...calculateSpacing(spacing, "margin"),
       fontSize: scale(size),
-      color: color && colors[color]
+      color: color && colors[color],
     },
     styles
-  )
-})
+  ),
+});

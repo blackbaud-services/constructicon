@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default (
   {
@@ -9,35 +9,35 @@ export default (
     radius,
     spacing,
     embed = {},
-    styles
+    styles,
   },
   { colors, radiuses, rhythm, calculateSpacing }
 ) => {
-  const width = embed.width || embed.thumbnail_width || 480
-  const height = embed.height || embed.thumbnail_height || 270
-  const aspectRatio = height / width
+  const width = embed.width || embed.thumbnail_width || 480;
+  const height = embed.height || embed.thumbnail_height || 270;
+  const aspectRatio = height / width;
 
   return {
     root: merge(
       {
         ...calculateSpacing(spacing),
-        ...calculateSpacing(margin, 'margin'),
+        ...calculateSpacing(margin, "margin"),
         backgroundColor: background && colors[background],
         border: borderWidth && `${borderWidth}px solid ${colors[borderColor]}`,
         borderRadius: radius && rhythm(radiuses[radius]),
-        position: 'relative',
+        position: "relative",
         paddingTop: `${aspectRatio * 100}%`,
 
-        '& iframe': {
-          position: 'absolute',
+        "& iframe": {
+          position: "absolute",
           top: 0,
           left: 0,
           border: 0,
-          width: '100%',
-          height: '100%'
-        }
+          width: "100%",
+          height: "100%",
+        },
       },
       styles
-    )
-  }
-}
+    ),
+  };
+};

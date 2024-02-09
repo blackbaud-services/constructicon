@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import numberToWords from '../../lib/numberToWords'
+import React from "react";
+import PropTypes from "prop-types";
+import numberToWords from "../../lib/numberToWords";
 
 const NumberToWords = ({ number, tag: Tag, ...props }) => (
   <Tag {...props}>{numberToWords(number)}</Tag>
-)
+);
 
 NumberToWords.defaultProps = {
   number: 0,
-  tag: 'span'
-}
+  tag: "span",
+};
 
 NumberToWords.propTypes = {
   /**
@@ -23,8 +23,8 @@ NumberToWords.propTypes = {
   tag: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
-    PropTypes.func
-  ])
-}
+    PropTypes.func,
+  ]),
+};
 
-export default NumberToWords
+export default NumberToWords;

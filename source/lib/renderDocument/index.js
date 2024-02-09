@@ -1,31 +1,31 @@
-import React, { createElement } from 'react'
-import { renderToStaticMarkup } from 'react-dom/server'
-import { renderStylesToString } from '@emotion/server'
+import React, { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { renderStylesToString } from "@emotion/server";
 
-import Helmet from 'react-helmet'
+import Helmet from "react-helmet";
 
 export const Document = ({
   head,
   content,
   state = {},
-  styles = ['/main.css'],
-  scripts = ['/main.js'],
-  gtmId = 'GTM-PN6K34',
-  itemType = 'http://schema.org/WebSite'
+  styles = ["/main.css"],
+  scripts = ["/main.js"],
+  gtmId = "GTM-PN6K34",
+  itemType = "http://schema.org/WebSite",
 }) => (
   <html itemScope itemType={itemType}>
     <head>
-      <meta charSet='utf-8' />
-      <meta name='viewport' content='width=device-width,initial-scale=1' />
-      <meta name='CnvHeaderVersion' content='v5.0' />
-      <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <meta name="CnvHeaderVersion" content="v5.0" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       {head.title.toComponent()}
       {head.meta.toComponent()}
       {head.link.toComponent()}
       {head.script.toComponent()}
       {head.style.toComponent()}
       {styles.map((style, index) => (
-        <link key={index} rel='stylesheet' href={style} />
+        <link key={index} rel="stylesheet" href={style} />
       ))}
       <script
         dangerouslySetInnerHTML={{
@@ -34,16 +34,16 @@ export const Document = ({
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','${gtmId}');`
+          })(window,document,'script','dataLayer','${gtmId}');`,
         }}
       />
     </head>
     <body>
-      <main id='mount' dangerouslySetInnerHTML={{ __html: content }} />
+      <main id="mount" dangerouslySetInnerHTML={{ __html: content }} />
 
       <script
-        id='initial-state'
-        type='application/json'
+        id="initial-state"
+        type="application/json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(state) }}
       />
 
@@ -54,38 +54,38 @@ export const Document = ({
       <noscript>
         <iframe
           src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-          height='0'
-          width='0'
-          style={{ display: 'none', visibility: 'hidden' }}
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
         />
       </noscript>
     </body>
   </html>
-)
+);
 
 export const renderDocument = ({
   assets,
-  content = '',
+  content = "",
   state = {},
-  DocumentComponent = Document
+  DocumentComponent = Document,
 }) => {
-  const styles = assets.filter(asset => asset.match(/\.css$/))
-  const scripts = assets.filter(asset => asset.match(/\.js$/))
+  const styles = assets.filter((asset) => asset.match(/\.css$/));
+  const scripts = assets.filter((asset) => asset.match(/\.js$/));
 
   return (
-    '<!doctype html>' +
+    "<!doctype html>" +
     renderToStaticMarkup(
       createElement(DocumentComponent, {
         head: Helmet.rewind(),
         styles,
         scripts,
-        content: renderStylesToString(content || ''),
-        state
+        content: renderStylesToString(content || ""),
+        state,
       })
     )
-  )
-}
+  );
+};
 
-export const renderServerCSS = renderStylesToString
+export const renderServerCSS = renderStylesToString;
 
-export default renderDocument
+export default renderDocument;

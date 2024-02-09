@@ -1,3 +1,3 @@
-export const isBoolean = type => {
-  return ['radio', 'checkbox'].indexOf(type) > -1
-}
+export const isBoolean = (type) => {
+  return ["radio", "checkbox"].indexOf(type) > -1;
+};

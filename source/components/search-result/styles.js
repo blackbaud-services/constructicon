@@ -1,41 +1,41 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default ({ styles }, { rhythm, scale, justifyContent }) => {
   const defaultStyles = {
     root: {
-      display: 'flex',
-      alignItems: 'center',
-      ...justifyContent('space-between'),
+      display: "flex",
+      alignItems: "center",
+      ...justifyContent("space-between"),
 
-      '& > div': {
-        padding: rhythm(0.5)
+      "& > div": {
+        padding: rhythm(0.5),
       },
 
-      '& > div + div': {
-        paddingLeft: rhythm(0.1)
-      }
+      "& > div + div": {
+        paddingLeft: rhythm(0.1),
+      },
     },
 
     avatar: {
       height: rhythm(1.65),
       width: rhythm(1.65),
-      borderRadius: '50%'
+      borderRadius: "50%",
     },
 
     titles: {
-      flex: 1
+      flex: 1,
     },
 
     title: {
-      fontWeight: 'bold'
+      fontWeight: "bold",
     },
 
     subtitle: {
       fontSize: scale(-1),
-      lineHeight: '1.45em',
-      paddingTop: rhythm(0.25)
-    }
-  }
+      lineHeight: "1.45em",
+      paddingTop: rhythm(0.25),
+    },
+  };
 
-  return merge(defaultStyles, styles)
-}
+  return merge(defaultStyles, styles);
+};

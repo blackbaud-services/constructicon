@@ -1,68 +1,62 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import ReactModal from 'react-modal'
-import Icon from '../icon'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import ReactModal from "react-modal";
+import Icon from "../icon";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 /**
  * Uses React Modal - https://github.com/reactjs/react-modal
  */
 class Modal extends Component {
-  componentDidMount () {
-    const { appElement } = this.props
+  componentDidMount() {
+    const { appElement } = this.props;
 
     if (appElement) {
-      ReactModal.setAppElement(appElement)
+      ReactModal.setAppElement(appElement);
     }
 
-    this.calculateDocumentScroll(this.props)
+    this.calculateDocumentScroll(this.props);
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps) {
     if (prevProps.isOpen !== this.props.isOpen) {
-      this.calculateDocumentScroll(this.props)
+      this.calculateDocumentScroll(this.props);
     }
   }
 
-  componentWillUnmount () {
-    this.calculateDocumentScroll({ isOpen: false })
+  componentWillUnmount() {
+    this.calculateDocumentScroll({ isOpen: false });
   }
 
-  calculateDocumentScroll (props) {
+  calculateDocumentScroll(props) {
     if (!props.enableDocumentScroll) {
-      window.document.body.style.overflow = props.isOpen ? 'hidden' : 'auto'
+      window.document.body.style.overflow = props.isOpen ? "hidden" : "auto";
       window.document.documentElement.style.overflow = props.isOpen
-        ? 'hidden'
-        : 'auto'
+        ? "hidden"
+        : "auto";
     }
   }
 
-  render () {
-    const {
-      appElement,
-      children,
-      closeIcon,
-      classNames,
-      styles,
-      ...props
-    } = this.props
+  render() {
+    const { appElement, children, closeIcon, classNames, styles, ...props } =
+      this.props;
 
     return (
       <ReactModal
         style={{
           overlay: styles.overlay,
-          content: styles.content
+          content: styles.content,
         }}
         className={{
-          base: 'c11n-modal',
-          afterOpen: 'c11n-modal-after-open',
-          beforeClose: 'c11n-modal-before-close'
+          base: "c11n-modal",
+          afterOpen: "c11n-modal-after-open",
+          beforeClose: "c11n-modal-before-close",
         }}
         overlayClassName={{
-          base: 'c11n-modal-overlay',
-          afterOpen: 'c11n-modal-overlay-after-open',
-          beforeClose: 'c11n-modal-overlay-before-close'
+          base: "c11n-modal-overlay",
+          afterOpen: "c11n-modal-overlay-after-open",
+          beforeClose: "c11n-modal-overlay-before-close",
         }}
         {...props}
       >
@@ -70,14 +64,14 @@ class Modal extends Component {
           <button
             className={classNames.close}
             onClick={props.onRequestClose}
-            aria-label='Close'
+            aria-label="Close"
           >
             {closeIcon}
           </button>
         )}
         <div className={classNames.container}>{children}</div>
       </ReactModal>
-    )
+    );
   }
 }
 
@@ -145,16 +139,16 @@ Modal.propTypes = {
   /**
    * Max width of the modal
    */
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-}
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+};
 
 Modal.defaultProps = {
-  appElement: '#mount',
-  closeIcon: <Icon name='close' />,
+  appElement: "#mount",
+  closeIcon: <Icon name="close" />,
   shouldCloseOnOverlayClick: true,
   spacing: 1,
   styles: {},
-  width: 26
-}
+  width: 26,
+};
 
-export default withStyles(styles)(Modal)
+export default withStyles(styles)(Modal);

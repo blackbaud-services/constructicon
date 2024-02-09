@@ -1,8 +1,8 @@
-import React from 'react'
-import isEmpty from 'lodash/isEmpty'
+import React from "react";
+import isEmpty from "lodash/isEmpty";
 
-import Icon from '../../icon'
-import InputSearchResult from '../../input-search-result'
+import Icon from "../../icon";
+import InputSearchResult from "../../input-search-result";
 
 const Results = ({
   active,
@@ -14,30 +14,30 @@ const Results = ({
   results,
   selectItem,
   status,
-  toShow
+  toShow,
 }) => {
-  if (status === 'fetching') {
+  if (status === "fetching") {
     return (
       <div className={classNames.status}>
-        <Icon name='loading' spin />
+        <Icon name="loading" spin />
       </div>
-    )
+    );
   }
 
-  if (status === 'failed') {
+  if (status === "failed") {
     return (
       <div className={classNames.status}>
-        <Icon name='warning' /> {errorMessage}
+        <Icon name="warning" /> {errorMessage}
       </div>
-    )
+    );
   }
 
   if (isEmpty(results)) {
     return (
       <div className={classNames.status}>
-        <Icon name='warning' /> {emptyMessage}
+        <Icon name="warning" /> {emptyMessage}
       </div>
-    )
+    );
   }
 
   return (
@@ -49,11 +49,11 @@ const Results = ({
       ))}
       {children}
     </ol>
-  )
-}
+  );
+};
 
 const DefaultResultComponent = ({ isActive, result }) => (
   <InputSearchResult isActive={isActive}>{result.label}</InputSearchResult>
-)
+);
 
-export default Results
+export default Results;

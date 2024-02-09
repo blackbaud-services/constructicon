@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default (
   {
@@ -9,26 +9,26 @@ export default (
     width,
     spacing,
     fullHeight,
-    styles
+    styles,
   },
   { calculateSpacing, colors, rhythm, shadows, treatments }
 ) => {
   const defaultStyles = {
     root: {
       maxWidth: width ? rhythm(width) : treatments.container.maxWidth,
-      minHeight: fullHeight && '100vh',
-      margin: '0 auto',
+      minHeight: fullHeight && "100vh",
+      margin: "0 auto",
       ...calculateSpacing(spacing),
       backgroundColor: background && colors[background],
       color: foreground && colors[foreground],
       ...treatments.body,
-      boxShadow: shadow && shadows[shadow]
+      boxShadow: shadow && shadows[shadow],
     },
 
     outer: {
-      backgroundColor: outerColor && colors[outerColor]
-    }
-  }
+      backgroundColor: outerColor && colors[outerColor],
+    },
+  };
 
-  return merge(defaultStyles, styles)
-}
+  return merge(defaultStyles, styles);
+};

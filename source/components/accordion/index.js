@@ -1,11 +1,11 @@
-import React from 'react'
-import { v4 as uuid } from 'uuid'
-import PropTypes from 'prop-types'
-import Icon from '../icon'
-import compose from '../../lib/compose'
-import withStyles from '../with-styles'
-import withToggle from '../with-toggle'
-import styles from './styles'
+import React from "react";
+import { v4 as uuid } from "uuid";
+import PropTypes from "prop-types";
+import Icon from "../icon";
+import compose from "../../lib/compose";
+import withStyles from "../with-styles";
+import withToggle from "../with-toggle";
+import styles from "./styles";
 
 const Accordion = ({
   children,
@@ -15,17 +15,17 @@ const Accordion = ({
   closed,
   toggled,
   onToggle,
-  classNames
+  classNames,
 }) => (
   <div className={`c11n-accordion ${classNames.root}`}>
     <div
       aria-controls={`${id}-body`}
       aria-expanded={!!toggled}
       className={classNames.head}
-      onKeyDown={e => e.key === 'Enter' && onToggle()}
+      onKeyDown={(e) => e.key === "Enter" && onToggle()}
       id={`${id}-title`}
       onClick={onToggle}
-      role='button'
+      role="button"
       tabIndex={0}
     >
       <div className={classNames.toggle}>{toggled ? opened : closed}</div>
@@ -36,13 +36,13 @@ const Accordion = ({
       className={classNames.body}
       hidden={!toggled}
       id={`${id}-body`}
-      role='region'
+      role="region"
       tabIndex={0}
     >
       {children}
     </div>
   </div>
-)
+);
 
 Accordion.propTypes = {
   /**
@@ -98,17 +98,17 @@ Accordion.propTypes = {
   /**
    * Custom styles be applied { root, head, title, body }
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Accordion.defaultProps = {
   gutter: 1,
   border: true,
-  color: 'primary',
-  font: 'head',
-  opened: <Icon name='minus' />,
-  closed: <Icon name='plus' />,
-  styles: {}
-}
+  color: "primary",
+  font: "head",
+  opened: <Icon name="minus" />,
+  closed: <Icon name="plus" />,
+  styles: {},
+};
 
-export default compose(withToggle, withStyles(styles))(Accordion)
+export default compose(withToggle, withStyles(styles))(Accordion);

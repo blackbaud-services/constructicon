@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import Label from '../label'
-import withStyles from '../with-styles'
-import InputValidations from '../input-validations'
-import styles from './styles'
+import React, { useState } from "react";
+import Label from "../label";
+import withStyles from "../with-styles";
+import InputValidations from "../input-validations";
+import styles from "./styles";
 
 const ImageSelect = ({
   label,
@@ -15,15 +15,15 @@ const ImageSelect = ({
   onChange,
   error,
   validations,
-  value
+  value,
 }) => {
-  const inputId = (id || name || '').split('.').join('-')
-  const labelId = `label-${inputId}`
-  const [selectedItem, setSelectedItem] = useState(value)
-  const handleChange = value => {
-    setSelectedItem(value)
-    onChange && onChange(value)
-  }
+  const inputId = (id || name || "").split(".").join("-");
+  const labelId = `label-${inputId}`;
+  const [selectedItem, setSelectedItem] = useState(value);
+  const handleChange = (value) => {
+    setSelectedItem(value);
+    onChange && onChange(value);
+  };
 
   return (
     <div className={classNames.root}>
@@ -33,7 +33,7 @@ const ImageSelect = ({
         </Label>
       )}
       <div id={inputId}>
-        {options.map(option => (
+        {options.map((option) => (
           <ImageSelectItem
             key={option.value}
             classNames={classNames}
@@ -51,8 +51,8 @@ const ImageSelect = ({
         />
       )}
     </div>
-  )
-}
+  );
+};
 
 const ImageSelectItem = ({
   classNames,
@@ -66,9 +66,10 @@ const ImageSelectItem = ({
   disabled,
   ...props
 }) => {
-  const classes = `${classNames.option} ${selected &&
-    classNames.optionSelected} ${disabled && classNames.disabled}`
-  const id = value.replaceAll(' ', '_')
+  const classes = `${classNames.option} ${
+    selected && classNames.optionSelected
+  } ${disabled && classNames.disabled}`;
+  const id = value.replaceAll(" ", "_");
 
   return (
     <div
@@ -105,7 +106,7 @@ const ImageSelectItem = ({
       <div className={classNames.radioContainer} id={`inputContainer_${id}`}>
         <input
           id={`input_${id}`}
-          type='radio'
+          type="radio"
           checked={selected}
           onBlur={onBlur}
           className={classNames.radio}
@@ -114,7 +115,7 @@ const ImageSelectItem = ({
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default withStyles(styles)(ImageSelect)
+export default withStyles(styles)(ImageSelect);

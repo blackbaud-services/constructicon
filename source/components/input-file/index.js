@@ -1,34 +1,34 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import omit from 'lodash/omit'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import omit from "lodash/omit";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
-import Button from '../button'
-import Icon from '../icon'
-import InputValidations from '../input-validations'
-import Label from '../label'
+import Button from "../button";
+import Icon from "../icon";
+import InputValidations from "../input-validations";
+import Label from "../label";
 
 class InputFile extends Component {
-  constructor (props) {
-    super(props)
-    this.handleUpdate = this.handleUpdate.bind(this)
+  constructor(props) {
+    super(props);
+    this.handleUpdate = this.handleUpdate.bind(this);
 
     this.state = {
-      files: []
-    }
+      files: [],
+    };
   }
 
-  handleUpdate ({ target }, method) {
-    const files = target.files
-    this.setState({ files })
+  handleUpdate({ target }, method) {
+    const files = target.files;
+    this.setState({ files });
 
     if (files.length) {
-      return method && method(files.length > 1 ? files : files[0])
+      return method && method(files.length > 1 ? files : files[0]);
     }
   }
 
-  render () {
+  render() {
     const {
       classNames,
       button,
@@ -45,34 +45,34 @@ class InputFile extends Component {
       value,
       validations,
       ...props
-    } = this.props
+    } = this.props;
 
-    const { files } = this.state
-    const filesCount = files.length
+    const { files } = this.state;
+    const filesCount = files.length;
 
     const propsBlacklist = [
-      'children',
-      'dirty',
-      'initial',
-      'invalid',
-      'styles',
-      'touched',
-      'validators',
-      'value'
-    ]
-    const allowedProps = omit(props, propsBlacklist)
-    const inputId = (id || name || '').split('.').join('-')
-    const labelId = `label-${inputId}`
+      "children",
+      "dirty",
+      "initial",
+      "invalid",
+      "styles",
+      "touched",
+      "validators",
+      "value",
+    ];
+    const allowedProps = omit(props, propsBlacklist);
+    const inputId = (id || name || "").split(".").join("-");
+    const labelId = `label-${inputId}`;
 
     const renderField = () => (
       <div className={classNames.wrapper}>
         <input
           className={classNames.input}
-          type='file'
+          type="file"
           name={name}
           id={inputId}
-          onChange={e => this.handleUpdate(e, onChange)}
-          onBlur={e => this.handleUpdate(e, onBlur)}
+          onChange={(e) => this.handleUpdate(e, onChange)}
+          onBlur={(e) => this.handleUpdate(e, onBlur)}
           required={required}
           aria-labelledby={labelId}
           {...allowedProps}
@@ -90,7 +90,7 @@ class InputFile extends Component {
           )}
         </Button>
       </div>
-    )
+    );
 
     return (
       <div className={`c11n-input-field ${classNames.root}`}>
@@ -101,7 +101,7 @@ class InputFile extends Component {
             required={required}
             styles={{
               root: styles.label,
-              required: styles.required
+              required: styles.required,
             }}
           >
             {label}
@@ -117,7 +117,7 @@ class InputFile extends Component {
           />
         )}
       </div>
-    )
+    );
   }
 }
 
@@ -165,13 +165,13 @@ InputFile.propTypes = {
   /**
    * Mark the field as required and displays an asterisk next to the label
    */
-  required: PropTypes.bool
-}
+  required: PropTypes.bool,
+};
 
 InputFile.defaultProps = {
-  button: { background: 'grey' },
-  placeholder: 'Choose a file...',
-  icon: 'upload'
-}
+  button: { background: "grey" },
+  placeholder: "Choose a file...",
+  icon: "upload",
+};
 
-export default withStyles(styles)(InputFile)
+export default withStyles(styles)(InputFile);

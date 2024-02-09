@@ -1,15 +1,15 @@
 export const getForegroundColor = (background, foreground) => {
-  const lightVariants = ['transparent', 'white', '#ffffff', '#fff']
+  const lightVariants = ["transparent", "white", "#ffffff", "#fff"];
 
   const isBackgroundLight =
-    !background || lightVariants.indexOf(background.toLowerCase()) !== -1
+    !background || lightVariants.indexOf(background.toLowerCase()) !== -1;
 
   const isForegroundLight =
-    !foreground || lightVariants.indexOf(foreground.toLowerCase()) !== -1
+    !foreground || lightVariants.indexOf(foreground.toLowerCase()) !== -1;
 
   if (isBackgroundLight && isForegroundLight) {
-    return '#000000'
+    return "#000000";
   } else {
-    return foreground
+    return foreground;
   }
-}
+};

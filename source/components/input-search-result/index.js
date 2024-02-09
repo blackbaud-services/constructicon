@@ -1,18 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
-import Section from '../section'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
+import Section from "../section";
 
 const InputSearchResult = ({ children, isActive, spacing, styles }) => (
   <Section
-    background={isActive ? 'shade' : 'light'}
+    background={isActive ? "shade" : "light"}
     spacing={spacing}
     styles={styles.root}
   >
     {children}
   </Section>
-)
+);
 
 InputSearchResult.propTypes = {
   /**
@@ -33,11 +33,11 @@ InputSearchResult.propTypes = {
   /**
    * Custom styles to be applied
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 InputSearchResult.defaultProps = {
-  spacing: { x: 1, y: 0.5 }
-}
+  spacing: { x: 1, y: 0.5 },
+};
 
-export default withStyles(styles)(InputSearchResult)
+export default withStyles(styles)(InputSearchResult);

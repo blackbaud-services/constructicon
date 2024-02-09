@@ -1,18 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const Label = ({ children, classNames, id, inputId, required }) => (
   <label className={`c11n-label ${classNames.root}`} id={id} htmlFor={inputId}>
     {children}
     {required && (
-      <span className={classNames.required} title='Required field'>
+      <span className={classNames.required} title="Required field">
         *
       </span>
     )}
   </label>
-)
+);
 
 Label.propTypes = {
   /**
@@ -33,9 +33,9 @@ Label.propTypes = {
   /**
    * Whether the field is required
    */
-  required: PropTypes.bool
-}
+  required: PropTypes.bool,
+};
 
-Label.defaultProps = {}
+Label.defaultProps = {};
 
-export default withStyles(styles)(Label)
+export default withStyles(styles)(Label);

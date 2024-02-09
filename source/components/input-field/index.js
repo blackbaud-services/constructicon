@@ -1,155 +1,155 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import omit from 'lodash/omit'
-import merge from 'lodash/merge'
-import withStyles from '../with-styles'
-import styles from './styles'
-import { isBoolean } from '../../lib/form'
-import { regularExpressions } from '../../lib/validators'
-import sanitizeHtml from '../../lib/sanitizeHtml'
+import React from "react";
+import PropTypes from "prop-types";
+import omit from "lodash/omit";
+import merge from "lodash/merge";
+import withStyles from "../with-styles";
+import styles from "./styles";
+import { isBoolean } from "../../lib/form";
+import { regularExpressions } from "../../lib/validators";
+import sanitizeHtml from "../../lib/sanitizeHtml";
 
-import ContentEditable from 'react-contenteditable'
-import Icon from '../icon'
-import InputValidations from '../input-validations'
-import Label from '../label'
+import ContentEditable from "react-contenteditable";
+import Icon from "../icon";
+import InputValidations from "../input-validations";
+import Label from "../label";
 
 class InputField extends React.Component {
-  constructor (props) {
-    super(props)
-    this.handleBlur = this.handleBlur.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleKeyDown = this.handleKeyDown.bind(this)
-    this.handlePaste = this.handlePaste.bind(this)
+  constructor(props) {
+    super(props);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handlePaste = this.handlePaste.bind(this);
     this.state = {
       value: props.value,
-      type: props.type
-    }
+      type: props.type,
+    };
   }
 
-  getTag () {
+  getTag() {
     switch (this.props.type) {
-      case 'textarea':
-        return 'textarea'
-      case 'contenteditable':
-        return ContentEditable
+      case "textarea":
+        return "textarea";
+      case "contenteditable":
+        return ContentEditable;
       default:
-        return 'input'
+        return "input";
     }
   }
 
-  handleChange (event) {
-    const { onChange, type } = this.props
+  handleChange(event) {
+    const { onChange, type } = this.props;
 
     const value =
-      isBoolean(type) || type === 'checkbox'
+      isBoolean(type) || type === "checkbox"
         ? event.target.checked
         : this.props.forceUppercase
         ? event.target.value.toUpperCase()
-        : event.target.value
+        : event.target.value;
 
-    this.setState({ value })
+    this.setState({ value });
 
-    return onChange && onChange(value)
+    return onChange && onChange(value);
   }
 
-  handleBlur (event) {
-    const { onBlur, type } = this.props
+  handleBlur(event) {
+    const { onBlur, type } = this.props;
     const value =
-      isBoolean(type) || type === 'checkbox'
+      isBoolean(type) || type === "checkbox"
         ? event.target.checked
-        : event.target.value
+        : event.target.value;
 
-    if (type === 'contenteditable') {
-      return onBlur && onBlur(sanitizeHtml(this.state.value))
+    if (type === "contenteditable") {
+      return onBlur && onBlur(sanitizeHtml(this.state.value));
     }
 
-    return onBlur && onBlur(value)
+    return onBlur && onBlur(value);
   }
 
-  handlePhoneKeyDown (event) {
+  handlePhoneKeyDown(event) {
     const validKeys = [
-      ' ',
-      'Alt',
-      'ArrowDown',
-      'ArrowLeft',
-      'ArrowRight',
-      'ArrowUp',
-      'Backspace',
-      'Control',
-      'Enter',
-      'Escape',
-      'Shift',
-      'Tab'
-    ]
-    const isPhoneChar = regularExpressions.phone.test(event.key)
-    const isValidKey = isPhoneChar || validKeys.indexOf(event.key) > -1
+      " ",
+      "Alt",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "Backspace",
+      "Control",
+      "Enter",
+      "Escape",
+      "Shift",
+      "Tab",
+    ];
+    const isPhoneChar = regularExpressions.phone.test(event.key);
+    const isValidKey = isPhoneChar || validKeys.indexOf(event.key) > -1;
 
     if (!event.metaKey && !isValidKey) {
-      event.preventDefault()
+      event.preventDefault();
     }
   }
 
-  handleNumberKeyDown (event) {
+  handleNumberKeyDown(event) {
     const validKeys = [
-      'Alt',
-      'ArrowDown',
-      'ArrowLeft',
-      'ArrowRight',
-      'ArrowUp',
-      'Backspace',
-      'Control',
-      'Enter',
-      'Escape',
-      'Shift',
-      'Tab'
-    ]
+      "Alt",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "Backspace",
+      "Control",
+      "Enter",
+      "Escape",
+      "Shift",
+      "Tab",
+    ];
 
-    const isNumberChar = regularExpressions.numeric.test(event.key)
+    const isNumberChar = regularExpressions.numeric.test(event.key);
     const isValidKey =
-      event.key === '.'
-        ? event.target.value.indexOf('.') < 0
-        : isNumberChar || validKeys.indexOf(event.key) > -1
+      event.key === "."
+        ? event.target.value.indexOf(".") < 0
+        : isNumberChar || validKeys.indexOf(event.key) > -1;
 
     if (!event.metaKey && !isValidKey) {
-      event.preventDefault()
+      event.preventDefault();
     }
   }
 
-  handleKeyDown (event) {
-    const { onKeyDown, type } = this.props
+  handleKeyDown(event) {
+    const { onKeyDown, type } = this.props;
 
-    onKeyDown && onKeyDown(event)
+    onKeyDown && onKeyDown(event);
 
-    if (type === 'tel') this.handlePhoneKeyDown(event)
-    if (type === 'number') this.handleNumberKeyDown(event)
-    if (type === 'contenteditable' && event.metaKey) {
+    if (type === "tel") this.handlePhoneKeyDown(event);
+    if (type === "number") this.handleNumberKeyDown(event);
+    if (type === "contenteditable" && event.metaKey) {
       switch (event.key) {
-        case 'u':
-          return document.execCommand('underline', false)
-        case 's':
-          event.preventDefault()
-          return document.execCommand('strikeThrough', false)
+        case "u":
+          return document.execCommand("underline", false);
+        case "s":
+          event.preventDefault();
+          return document.execCommand("strikeThrough", false);
         default:
       }
     }
   }
 
-  handlePaste (event) {
-    const { onChange, onPaste, type } = this.props
+  handlePaste(event) {
+    const { onChange, onPaste, type } = this.props;
 
-    onPaste && onPaste(event)
+    onPaste && onPaste(event);
 
-    if (type === 'contenteditable') {
+    if (type === "contenteditable") {
       return setTimeout(() => {
-        const value = sanitizeHtml(this.state.value)
+        const value = sanitizeHtml(this.state.value);
 
-        this.setState({ value })
-        onChange && onChange(value)
-      })
+        this.setState({ value });
+        onChange && onChange(value);
+      });
     }
   }
 
-  render () {
+  render() {
     const {
       classNames,
       error,
@@ -158,7 +158,7 @@ class InputField extends React.Component {
       maxLength,
       name,
       required,
-      type = 'text',
+      type = "text",
       onBlur,
       onChange,
       onKeyDown,
@@ -168,23 +168,23 @@ class InputField extends React.Component {
       validations,
       value,
       ...props
-    } = this.props
+    } = this.props;
 
     const propsBlacklist = [
-      'children',
-      'initial',
-      'invalid',
-      'styles',
-      'validators'
-    ]
+      "children",
+      "initial",
+      "invalid",
+      "styles",
+      "validators",
+    ];
     const allowedProps = merge(
       omit(props, propsBlacklist),
-      type === 'contenteditable' ? { html: value } : { value },
-      type === 'number' ? { inputMode: 'numeric' } : {}
-    )
-    const Tag = this.getTag()
-    const inputId = (id || name || '').split('.').join('-')
-    const labelId = `label-${inputId}`
+      type === "contenteditable" ? { html: value } : { value },
+      type === "number" ? { inputMode: "numeric" } : {}
+    );
+    const Tag = this.getTag();
+    const inputId = (id || name || "").split(".").join("-");
+    const labelId = `label-${inputId}`;
 
     const renderField = () => (
       <Tag
@@ -194,7 +194,7 @@ class InputField extends React.Component {
         name={name}
         id={inputId}
         checked={
-          isBoolean(type) || type === 'checkbox' ? Boolean(value) : undefined
+          isBoolean(type) || type === "checkbox" ? Boolean(value) : undefined
         }
         onChange={this.handleChange}
         onBlur={this.handleBlur}
@@ -205,39 +205,39 @@ class InputField extends React.Component {
         maxLength={maxLength}
         {...allowedProps}
       />
-    )
+    );
 
     const renderStatus = () => {
       switch (status) {
-        case 'fetching':
+        case "fetching":
           return (
-            <Icon styles={styles.status} name='loading' spin color='grey' />
-          )
-        case 'fetched':
-          return <Icon styles={styles.status} name='check' color='success' />
-        case 'failed':
-          return <Icon styles={styles.status} name='warning' color='danger' />
+            <Icon styles={styles.status} name="loading" spin color="grey" />
+          );
+        case "fetched":
+          return <Icon styles={styles.status} name="check" color="success" />;
+        case "failed":
+          return <Icon styles={styles.status} name="warning" color="danger" />;
         default:
-          return null
+          return null;
       }
-    }
+    };
 
     const renderVisibilityToggle = () => {
       return (
         <button
           className={classNames.toggle}
-          type='button'
-          onClick={e => {
-            e.preventDefault()
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
             this.setState({
-              type: this.state.type === 'password' ? 'text' : 'password'
-            })
+              type: this.state.type === "password" ? "text" : "password",
+            });
           }}
         >
-          {this.state.type === 'password' ? 'Show' : 'Hide'}
+          {this.state.type === "password" ? "Show" : "Hide"}
         </button>
-      )
-    }
+      );
+    };
 
     return (
       <div className={`c11n-input-field ${classNames.root}`}>
@@ -250,7 +250,7 @@ class InputField extends React.Component {
             required={required}
             styles={{
               root: styles.label,
-              required: styles.required
+              required: styles.required,
             }}
           >
             {label}
@@ -259,7 +259,7 @@ class InputField extends React.Component {
 
         {!isBoolean(type) && renderField()}
 
-        {['textarea', 'contenteditable'].indexOf(type) > -1 && !!maxLength && (
+        {["textarea", "contenteditable"].indexOf(type) > -1 && !!maxLength && (
           <span
             className={classNames.remaining}
             data-hidden={maxLength - value.length > 99}
@@ -271,7 +271,7 @@ class InputField extends React.Component {
 
         {status && renderStatus()}
 
-        {type === 'password' && renderVisibilityToggle()}
+        {type === "password" && renderVisibilityToggle()}
 
         {error && (
           <InputValidations
@@ -280,7 +280,7 @@ class InputField extends React.Component {
           />
         )}
       </div>
-    )
+    );
   }
 }
 
@@ -308,7 +308,7 @@ InputField.propTypes = {
     PropTypes.bool,
     PropTypes.number,
     PropTypes.object,
-    PropTypes.string
+    PropTypes.string,
   ]),
 
   /**
@@ -325,24 +325,24 @@ InputField.propTypes = {
    * The type of field
    */
   type: PropTypes.oneOf([
-    'checkbox',
-    'color',
-    'contenteditable',
-    'date',
-    'email',
-    'hidden',
-    'month',
-    'number',
-    'password',
-    'radio',
-    'range',
-    'search',
-    'tel',
-    'text',
-    'textarea',
-    'time',
-    'url',
-    'week'
+    "checkbox",
+    "color",
+    "contenteditable",
+    "date",
+    "email",
+    "hidden",
+    "month",
+    "number",
+    "password",
+    "radio",
+    "range",
+    "search",
+    "tel",
+    "text",
+    "textarea",
+    "time",
+    "url",
+    "week",
   ]),
 
   /**
@@ -364,11 +364,11 @@ InputField.propTypes = {
    * Validation errors
    */
   validations: PropTypes.array,
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 InputField.defaultProps = {
-  type: 'text'
-}
+  type: "text",
+};
 
-export default withStyles(styles)(InputField)
+export default withStyles(styles)(InputField);

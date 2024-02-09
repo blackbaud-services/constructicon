@@ -1,19 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const Container = ({ children, tag: Tag, classNames }) => {
   if (!children) {
-    return null
+    return null;
   }
 
   return (
     <div className={`c11n-container-wrapper ${classNames.outer}`}>
       <Tag className={`c11n-container ${classNames.root}`}>{children}</Tag>
     </div>
-  )
-}
+  );
+};
 
 Container.propTypes = {
   /**
@@ -64,13 +64,13 @@ Container.propTypes = {
   /**
    * The custom styles to be applied to the container
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Container.defaultProps = {
-  tag: 'article',
+  tag: "article",
   spacing: 0,
-  styles: {}
-}
+  styles: {},
+};
 
-export default withStyles(styles)(Container)
+export default withStyles(styles)(Container);

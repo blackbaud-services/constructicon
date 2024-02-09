@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const InputValidations = ({ classNames, validations = [] }) => (
   <div className={`c11n-input-validations ${classNames.root}`}>
@@ -11,7 +11,7 @@ const InputValidations = ({ classNames, validations = [] }) => (
       </div>
     ))}
   </div>
-)
+);
 
 InputValidations.propTypes = {
   /**
@@ -22,9 +22,9 @@ InputValidations.propTypes = {
   /**
    *
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
-InputValidations.defaultProps = {}
+InputValidations.defaultProps = {};
 
-export default withStyles(styles)(InputValidations)
+export default withStyles(styles)(InputValidations);

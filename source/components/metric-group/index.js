@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const MetricGroup = ({ children, classNames }) => (
   <div className={`c11n-metric-group ${classNames.root}`}>{children}</div>
-)
+);
 
 MetricGroup.propTypes = {
   /**
@@ -13,7 +13,7 @@ MetricGroup.propTypes = {
    */
   children: PropTypes.oneOfType([
     PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element)
+    PropTypes.arrayOf(PropTypes.element),
   ]).isRequired,
 
   /**
@@ -29,11 +29,11 @@ MetricGroup.propTypes = {
   /**
    * Custom styles to be applied
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 MetricGroup.defaultProps = {
-  styles: {}
-}
+  styles: {},
+};
 
-export default withStyles(styles)(MetricGroup)
+export default withStyles(styles)(MetricGroup);

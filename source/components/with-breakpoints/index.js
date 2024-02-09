@@ -1,47 +1,48 @@
-import React from 'react'
-import { breakpoints } from '../../lib/traits'
+import React from "react";
+import { breakpoints } from "../../lib/traits";
 
-const withBreakpoints = Component =>
+const withBreakpoints = (Component) =>
   class extends React.Component {
-    constructor () {
-      super()
-      this.state = { xs: null, sm: null, md: null, lg: null, xl: null }
-      this.checkBreakpointMatches = this.checkBreakpointMatches.bind(this)
-      this.setBreakpoints = this.setBreakpoints.bind(this)
+    constructor() {
+      super();
+      this.state = { xs: null, sm: null, md: null, lg: null, xl: null };
+      this.checkBreakpointMatches = this.checkBreakpointMatches.bind(this);
+      this.setBreakpoints = this.setBreakpoints.bind(this);
     }
 
-    componentDidMount () {
-      this.setBreakpoints()
-      window.addEventListener('resize', this.setBreakpoints)
+    componentDidMount() {
+      this.setBreakpoints();
+      window.addEventListener("resize", this.setBreakpoints);
     }
 
-    componentWillUnMount () {
-      window.removeEventListener('resize', this.setBreakpoints)
+    componentWillUnMount() {
+      window.removeEventListener("resize", this.setBreakpoints);
     }
 
-    checkBreakpointMatches () {
+    checkBreakpointMatches() {
       return Object.keys(breakpoints).reduce(
         (acc, size) => {
-          const matches = window.matchMedia(`(min-width: ${breakpoints[size]})`)
-            .matches
+          const matches = window.matchMedia(
+            `(min-width: ${breakpoints[size]})`
+          ).matches;
 
           return {
             ...acc,
             [size]: matches,
-            current: matches ? size : acc.current
-          }
+            current: matches ? size : acc.current,
+          };
         },
-        { current: 'xs' }
-      )
+        { current: "xs" }
+      );
     }
 
-    setBreakpoints () {
-      this.setState(this.checkBreakpointMatches)
+    setBreakpoints() {
+      this.setState(this.checkBreakpointMatches);
     }
 
-    render () {
-      return <Component {...this.props} breakpoints={this.state} />
+    render() {
+      return <Component {...this.props} breakpoints={this.state} />;
     }
-  }
+  };
 
-export default withBreakpoints
+export default withBreakpoints;
