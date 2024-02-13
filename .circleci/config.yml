@@ -46,20 +46,6 @@ commands:
           name: Test
           command: yarn test
 
-  docs:
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "e6:ab:46:69:01:b8:0b:5c:c3:58:dc:65:ac:7f:44:29"
-      - run:
-          name: Setup git user
-          command: |
-            git config --global user.email "ci-build@blackbaud.com"
-            git config --global user.name "ci-build"
-      - run:
-          name: Publish Docs 📄
-          command: yarn deploy:docs
-
   publish:
     steps:
       - npm-publisher/publish-from-package-version:
