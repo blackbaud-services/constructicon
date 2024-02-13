@@ -63,7 +63,7 @@ commands:
 jobs:
   test:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:18
     steps:
       - install
       - lint
@@ -71,7 +71,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:18
     steps:
       - install
       - lint

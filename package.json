@@ -68,7 +68,7 @@
     "react-dom": "^16.14.0",
     "react-helmet": "^5.2.0",
     "sinon": "^11.1.2",
-    "source-map-loader": "^1.0.0",
+    "source-map-loader": "5.0.0",
     "style-loader": "^2.0.0",
     "svgo": "^2.5.0",
     "webpack": "^5.88.2"
