@@ -69,7 +69,7 @@
     "react-helmet": "^5.2.0",
     "sinon": "^11.1.2",
     "source-map-loader": "5.0.0",
-    "style-loader": "^2.0.0",
+    "style-loader": "3.3.4",
     "svgo": "^2.5.0",
     "webpack": "^5.88.2"
   },
