@@ -81,6 +81,7 @@
     "enzyme/**/underscore": "1.12.1",
     "eslint/**/minimatch": "3.0.5",
     "react-avatar-editor/**/@babel/traverse": "7.23.2",
+    "webpack-cli/**/kind-of": "6.0.3",
     "webpack-dev-server/**/ansi-regex": "5.0.1",
     "webpack-dev-server/**/follow-redirects": "1.14.7"
   },
