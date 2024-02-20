@@ -33,7 +33,7 @@
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "query-string": "7.0.1",
-    "react-avatar-editor": "^12.0.0",
+    "react-avatar-editor": "13.0.2",
     "react-contenteditable": "^3.3.6",
     "react-dropzone": "^11.3.5",
     "react-modal": "^3.14.3",
@@ -76,6 +76,7 @@
   "resolutions": {
     "@emotion/server/html-tokenize": "2.0.1",
     "eslint/**/minimatch": "3.0.5",
+    "react-avatar-editor/**/@babel/traverse": "7.23.2",
     "webpack-dev-server/**/ansi-regex": "5.0.1",
     "webpack-dev-server/**/follow-redirects": "1.14.7"
   },
