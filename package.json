@@ -42,7 +42,6 @@
     "react-slider": "^1.3.1",
     "react-ticker": "^1.2.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
     "xss": "^1.0.9"
   },
   "devDependencies": {
@@ -71,10 +70,13 @@
     "source-map-loader": "5.0.0",
     "style-loader": "3.3.4",
     "svgo": "^2.5.0",
-    "webpack": "^5.88.2"
+    "webpack": "^5.88.2",
+    "webpack-dev-server": "^5.0.2"
   },
   "resolutions": {
-    "@emotion/server/html-tokenize": "2.0.1"
+    "@emotion/server/html-tokenize": "2.0.1",
+    "webpack-dev-server/**/ansi-regex": "5.0.1",
+    "webpack-dev-server/**/follow-redirects": "1.14.7"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0",
