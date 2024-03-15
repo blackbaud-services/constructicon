@@ -1,34 +1,34 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default (
   { toggled, expanded, styles },
   { colors, mediaQuery, radiuses, rhythm, scale, transitions, justifyContent }
 ) => {
-  const open = expanded || toggled
+  const open = expanded || toggled;
 
   const defaultStyles = {
     root: {
-      position: 'relative'
+      position: "relative",
     },
 
     form: {
       maxWidth: rhythm(32),
       padding: rhythm(0.5),
-      margin: '0 auto',
+      margin: "0 auto",
 
-      [mediaQuery('sm')]: {
-        display: 'flex',
-        alignItems: open ? 'flex-end' : 'center',
-        flexPack: 'center',
-        ...justifyContent('center')
-      }
+      [mediaQuery("sm")]: {
+        display: "flex",
+        alignItems: open ? "flex-end" : "center",
+        flexPack: "center",
+        ...justifyContent("center"),
+      },
     },
 
     field: {
-      position: 'relative',
+      position: "relative",
       marginRight: rhythm(1),
       flex: 1,
-      transition: transitions.easeOut
+      transition: transitions.easeOut,
     },
 
     input: {
@@ -40,37 +40,37 @@ export default (
       borderRadius: rhythm(radiuses.small),
       transition: transitions.easeOut,
       ...(open && {
-        width: '100%',
+        width: "100%",
         padding: rhythm(0.5),
-        opacity: 1
-      })
+        opacity: 1,
+      }),
     },
 
     label: {
-      display: 'block',
+      display: "block",
       transform: `translateY(${rhythm(1)})`,
       fontSize: scale(2),
-      whiteSpace: 'nowrap',
+      whiteSpace: "nowrap",
       transition: transitions.easeOut,
       ...(open && {
-        transform: 'translateY(0)',
+        transform: "translateY(0)",
         fontSize: scale(-1),
-        marginBottom: '0.5rem'
-      })
+        marginBottom: "0.5rem",
+      }),
     },
 
     cta: {
-      [mediaQuery('sm', 'max-width')]: {
-        marginTop: '0.5rem'
-      }
+      [mediaQuery("sm", "max-width")]: {
+        marginTop: "0.5rem",
+      },
     },
 
     results: {
       maxWidth: rhythm(32),
       paddingTop: rhythm(1),
-      margin: '0 auto'
-    }
-  }
+      margin: "0 auto",
+    },
+  };
 
-  return merge(defaultStyles, styles)
-}
+  return merge(defaultStyles, styles);
+};

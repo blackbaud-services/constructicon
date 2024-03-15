@@ -1,19 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const Heading = ({ children, tag: Tag, id, classNames }) => {
   if (!children) {
-    return null
+    return null;
   }
 
   return (
     <Tag id={id} className={`c11n-heading ${classNames.root}`}>
       {children}
     </Tag>
-  )
-}
+  );
+};
 
 Heading.propTypes = {
   /**
@@ -49,14 +49,14 @@ Heading.propTypes = {
   /**
    * Custom styles to be added to the element
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Heading.defaultProps = {
-  tag: 'h2',
+  tag: "h2",
   size: 3,
   spacing: { b: 0.5 },
-  styles: {}
-}
+  styles: {},
+};
 
-export default withStyles(styles)(Heading)
+export default withStyles(styles)(Heading);

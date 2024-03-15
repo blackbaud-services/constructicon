@@ -1,25 +1,25 @@
-import React from 'react'
-import withForm from '..'
-import Form from '../../form'
-import InputField from '../../input-field'
-import validators from '../../../lib/validators'
+import React from "react";
+import withForm from "..";
+import Form from "../../form";
+import InputField from "../../input-field";
+import validators from "../../../lib/validators";
 
 const Login = ({ form }) => {
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     form
       .submit()
-      .then(values => {
-        console.log('do something')
+      .then((values) => {
+        console.log("do something");
       })
-      .catch(errors => {
-        console.log('invalid fields')
-      })
-  }
+      .catch((errors) => {
+        console.log("invalid fields");
+      });
+  };
 
   return (
     <Form
-      submit='Submit'
+      submit="Submit"
       isDisabled={form.invalid}
       onSubmit={handleSubmit}
       noValidate
@@ -27,24 +27,24 @@ const Login = ({ form }) => {
       <InputField {...form.fields.email} />
       <InputField {...form.fields.password} />
     </Form>
-  )
-}
+  );
+};
 
 const form = {
   fields: {
     email: {
-      label: 'Email',
+      label: "Email",
       validators: [
-        validators.required('Email is a required field'),
-        validators.email('Should be a valid email')
-      ]
+        validators.required("Email is a required field"),
+        validators.email("Should be a valid email"),
+      ],
     },
     password: {
-      label: 'Password',
-      type: 'password',
-      validators: validators.required('Password is a required field')
-    }
-  }
-}
+      label: "Password",
+      type: "password",
+      validators: validators.required("Password is a required field"),
+    },
+  },
+};
 
-export default withForm(form)(Login)
+export default withForm(form)(Login);

@@ -1,14 +1,14 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default (
   { lineClamp, size, styles },
   { measures, rhythm, scale, treatments }
 ) => {
-  const headingStyle = size => ({
+  const headingStyle = (size) => ({
     ...treatments.head,
     fontSize: scale(size),
-    marginBottom: rhythm(1)
-  })
+    marginBottom: rhythm(1),
+  });
 
   const defaultStyles = {
     fontSize: scale(size),
@@ -16,100 +16,100 @@ export default (
     ...treatments.body,
 
     ...(lineClamp && {
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      display: '-webkit-box',
-      WebkitBoxOrient: 'vertical',
-      WebkitLineClamp: lineClamp
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      display: "-webkit-box",
+      WebkitBoxOrient: "vertical",
+      WebkitLineClamp: lineClamp,
     }),
 
-    '& p': {
-      marginBottom: rhythm(1)
+    "& p": {
+      marginBottom: rhythm(1),
     },
 
-    '& ul': {
-      listStyleType: 'disc',
-      listStylePosition: 'outside',
-      marginBottom: rhythm(1)
+    "& ul": {
+      listStyleType: "disc",
+      listStylePosition: "outside",
+      marginBottom: rhythm(1),
     },
 
-    '& ol': {
-      listStyleType: 'decimal',
-      listStylePosition: 'outside',
-      marginBottom: rhythm(1)
+    "& ol": {
+      listStyleType: "decimal",
+      listStylePosition: "outside",
+      marginBottom: rhythm(1),
     },
 
-    '& li': {
-      marginLeft: rhythm(1)
+    "& li": {
+      marginLeft: rhythm(1),
     },
 
-    '& blockquote': {
+    "& blockquote": {
       maxWidth: rhythm(25),
       marginBottom: rhythm(1),
-      margin: '0 auto',
-      textAlign: 'center',
+      margin: "0 auto",
+      textAlign: "center",
       fontWeight: 700,
-      fontSize: scale(size + 1)
+      fontSize: scale(size + 1),
     },
-    '& blockquote:before': {
-      content: '"\\201C"'
+    "& blockquote:before": {
+      content: '"\\201C"',
     },
-    '& blockquote:after': {
-      content: '"\\201D"'
-    },
-
-    '& img': {
-      display: 'block',
-      margin: '0 auto',
-      width: 'auto',
-      maxWidth: '100%'
+    "& blockquote:after": {
+      content: '"\\201D"',
     },
 
-    '& iframe': {
-      marginBottom: rhythm(2)
+    "& img": {
+      display: "block",
+      margin: "0 auto",
+      width: "auto",
+      maxWidth: "100%",
     },
 
-    '& strong, & b': {
-      fontWeight: 'bold'
+    "& iframe": {
+      marginBottom: rhythm(2),
     },
 
-    '& em, & i': {
-      fontStyle: 'italic'
+    "& strong, & b": {
+      fontWeight: "bold",
     },
 
-    '& u': {
-      textDecoration: 'underline'
+    "& em, & i": {
+      fontStyle: "italic",
     },
 
-    '& strike, & s, & del': {
-      textDecoration: 'line-through'
+    "& u": {
+      textDecoration: "underline",
     },
 
-    '& h1': {
-      ...headingStyle(size + 4)
-    },
-    '& h2': {
-      ...headingStyle(size + 3)
-    },
-    '& h3': {
-      ...headingStyle(size + 2)
-    },
-    '& h4': {
-      ...headingStyle(size + 1)
-    },
-    '& h5': {
-      ...headingStyle(size)
-    },
-    '& h6': {
-      ...headingStyle(size - 1)
+    "& strike, & s, & del": {
+      textDecoration: "line-through",
     },
 
-    '& > *:last-child': {
-      marginBottom: 0
-    }
-  }
+    "& h1": {
+      ...headingStyle(size + 4),
+    },
+    "& h2": {
+      ...headingStyle(size + 3),
+    },
+    "& h3": {
+      ...headingStyle(size + 2),
+    },
+    "& h4": {
+      ...headingStyle(size + 1),
+    },
+    "& h5": {
+      ...headingStyle(size),
+    },
+    "& h6": {
+      ...headingStyle(size - 1),
+    },
+
+    "& > *:last-child": {
+      marginBottom: 0,
+    },
+  };
 
   return {
-    root: merge(defaultStyles, styles)
-  }
-}
+    root: merge(defaultStyles, styles),
+  };
+};

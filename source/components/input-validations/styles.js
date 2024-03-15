@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default ({ styles }, { colors, scale, rhythm, treatments }) => {
   const defaultStyles = {
@@ -6,20 +6,20 @@ export default ({ styles }, { colors, scale, rhythm, treatments }) => {
       fontSize: scale(-0.75),
       fontWeight: 700,
       color: colors.danger,
-      ...treatments.inputValidations
+      ...treatments.inputValidations,
     },
 
     error: {
       marginTop: rhythm(0.5),
       ...treatments.inputValidation,
 
-      '& a': {
+      "& a": {
         fontWeight: 700,
         color: colors.danger,
-        textDecoration: 'underline'
-      }
-    }
-  }
+        textDecoration: "underline",
+      },
+    },
+  };
 
-  return merge(defaultStyles, styles)
-}
+  return merge(defaultStyles, styles);
+};

@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const Image = ({ alt, classNames, src }) => (
   <img alt={alt} className={classNames.root} src={src} />
-)
+);
 
 Image.propTypes = {
   /**
@@ -31,7 +31,7 @@ Image.propTypes = {
   /**
    * Custom styles to apply to the image
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
-export default withStyles(styles)(Image)
+export default withStyles(styles)(Image);

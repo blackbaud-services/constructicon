@@ -1,28 +1,28 @@
-import React from 'react'
+import React from "react";
 
-const withToggle = Component => {
+const withToggle = (Component) => {
   class toggle extends React.Component {
-    constructor (props) {
-      super(props)
-      this.state = { toggled: props.toggled }
-      this.handleToggle = this.handleToggle.bind(this)
-      this.handleToggleOn = this.handleToggleOn.bind(this)
-      this.handleToggleOff = this.handleToggleOff.bind(this)
+    constructor(props) {
+      super(props);
+      this.state = { toggled: props.toggled };
+      this.handleToggle = this.handleToggle.bind(this);
+      this.handleToggleOn = this.handleToggleOn.bind(this);
+      this.handleToggleOff = this.handleToggleOff.bind(this);
     }
 
-    handleToggle () {
-      this.setState({ toggled: !this.state.toggled })
+    handleToggle() {
+      this.setState({ toggled: !this.state.toggled });
     }
 
-    handleToggleOn () {
-      this.setState({ toggled: true })
+    handleToggleOn() {
+      this.setState({ toggled: true });
     }
 
-    handleToggleOff () {
-      this.setState({ toggled: false })
+    handleToggleOff() {
+      this.setState({ toggled: false });
     }
 
-    render () {
+    render() {
       return (
         <Component
           {...this.props}
@@ -31,11 +31,11 @@ const withToggle = Component => {
           onToggleOn={this.handleToggleOn}
           onToggleOff={this.handleToggleOff}
         />
-      )
+      );
     }
   }
 
-  return toggle
-}
+  return toggle;
+};
 
-export default withToggle
+export default withToggle;

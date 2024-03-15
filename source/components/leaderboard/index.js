@@ -1,69 +1,69 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import isEmpty from 'lodash/isEmpty'
-import Icon from '../icon'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import isEmpty from "lodash/isEmpty";
+import Icon from "../icon";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 class Leaderboard extends Component {
-  render () {
-    const { classNames } = this.props
+  render() {
+    const { classNames } = this.props;
 
     return (
       <div className={`c11n-leaderboard ${classNames.root}`}>
         {this.renderLeaderboard()}
       </div>
-    )
+    );
   }
 
-  renderLeaderboard () {
-    const { children, loading, error } = this.props
+  renderLeaderboard() {
+    const { children, loading, error } = this.props;
 
     if (loading) {
-      return this.renderLoading()
+      return this.renderLoading();
     }
 
     if (error) {
-      return this.renderError()
+      return this.renderError();
     }
 
     if (isEmpty(children)) {
-      return this.renderEmpty()
+      return this.renderEmpty();
     }
 
-    return this.renderLeaders()
+    return this.renderLeaders();
   }
 
-  renderLoading () {
+  renderLoading() {
     return (
       <div className={this.props.classNames.state}>
-        <Icon name='loading' size={2} spin />
+        <Icon name="loading" size={2} spin />
       </div>
-    )
+    );
   }
 
-  renderError () {
+  renderError() {
     return (
       <div className={this.props.classNames.state}>
-        <Icon name='warning' />
+        <Icon name="warning" />
         {this.props.errorLabel}
       </div>
-    )
+    );
   }
 
-  renderEmpty () {
+  renderEmpty() {
     return (
       <div className={this.props.classNames.state}>
-        <Icon name='warning' />
+        <Icon name="warning" />
         {this.props.emptyLabel}
       </div>
-    )
+    );
   }
 
-  renderLeaders () {
-    const { children, classNames } = this.props
+  renderLeaders() {
+    const { children, classNames } = this.props;
 
-    return <ol className={classNames.leaders}>{children}</ol>
+    return <ol className={classNames.leaders}>{children}</ol>;
   }
 }
 
@@ -106,14 +106,14 @@ Leaderboard.propTypes = {
   /**
    * Custom styles to be applied to root, leaders
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Leaderboard.defaultProps = {
   columns: {},
   styles: {},
-  emptyLabel: 'No results found',
-  errorLabel: 'There was an error loading the results'
-}
+  emptyLabel: "No results found",
+  errorLabel: "There was an error loading the results",
+};
 
-export default withStyles(styles)(Leaderboard)
+export default withStyles(styles)(Leaderboard);

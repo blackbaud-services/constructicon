@@ -1,23 +1,23 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const RichText = ({ children, tag: Tag, classNames, onClick }) => {
   if (!children) {
-    return null
+    return null;
   }
 
   return (
     <Tag className={`c11n-rich-text ${classNames.root}`} onClick={onClick}>
-      {typeof children === 'string' ? (
+      {typeof children === "string" ? (
         <span dangerouslySetInnerHTML={{ __html: children }} />
       ) : (
         children
       )}
     </Tag>
-  )
-}
+  );
+};
 
 RichText.propTypes = {
   /**
@@ -26,7 +26,7 @@ RichText.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element
+    PropTypes.element,
   ]),
 
   /**
@@ -52,13 +52,13 @@ RichText.propTypes = {
   /**
    * Custom styles to be added to the element
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 RichText.defaultProps = {
   size: 0,
   styles: {},
-  tag: 'div'
-}
+  tag: "div",
+};
 
-export default withStyles(styles)(RichText)
+export default withStyles(styles)(RichText);

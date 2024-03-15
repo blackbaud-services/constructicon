@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default (
   {
@@ -17,17 +17,17 @@ export default (
     borderWidth,
     foreground,
     radius,
-    styles
+    styles,
   },
   { colors, mediaQuery, radiuses, rhythm }
 ) => {
-  const calculateSize = cols =>
+  const calculateSize = (cols) =>
     cols
       ? {
           flex: `1 0 ${(100 / 12) * cols}%`,
-          maxWidth: `${(100 / 12) * cols}%`
+          maxWidth: `${(100 / 12) * cols}%`,
         }
-      : {}
+      : {};
 
   return {
     root: merge(
@@ -38,24 +38,24 @@ export default (
         borderRadius: radius && rhythm(radiuses[radius]),
         textAlign: xsAlign,
         ...calculateSize(xs),
-        [mediaQuery('sm')]: {
+        [mediaQuery("sm")]: {
           textAlign: smAlign,
-          ...calculateSize(sm)
+          ...calculateSize(sm),
         },
-        [mediaQuery('md')]: {
+        [mediaQuery("md")]: {
           textAlign: mdAlign,
-          ...calculateSize(md)
+          ...calculateSize(md),
         },
-        [mediaQuery('lg')]: {
+        [mediaQuery("lg")]: {
           textAlign: lgAlign,
-          ...calculateSize(lg)
+          ...calculateSize(lg),
         },
-        [mediaQuery('xl')]: {
+        [mediaQuery("xl")]: {
           textAlign: xlAlign,
-          ...calculateSize(xl)
-        }
+          ...calculateSize(xl),
+        },
       },
       styles
-    )
-  }
-}
+    ),
+  };
+};

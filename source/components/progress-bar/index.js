@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const ProgressBar = ({ classNames, alt, progress = 0 }) => (
   <div className={`c11n-progress-bar ${classNames.root}`}>
     <div className={classNames.fill} aria-hidden />
     <div className={classNames.alt}>{alt}</div>
   </div>
-)
+);
 
 ProgressBar.propTypes = {
   /**
@@ -39,14 +39,14 @@ ProgressBar.propTypes = {
   /**
    * Custom styles to be applied to the progress bar
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 ProgressBar.defaultProps = {
-  fill: 'primary',
-  background: 'shade',
-  radius: 'small',
-  styles: {}
-}
+  fill: "primary",
+  background: "shade",
+  radius: "small",
+  styles: {},
+};
 
-export default withStyles(styles)(ProgressBar)
+export default withStyles(styles)(ProgressBar);

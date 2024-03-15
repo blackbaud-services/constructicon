@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default (
   { background, foreground, columns, styles },
@@ -9,39 +9,39 @@ export default (
       (styles, breakpoint) => ({
         ...styles,
         [mediaQuery(breakpoint)]: {
-          columnCount: columns[breakpoint]
-        }
+          columnCount: columns[breakpoint],
+        },
       }),
       {}
-    )
-  }
+    );
+  };
 
   const defaultStyles = {
     root: {
       backgroundColor: background && colors[background],
       color: foreground && colors[foreground],
-      ...treatments.leaderboard
+      ...treatments.leaderboard,
     },
 
     leaders: {
-      counterReset: 'board',
+      counterReset: "board",
       ...createColumns(),
-      ...treatments.leaderboardLeaders
+      ...treatments.leaderboardLeaders,
     },
 
     state: {
-      display: 'flex',
-      alignItems: 'flex-start',
-      ...justifyContent('center'),
+      display: "flex",
+      alignItems: "flex-start",
+      ...justifyContent("center"),
       padding: rhythm(2),
       fontSize: scale(-1),
       ...treatments.leaderboardState,
 
-      '& > *': {
-        margin: rhythm([0, 0.25])
-      }
-    }
-  }
+      "& > *": {
+        margin: rhythm([0, 0.25]),
+      },
+    },
+  };
 
-  return merge(defaultStyles, styles)
-}
+  return merge(defaultStyles, styles);
+};

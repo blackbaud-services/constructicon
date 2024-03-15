@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
-import BaseTicker from 'react-ticker'
+import BaseTicker from "react-ticker";
 
 const Ticker = ({
   classNames,
@@ -13,16 +13,16 @@ const Ticker = ({
   mode,
   offset,
   pauseOnHover,
-  speed
+  speed,
 }) => {
-  const [move, setMove] = useState(true)
+  const [move, setMove] = useState(true);
   const speeds = {
     snail: 5,
     slow: 7.5,
     medium: 10,
     fast: 12.5,
-    cheetah: 20
-  }
+    cheetah: 20,
+  };
 
   return (
     <div
@@ -49,8 +49,8 @@ const Ticker = ({
       </BaseTicker>
       {label && <div className={classNames.label}>{label}</div>}
     </div>
-  )
-}
+  );
+};
 
 Ticker.propTypes = {
   /**
@@ -66,7 +66,7 @@ Ticker.propTypes = {
   /**
    * The scrolling direction
    */
-  direction: PropTypes.oneOf(['toLeft', 'toRight']),
+  direction: PropTypes.oneOf(["toLeft", "toRight"]),
 
   /**
    * The height (passed to rhythm)
@@ -96,7 +96,7 @@ Ticker.propTypes = {
   /**
    * The mode for the ticker
    */
-  mode: PropTypes.oneOf(['await', 'chain', 'smooth']),
+  mode: PropTypes.oneOf(["await", "chain", "smooth"]),
 
   /**
    * Ticker offset
@@ -111,26 +111,26 @@ Ticker.propTypes = {
   /**
    * Animation speed
    */
-  speed: PropTypes.oneOf(['snail', 'slow', 'medium', 'fast', 'cheetah']),
+  speed: PropTypes.oneOf(["snail", "slow", "medium", "fast", "cheetah"]),
 
   /**
    * Custom styles to be applied
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Ticker.defaultProps = {
-  background: 'shade',
-  foreground: 'dark',
-  direction: 'toLeft',
+  background: "shade",
+  foreground: "dark",
+  direction: "toLeft",
   height: 2.5,
-  labelBackground: 'primary',
-  labelForeground: 'light',
-  mode: 'smooth',
-  offset: '100%',
+  labelBackground: "primary",
+  labelForeground: "light",
+  mode: "smooth",
+  offset: "100%",
   pauseOnHover: true,
-  speed: 'slow',
-  styles: {}
-}
+  speed: "slow",
+  styles: {},
+};
 
-export default withStyles(styles)(Ticker)
+export default withStyles(styles)(Ticker);

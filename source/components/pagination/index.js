@@ -1,66 +1,66 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import chunk from 'lodash/chunk'
-import isEqual from 'lodash/isEqual'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import chunk from "lodash/chunk";
+import isEqual from "lodash/isEqual";
 
 export default class Pagination extends Component {
-  constructor () {
-    super(...arguments)
+  constructor() {
+    super(...arguments);
 
     this.state = {
       pageNumber: this.props.initialPage || 0,
-      allPages: this.paginate(this.props.toPaginate)
-    }
+      allPages: this.paginate(this.props.toPaginate),
+    };
 
-    this.paginate = this.paginate.bind(this)
-    this.handlePagintionClick = this.handlePaginationClick.bind(this)
+    this.paginate = this.paginate.bind(this);
+    this.handlePagintionClick = this.handlePaginationClick.bind(this);
   }
 
-  componentDidUpdate (prevProps) {
-    const { initialPage, toPaginate } = this.props
+  componentDidUpdate(prevProps) {
+    const { initialPage, toPaginate } = this.props;
 
     if (!isEqual(initialPage, prevProps.initialPage)) {
-      this.setState({ pageNumber: initialPage })
+      this.setState({ pageNumber: initialPage });
     }
 
     if (!isEqual(toPaginate, prevProps.toPaginate)) {
       if (this.props.persistPage) {
         this.setState({
-          allPages: this.paginate(toPaginate)
-        })
+          allPages: this.paginate(toPaginate),
+        });
       } else {
         this.setState({
           pageNumber: 0,
-          allPages: this.paginate(toPaginate)
-        })
+          allPages: this.paginate(toPaginate),
+        });
       }
     }
   }
 
-  paginate (toPaginate) {
-    const { max = 10 } = this.props
-    return chunk(toPaginate, max)
+  paginate(toPaginate) {
+    const { max = 10 } = this.props;
+    return chunk(toPaginate, max);
   }
 
-  handlePaginationClick (val) {
-    const { allPages, pageNumber } = this.state
-    const canNext = pageNumber + 1 < allPages.length
-    const canPrev = pageNumber > 0
+  handlePaginationClick(val) {
+    const { allPages, pageNumber } = this.state;
+    const canNext = pageNumber + 1 < allPages.length;
+    const canPrev = pageNumber > 0;
 
     const changePage = () =>
       this.setState({
-        pageNumber: pageNumber + val
-      })
+        pageNumber: pageNumber + val,
+      });
 
     if (val > 0) {
-      return canNext ? changePage : null
+      return canNext ? changePage : null;
     } else {
-      return canPrev ? changePage : null
+      return canPrev ? changePage : null;
     }
   }
 
-  render () {
-    const { allPages, pageNumber } = this.state
+  render() {
+    const { allPages, pageNumber } = this.state;
 
     if (allPages.length) {
       return (
@@ -76,18 +76,18 @@ export default class Pagination extends Component {
             canNext: pageNumber + 1 < allPages.length,
             canPrev: pageNumber > 0,
             next: this.handlePaginationClick(+1),
-            prev: this.handlePaginationClick(-1)
+            prev: this.handlePaginationClick(-1),
           })}
         </div>
-      )
-    } else return null
+      );
+    } else return null;
   }
 }
 
 Pagination.defaultProps = {
   initialPage: 0,
-  max: 10
-}
+  max: 10,
+};
 
 Pagination.propTypes = {
   /**
@@ -113,5 +113,5 @@ Pagination.propTypes = {
   /**
    * Prevents the page number being reset when toPaginate changes
    */
-  persistPage: PropTypes.bool
-}
+  persistPage: PropTypes.bool,
+};

@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const Video = ({ classNames, embed, styles, url, ...props }) => {
   if (embed && embed.html) {
@@ -11,19 +11,19 @@ const Video = ({ classNames, embed, styles, url, ...props }) => {
         dangerouslySetInnerHTML={{ __html: embed.html }}
         {...props}
       />
-    )
+    );
   }
 
   if (!url) {
-    return null
+    return null;
   }
 
   return (
     <div className={`c11n-video ${classNames.root}`} {...props}>
       <iframe src={url} frameBorder={0} />
     </div>
-  )
-}
+  );
+};
 
 Video.propTypes = {
   /**
@@ -64,12 +64,12 @@ Video.propTypes = {
   /**
    * The video embed URL
    */
-  url: PropTypes.string
-}
+  url: PropTypes.string,
+};
 
 Video.defaultProps = {
-  background: 'dark',
-  margin: 0
-}
+  background: "dark",
+  margin: 0,
+};
 
-export default withStyles(styles)(Video)
+export default withStyles(styles)(Video);

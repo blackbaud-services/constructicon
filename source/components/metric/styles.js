@@ -1,32 +1,32 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default ({ align, styles }, { rhythm, scale, treatments }) => {
   const defaultStyles = {
     root: {
       textAlign: align,
-      ...treatments.metric
+      ...treatments.metric,
     },
 
     icon: {
       marginBottom: rhythm(0.66),
-      ...treatments.metricIcon
+      ...treatments.metricIcon,
     },
 
     label: {
-      display: 'block',
+      display: "block",
       opacity: 0.5,
       marginBottom: rhythm(0.33),
       fontSize: scale(-1),
       ...treatments.button,
-      ...treatments.metricLabel
+      ...treatments.metricLabel,
     },
 
     amount: {
       fontSize: scale(3),
       ...treatments.head,
-      ...treatments.metricAmount
-    }
-  }
+      ...treatments.metricAmount,
+    },
+  };
 
-  return merge(defaultStyles, styles)
-}
+  return merge(defaultStyles, styles);
+};

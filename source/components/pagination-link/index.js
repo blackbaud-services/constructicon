@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
-import Icon from '../icon'
+import Icon from "../icon";
 
 const labels = {
-  prev: 'Previous',
-  next: 'Next'
-}
+  prev: "Previous",
+  next: "Next",
+};
 
 const PaginationLink = ({
   classNames,
@@ -24,17 +24,17 @@ const PaginationLink = ({
 }) => (
   <button
     aria-label={labels[direction]}
-    type='button'
-    role='button'
+    type="button"
+    role="button"
     disabled={disabled}
     onClick={onClick}
     onKeyDown={onClick}
     className={`c11n-pagination-link ${classNames.root}`}
     {...props}
   >
-    <Icon name={icon} rotate={direction === 'prev' ? 180 : 0} size={size} />
+    <Icon name={icon} rotate={direction === "prev" ? 180 : 0} size={size} />
   </button>
-)
+);
 
 PaginationLink.propTypes = {
   /**
@@ -45,7 +45,7 @@ PaginationLink.propTypes = {
   /**
    * The direction of the arrow
    */
-  direction: PropTypes.oneOf(['prev', 'next']).isRequired,
+  direction: PropTypes.oneOf(["prev", "next"]).isRequired,
 
   /**
    * Whether or not the link is disabled
@@ -70,13 +70,13 @@ PaginationLink.propTypes = {
   /**
    * The total number of slides if in a Carousel
    */
-  slideCount: PropTypes.number
-}
+  slideCount: PropTypes.number,
+};
 
 PaginationLink.defaultProps = {
-  direction: 'next',
-  icon: 'chevron',
-  size: 1
-}
+  direction: "next",
+  icon: "chevron",
+  size: 1,
+};
 
-export default withStyles(styles)(PaginationLink)
+export default withStyles(styles)(PaginationLink);

@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles, { keyframes } from './styles'
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles, { keyframes } from "./styles";
 
-import Button from '../button'
-import ButtonGroup from '../button-group'
-import Icon from '../icon'
+import Button from "../button";
+import ButtonGroup from "../button-group";
+import Icon from "../icon";
 
 const Form = ({
   children,
@@ -17,7 +17,7 @@ const Form = ({
   isDisabled = false,
   noValidate,
   styles,
-  submit = 'Submit',
+  submit = "Submit",
   actions = [],
   onSubmit,
   submitProps,
@@ -25,22 +25,22 @@ const Form = ({
   ...props
 }) => {
   useEffect(() => {
-    onLoad && onLoad()
-  }, [])
+    onLoad && onLoad();
+  }, []);
 
-  const renderIcon = icon => {
-    return typeof icon === 'object' ? (
+  const renderIcon = (icon) => {
+    return typeof icon === "object" ? (
       <Icon styles={styles.icon} {...icon} />
     ) : (
       <Icon styles={styles.icon} name={icon} />
-    )
-  }
+    );
+  };
 
   return (
     <form
       className={`c11n-form ${classNames.root}`}
-      action='/'
-      method='POST'
+      action="/"
+      method="POST"
       onSubmit={onSubmit}
       noValidate={noValidate}
       {...props}
@@ -49,11 +49,12 @@ const Form = ({
 
       {errors.map((error, i) => (
         <div
-          className={`${classNames.error} ${error.status &&
-            classNames[error.status]}`}
+          className={`${classNames.error} ${
+            error.status && classNames[error.status]
+          }`}
           key={i}
         >
-          {error.field ? `Field ${error.field} ` : ''}
+          {error.field ? `Field ${error.field} ` : ""}
           {error.message}
         </div>
       ))}
@@ -66,7 +67,7 @@ const Form = ({
               disabled={isLoading || isDisabled}
               aria-label={submit}
               title={submit}
-              type='submit'
+              type="submit"
               {...submitProps}
             >
               <span>{submit}</span>
@@ -76,7 +77,7 @@ const Form = ({
           {actions.map(({ label, icon, ...actionProps }, i) => (
             <Button
               key={i}
-              tag='a'
+              tag="a"
               styles={styles.action}
               disabled={isLoading || isDisabled}
               aria-label={label}
@@ -96,7 +97,7 @@ const Form = ({
           disabled={isLoading || isDisabled}
           aria-label={submit}
           title={submit}
-          type='submit'
+          type="submit"
           {...submitProps}
         >
           <span>{submit}</span>
@@ -105,8 +106,8 @@ const Form = ({
       ) : null}
       {footer}
     </form>
-  )
-}
+  );
+};
 
 Form.propTypes = {
   /**
@@ -150,18 +151,18 @@ Form.propTypes = {
   icon: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
-    PropTypes.bool
+    PropTypes.bool,
   ]),
 
   /**
    * Props to spread over the submit Button
    */
-  submitProps: PropTypes.object
-}
+  submitProps: PropTypes.object,
+};
 
 Form.defaultProps = {
-  submit: 'Submit',
-  icon: { name: 'chevron', size: 0.75 }
-}
+  submit: "Submit",
+  icon: { name: "chevron", size: 0.75 },
+};
 
-export default withStyles(styles, keyframes)(Form)
+export default withStyles(styles, keyframes)(Form);

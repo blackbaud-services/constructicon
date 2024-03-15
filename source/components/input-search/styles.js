@@ -1,99 +1,99 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default (
   { invalid, readOnly, styles, touched, value },
   { colors, fonts, radiuses, rhythm, scale, shadows, treatments }
 ) => {
-  const isInvalid = touched && invalid
+  const isInvalid = touched && invalid;
 
   const baseStyles = {
     root: {
-      display: 'block',
-      position: 'relative',
+      display: "block",
+      position: "relative",
       fontFamily: fonts.body,
-      textAlign: 'left',
+      textAlign: "left",
       marginBottom: rhythm(1),
-      ...treatments.inputRoot
+      ...treatments.inputRoot,
     },
 
     fieldWrapper: {
-      position: 'relative'
+      position: "relative",
     },
 
     field: {
-      display: 'block',
-      width: '100%',
-      textAlign: 'left',
-      overflow: 'hidden',
+      display: "block",
+      width: "100%",
+      textAlign: "left",
+      overflow: "hidden",
       backgroundColor: colors.light,
       color: readOnly ? colors.lightGrey : colors.dark,
       padding: rhythm([0.125, 0.333]),
       paddingRight: rhythm(1.5),
       height: rhythm(1.666),
       border: `thin solid ${isInvalid ? colors.danger : colors.lightGrey}`,
-      boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : 'none',
+      boxShadow: isInvalid ? `0 0 5px ${colors.danger}` : "none",
       borderRadius: rhythm(radiuses.small),
-      textIndent: value && '-99999px',
+      textIndent: value && "-99999px",
       ...treatments.input,
 
-      '&:focus': {
+      "&:focus": {
         borderColor: isInvalid ? colors.danger : colors.secondary,
-        boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`
-      }
+        boxShadow: `0 0 5px ${isInvalid ? colors.danger : colors.secondary}`,
+      },
     },
 
     icon: {
-      position: 'absolute',
+      position: "absolute",
       right: rhythm(0.5),
-      top: '50%',
-      transform: 'translateY(-50%)',
-      cursor: value && 'pointer'
+      top: "50%",
+      transform: "translateY(-50%)",
+      cursor: value && "pointer",
     },
 
     selected: {
-      position: 'absolute',
+      position: "absolute",
       left: rhythm(0.5),
       right: rhythm(1.5),
-      top: '50%',
-      transform: 'translateY(-50%)',
-      cursor: 'pointer'
+      top: "50%",
+      transform: "translateY(-50%)",
+      cursor: "pointer",
     },
 
     results: {
-      position: 'absolute',
+      position: "absolute",
       zIndex: 6,
       maxHeight: rhythm(12),
-      overflow: 'auto',
-      top: '100%',
+      overflow: "auto",
+      top: "100%",
       left: 0,
       right: 0,
       backgroundColor: colors.light,
       color: colors.dark,
-      boxShadow: shadows.light
+      boxShadow: shadows.light,
     },
 
     status: {
       padding: rhythm(1),
-      textAlign: 'center',
+      textAlign: "center",
       fontSize: scale(-1),
-      opacity: 0.5
+      opacity: 0.5,
     },
 
     showMore: {
-      display: 'block',
-      width: '100%',
+      display: "block",
+      width: "100%",
       padding: rhythm(0.5),
-      textAlign: 'center',
+      textAlign: "center",
       fontSize: scale(-0.5),
-      cursor: 'pointer',
+      cursor: "pointer",
       backgroundColor: colors.paleGrey,
 
-      '&:hover, &:focus': {
+      "&:hover, &:focus": {
         backgroundColor: colors.primary,
-        color: colors.light
-      }
-    }
-  }
+        color: colors.light,
+      },
+    },
+  };
 
-  return merge(baseStyles, styles)
-}
+  return merge(baseStyles, styles);
+};

@@ -1,132 +1,132 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import compose from '../../lib/compose'
-import onClickOutside from 'react-onclickoutside'
-import debounce from 'lodash/debounce'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import compose from "../../lib/compose";
+import onClickOutside from "react-onclickoutside";
+import debounce from "lodash/debounce";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
-import Icon from '../icon'
-import InputValidations from '../input-validations'
-import Label from '../label'
-import Results from './results'
+import Icon from "../icon";
+import InputValidations from "../input-validations";
+import Label from "../label";
+import Results from "./results";
 
 class InputSearch extends Component {
-  constructor (props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleKeyDown = this.handleKeyDown.bind(this)
-    this.handleShowMore = this.handleShowMore.bind(this)
-    this.handleClearSelection = this.handleClearSelection.bind(this)
-    this.setActiveItem = this.setActiveItem.bind(this)
-    this.inputRef = React.createRef()
-    this.resultsRef = React.createRef()
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleShowMore = this.handleShowMore.bind(this);
+    this.handleClearSelection = this.handleClearSelection.bind(this);
+    this.setActiveItem = this.setActiveItem.bind(this);
+    this.inputRef = React.createRef();
+    this.resultsRef = React.createRef();
 
     if (props.debounce) {
-      this.handleChange = debounce(this.handleChange, props.debounce)
+      this.handleChange = debounce(this.handleChange, props.debounce);
     }
 
     this.state = {
-      query: '',
+      query: "",
       active: -1,
-      toShow: props.limit
-    }
+      toShow: props.limit,
+    };
   }
 
-  handleChange (e) {
-    const query = e.target.value
-    if (this.resultsRef.current) this.resultsRef.current.scrollTop = 0
-    this.setState({ query }, this.sendQuery)
+  handleChange(e) {
+    const query = e.target.value;
+    if (this.resultsRef.current) this.resultsRef.current.scrollTop = 0;
+    this.setState({ query }, this.sendQuery);
   }
 
-  handleKeyDown (e) {
+  handleKeyDown(e) {
     switch (e.key) {
-      case 'ArrowUp':
-        e.preventDefault()
-        return this.setActiveItem(this.state.active - 1)
-      case 'ArrowDown':
-        e.preventDefault()
-        return this.setActiveItem(this.state.active + 1)
-      case 'Enter':
-        e.preventDefault()
-        return this.confirmSelection()
-      case 'Escape':
-        e.preventDefault()
+      case "ArrowUp":
+        e.preventDefault();
+        return this.setActiveItem(this.state.active - 1);
+      case "ArrowDown":
+        e.preventDefault();
+        return this.setActiveItem(this.state.active + 1);
+      case "Enter":
+        e.preventDefault();
+        return this.confirmSelection();
+      case "Escape":
+        e.preventDefault();
         if (this.props.value) {
-          return this.handleClearSelection()
+          return this.handleClearSelection();
         } else {
-          return this.clearActive()
+          return this.clearActive();
         }
-      case 'Backspace':
+      case "Backspace":
         if (this.props.value) {
-          e.preventDefault()
-          return this.handleClearSelection()
+          e.preventDefault();
+          return this.handleClearSelection();
         } else if (this.state.active !== -1) {
-          e.preventDefault()
-          return this.clearActive()
+          e.preventDefault();
+          return this.clearActive();
         } else {
-          return null
+          return null;
         }
       default:
-        return null
+        return null;
     }
   }
 
-  handleClickOutside () {
-    this.props.closeOnClickOutside && this.clearActive()
+  handleClickOutside() {
+    this.props.closeOnClickOutside && this.clearActive();
   }
 
-  sendQuery (query) {
-    this.props.onSearch(this.state.query)
+  sendQuery(query) {
+    this.props.onSearch(this.state.query);
   }
 
-  setActiveItem (newIndex, selectItem) {
-    const { results } = this.props
+  setActiveItem(newIndex, selectItem) {
+    const { results } = this.props;
 
     if (results.length) {
-      const isLast = newIndex < 0
-      const isFirst = newIndex >= results.length
-      const active = isLast ? results.length - 1 : isFirst ? 0 : newIndex
+      const isLast = newIndex < 0;
+      const isFirst = newIndex >= results.length;
+      const active = isLast ? results.length - 1 : isFirst ? 0 : newIndex;
 
-      const resultsEl = this.resultsRef.current
-      const selectedEl = resultsEl.querySelector(`[data-selected="${active}"]`)
+      const resultsEl = this.resultsRef.current;
+      const selectedEl = resultsEl.querySelector(`[data-selected="${active}"]`);
 
-      resultsEl.scrollTop = selectedEl && selectedEl.offsetTop
-      this.setState({ active }, selectItem && this.confirmSelection)
+      resultsEl.scrollTop = selectedEl && selectedEl.offsetTop;
+      this.setState({ active }, selectItem && this.confirmSelection);
     }
   }
 
-  confirmSelection () {
-    const { active } = this.state
-    const { onChange, results } = this.props
-    const selectedResult = results[active]
+  confirmSelection() {
+    const { active } = this.state;
+    const { onChange, results } = this.props;
+    const selectedResult = results[active];
 
-    onChange(selectedResult)
-    this.clearActive()
+    onChange(selectedResult);
+    this.clearActive();
   }
 
-  clearActive () {
+  clearActive() {
     this.setState({
-      query: '',
+      query: "",
       active: -1,
-      toShow: this.props.limit
-    })
+      toShow: this.props.limit,
+    });
   }
 
-  handleClearSelection () {
-    this.props.onChange()
-    this.inputRef.current.focus()
+  handleClearSelection() {
+    this.props.onChange();
+    this.inputRef.current.focus();
   }
 
-  handleShowMore () {
-    const { toShow } = this.state
-    const { limit } = this.props
+  handleShowMore() {
+    const { toShow } = this.state;
+    const { limit } = this.props;
     this.setState({
-      toShow: toShow + limit
-    })
+      toShow: toShow + limit,
+    });
   }
 
-  render () {
+  render() {
     const {
       autoComplete,
       autoFocus,
@@ -150,13 +150,13 @@ class InputSearch extends Component {
       type,
       validations,
       value,
-      valueFormatter
-    } = this.props
+      valueFormatter,
+    } = this.props;
 
-    const { active, query, toShow } = this.state
+    const { active, query, toShow } = this.state;
 
-    const inputId = (id || name || '').split('.').join('-')
-    const labelId = `label-${inputId}`
+    const inputId = (id || name || "").split(".").join("-");
+    const labelId = `label-${inputId}`;
 
     return (
       <div
@@ -172,7 +172,7 @@ class InputSearch extends Component {
             required={required}
             styles={{
               root: styles.label,
-              required: styles.required
+              required: styles.required,
             }}
           >
             {label}
@@ -191,17 +191,17 @@ class InputSearch extends Component {
             readOnly={readOnly || !!value}
             ref={this.inputRef}
             required={required}
-            onChange={e => {
-              e.persist && e.persist()
-              this.handleChange(e)
+            onChange={(e) => {
+              e.persist && e.persist();
+              this.handleChange(e);
             }}
-            onBlur={e => onBlur && onBlur(e.target.value)}
+            onBlur={(e) => onBlur && onBlur(e.target.value)}
           />
           {value ? (
             <div onClick={this.handleClearSelection}>
               <div className={classNames.selected}>{valueFormatter(value)}</div>
               <div className={classNames.icon}>
-                <Icon name='close' />
+                <Icon name="close" />
               </div>
             </div>
           ) : (
@@ -226,12 +226,12 @@ class InputSearch extends Component {
               >
                 {showMore && results.length > toShow && (
                   <button
-                    type='button'
+                    type="button"
                     className={classNames.showMore}
                     onClick={this.handleShowMore}
                   >
-                    <span>Load More</span>{' '}
-                    <Icon name='chevron' rotate={90} size={0.75} />
+                    <span>Load More</span>{" "}
+                    <Icon name="chevron" rotate={90} size={0.75} />
                   </button>
                 )}
               </Results>
@@ -245,7 +245,7 @@ class InputSearch extends Component {
           />
         )}
       </div>
-    )
+    );
   }
 }
 
@@ -343,7 +343,7 @@ InputSearch.propTypes = {
   /**
    * The status of the searching
    */
-  status: PropTypes.oneOf(['fetching', 'fetched', 'failed']),
+  status: PropTypes.oneOf(["fetching", "fetched", "failed"]),
 
   /**
    * The type of the search input field
@@ -368,22 +368,22 @@ InputSearch.propTypes = {
   /**
    * The autofocus value for the field
    */
-  closeOnClickOutside: PropTypes.bool
-}
+  closeOnClickOutside: PropTypes.bool,
+};
 
 InputSearch.defaultProps = {
-  autoComplete: 'off',
+  autoComplete: "off",
   closeOnClickOutside: true,
   debounce: 500,
-  emptyMessage: 'No results found',
-  errorMessage: 'There was an unexpected error',
-  icon: 'search',
+  emptyMessage: "No results found",
+  errorMessage: "There was an unexpected error",
+  icon: "search",
   limit: 5,
-  name: 'search',
+  name: "search",
   results: [],
-  status: 'fetched',
-  type: 'search',
-  valueFormatter: value => value
-}
+  status: "fetched",
+  type: "search",
+  valueFormatter: (value) => value,
+};
 
-export default compose(withStyles(styles), onClickOutside)(InputSearch)
+export default compose(withStyles(styles), onClickOutside)(InputSearch);

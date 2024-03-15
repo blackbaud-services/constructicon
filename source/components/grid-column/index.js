@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const GridColumn = ({ children, classNames }) => (
   <div className={`c11n-grid-column ${classNames.root}`}>{children}</div>
-)
+);
 
 GridColumn.propTypes = {
   /**
@@ -41,27 +41,27 @@ GridColumn.propTypes = {
   /**
    * The default alignment
    */
-  xsAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  xsAlign: PropTypes.oneOf(["left", "center", "right"]),
 
   /**
    * The alignment at the `sm` breakpoint
    */
-  smAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  smAlign: PropTypes.oneOf(["left", "center", "right"]),
 
   /**
    * The alignment at the `md` breakpoint
    */
-  mdAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  mdAlign: PropTypes.oneOf(["left", "center", "right"]),
 
   /**
    * The alignment at the `lg` breakpoint
    */
-  lgAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  lgAlign: PropTypes.oneOf(["left", "center", "right"]),
 
   /**
    * The alignment at the `xl` breakpoint
    */
-  xlAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  xlAlign: PropTypes.oneOf(["left", "center", "right"]),
 
   /**
    * The background color of the section -
@@ -91,13 +91,13 @@ GridColumn.propTypes = {
   /**
    * The custom styles to be applied
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 GridColumn.defaultProps = {
   xs: 12,
-  borderColor: 'shade',
-  styles: {}
-}
+  borderColor: "shade",
+  styles: {},
+};
 
-export default withStyles(styles)(GridColumn)
+export default withStyles(styles)(GridColumn);

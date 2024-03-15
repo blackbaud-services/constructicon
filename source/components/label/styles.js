@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
 
 export default (
   { styles },
@@ -6,26 +6,26 @@ export default (
 ) => {
   const defaultStyles = {
     root: {
-      display: 'block',
+      display: "block",
       fontWeight: 700,
       fontSize: scale(-0.5),
-      lineHeight: '1.5em',
-      textAlign: 'left',
+      lineHeight: "1.5em",
+      textAlign: "left",
       marginBottom: rhythm(0.25),
       ...treatments.label,
 
-      '& a': {
+      "& a": {
         color: colors.primary,
-        textDecoration: 'underline'
-      }
+        textDecoration: "underline",
+      },
     },
 
     required: {
-      display: 'inline-block',
+      display: "inline-block",
       color: colors.danger,
-      cursor: 'help'
-    }
-  }
+      cursor: "help",
+    },
+  };
 
-  return merge(defaultStyles, styles)
-}
+  return merge(defaultStyles, styles);
+};

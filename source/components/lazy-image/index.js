@@ -1,8 +1,8 @@
-import React from 'react'
-import withStyles from '../with-styles'
-import styles from './styles'
-import PropTypes from 'prop-types'
-import Loading from '../loading'
+import React from "react";
+import withStyles from "../with-styles";
+import styles from "./styles";
+import PropTypes from "prop-types";
+import Loading from "../loading";
 
 /**
  * Render a colored square with a loading spinner in place of an image whilst it's being loaded.
@@ -11,106 +11,106 @@ import Loading from '../loading'
  */
 
 class LazyImage extends React.Component {
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.state = {
-      status: 'waiting',
-      hasEventListener: false
-    }
-    this.handleScroll = this.handleScroll.bind(this)
+      status: "waiting",
+      hasEventListener: false,
+    };
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
-  componentDidMount () {
-    const { url } = this.props
+  componentDidMount() {
+    const { url } = this.props;
     if (this.shouldLoadImage()) {
-      this.loadImage(url)
+      this.loadImage(url);
     } else if (this.props.lazy) {
-      window.addEventListener('scroll', this.handleScroll)
-      this.setState({ hasEventListener: true })
+      window.addEventListener("scroll", this.handleScroll);
+      this.setState({ hasEventListener: true });
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     if (this.state.hasEventListener) {
-      window.removeEventListener('scroll', this.handleScroll)
+      window.removeEventListener("scroll", this.handleScroll);
     }
   }
 
-  componentDidUpdate (prevProps) {
-    const { url, lazy } = this.props
+  componentDidUpdate(prevProps) {
+    const { url, lazy } = this.props;
     if (lazy !== prevProps.lazy) {
-      console.error('The lazy prop on <LazyImage /> should never change')
+      console.error("The lazy prop on <LazyImage /> should never change");
     } else if (url !== prevProps.url) {
-      this.setState({ status: 'waiting' })
+      this.setState({ status: "waiting" });
       if (this.shouldLoadImage()) {
-        this.loadImage(url)
+        this.loadImage(url);
       }
     }
   }
 
-  handleScroll () {
+  handleScroll() {
     if (this.shouldLoadImage()) {
-      this.loadImage(this.props.url)
+      this.loadImage(this.props.url);
     }
   }
 
-  shouldLoadImage () {
+  shouldLoadImage() {
     if (this.props.url) {
-      if (this.state.status !== 'fetching' && this.state.status !== 'fetched') {
+      if (this.state.status !== "fetching" && this.state.status !== "fetched") {
         if (this.props.lazy) {
-          return this.isImageInViewport()
+          return this.isImageInViewport();
         } else {
-          return true
+          return true;
         }
-      } else return false
-    } else return false
+      } else return false;
+    } else return false;
   }
 
-  loadImage (url) {
+  loadImage(url) {
     this.setState({
-      status: 'fetching'
-    })
-    const img = document.createElement('img')
+      status: "fetching",
+    });
+    const img = document.createElement("img");
     img.onload = () => {
       this.setState({
-        status: 'fetched'
-      })
-      this.props.onLoad()
-    }
-    img.src = url
+        status: "fetched",
+      });
+      this.props.onLoad();
+    };
+    img.src = url;
   }
 
-  isImageInViewport () {
-    if (!this.image) return false
-    const rect = this.image.getBoundingClientRect()
+  isImageInViewport() {
+    if (!this.image) return false;
+    const rect = this.image.getBoundingClientRect();
 
     return (
       rect.bottom > 0 &&
       rect.right > 0 &&
       rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
       rect.top < (window.innerHeight || document.documentElement.clientHeight)
-    )
+    );
   }
 
-  render () {
-    const { classNames, url, children, loadingProps } = this.props
-    const { status } = this.state
-    const loaded = status === 'fetched'
-    const spinner = children || <Loading {...loadingProps} />
+  render() {
+    const { classNames, url, children, loadingProps } = this.props;
+    const { status } = this.state;
+    const loaded = status === "fetched";
+    const spinner = children || <Loading {...loadingProps} />;
 
     return (
       <div
-        ref={ref => {
-          this.image = ref
+        ref={(ref) => {
+          this.image = ref;
         }}
-        style={{ backgroundImage: loaded ? `url('${url}')` : '' }}
+        style={{ backgroundImage: loaded ? `url('${url}')` : "" }}
         className={`c11n-lazy-image ${classNames.root}`}
       >
         <div className={classNames.overlay} style={{ opacity: loaded ? 0 : 1 }}>
           {!loaded && spinner}
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -153,15 +153,15 @@ LazyImage.propTypes = {
   /**
    * Optional children that will be rendered when loading, instead of the constructicon loading dots
    * */
-  children: PropTypes.any
-}
+  children: PropTypes.any,
+};
 
 LazyImage.defaultProps = {
   lazy: false,
   loadingProps: {},
   onLoad: () => {},
-  color: 'light',
-  transition: 'opacity 1s ease'
-}
+  color: "light",
+  transition: "opacity 1s ease",
+};
 
-export default withStyles(styles)(LazyImage)
+export default withStyles(styles)(LazyImage);

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { v4 as uuid } from 'uuid'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const LeaderboardItem = ({
   amount,
@@ -16,9 +16,9 @@ const LeaderboardItem = ({
   subtitle,
   target,
   title,
-  tag: Tag
+  tag: Tag,
 }) => {
-  const [id] = useState(uuid())
+  const [id] = useState(uuid());
 
   return (
     <Tag className={`c11n-leaderboard-item ${classNames.root}`}>
@@ -28,7 +28,7 @@ const LeaderboardItem = ({
         id={id}
         href={href}
         target={target}
-        rel={target === '_blank' ? 'noopener' : undefined}
+        rel={target === "_blank" ? "noopener" : undefined}
         {...linkProps}
       >
         {rank && (
@@ -82,8 +82,8 @@ const LeaderboardItem = ({
         )}
       </LinkTag>
     </Tag>
-  )
-}
+  );
+};
 
 LeaderboardItem.propTypes = {
   /**
@@ -122,7 +122,7 @@ LeaderboardItem.propTypes = {
   tag: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
-    PropTypes.func
+    PropTypes.func,
   ]),
 
   /**
@@ -131,7 +131,7 @@ LeaderboardItem.propTypes = {
   linkTag: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
-    PropTypes.func
+    PropTypes.func,
   ]),
 
   /**
@@ -182,19 +182,19 @@ LeaderboardItem.propTypes = {
   /**
    * The custom styles to be applied
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 LeaderboardItem.defaultProps = {
-  avatarRadius: 'large',
-  borderColor: 'shade',
-  href: '#',
-  linkTag: 'a',
+  avatarRadius: "large",
+  borderColor: "shade",
+  href: "#",
+  linkTag: "a",
   margin: 0,
-  radius: 'medium',
+  radius: "medium",
   spacing: 0.5,
   styles: {},
-  tag: 'li'
-}
+  tag: "li",
+};
 
-export default withStyles(styles)(LeaderboardItem)
+export default withStyles(styles)(LeaderboardItem);

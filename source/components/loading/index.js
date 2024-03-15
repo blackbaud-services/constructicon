@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles, { keyframes } from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles, { keyframes } from "./styles";
 
 const Loading = ({ classNames }) => (
   <div className={`c11n-loading ${classNames.root}`}>
@@ -9,7 +9,7 @@ const Loading = ({ classNames }) => (
     <span className={classNames.dot} />
     <span className={classNames.dot} />
   </div>
-)
+);
 
 Loading.propTypes = {
   /**
@@ -30,14 +30,14 @@ Loading.propTypes = {
   /**
    * Custom styles to be applied to the loading dots
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Loading.defaultProps = {
-  color: 'grey',
+  color: "grey",
   duration: 550,
   size: 1,
-  styles: {}
-}
+  styles: {},
+};
 
-export default withStyles(styles, keyframes)(Loading)
+export default withStyles(styles, keyframes)(Loading);

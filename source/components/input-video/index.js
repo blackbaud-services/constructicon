@@ -1,56 +1,56 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { fetchOembedUrl, videoRegex } from '../../lib/oembed'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import { fetchOembedUrl, videoRegex } from "../../lib/oembed";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
-import InputField from '../input-field'
+import InputField from "../input-field";
 
 class InputVideo extends React.Component {
-  constructor (props) {
-    super(props)
-    this.handleClear = this.handleClear.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+  constructor(props) {
+    super(props);
+    this.handleClear = this.handleClear.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       video: props.value,
-      status: 'empty'
-    }
+      status: "empty",
+    };
   }
 
-  componentDidMount () {
-    this.handleChange(this.props.value)
+  componentDidMount() {
+    this.handleChange(this.props.value);
   }
 
-  handleChange (val) {
+  handleChange(val) {
     if (!val) {
-      this.setState({ status: 'empty', video: null })
-      return this.props.onChange('')
+      this.setState({ status: "empty", video: null });
+      return this.props.onChange("");
     }
 
     Promise.resolve()
-      .then(() => this.setState({ status: 'fetching' }))
+      .then(() => this.setState({ status: "fetching" }))
       .then(() => fetchOembedUrl(val))
-      .then(video => {
-        if (video.type !== 'video' || !videoRegex.test(video.url)) {
-          return this.setState({ status: 'failed' })
+      .then((video) => {
+        if (video.type !== "video" || !videoRegex.test(video.url)) {
+          return this.setState({ status: "failed" });
         }
 
-        this.setState({ video, status: 'fetched' })
-        this.props.onVideoChange && this.props.onVideoChange(video)
+        this.setState({ video, status: "fetched" });
+        this.props.onVideoChange && this.props.onVideoChange(video);
       })
-      .catch(() => this.setState({ status: 'failed' }))
+      .catch(() => this.setState({ status: "failed" }));
 
-    this.props.onChange(val)
+    this.props.onChange(val);
   }
 
-  handleClear () {
-    this.setState({ status: 'empty', video: null })
-    this.props.onChange('')
-    this.input.focus()
+  handleClear() {
+    this.setState({ status: "empty", video: null });
+    this.props.onChange("");
+    this.input.focus();
   }
 
-  render () {
-    const { video, status } = this.state
+  render() {
+    const { video, status } = this.state;
     const {
       classNames,
       note,
@@ -59,16 +59,16 @@ class InputVideo extends React.Component {
       onVideoChange,
       styles = {},
       value,
-      type = 'search',
+      type = "search",
       ...props
-    } = this.props
+    } = this.props;
 
     return (
       <div className={classNames.root}>
         <InputField
           {...props}
-          setRef={ref => {
-            this.input = ref
+          setRef={(ref) => {
+            this.input = ref;
           }}
           type={type}
           onChange={this.handleChange}
@@ -89,7 +89,7 @@ class InputVideo extends React.Component {
           <div>{note && <small className={classNames.note}>{note}</small>}</div>
         )}
       </div>
-    )
+    );
   }
 }
 
@@ -122,7 +122,7 @@ InputVideo.propTypes = {
   /**
    * A note to show under the button
    */
-  note: PropTypes.string
-}
+  note: PropTypes.string,
+};
 
-export default withStyles(styles)(InputVideo)
+export default withStyles(styles)(InputVideo);

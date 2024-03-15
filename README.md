@@ -11,14 +11,6 @@
 
 The aim of this library is to provide a toolbelt of components, that will allow us to compose sites together more quickly and consistently.
 
-### Style Guide
-
-We are building this with a living style guide to showcase how to use the various components, using React Styleguidist.
-
-The styleguide will be publicly available at [https://blackbaud-services.github.io/constructicon](https://blackbaud-services.github.io/constructicon)
-
-While developing, it is useful to serve the styleguide using `yarn start`, which will hot reload changes as you develop.
-
 ### Theming and Flexibility
 
 One of the main challenges is providing the required flexibility.

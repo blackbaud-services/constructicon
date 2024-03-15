@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const Flippy = ({ front, back, color, classNames }) => (
   <div className={`c11n-flippy ${classNames.root}`} tabIndex={0}>
     <div className={classNames.front}>{front}</div>
     <div className={classNames.back}>{back}</div>
   </div>
-)
+);
 
 Flippy.propTypes = {
   /**
@@ -49,16 +49,16 @@ Flippy.propTypes = {
   /**
    * Custom styles to be applied
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Flippy.defaultProps = {
-  background: 'primary',
-  foreground: 'light',
-  font: 'body',
+  background: "primary",
+  foreground: "light",
+  font: "body",
   size: 2,
   spacing: { x: 1, y: 1 },
-  styles: {}
-}
+  styles: {},
+};
 
-export default withStyles(styles)(Flippy)
+export default withStyles(styles)(Flippy);

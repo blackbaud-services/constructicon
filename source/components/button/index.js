@@ -1,38 +1,38 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import omit from 'lodash/omit'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React from "react";
+import PropTypes from "prop-types";
+import omit from "lodash/omit";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 const Button = ({ children, tag: Tag, type, target, classNames, ...props }) => {
   const propsBlacklist = [
-    'children',
-    'borderColor',
-    'borderWidth',
-    'font',
-    'size',
-    'spacing',
-    'radius',
-    'shadow',
-    'effect',
-    'block',
-    'styles'
-  ]
-  const allowedProps = omit(props, propsBlacklist)
+    "children",
+    "borderColor",
+    "borderWidth",
+    "font",
+    "size",
+    "spacing",
+    "radius",
+    "shadow",
+    "effect",
+    "block",
+    "styles",
+  ];
+  const allowedProps = omit(props, propsBlacklist);
 
   return (
     <Tag
       className={`c11n-button ${classNames.root}`}
-      type={Tag === 'button' ? type : undefined}
-      aria-label={typeof children === 'string' ? children : 'button'}
-      target={['a', 'form'].indexOf(Tag) > -1 ? target : undefined}
-      formTarget={Tag === 'button' ? target : undefined}
+      type={Tag === "button" ? type : undefined}
+      aria-label={typeof children === "string" ? children : "button"}
+      target={["a", "form"].indexOf(Tag) > -1 ? target : undefined}
+      formTarget={Tag === "button" ? target : undefined}
       {...allowedProps}
     >
       {children}
     </Tag>
-  )
-}
+  );
+};
 
 Button.propTypes = {
   /**
@@ -46,13 +46,13 @@ Button.propTypes = {
   tag: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
-    PropTypes.func
+    PropTypes.func,
   ]),
 
   /**
    * The target for the button
    */
-  target: PropTypes.oneOf(['_self', '_blank', '_parent', '_top']),
+  target: PropTypes.oneOf(["_self", "_blank", "_parent", "_top"]),
 
   /**
    * The type the button
@@ -117,23 +117,23 @@ Button.propTypes = {
   /**
    * Custom styles to be applied to the button
    */
-  styles: PropTypes.object
-}
+  styles: PropTypes.object,
+};
 
 Button.defaultProps = {
-  tag: 'button',
-  target: '_top',
-  type: 'button',
-  background: 'primary',
-  foreground: 'light',
-  borderColor: 'shade',
+  tag: "button",
+  target: "_top",
+  type: "button",
+  background: "primary",
+  foreground: "light",
+  borderColor: "shade",
   borderWidth: 0,
-  font: 'button',
+  font: "button",
   size: 0,
   spacing: { x: 1, y: 0.5 },
-  radius: 'small',
-  effect: 'tint',
-  styles: {}
-}
+  radius: "small",
+  effect: "tint",
+  styles: {},
+};
 
-export default withStyles(styles)(Button)
+export default withStyles(styles)(Button);

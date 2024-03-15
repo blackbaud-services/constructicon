@@ -1,66 +1,66 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Icon from '../icon'
-import withStyles from '../with-styles'
-import styles from './styles'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Icon from "../icon";
+import withStyles from "../with-styles";
+import styles from "./styles";
 
 class Filter extends Component {
-  constructor () {
-    super()
-    this.fieldRef = React.createRef()
+  constructor() {
+    super();
+    this.fieldRef = React.createRef();
   }
 
-  onChange () {
-    const { onChange, debounce } = this.props
+  onChange() {
+    const { onChange, debounce } = this.props;
 
     if (onChange) {
       if (debounce) {
-        return this.debounce(onChange)
+        return this.debounce(onChange);
       } else {
-        return this.noDebounce(onChange)
+        return this.noDebounce(onChange);
       }
     }
   }
 
-  debounce (callback, delay = 500) {
-    let timeout
+  debounce(callback, delay = 500) {
+    let timeout;
     return () => {
-      clearTimeout(timeout)
+      clearTimeout(timeout);
       timeout = setTimeout(() => {
-        const val = this.fieldRef.current.value
-        callback(val)
-      }, delay)
-    }
+        const val = this.fieldRef.current.value;
+        callback(val);
+      }, delay);
+    };
   }
 
-  noDebounce (callback) {
+  noDebounce(callback) {
     return () => {
-      const val = this.fieldRef.current.value
-      callback(val)
-    }
+      const val = this.fieldRef.current.value;
+      callback(val);
+    };
   }
 
-  render () {
-    const { placeholder, classNames, onSubmit, styles } = this.props
+  render() {
+    const { placeholder, classNames, onSubmit, styles } = this.props;
 
     return (
       <form
-        action='/'
+        action="/"
         onSubmit={onSubmit}
         className={`c11n-filter ${classNames.root}`}
       >
-        <Icon name='search' size={1.25} styles={styles.icon} />
+        <Icon name="search" size={1.25} styles={styles.icon} />
         <input
           ref={this.fieldRef}
-          type='search'
+          type="search"
           aria-label={placeholder}
           placeholder={placeholder}
           onChange={this.onChange()}
-          autoComplete='off'
+          autoComplete="off"
           className={classNames.input}
         />
       </form>
-    )
+    );
   }
 }
 
@@ -98,14 +98,14 @@ Filter.propTypes = {
   /**
    * Whether or not to debounce the onChange callback
    */
-  debounce: PropTypes.bool
-}
+  debounce: PropTypes.bool,
+};
 
 Filter.defaultProps = {
-  placeholder: 'Filter results',
+  placeholder: "Filter results",
   styles: {},
   debounce: true,
-  onSubmit: e => e.preventDefault()
-}
+  onSubmit: (e) => e.preventDefault(),
+};
 
-export default withStyles(styles)(Filter)
+export default withStyles(styles)(Filter);

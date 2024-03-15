@@ -1,90 +1,90 @@
-import defaults from 'lodash/defaults'
-import map from 'lodash/map'
-import { stringify } from 'query-string'
+import defaults from "lodash/defaults";
+import map from "lodash/map";
+import { stringify } from "query-string";
 
 const services = {
   facebook: ({ url }) => {
-    return `http://www.facebook.com/sharer.php?${stringify({ u: url })}`
+    return `http://www.facebook.com/sharer.php?${stringify({ u: url })}`;
   },
   mail: ({ url, title }) => {
-    return `mailto:?${stringify({ body: url, subject: title })}`
+    return `mailto:?${stringify({ body: url, subject: title })}`;
   },
   linkedin: ({ url, title }) => {
     return `https://www.linkedin.com/shareArticle?${stringify({
       mini: true,
       url,
-      title
-    })}`
+      title,
+    })}`;
   },
   messenger: ({ url }) => {
-    return `fb-messenger://share?${stringify({ link: url })}`
+    return `fb-messenger://share?${stringify({ link: url })}`;
   },
   nextdoor: ({ url, title }) => {
     return `https://au.nextdoor.com/share/?${stringify({
       body: url,
-      title
-    })}`
+      title,
+    })}`;
   },
   pinterest: ({ url, title, image }) => {
     return `http://pinterest.com/pin/create/button/?${stringify({
       url,
       media: image,
-      description: title
-    })}`
+      description: title,
+    })}`;
   },
   reddit: ({ url, title }) => {
-    return `http://www.reddit.com/submit?${stringify({ url, title })}`
+    return `http://www.reddit.com/submit?${stringify({ url, title })}`;
   },
   sms: ({ url }) => {
-    return `sms:?&${stringify({ body: url })}`
+    return `sms:?&${stringify({ body: url })}`;
   },
   twitter: ({ url, title, hashtags }) => {
     return `https://twitter.com/share?${stringify({
       url,
       hashtags,
-      text: title
-    })}`
+      text: title,
+    })}`;
   },
   whatsapp: ({ url, title }) => {
     return `https://api.whatsapp.com/send?${stringify({
-      text: [title, url].join(' - ')
-    })}`
-  }
-}
+      text: [title, url].join(" - "),
+    })}`;
+  },
+};
 
 const popupShares = [
-  'facebook',
-  'twitter',
-  'linkedin',
-  'nextdoor',
-  'pinterest',
-  'reddit',
-  'whatsapp'
-]
+  "facebook",
+  "twitter",
+  "linkedin",
+  "nextdoor",
+  "pinterest",
+  "reddit",
+  "whatsapp",
+];
 
-const toString = obj => {
+const toString = (obj) => {
   return map(obj, function (value, key) {
-    return key + '=' + value
-  }).join(',')
-}
+    return key + "=" + value;
+  }).join(",");
+};
 
 const openPopup = (url, config) => {
-  config = defaults(config || {}, { width: 640, height: 320 })
+  config = defaults(config || {}, { width: 640, height: 320 });
 
-  const windowTop = window.screenTop ? window.screenTop : window.screenY
-  const windowLeft = window.screenLeft ? window.screenLeft : window.screenX
+  const windowTop = window.screenTop ? window.screenTop : window.screenY;
+  const windowLeft = window.screenLeft ? window.screenLeft : window.screenX;
 
-  config.top = windowTop + window.innerHeight / 2 - config.height / 2
-  config.left = windowLeft + window.innerWidth / 2 - config.width / 2
-  config = toString(config)
+  config.top = windowTop + window.innerHeight / 2 - config.height / 2;
+  config.left = windowLeft + window.innerWidth / 2 - config.width / 2;
+  config = toString(config);
 
-  window.open(url, 'shareWindow', config)
-}
+  window.open(url, "shareWindow", config);
+};
 
-export default options => {
+export default (options) => {
   const imageUrl =
     document.head.querySelector('meta[property="og:image"]') &&
-    document.head.querySelector('meta[property="og:image"]').content
+    document.head.querySelector('meta[property="og:image"]').content;
 
   const {
     caption,
@@ -93,21 +93,21 @@ export default options => {
     title = document.title,
     type,
     url = window.location.href,
-    onClick
-  } = options
+    onClick,
+  } = options;
 
-  const service = services[type]
+  const service = services[type];
 
   if (service) {
     const popupConfig = {
       toolbar: 0,
       status: 0,
       width: 640,
-      height: 400
-    }
+      height: 400,
+    };
 
     if (onClick) {
-      onClick()
+      onClick();
     }
 
     const shareUrl = service({
@@ -115,11 +115,11 @@ export default options => {
       title,
       hashtags,
       caption,
-      image
-    })
+      image,
+    });
 
     return popupShares.indexOf(type) > -1
       ? openPopup(shareUrl, popupConfig)
-      : window.location.assign(shareUrl)
+      : window.location.assign(shareUrl);
   }
-}
+};
