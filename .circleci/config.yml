@@ -57,11 +57,11 @@ commands:
                 name: Prepare for NPM Publish 1
                 command: yarn prepare-package-1
             - run:
-                name: Prepare for NPM Publish 2
-                command: yarn prepare-package-2
-            - run:
                 name: Prepare package output
                 command: yarn prepare-package-output
+            - run:
+                name: Prepare for NPM Publish 2
+                command: yarn prepare-package-2
             - run:
                 name: Prepare for NPM Publish 3
                 command: yarn prepare-package-3
