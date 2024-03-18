@@ -52,37 +52,7 @@ commands:
           pre-publish-steps:
             - run:
                 name: Prepare for NPM Publish
-                command: yarn build
-            - run:
-                name: Prepare for NPM Publish 1
-                command: yarn prepare-package-1
-            - run:
-                name: Deploy test 1
-                command: yarn deploy-test-1
-            - run:
-                name: Deploy test 2
-                command: yarn deploy-test-2
-            - run:
-                name: Deploy test 3
-                command: yarn deploy-test-3
-            - run:
-                name: Deploy test 4
-                command: yarn deploy-test-4
-            - run:
-                name: Deploy test 5
-                command: yarn deploy-test-5
-            - run:
-                name: Deploy test 6
-                command: yarn deploy-test-6
-            - run:
-                name: Prepare for NPM Publish 2
-                command: yarn prepare-package-2
-            - run:
-                name: Prepare for NPM Publish 3
-                command: yarn prepare-package-3
-            - run:
-                name: Prepare for NPM Publish 4
-                command: yarn prepare-package-4
+                command: yarn deploy:prepare
           post-publish-steps:
             - run:
                 name: Announce Release
