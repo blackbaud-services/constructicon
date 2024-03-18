@@ -66,6 +66,15 @@ commands:
                 name: Deploy test 3
                 command: yarn deploy-test-3
             - run:
+                name: Deploy test 4
+                command: yarn deploy-test-4
+            - run:
+                name: Deploy test 5
+                command: yarn deploy-test-5
+            - run:
+                name: Deploy test 6
+                command: yarn deploy-test-6
+            - run:
                 name: Prepare for NPM Publish 2
                 command: yarn prepare-package-2
             - run:
