@@ -52,7 +52,22 @@ commands:
           pre-publish-steps:
             - run:
                 name: Prepare for NPM Publish
-                command: yarn deploy:prepare
+                command: yarn build
+            - run:
+                name: Prepare for NPM Publish 1
+                command: yarn prepare-package-1
+            - run:
+                name: Prepare for NPM Publish 2
+                command: yarn prepare-package-2
+            - run:
+                name: Prepare package output
+                command: yarn prepare-package-output
+            - run:
+                name: Prepare for NPM Publish 3
+                command: yarn prepare-package-3
+            - run:
+                name: Prepare for NPM Publish 4
+                command: yarn prepare-package-4
           post-publish-steps:
             - run:
                 name: Announce Release
