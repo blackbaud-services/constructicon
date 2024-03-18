@@ -16,7 +16,7 @@
     "deploy-test-2": "cd ./npm-constructicon",
     "deploy-test-3": "ls",
     "deploy-test-4": "cat ./package.json",
-    "deploy-test-5": "sed -i '' 's/constructicon/12345/' ./package.json",
+    "deploy-test-5": "sed -i 's/constructicon/12345/' ./package.json",
     "deploy-test-6": "cat ./package.json",
     "prepare-package-2": "sed -i '' 's/..\\/..\\/lib/..\\/lib/g' ./npm-constructicon/**/*.js",
     "prepare-package-3": "sed -i '' 's/..\\/..\\/..\\/lib/..\\/..\\/lib/g' ./npm-constructicon/**/__tests__/*.js",
