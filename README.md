@@ -1,4 +1,3 @@
-
 # Constructicon [![npm](https://img.shields.io/npm/v/constructicon.svg?style=flat-square)](https://www.npmjs.com/package/constructicon)
 
 ## Important Links
