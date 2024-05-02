@@ -36,6 +36,7 @@ const InputSelect = ({
   elasticSearch,
   nonIdealElasticSearchResult,
   includeOther = false,
+  description,
   ...props
 }) => {
   const propsBlacklist = [
@@ -201,6 +202,18 @@ const InputSelect = ({
         </Label>
       )}
 
+      {description && (
+        <Label
+          id={labelId}
+          inputId={inputId}
+          styles={{
+            root: styles.label,
+          }}
+        >
+          {description}
+        </Label>
+      )}
+
       <div className={classNames.wrapper}>
         {elasticSearch ? (
           <>
@@ -293,6 +306,11 @@ InputSelect.propTypes = {
    * The label for the field
    */
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+  /**
+   * The label for the field
+   */
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
   /**
    * The name of the field
