@@ -6,7 +6,7 @@ export default (
 ) => {
   const defaultStyles = {
     root: {
-      display: "block",
+      display: "flex",
       fontWeight: 700,
       fontSize: scale(-0.5),
       lineHeight: "1.5em",
