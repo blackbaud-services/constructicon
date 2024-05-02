@@ -167,6 +167,7 @@ class InputField extends React.Component {
       status,
       validations,
       value,
+      description,
       ...props
     } = this.props;
 
@@ -257,6 +258,18 @@ class InputField extends React.Component {
           </Label>
         )}
 
+        {description && (
+          <Label
+            id={labelId}
+            inputId={inputId}
+            styles={{
+              root: styles.label,
+            }}
+          >
+            {description}
+          </Label>
+        )}
+
         {!isBoolean(type) && renderField()}
 
         {["textarea", "contenteditable"].indexOf(type) > -1 && !!maxLength && (
@@ -289,6 +302,11 @@ InputField.propTypes = {
    * The label for the field
    */
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+  /**
+   * The description for the field
+   */
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
   /**
    * Whether to display validation errors
