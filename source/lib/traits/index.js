@@ -42,7 +42,7 @@ export const colors = {
   skinTone8: "#77311d",
   inherit: "inherit",
   facebook: "#1877f2",
-  twitter: "#1da1f2",
+  twitter: "black",
   instagram: "#e4405f",
   youtube: "#ff0000",
   linkedin: "#0077b5",
