@@ -37,12 +37,12 @@ const ButtonShare = ({
 );
 
 const labelUpdate = (type) => {
-  if (type === 'twitter') {
-    return 'x'
+  if (type === "twitter") {
+    return "x";
   }
 
-  return type
-}
+  return type;
+};
 
 ButtonShare.propTypes = {
   /**
