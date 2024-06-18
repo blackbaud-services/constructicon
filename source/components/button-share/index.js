@@ -28,13 +28,21 @@ const ButtonShare = ({
         openShareDialog({ type, url, title, hashtags, image, onClick });
       }
     }}
-    aria-label={`${share ? "Share" : "View"} on ${type}`}
+    aria-label={`${share ? "Share" : "View"} on ${labelUpdate(type)}`}
     {...props}
   >
     <Icon name={type} />
     {children}
   </Button>
 );
+
+const labelUpdate = (type) => {
+  if (type === 'twitter') {
+    return 'x'
+  }
+
+  return type
+}
 
 ButtonShare.propTypes = {
   /**
