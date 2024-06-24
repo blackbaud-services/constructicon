@@ -4,7 +4,7 @@ import withStyles from "../with-styles";
 import styles, { keyframes } from "./styles";
 import * as icons from "./icons";
 
-const Icon = ({ name, paths, viewBox, ariaHidden = true, classNames }) => {
+const Icon = ({ alt, name, paths, viewBox, ariaHidden = true, classNames }) => {
   const iconPaths = name ? icons[name] : paths;
 
   return (
@@ -12,7 +12,7 @@ const Icon = ({ name, paths, viewBox, ariaHidden = true, classNames }) => {
       className={`c11n-icon ${classNames.root}`}
       viewBox={`0 0 ${viewBox} ${viewBox}`}
       aria-hidden={ariaHidden}
-      alt={name ?? ""}
+      alt={alt ?? name ?? ""}
     >
       {iconPaths &&
         iconPaths.map((pathProps, i) => <path {...pathProps} key={i} />)}

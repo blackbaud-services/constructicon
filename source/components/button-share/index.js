@@ -31,7 +31,7 @@ const ButtonShare = ({
     aria-label={`${share ? "Share" : "View"} on ${labelUpdate(type)}`}
     {...props}
   >
-    <Icon name={type} />
+    <Icon name={type} alt={labelUpdate(type)} />
     {children}
   </Button>
 );
