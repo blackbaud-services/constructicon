@@ -16,7 +16,8 @@
     "deploy:prepare-mac": "npm run build && npm run prepare-package-mac",
     "announce": "./bin/announce",
     "playground:start": "yarn webpack serve",
-    "playground:build": "yarn webpack"
+    "playground:build": "yarn webpack",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -58,9 +59,8 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "8.56.0",
-    "husky": "^7.0.2",
+    "husky": "^9.1.5",
     "jsdom": "^17.0.0",
-    "lint-staged": "^11.1.2",
     "lodash": "^4.17.21",
     "mocha": "10.3.0",
     "moxios": "^0.4.0",
@@ -97,6 +97,9 @@
     "access": "public"
   },
   "lint-staged": {
-    "source/**/*.js": "prettier --check"
+    "source/**/*.js": [
+      "npm run lint",
+      "npm run test"
+    ]
   }
 }
