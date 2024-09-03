@@ -32,7 +32,7 @@ const ImageSelect = ({
           {label}
         </Label>
       )}
-      <div id={inputId}>
+      <div id={inputId} className={classNames.imageContainer}>
         {options.map((option) => (
           <ImageSelectItem
             key={option.value}
