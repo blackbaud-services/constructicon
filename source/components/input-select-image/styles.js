@@ -5,6 +5,11 @@ const styles = (props, { scale, rhythm, shadows, radiuses, mediaQuery }) => {
     root: {
       marginBottom: rhythm(1),
     },
+    imageContainer: {
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "space-between",
+    },
     option: {
       marginBottom: 10,
       boxShadow: shadows.full,
@@ -14,6 +19,10 @@ const styles = (props, { scale, rhythm, shadows, radiuses, mediaQuery }) => {
       ":hover": {
         cursor: "pointer",
         boxShadow: shadows.light,
+      },
+      maxWidth: "30%",
+      "@media (max-width: 768px)": {
+        maxWidth: "100%",
       },
     },
     optionSelected: {
