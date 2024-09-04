@@ -119,6 +119,11 @@ export const greaterThan = (min = 0, msg) => {
         return val;
       case "number":
         return val <= min && (msg || `Number must be greater than ${min}`);
+      case "string":
+        if (parseInt(val) === NaN) return "Please enter a valid number";
+        return (
+          parseInt(val) <= min && (msg || `Number must be greater than ${min}`)
+        );
       default:
         return (
           !!val &&
